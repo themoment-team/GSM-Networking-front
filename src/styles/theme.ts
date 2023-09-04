@@ -53,7 +53,9 @@ const typo = {
 
 const color = {
   skyBlue: {
-    200: '#148EFF',
+    400: '#148EFF',
+    300: '#3CA1FF',
+    200: '#6AB7FF',
     100: '#94CCFF',
     50: '#E4F2FF',
   },
