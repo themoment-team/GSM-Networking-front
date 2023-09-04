@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 
 import * as S from './style';
 
+import { SearchIcon } from '@/assets';
 import type { WorkerType } from '@/types';
 
 interface Props {
@@ -35,6 +36,9 @@ const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
         onChange={onChange}
         placeholder='찾고 싶은 사람, 전공, 회사명, 기수 등을 검색해보세요'
       />
+      <S.SearchImg>
+        <SearchIcon />
+      </S.SearchImg>
     </S.SearchBarContainer>
   );
 };
