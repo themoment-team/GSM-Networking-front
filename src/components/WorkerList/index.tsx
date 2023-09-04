@@ -11,9 +11,11 @@ interface Props {
 
 const WorkerList: React.FC<Props> = ({ workerList }) => (
   <S.WorkerList>
-    {workerList.map((worker) => (
-      <WorkerListItem key={worker.id} worker={worker} />
-    ))}
+    {workerList
+      .sort(() => Math.random() - 0.5)
+      .map((worker) => (
+        <WorkerListItem key={worker.id} worker={worker} />
+      ))}
   </S.WorkerList>
 );
 

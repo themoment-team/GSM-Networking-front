@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
       BlinkMacSystemFont, system-ui, Roboto, 'Helvetica Neue', 'Segoe UI',
       'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic',
       'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', sans-serif;
+    box-sizing: border-box;
   }
 
   body {
@@ -27,23 +28,23 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 600px) {
       font-size: 15px;
     }
-    @media (max-width: 500px) {
+    @media (max-width: 520px) {
       font-size: 14px;
     }
-    @media (max-width: 450px) {
+    @media (max-width: 470px) {
       font-size: 13px;
     }
-    @media (max-width: 400px) {
+    @media (max-width: 420px) {
       font-size: 12px;
     }
-    @media (max-width: 370px) {
+    @media (max-width: 390px) {
       font-size: 11px;
     }
-    @media (max-width: 340px) {
-      font-size: 10px;
-    }
-    @media (max-width: 310px) {
+    @media (max-width: 360px) {
       font-size: 9px;
+    }
+    @media (max-width: 300px) {
+      font-size: 8px;
     }
   }
 `;
