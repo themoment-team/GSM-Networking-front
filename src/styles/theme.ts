@@ -35,7 +35,7 @@ const typo = {
     fontWeight: 500,
   },
   button: {
-    fontSize: '0.875rem',
+    fontSize: '1.0625rem',
     lineHeight: '150%',
     fontWeight: 700,
   },
