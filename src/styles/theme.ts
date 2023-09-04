@@ -14,7 +14,7 @@ const typo = {
     lineHeight: '120%',
     fontWeight: 700,
   },
-  title: {
+  h4: {
     fontSize: '1.5rem',
     lineHeight: '120%',
     fontWeight: 700,
