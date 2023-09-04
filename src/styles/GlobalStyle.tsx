@@ -47,6 +47,12 @@ const GlobalStyle = createGlobalStyle`
       font-size: 8px;
     }
   }
+
+  button {
+    border: none;
+    background: inherit;
+    cursor: pointer;
+  }
 `;
 
 export default GlobalStyle;
