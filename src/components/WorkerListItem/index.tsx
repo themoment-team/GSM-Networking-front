@@ -16,7 +16,11 @@ const WorkerListItem: React.FC<Props> = ({ worker }) => (
     <S.Generation>{worker.generation}기</S.Generation>
     <S.Name>{worker.name}</S.Name>
     <S.Position>{worker.position}</S.Position>
-    <S.CompanyLink href={worker.company.URL ?? ''}>
+    <S.CompanyLink
+      href={worker.company.URL ?? ''}
+      target='_blank'
+      rel='noopener noreferrer'
+    >
       🏢 {worker.company.name}
     </S.CompanyLink>
     <S.MailTo href={`mailto:${worker.email}`}>

@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styled from 'styled-components';
 
 export const WorkerListItem = styled.div`
@@ -25,7 +24,7 @@ export const Position = styled.p`
   white-space: nowrap;
 `;
 
-export const CompanyLink = styled(Link)`
+export const CompanyLink = styled.a`
   width: 10rem;
   overflow: hidden;
   white-space: nowrap;
