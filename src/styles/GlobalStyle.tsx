@@ -39,10 +39,10 @@ const GlobalStyle = createGlobalStyle`
     @media (max-width: 370px) {
       font-size: 11px;
     }
-    @media (max-width: 330px) {
+    @media (max-width: 340px) {
       font-size: 10px;
     }
-    @media (max-width: 300px) {
+    @media (max-width: 310px) {
       font-size: 9px;
     }
   }
