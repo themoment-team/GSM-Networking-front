@@ -1,5 +1,6 @@
 import { Header, WorkerList } from '@/components';
 import type { WorkerType } from '@/types';
+import { minutesToSeconds } from '@/utils';
 
 import type { Metadata } from 'next';
 
@@ -7,14 +8,16 @@ export default async function Home() {
   const workerList: WorkerType[] = await fetch(
     `${process.env.BASE_URL}/api/worker/list`,
     {
-      cache: 'force-cache',
+      next: {
+        revalidate: minutesToSeconds(5),
+      },
     }
   ).then((res) => res.json());
 
   return (
     <>
       <Header />
-      <WorkerList workerList={workerList} />
+      <WorkerList workerList={workerList.sort(() => Math.random() - 0.5)} />
     </>
   );
 }
