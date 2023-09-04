@@ -1,8 +1,18 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
-const SearchBar: React.FC = ({ initWorkerList, setWorkerList }) => {
+import * as S from './style';
+
+import type { WorkerType } from '@/types';
+
+interface Props {
+  initWorkerList: WorkerType[];
+  setWorkerList: Dispatch<SetStateAction<WorkerType[]>>;
+}
+
+const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
   const [searchValue, setSeaechValue] = useState('');
 
   useEffect(() => {
@@ -20,12 +30,12 @@ const SearchBar: React.FC = ({ initWorkerList, setWorkerList }) => {
   };
 
   return (
-    <div>
-      <input
+    <S.SearchBarContainer>
+      <S.SearchBar
         onChange={onChange}
         placeholder='찾고 싶은 사람, 전공, 회사명, 기수 등을 검색해보세요'
       />
-    </div>
+    </S.SearchBarContainer>
   );
 };
 

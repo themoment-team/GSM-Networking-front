@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const WorkerList = styled.div`
+export const WorkerList = styled.main`
   display: flex;
   flex-direction: column;
   gap: 1rem;
