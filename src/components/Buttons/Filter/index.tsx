@@ -3,15 +3,17 @@
 import * as S from './style';
 
 import { FilterIcon } from '@/assets';
+import type { GenerationType } from '@/types';
 
 interface Props {
-  selectedGeneration: '4기' | '5기' | '';
+  selectedGeneration: GenerationType;
+  onClick: () => void;
 }
 
-const FilterButton: React.FC<Props> = ({ selectedGeneration }) => (
-  <S.Button type='button'>
+const FilterButton: React.FC<Props> = ({ selectedGeneration, onClick }) => (
+  <S.Button type='button' onClick={onClick}>
     <FilterIcon />
-    {selectedGeneration || '필터'}
+    {selectedGeneration ? `${selectedGeneration}기` : `필터`}
   </S.Button>
 );
 
