@@ -14,7 +14,7 @@ const typo = {
     lineHeight: '120%',
     fontWeight: 700,
   },
-  title: {
+  h4: {
     fontSize: '1.5rem',
     lineHeight: '120%',
     fontWeight: 700,
@@ -35,7 +35,7 @@ const typo = {
     fontWeight: 500,
   },
   button: {
-    fontSize: '0.875rem',
+    fontSize: '1.0625rem',
     lineHeight: '150%',
     fontWeight: 700,
   },
@@ -53,7 +53,9 @@ const typo = {
 
 const color = {
   skyBlue: {
-    200: '#148EFF',
+    400: '#148EFF',
+    300: '#3CA1FF',
+    200: '#6AB7FF',
     100: '#94CCFF',
     50: '#E4F2FF',
   },
