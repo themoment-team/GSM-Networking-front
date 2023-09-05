@@ -6,7 +6,7 @@ export const SearchBarContainer = styled.div`
   margin-bottom: 2rem;
 `;
 
-export const SearchBar = styled.input`
+export const SearchInput = styled.input`
   width: 100%;
   padding: 1rem;
   border: none;
