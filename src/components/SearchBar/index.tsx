@@ -1,7 +1,6 @@
 'use client';
 
 import type { Dispatch, SetStateAction } from 'react';
-import { useState } from 'react';
 
 import * as S from './style';
 
@@ -14,9 +13,7 @@ interface Props {
 }
 
 const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
-  const [searchValue, setSeaechValue] = useState<string>('');
-
-  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.currentTarget.value;
 
     const searched = initWorkerList.filter(
@@ -26,15 +23,13 @@ const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
         worker.position.includes(inputValue)
     );
 
-    setSeaechValue(inputValue);
     setWorkerList(searched);
   };
 
   return (
     <S.SearchBarContainer>
       <S.SearchInput
-        value={searchValue}
-        onChange={onChange}
+        onChange={handleChange}
         placeholder='찾고 싶은 사람, 전공, 회사명, 기수 등을 검색해보세요'
       />
       <S.SearchImg>
