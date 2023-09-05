@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.color.grey[50]};
+    background: ${({ theme }) => theme.color.white};
+    height: 100vh;
+    height: 100dvh;
   }
 
   a {
@@ -50,8 +52,14 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     border: none;
+    outline: none;
     background: inherit;
     cursor: pointer;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
 `;
 
