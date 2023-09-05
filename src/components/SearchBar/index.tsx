@@ -14,7 +14,7 @@ interface Props {
 }
 
 const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
-  const [searchValue, setSeaechValue] = useState('');
+  const [searchValue, setSeaechValue] = useState<string>('');
 
   useEffect(() => {
     const searched = initWorkerList.filter(
