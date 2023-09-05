@@ -25,7 +25,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    @media (max-width: 600px) {
+    @media (max-width: 599px) {
       font-size: 15px;
     }
     @media (max-width: 520px) {
