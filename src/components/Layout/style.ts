@@ -5,7 +5,6 @@ export const Layout = styled.main`
   height: 100vh;
   height: 100dvh;
   margin: 0 auto;
-  padding-bottom: 1rem;
 
   @media (max-width: 600px) {
     width: 100%;

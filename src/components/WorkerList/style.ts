@@ -4,8 +4,8 @@ export const WorkerList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  height: calc(100vh - 18.3375rem);
-  height: calc(100dvh - 18.3375rem);
+  height: calc(100vh - 19.8375rem);
+  height: calc(100dvh - 19.8375rem);
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
