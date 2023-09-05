@@ -5,25 +5,16 @@ import type { Dispatch, SetStateAction } from 'react';
 import * as S from './style';
 
 import { SearchIcon } from '@/assets';
-import type { WorkerType } from '@/types';
 
 interface Props {
-  initWorkerList: WorkerType[];
-  setWorkerList: Dispatch<SetStateAction<WorkerType[]>>;
+  setKeyword: Dispatch<SetStateAction<string>>;
 }
 
-const SearchBar: React.FC<Props> = ({ initWorkerList, setWorkerList }) => {
+const SearchBar: React.FC<Props> = ({ setKeyword }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.currentTarget.value;
 
-    const searched = initWorkerList.filter(
-      (worker) =>
-        worker.name.includes(inputValue) ||
-        worker.company.name.includes(inputValue) ||
-        worker.position.includes(inputValue)
-    );
-
-    setWorkerList(searched);
+    setKeyword(inputValue);
   };
 
   return (
