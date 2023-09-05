@@ -6,7 +6,7 @@ const EmailIcon = () => (
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clip-path='url(#clip0_10_217)'>
+    <g clipPath='url(#clip0_10_217)'>
       <path d='M3 19V5H21V19H3Z' className='first' fill='#CBCCCE' />
       <path
         d='M10.7721 11.045L3 5H21L13.2279 11.045C12.5057 11.6067 11.4943 11.6067 10.7721 11.045Z'

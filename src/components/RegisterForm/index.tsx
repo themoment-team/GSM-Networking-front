@@ -16,7 +16,7 @@
 //   const handleClick = async () => {
 //     const name = nameRef.current?.value;
 //     const email = emailRef.current?.value;
-//     const generation = generationRef.current?.value;
+//     const generation = Number(generationRef.current?.value);
 //     const position = positionRef.current?.value;
 //     const companyName = companyNameRef.current?.value;
 //     const companyURL = companyURLRef.current?.value;

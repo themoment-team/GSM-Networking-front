@@ -1,10 +1,13 @@
+import type { GenerationType } from '.';
+
 export interface WorkerType {
   id: string;
   name: string;
   email?: string;
-  generation: number;
+  generation: GenerationType;
   position: string;
   company: CompanyType;
+  SNS: string;
 }
 
 interface CompanyType {

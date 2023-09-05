@@ -40,7 +40,7 @@ export const MailTo = styled.a`
       fill: ${({ theme }) => theme.color.skyBlue[100]};
     }
     .second {
-      fill: ${({ theme }) => theme.color.skyBlue[200]};
+      fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
   }
 `;
@@ -55,7 +55,7 @@ export const SNSLink = styled.a`
       fill: ${({ theme }) => theme.color.skyBlue[100]};
     }
     .second {
-      fill: ${({ theme }) => theme.color.skyBlue[200]};
+      fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
   }
 `;

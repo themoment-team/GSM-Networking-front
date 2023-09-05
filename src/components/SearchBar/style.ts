@@ -1,3 +1,4 @@
+import { theme } from '@/styles';
 import styled from 'styled-components';
 
 export const SearchBarContainer = styled.div`
@@ -11,7 +12,13 @@ export const SearchInput = styled.input`
   padding: 1rem;
   border: none;
   font-size: 1rem;
-  border-radius: 10px;
+  border-radius: 0.625rem;
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+
+  &::placeholder {
+    ${({ theme }) => theme.typo.body1}
+    color: ${({ theme }) => theme.color.grey[400]}};
+  }
 
   &:focus {
     outline: 1px solid #148eff;

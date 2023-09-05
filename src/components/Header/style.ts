@@ -1,17 +1,26 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
+  height: 5rem;
   display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  padding: 2.5rem 0;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 `;
 
-export const Title = styled.h1`
-  ${({ theme }) => theme.typo.h3};
+export const Inner = styled.div`
+  width: 600px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+
+  @media (max-width: 600px) {
+    width: 100%;
+    padding: 0 1rem;
+  }
 `;
 
-export const Description = styled.p`
-  ${({ theme }) => theme.typo.subtitle};
-  color: ${({ theme }) => theme.color.grey[400]};
+export const PageName = styled.p`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.black};
 `;

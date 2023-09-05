@@ -16,7 +16,9 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${({ theme }) => theme.color.grey[50]};
+    background: ${({ theme }) => theme.color.white};
+    height: 100vh;
+    height: 100dvh;
   }
 
   a {
@@ -25,7 +27,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    @media (max-width: 600px) {
+    @media (max-width: 599px) {
       font-size: 15px;
     }
     @media (max-width: 520px) {
@@ -50,8 +52,14 @@ const GlobalStyle = createGlobalStyle`
 
   button {
     border: none;
+    outline: none;
     background: inherit;
     cursor: pointer;
+
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
 `;
 

@@ -20,13 +20,22 @@ const WorkerListItem: React.FC<Props> = ({ worker }) => (
       href={worker.company.URL ?? ''}
       target='_blank'
       rel='noopener noreferrer'
+      onClick={(e) => worker.company.URL || e.preventDefault()}
     >
       🏢 {worker.company.name}
     </S.CompanyLink>
-    <S.MailTo href={`mailto:${worker.email}`}>
+    <S.MailTo
+      href={`mailto:${worker.email}`}
+      onClick={(e) => worker.email || e.preventDefault()}
+    >
       <EmailIcon />
     </S.MailTo>
-    <S.SNSLink>
+    <S.SNSLink
+      href={worker.SNS ?? ''}
+      target='_blank'
+      rel='noopener noreferrer'
+      onClick={(e) => worker.SNS || e.preventDefault()}
+    >
       <SNSIcon />
     </S.SNSLink>
   </S.WorkerListItem>
