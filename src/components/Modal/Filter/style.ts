@@ -7,8 +7,10 @@ export const Modal = styled.div`
   box-shadow: 1px 9px 18px 0px rgba(0, 0, 0, 0.06);
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   padding: 1.5rem;
-  position: relative;
   border-radius: 0.625rem;
+  position: absolute;
+  z-index: 5;
+  top: 9.9rem;
 `;
 
 export const Top = styled.div`
@@ -67,7 +69,9 @@ export const CheckButton = styled.button`
   color: ${({ theme }) => theme.color.white};
 `;
 
-export const Result = styled.p`
+export const Result = styled.p<{ isSelected: boolean }>`
   ${({ theme }) => theme.typo.subtitle}
   width: 11.75rem;
+  color: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.black : theme.color.grey[600]};
 `;
