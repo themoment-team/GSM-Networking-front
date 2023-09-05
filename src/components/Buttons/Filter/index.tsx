@@ -8,10 +8,15 @@ import type { GenerationType } from '@/types';
 interface Props {
   selectedGeneration: GenerationType;
   onClick: () => void;
+  isActive: boolean;
 }
 
-const FilterButton: React.FC<Props> = ({ selectedGeneration, onClick }) => (
-  <S.Button type='button' onClick={onClick}>
+const FilterButton: React.FC<Props> = ({
+  selectedGeneration,
+  onClick,
+  isActive,
+}) => (
+  <S.Button type='button' onClick={onClick} isActive={isActive}>
     <FilterIcon />
     {selectedGeneration ? `${selectedGeneration}기` : `필터`}
   </S.Button>

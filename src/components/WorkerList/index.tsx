@@ -52,6 +52,7 @@ const WorkerList: React.FC<Props> = ({ initWorkerList }) => {
       )}
       <WorkerListHeader
         selectedGeneration={selectedGeneration}
+        isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
       />
       <SearchBar setKeyword={setKeyword} />
