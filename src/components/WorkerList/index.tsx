@@ -12,7 +12,7 @@ interface Props {
 }
 
 const WorkerList: React.FC<Props> = ({ initWorkerList }) => {
-  const [workerList, setWorkerList] = useState(initWorkerList);
+  const [workerList, setWorkerList] = useState<WorkerType[]>(initWorkerList);
 
   return (
     <>
