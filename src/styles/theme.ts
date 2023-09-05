@@ -75,7 +75,7 @@ const color = {
     50: '#F5F6F8',
   },
   white: '#FFFFFF',
-  black: '#000000',
+  black: '#111112',
 };
 
 const theme = {
