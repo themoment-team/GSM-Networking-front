@@ -53,7 +53,7 @@ const FilterModal: React.FC<Props> = ({
         <S.Result isSelected={!!selectedGeneration}>
           {selectedGeneration
             ? `총 ${filteredWorkerLength}명을 찾았어요.`
-            : `등록된 취업자 ${filteredWorkerLength}`}
+            : `등록된 취업자 ${filteredWorkerLength}명`}
         </S.Result>
       </S.Bottom>
     </S.Modal>
