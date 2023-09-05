@@ -17,7 +17,7 @@ export default async function Home() {
   return (
     <>
       <Header />
-      <WorkerList workerList={workerList.sort(() => Math.random() - 0.5)} />
+      <WorkerList initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
     </>
   );
 }
