@@ -44,8 +44,10 @@ const preview: Preview = {
         appDirectory: true,
       },
     },
+    layout: 'fullscreen',
     viewport: {
       viewports: customViewports,
+      defaultViewport: 'width600',
     },
   },
   decorators: [
