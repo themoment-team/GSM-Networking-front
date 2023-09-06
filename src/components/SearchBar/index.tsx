@@ -21,7 +21,7 @@ const SearchBar: React.FC<Props> = ({ setKeyword }) => {
     <S.SearchBarContainer>
       <S.SearchInput
         onChange={handleChange}
-        placeholder='찾고 싶은 사람, 전공, 회사명, 기수 등을 검색해보세요'
+        placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
       />
       <S.SearchImg>
         <SearchIcon />
