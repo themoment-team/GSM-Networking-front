@@ -5,7 +5,7 @@ import * as S from './style';
 import { CloseIcon } from '@/assets';
 import type { GenerationType } from '@/types';
 
-const GENERATION_LIST = [4, 5] as const;
+const GENERATION_LIST = [1, 2, 3, 4, 5] as const;
 
 interface Props {
   filteredWorkerLength: number;
