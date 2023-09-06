@@ -66,7 +66,7 @@ export const Bottom = styled.div`
 
 export const CheckButton = styled.button`
   ${({ theme }) => theme.typo.button}
-  width: 21.25rem;
+  width: 61.5%;
   height: 2.75rem;
   border-radius: 0.625rem;
   background: ${({ theme }) => theme.color.skyBlue[400]};
@@ -75,7 +75,7 @@ export const CheckButton = styled.button`
 
 export const Result = styled.p<{ isSelected: boolean }>`
   ${({ theme }) => theme.typo.subtitle}
-  width: 11.75rem;
+  width: 34%;
   color: ${({ theme, isSelected }) =>
     isSelected ? theme.color.black : theme.color.grey[600]};
 `;

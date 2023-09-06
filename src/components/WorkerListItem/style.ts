@@ -19,13 +19,13 @@ export const Name = styled.p`
 `;
 
 export const Position = styled.p`
-  width: 9rem;
+  width: 8rem;
   overflow: hidden;
   white-space: nowrap;
 `;
 
 export const CompanyLink = styled.a`
-  width: 10rem;
+  width: 11rem;
   overflow: hidden;
   white-space: nowrap;
 `;
