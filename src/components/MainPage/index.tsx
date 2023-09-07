@@ -14,17 +14,23 @@ interface Props {
 const MainPage: React.FC<Props> = ({ initWorkerList }) => {
   const [selectedGeneration, setSelectedGeneration] =
     useState<GenerationType>(null);
+  const [keyword, setKeyword] = useState<string>('');
 
-  const clearSeleted = () => setSelectedGeneration(null);
+  const clearList = () => {
+    setSelectedGeneration(null);
+    setKeyword('');
+  };
 
   return (
     <>
-      <Header clearSeleted={clearSeleted} />
+      <Header clearList={clearList} />
       <Container>
         <WorkerList
           initWorkerList={initWorkerList}
           selectedGeneration={selectedGeneration}
           setSelectedGeneration={setSelectedGeneration}
+          keyword={keyword}
+          setKeyword={setKeyword}
         />
       </Container>
     </>

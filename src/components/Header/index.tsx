@@ -5,12 +5,12 @@ import * as S from './style';
 import { LogoIcon } from '@/assets';
 
 interface Props {
-  clearSeleted: () => void;
+  clearList: () => void;
 }
 
-const Header: React.FC<Props> = ({ clearSeleted }) => {
+const Header: React.FC<Props> = ({ clearList }) => {
   const onClick = () => {
-    clearSeleted();
+    clearList();
   };
 
   return (
