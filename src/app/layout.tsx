@@ -1,4 +1,8 @@
+import { ToastContainer } from 'react-toastify';
+
 import Providers from './providers';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Header, Layout } from '@/components';
 import { StyledComponentsRegistry } from '@/lib';
@@ -22,6 +26,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <Providers>
+            <ToastContainer />
             <GlobalStyle />
             <Header />
             <Layout>{children}</Layout>
