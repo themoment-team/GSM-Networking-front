@@ -24,10 +24,13 @@ export const Position = styled.p`
   white-space: nowrap;
 `;
 
-export const CompanyLink = styled.a`
+export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
   width: 11rem;
   overflow: hidden;
   white-space: nowrap;
+
+  cursor: ${({ isCompanyURLExist }) =>
+    isCompanyURLExist ? 'pointer' : 'default'};
 `;
 
 export const MailTo = styled.a`
