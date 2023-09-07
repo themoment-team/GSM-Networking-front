@@ -1,7 +1,7 @@
 const LogoIcon = () => (
   <svg
-    width='55'
-    height='46'
+    width='3.4375rem'
+    height='2.875rem'
     viewBox='0 0 55 46'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
