@@ -24,6 +24,10 @@ const GlobalStyle = createGlobalStyle`
   a {
     text-decoration: none;
     color: inherit;
+    &:focus {
+      border: none;
+      outline: none;
+    }
   }
 
   html {
