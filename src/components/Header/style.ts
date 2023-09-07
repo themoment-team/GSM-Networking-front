@@ -11,7 +11,7 @@ export const Header = styled.header`
 export const Inner = styled.div`
   width: 600px;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   align-items: center;
 
   @media (max-width: 600px) {
