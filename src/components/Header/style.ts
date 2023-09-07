@@ -25,6 +25,6 @@ export const PageName = styled.p`
   color: ${({ theme }) => theme.color.black};
 `;
 
-export const LogoImg = styled.div`
+export const LogoButton = styled.button`
   cursor: pointer;
 `;
