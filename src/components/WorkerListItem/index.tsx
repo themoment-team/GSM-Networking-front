@@ -6,12 +6,7 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import {
-  EmailIcon,
-  NotExistEmailIcon,
-  NotExistSNSIcon,
-  SNSIcon,
-} from '@/assets';
+import * as I from '@/assets';
 import type { WorkerType } from '@/types/worker';
 
 interface Props {
@@ -49,10 +44,10 @@ const WorkerListItem: React.FC<Props> = ({ worker }) => {
       </S.CompanyLink>
       {isEmailExist ? (
         <S.MailTo href={`mailto:${worker.email}`}>
-          <EmailIcon />
+          <I.EmailIcon />
         </S.MailTo>
       ) : (
-        <NotExistEmailIcon />
+        <I.NotExistEmailIcon />
       )}
       {isSNSExist ? (
         <S.SNSLink
@@ -61,10 +56,10 @@ const WorkerListItem: React.FC<Props> = ({ worker }) => {
           rel='noopener noreferrer'
           onClick={handleSNSClick}
         >
-          <SNSIcon />
+          <I.SNSIcon />
         </S.SNSLink>
       ) : (
-        <NotExistSNSIcon />
+        <I.NotExistSNSIcon />
       )}
     </S.WorkerListItem>
   );
