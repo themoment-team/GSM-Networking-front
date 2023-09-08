@@ -1,9 +1,9 @@
 'use client';
 import * as S from './style';
+
 import * as I from '@/assets';
 
-const LoginPage = () => {
-  return (
+const LoginPage = () => (
     <S.Container>
       <S.LogoContainer>
         <I.LoginLogoIcon />
@@ -14,6 +14,5 @@ const LoginPage = () => {
       <S.TextContainer>*GSM 계정으로만 접속 가능합니다.</S.TextContainer>
     </S.Container>
   );
-};
 
 export default LoginPage;

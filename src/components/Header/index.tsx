@@ -1,9 +1,11 @@
 'use client';
 
-import * as S from './style';
-import * as C from '../index';
-import * as I from '@/assets';
 import React, { useState } from 'react';
+
+import * as S from './style';
+
+import * as I from '@/assets';
+import * as C from '@/components';
 
 const Header = () => {
   const [isDrop, setIsDrop] = useState<boolean>(false);
@@ -13,7 +15,7 @@ const Header = () => {
         <S.Inner>
           <I.LogoIcon />
           <S.IconContainer
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+            onClick={() => {
               setIsDrop((prev) => !prev);
             }}
           >
