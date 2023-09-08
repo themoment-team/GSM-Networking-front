@@ -20,6 +20,10 @@ export const Inner = styled.div`
   }
 `;
 
+export const IconContainer = styled.div`
+  cursor: pointer;
+`;
+
 export const PageName = styled.p`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
