@@ -8,3 +8,4 @@ export { default as LogoIcon } from './LogoIcon';
 export { default as MoreIcon } from './MoreIcon';
 export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
+export { default as SmallLoginLogo } from './SmallLoginLogo';
