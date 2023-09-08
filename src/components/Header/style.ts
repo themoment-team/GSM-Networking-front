@@ -24,3 +24,7 @@ export const PageName = styled.p`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
 `;
+
+export const LogoButton = styled.button`
+  cursor: pointer;
+`;
