@@ -1,6 +1,3 @@
-import { WorkerList } from '@/components';
-import type { WorkerType } from '@/types';
-
 import type { Metadata } from 'next';
 
 export default async function Home() {
@@ -13,11 +10,10 @@ export default async function Home() {
   //   }
   // ).then((res) => res.json());
 
-  const workerList: WorkerType[] = [];
-
   return (
     <>
-      <WorkerList initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
+      {/* for inspection */}
+      {/* <WorkerList initWorkerList={workerList.sort(() => Math.random() - 0.5)} /> */}
     </>
   );
 }
