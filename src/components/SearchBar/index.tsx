@@ -8,9 +8,10 @@ import { SearchIcon } from '@/assets';
 
 interface Props {
   setKeyword: Dispatch<SetStateAction<string>>;
+  keyword: string;
 }
 
-const SearchBar: React.FC<Props> = ({ setKeyword }) => {
+const SearchBar: React.FC<Props> = ({ setKeyword, keyword }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.currentTarget.value;
 
@@ -20,6 +21,7 @@ const SearchBar: React.FC<Props> = ({ setKeyword }) => {
   return (
     <S.SearchBarContainer>
       <S.SearchInput
+        value={keyword}
         onChange={handleChange}
         placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
       />

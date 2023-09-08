@@ -28,7 +28,6 @@ export default function RootLayout({
           <Providers>
             <ToastContainer />
             <GlobalStyle />
-            <Header />
             <Layout>{children}</Layout>
           </Providers>
         </StyledComponentsRegistry>
