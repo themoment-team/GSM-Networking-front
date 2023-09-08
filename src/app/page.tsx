@@ -1,18 +1,19 @@
 import { WorkerList } from '@/components';
 import type { WorkerType } from '@/types';
-import { minutesToSeconds } from '@/utils';
 
 import type { Metadata } from 'next';
 
 export default async function Home() {
-  const workerList: WorkerType[] = await fetch(
-    `${process.env.BASE_URL}/api/worker/list`,
-    {
-      next: {
-        revalidate: minutesToSeconds(5),
-      },
-    }
-  ).then((res) => res.json());
+  // const workerList: WorkerType[] = await fetch(
+  //   `${process.env.BASE_URL}/api/worker/list`,
+  //   {
+  //     next: {
+  //       revalidate: minutesToSeconds(5),
+  //     },
+  //   }
+  // ).then((res) => res.json());
+
+  const workerList: WorkerType[] = [];
 
   return (
     <>
