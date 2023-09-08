@@ -6,4 +6,5 @@ export { default as Layout } from './Layout';
 export { default as SearchBar } from './SearchBar';
 export { default as WorkerList } from './WorkerList';
 export { default as WorkerListItem } from './WorkerListItem';
+export { default as DropDown } from './DropDown';
 // export { default as RegisterForm } from './RegisterForm';
