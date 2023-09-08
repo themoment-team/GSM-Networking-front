@@ -1,4 +1,4 @@
-import { WorkerList } from '@/components';
+import { MainPage } from '@/components';
 
 import type { Metadata } from 'next';
 
@@ -14,7 +14,7 @@ export default async function Home() {
 
   return (
     <>
-      <WorkerList initWorkerList={[].sort(() => Math.random() - 0.5)} />
+      <MainPage initWorkerList={[].sort(() => Math.random() - 0.5)} />
     </>
   );
 }

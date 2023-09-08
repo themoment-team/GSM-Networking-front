@@ -1,5 +1,6 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
 import WorkerListHeader from './Header';
@@ -10,6 +11,10 @@ import type { GenerationType, WorkerType } from '@/types';
 
 interface Props {
   initWorkerList: WorkerType[];
+  selectedGeneration: GenerationType;
+  setSelectedGeneration: Dispatch<SetStateAction<GenerationType>>;
+  keyword: string;
+  setKeyword: Dispatch<SetStateAction<string>>;
 }
 
 const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
@@ -23,12 +28,15 @@ const isSelectedGeneration = (
 ) =>
   selectedGeneration === null ? true : worker.generation === selectedGeneration;
 
-const WorkerList: React.FC<Props> = ({ initWorkerList }) => {
+const WorkerList: React.FC<Props> = ({
+  initWorkerList,
+  selectedGeneration,
+  setSelectedGeneration,
+  keyword,
+  setKeyword,
+}) => {
   const [workerList, setWorkerList] = useState<WorkerType[]>(initWorkerList);
-  const [selectedGeneration, setSelectedGeneration] =
-    useState<GenerationType>(null);
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
-  const [keyword, setKeyword] = useState<string>('');
 
   useEffect(() => {
     setWorkerList(
@@ -55,7 +63,7 @@ const WorkerList: React.FC<Props> = ({ initWorkerList }) => {
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
       />
-      <SearchBar setKeyword={setKeyword} />
+      <SearchBar setKeyword={setKeyword} keyword={keyword} />
       <S.WorkerList>
         {workerList.map((worker) => (
           <WorkerListItem key={worker.id} worker={worker} />
