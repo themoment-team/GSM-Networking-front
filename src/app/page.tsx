@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { WorkerList } from '@/components';
+import { MainPage } from '@/components';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
@@ -10,7 +10,7 @@ export default async function Home() {
   const workerList: WorkerType[] = await getWorkerList();
 
   return (
-    <WorkerList initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
+    <MainPage initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
   );
 }
 

@@ -46,7 +46,6 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Providers>
             <GlobalStyle />
-            <Header />
             <Layout>{children}</Layout>
           </Providers>
         </StyledComponentsRegistry>
