@@ -7,6 +7,7 @@ export { default as Layout } from './Layout';
 export { default as NavigationEvents } from './NavigationEvents';
 export { default as MainPage } from './MainPage';
 export { default as SearchBar } from './SearchBar';
+export { default as SignIn } from './SignIn';
 export { default as WorkerList } from './WorkerList';
 export { default as WorkerListItem } from './WorkerListItem';
 // export { default as RegisterForm } from './RegisterForm';
