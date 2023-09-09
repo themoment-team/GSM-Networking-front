@@ -1,6 +1,6 @@
 import Providers from './providers';
 
-import { Header, Layout } from '@/components';
+import { Layout } from '@/components';
 import { StyledComponentsRegistry } from '@/lib';
 import { GlobalStyle } from '@/styles';
 
@@ -23,7 +23,6 @@ export default function RootLayout({
         <StyledComponentsRegistry>
           <Providers>
             <GlobalStyle />
-            <Header />
             <Layout>{children}</Layout>
           </Providers>
         </StyledComponentsRegistry>

@@ -1,4 +1,4 @@
-import { WorkerList } from '@/components';
+import { MainPage } from '@/components';
 import type { WorkerType } from '@/types';
 import { minutesToSeconds } from '@/utils';
 
@@ -16,7 +16,7 @@ export default async function Home() {
 
   return (
     <>
-      <WorkerList initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
+      <MainPage initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
     </>
   );
 }

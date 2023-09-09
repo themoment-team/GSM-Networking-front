@@ -7,15 +7,23 @@ import * as S from './style';
 import * as I from '@/assets';
 import { DropDown } from '@/components';
 
-const Header = () => {
+interface Props {
+  clearList: () => void;
+}
+
+const Header: React.FC<Props> = ({ clearList }) => {
   const [isDrop, setIsDrop] = useState<boolean>(false);
+
   return (
     <>
       <S.Header>
         <S.Inner>
-          <I.LogoIcon />
+          <button onClick={clearList}>
+            <I.LogoIcon />
+          </button>
           <S.IconContainer
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+            type='button'
+            onClick={() => {
               setIsDrop((prev) => !prev);
             }}
           >

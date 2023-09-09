@@ -4,6 +4,7 @@ export { default as DropDown } from './DropDown';
 export { default as FilterButton } from './Buttons/Filter';
 export { default as Header } from './Header';
 export { default as Layout } from './Layout';
+export { default as MainPage } from './MainPage';
 export { default as SearchBar } from './SearchBar';
 export { default as WorkerList } from './WorkerList';
 export { default as WorkerListItem } from './WorkerListItem';
