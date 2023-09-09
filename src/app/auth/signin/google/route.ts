@@ -17,13 +17,7 @@ export async function GET(request: NextRequest) {
       }
     );
 
-    // eslint-disable-next-line no-console
-    console.log(response);
-
     const data: AuthType = await response.json();
-
-    // eslint-disable-next-line no-console
-    console.log(data);
 
     cookieStore.set('accessToken', data.accessToken, {
       httpOnly: true,
