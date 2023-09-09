@@ -20,8 +20,10 @@ export const Inner = styled.div`
   }
 `;
 
-export const IconContainer = styled.div`
-  cursor: pointer;
+export const IconContainer = styled.button`
+  & > svg {
+    display: block;
+  }
 `;
 
 export const PageName = styled.p`

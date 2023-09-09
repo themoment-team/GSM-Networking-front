@@ -55,6 +55,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    padding: 0;
     border: none;
     outline: none;
     background: inherit;
