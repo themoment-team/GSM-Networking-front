@@ -19,6 +19,9 @@ export async function GET(request: NextRequest) {
 
     const data: AuthType = await response.json();
 
+    // eslint-disable-next-line no-console
+    console.log(data);
+
     cookieStore.set('accessToken', data.accessToken, {
       httpOnly: true,
       expires: new Date(data.accessTokenExp),
