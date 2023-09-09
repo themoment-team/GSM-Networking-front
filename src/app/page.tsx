@@ -31,6 +31,7 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
   const cookieStore = cookies();
 
   const accessToken = cookieStore.get('accessToken')?.value;
+  const refreshToken = cookieStore.get('refreshToken')?.value;
 
   if (!accessToken) {
     redirect('/auth/refresh');
