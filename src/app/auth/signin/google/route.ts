@@ -19,11 +19,9 @@ export async function GET(request: NextRequest) {
 
     const data: AuthType = await response.json();
 
-    const accessTokenExp = new Date(data.accessTokenExp);
-
     cookieStore.set('accessToken', data.accessToken, {
       httpOnly: true,
-      expires: accessTokenExp.setHours(accessTokenExp.getHours() + 12),
+      expires: new Date(data.accessTokenExp),
     });
 
     cookieStore.set('refreshToken', data.refreshToken, {
