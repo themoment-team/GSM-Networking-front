@@ -76,6 +76,9 @@ devDependencies:
   '@storybook/testing-library':
     specifier: ^0.2.0
     version: 0.2.0
+  '@types/gtag.js':
+    specifier: ^0.0.13
+    version: 0.0.13
   '@typescript-eslint/eslint-plugin':
     specifier: ^6.5.0
     version: 6.5.0(@typescript-eslint/parser@6.5.0)(eslint@8.48.0)(typescript@5.2.2)
@@ -4549,6 +4552,10 @@ packages:
     resolution: {integrity: sha512-Sig0SNORX9fdW+bQuTEovKj3uHcUL6LQKbCrrqb1X7J6/ReAbhCXRAhc+SMejhLELFj2QcyuxmUooZ4bt5ReSw==}
     dependencies:
       '@types/node': 20.5.7
+    dev: true
+
+  /@types/gtag.js@0.0.13:
+    resolution: {integrity: sha512-yOXFkfnt1DQr1v9B4ERulJOGnbdVqnPHV8NG4nkQhnu4qbrJecQ06DlaKmSjI3nzIwBj5U9/X61LY4sTc2KbaQ==}
     dev: true
 
   /@types/html-minifier-terser@6.1.0:

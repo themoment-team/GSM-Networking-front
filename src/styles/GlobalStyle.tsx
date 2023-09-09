@@ -59,6 +59,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   button {
+    padding: 0;
     border: none;
     outline: none;
     background: inherit;
@@ -67,6 +68,13 @@ const GlobalStyle = createGlobalStyle`
     &:focus {
       border: none;
       outline: none;
+    }
+  }
+
+  a {
+    &:focus {
+      outline: none;
+      border: none;
     }
   }
 `;

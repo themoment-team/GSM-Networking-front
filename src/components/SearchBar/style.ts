@@ -16,12 +16,12 @@ export const SearchInput = styled.input`
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 
   &::placeholder {
-    ${({ theme }) => theme.typo.body1}
+    ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]}};
   }
 
   &:focus {
-    outline: 1px solid #148eff;
+    outline: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
 `;
 
