@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
+  width: 100vw;
   height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
 `;
 
 export const Inner = styled.div`
@@ -20,8 +25,10 @@ export const Inner = styled.div`
   }
 `;
 
-export const IconContainer = styled.div`
-  cursor: pointer;
+export const IconContainer = styled.button`
+  & > svg {
+    display: block;
+  }
 `;
 
 export const PageName = styled.p`

@@ -5,25 +5,33 @@ import React, { useState } from 'react';
 import * as S from './style';
 
 import * as I from '@/assets';
-import * as C from '@/components';
+import { DropDown } from '@/components';
 
-const Header = () => {
+interface Props {
+  clearList: () => void;
+}
+
+const Header: React.FC<Props> = ({ clearList }) => {
   const [isDrop, setIsDrop] = useState<boolean>(false);
+
   return (
     <>
       <S.Header>
         <S.Inner>
-          <I.LogoIcon />
+          <button onClick={clearList}>
+            <I.LogoIcon />
+          </button>
           <S.IconContainer
+            type='button'
             onClick={() => {
-              setIsDrop((prev) => !prev);
+              setIsDrop((isDrop) => !isDrop);
             }}
           >
             {isDrop ? <I.FoldIcon /> : <I.MoreIcon />}
           </S.IconContainer>
         </S.Inner>
       </S.Header>
-      {isDrop && <C.DropDown />}
+      {isDrop && <DropDown />}
     </>
   );
 };
