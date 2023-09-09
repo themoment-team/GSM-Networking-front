@@ -1,9 +1,11 @@
 'use client';
 
-import * as S from './style';
-import * as C from '../index';
-import * as I from '@/assets';
 import React, { useState } from 'react';
+
+import * as S from './style';
+
+import * as I from '@/assets';
+import { DropDown } from '@/components';
 
 const Header = () => {
   const [isDrop, setIsDrop] = useState<boolean>(false);
@@ -21,7 +23,7 @@ const Header = () => {
           </S.IconContainer>
         </S.Inner>
       </S.Header>
-      {isDrop && <C.DropDown />}
+      {isDrop && <DropDown />}
     </>
   );
 };
