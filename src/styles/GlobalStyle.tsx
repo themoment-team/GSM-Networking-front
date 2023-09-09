@@ -66,6 +66,13 @@ const GlobalStyle = createGlobalStyle`
       outline: none;
     }
   }
+
+  a {
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
 `;
 
 export default GlobalStyle;
