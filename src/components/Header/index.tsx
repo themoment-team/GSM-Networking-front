@@ -24,7 +24,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
           <S.IconContainer
             type='button'
             onClick={() => {
-              setIsDrop((prev) => !prev);
+              setIsDrop((isDrop) => !isDrop);
             }}
           >
             {isDrop ? <I.FoldIcon /> : <I.MoreIcon />}
