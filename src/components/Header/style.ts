@@ -10,6 +10,7 @@ export const Header = styled.header`
   position: absolute;
   left: 0;
   top: 0;
+  z-index: 5;
 `;
 
 export const Inner = styled.div`
