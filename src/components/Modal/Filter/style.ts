@@ -10,7 +10,7 @@ export const Modal = styled.div`
   border-radius: 0.625rem;
   position: absolute;
   z-index: 5;
-  top: 9.9rem;
+  top: 12.4rem;
 
   @media (max-width: 600px) {
     width: calc(100% - 2rem);
