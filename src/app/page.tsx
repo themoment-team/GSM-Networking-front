@@ -6,8 +6,10 @@ import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
 
+const BASE_URL = process.env.BASE_URL;
+
 export default async function Home() {
-  const workerList: WorkerType[] = await getWorkerList();
+  const workerList = await getWorkerList();
 
   return (
     <MainPage initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
   },
 };
 
-const getWorkerList = async () => {
+const getWorkerList = async (): Promise<WorkerType[]> => {
   const cookieStore = cookies();
 
   const accessToken = cookieStore.get('accessToken')?.value;
@@ -35,17 +37,23 @@ const getWorkerList = async () => {
   }
 
   try {
-    const workerList: WorkerType[] = await fetch(
+    const response = await fetch(
       new URL('/api/worker/list', process.env.API_BASE_URL),
       {
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
       }
-    ).then((res) => res.json());
+    );
+
+    if (!response.ok) {
+      return redirect(`${BASE_URL}/auth/signin`);
+    }
+
+    const workerList = await response.json();
 
     return workerList;
   } catch (e) {
-    return redirect('/auth/signin');
+    return redirect(`${BASE_URL}/auth/signin`);
   }
 };
