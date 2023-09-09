@@ -4,7 +4,7 @@ import Script from 'next/script';
 
 import Providers from './providers';
 
-import { Header, Layout, NavigationEvents } from '@/components';
+import { Layout, NavigationEvents } from '@/components';
 import { GA_TRACKING_ID, StyledComponentsRegistry } from '@/libs';
 import { GlobalStyle } from '@/styles';
 
