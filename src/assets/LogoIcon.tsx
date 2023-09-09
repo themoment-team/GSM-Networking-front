@@ -1,8 +1,8 @@
 const LogoIcon = () => (
   <svg
-    width='172'
-    height='22'
-    viewBox='0 0 172 22'
+    width='3.4375rem'
+    height='2.875rem'
+    viewBox='0 0 55 46'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
