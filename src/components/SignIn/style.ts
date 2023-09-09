@@ -1,45 +1,35 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
 `;
 
-export const LogoContainer = styled.div`
-  margin-top: 356px;
+export const Title = styled.h1`
+  font-family: LINE Seed Sans KR;
+  font-size: 6rem;
+  font-style: normal;
   font-weight: 700;
-  font-family: 'LINE Seed Sans KR';
-  font-size: 96px;
-
-  & > svg:last-child {
-    display: none;
-  }
-
-  & > svg:first-child {
-    display: block;
-  }
-
-  @media (max-width: 600px) {
-    margin-top: 10rem;
-
-    & > svg:last-child {
-      display: block;
-    }
-
-    & > svg:first-child {
-      display: none;
-    }
-  }
+  color: #000;
+  text-align: center;
 `;
 
-export const LoginButton = styled.button`
-  margin: 70px 0 30px 0;
+export const LoginLink = styled.a`
+  ${({ theme }) => theme.typo.button}
+  padding: 0.75rem 1.25rem;
+  backdrop-filter: blur(0.5rem);
+  border-radius: 2.5rem;
+  background: ${({ theme }) => theme.color.grey[50]};
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 5rem 0 2.5rem;
 `;
 
 export const TextContainer = styled.p`
-  color: #828387;
-  font-size: 20px;
-  line-height: 30px;
-  font-weight: 600;
+  ${({ theme }) => theme.typo.subtitle}
+  color: ${({ theme }) => theme.color.grey[600]};
 `;
