@@ -17,6 +17,12 @@ export async function GET(request: NextRequest) {
       }
     );
 
+    if (response.status !== 200) {
+      return NextResponse.redirect(
+        new URL(`/auth/signin?status=${response.status}`, request.url)
+      );
+    }
+
     const data: AuthType = await response.json();
 
     cookieStore.set('accessToken', data.accessToken, {
@@ -31,6 +37,8 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.redirect(new URL('/', request.url));
   } catch (error) {
-    return NextResponse.redirect(new URL('/auth/signin', request.url));
+    return NextResponse.redirect(
+      new URL('/auth/signin?status=500', request.url)
+    );
   }
 }
