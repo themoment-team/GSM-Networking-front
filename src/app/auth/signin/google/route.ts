@@ -17,6 +17,8 @@ export async function GET(request: NextRequest) {
       }
     );
 
+    console.log(response);
+
     const data: AuthType = await response.json();
 
     // eslint-disable-next-line no-console
