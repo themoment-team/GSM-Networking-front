@@ -9,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Title = styled.h1`
-  font-family: LINE Seed Sans KR;
   font-size: 6rem;
   font-style: normal;
   font-weight: 700;
