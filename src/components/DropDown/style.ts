@@ -4,26 +4,30 @@ export const Opacity = styled.div`
   background: rgba(0, 0, 0, 0.25);
   height: 100vh;
   position: fixed;
-  top: 80px;
+  left: 0;
+  top: 5rem;
   z-index: 10;
 `;
 
 export const Container = styled.div`
-  height: 160px;
-  background-color: #ffffff;
-  border-radius: 0 0 10px 10px;
   width: 100vw;
+  height: 10rem;
+  background-color: ${({ theme }) => theme.color.white};
+  border-radius: 0 0 0.625rem 0.625rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const ListContainer = styled.ul`
   margin: 0 auto;
-  width: 600px;
-  height: 160px;
-  padding-top: 20px;
+  width: 37.5rem;
+  height: 10rem;
+  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 10px 20px;
   align-items: start;
   flex-wrap: wrap;
 `;
@@ -31,7 +35,6 @@ export const ListContainer = styled.ul`
 export const ListItem = styled.li``;
 
 export const LinkItem = styled.a`
-  font-weight: 500;
-  font-size: 16px;
-  color: #828387;
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[600]};
 `;

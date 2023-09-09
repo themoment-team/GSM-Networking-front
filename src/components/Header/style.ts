@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
 export const Header = styled.header`
+  width: 100vw;
   height: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  position: absolute;
+  left: 0;
+  top: 0;
 `;
 
 export const Inner = styled.div`

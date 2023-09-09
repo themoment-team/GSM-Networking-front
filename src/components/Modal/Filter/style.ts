@@ -4,7 +4,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 16.3125rem;
   background: ${({ theme }) => theme.color.white};
-  box-shadow: 1px 9px 18px 0px rgba(0, 0, 0, 0.06);
+  box-shadow: 0.0625rem 0.5625rem 1.125rem 0rem rgba(0, 0, 0, 0.06);
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   padding: 1.5rem;
   border-radius: 0.625rem;
