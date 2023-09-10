@@ -22,6 +22,10 @@ export async function GET(request: NextRequest) {
 
     const data: AuthType = await response.json();
 
+    if (!response.ok) {
+      throw new Error('Failed to get refresh token');
+    }
+
     cookieStore.set('accessToken', data.accessToken, {
       httpOnly: true,
       expires: new Date(data.accessTokenExp),

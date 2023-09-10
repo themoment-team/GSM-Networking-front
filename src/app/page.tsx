@@ -31,11 +31,6 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
   const cookieStore = cookies();
 
   const accessToken = cookieStore.get('accessToken')?.value;
-  const refreshToken = cookieStore.get('refreshToken')?.value;
-
-  if (!accessToken && refreshToken) {
-    redirect('/auth/refresh');
-  }
 
   try {
     const response = await fetch(
@@ -48,13 +43,13 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
     );
 
     if (!response.ok) {
-      return redirect(`${BASE_URL}/auth/signin`);
+      throw new Error('accessToken이 만료되었습니다.');
     }
 
     const workerList = await response.json();
 
     return workerList;
-  } catch (e) {
-    return redirect(`${BASE_URL}/auth/signin`);
+  } catch (error) {
+    return redirect(`${BASE_URL}/auth/refresh`);
   }
 };
