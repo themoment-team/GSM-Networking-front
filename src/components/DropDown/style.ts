@@ -4,7 +4,7 @@ export const Opacity = styled.div`
   background: rgba(0, 0, 0, 0.25);
   height: 100vh;
   height: 100dvh;
-  position: fixed;
+  position: absolute;
   left: 0;
   top: 5rem;
   z-index: 10;
