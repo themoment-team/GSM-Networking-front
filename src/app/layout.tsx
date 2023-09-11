@@ -2,11 +2,15 @@ import { Suspense } from 'react';
 
 import Script from 'next/script';
 
+import { ToastContainer } from 'react-toastify';
+
 import Providers from './providers';
 
-import { Header, Layout, NavigationEvents } from '@/components';
+import { Layout, NavigationEvents } from '@/components';
 import { GA_TRACKING_ID, StyledComponentsRegistry } from '@/libs';
 import { GlobalStyle } from '@/styles';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({
   children,
@@ -45,6 +49,7 @@ export default function RootLayout({
       <body>
         <StyledComponentsRegistry>
           <Providers>
+            <ToastContainer />
             <GlobalStyle />
             <Layout>{children}</Layout>
           </Providers>
