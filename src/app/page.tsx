@@ -36,6 +36,7 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
     const response = await fetch(
       new URL('/api/worker/list', process.env.API_BASE_URL),
       {
+        method: 'GET',
         headers: {
           Authorization: `Bearer ${accessToken}`,
         },
