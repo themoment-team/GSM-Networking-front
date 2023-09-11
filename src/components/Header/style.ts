@@ -25,6 +25,16 @@ export const Inner = styled.div`
   }
 `;
 
+export const Logo = styled.button`
+  color: #000;
+  leading-trim: both;
+  text-edge: cap;
+  font-size: 1.3125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+`;
+
 export const IconContainer = styled.button`
   & > svg {
     display: block;
