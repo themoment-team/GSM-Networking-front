@@ -31,7 +31,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
           </S.IconContainer>
         </S.Inner>
       </S.Header>
-      {isDrop && <DropDown />}
+      {isDrop && <DropDown setIsDrop={setIsDrop} />}
     </>
   );
 };
