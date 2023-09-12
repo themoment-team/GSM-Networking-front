@@ -15,6 +15,10 @@ export const SearchInput = styled.input`
   border-radius: 0.625rem;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
+
   &::placeholder {
     ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]}};
