@@ -2,10 +2,15 @@ import styled from 'styled-components';
 
 export const Opacity = styled.div`
   background: rgba(0, 0, 0, 0.25);
-  height: 77.7vh;
+  height: 100vh;
+  height: 100dvh;
+  position: fixed;
+  left: 0;
+  top: 5rem;
+  z-index: 10;
 `;
 
-export const MenuContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 10rem;
   background-color: ${({ theme }) => theme.color.white};
@@ -33,11 +38,4 @@ export const ListItem = styled.li``;
 export const LinkItem = styled.a`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[600]};
-`;
-
-export const Container = styled.div`
-  position: absolute;
-  left: 0;
-  top: 5rem;
-  z-index: 10;
 `;
