@@ -28,9 +28,11 @@ export const ListContainer = styled.ul`
   padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: start;
-  flex-wrap: wrap;
+  gap: 1.5rem;
+  @media (max-width: 600px) {
+    width: 100%;
+  }
 `;
 
 export const ListItem = styled.li``;
