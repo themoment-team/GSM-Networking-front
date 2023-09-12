@@ -4,7 +4,7 @@ import React from 'react';
 
 import * as S from './style';
 
-interface DropDownProps {
+interface Props {
   setIsDrop: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -14,7 +14,7 @@ const policyUrl =
 const teamUrl =
   'https://gsm-networking.notion.site/GSM-Networking-30599e51feb345a781d1f41be1962f31?pvs=4';
 
-const DropDown: React.FC<DropDownProps> = ({ setIsDrop }) => (
+const DropDown: React.FC<Props> = ({ setIsDrop }) => (
   <S.Opacity onClick={() => setIsDrop(false)}>
     <S.Container onClick={(e) => e.stopPropagation()}>
       <S.ListContainer>
