@@ -11,7 +11,8 @@ export const SearchInput = styled.input`
   width: 100%;
   padding: 1rem;
   border: none;
-  font-size: 1rem;
+  /* absolute px - for Remove iOS zoom in */
+  font-size: 16px;
   border-radius: 0.625rem;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 
