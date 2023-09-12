@@ -12,7 +12,7 @@ export default async function Home() {
   const workerList = await getWorkerList();
 
   const sortedWorkerList = [...workerList].sort((a, b) =>
-    b.position.localeCompare(a.position)
+    a.position.localeCompare(b.position)
   );
 
   return <MainPage initWorkerList={sortedWorkerList} />;
