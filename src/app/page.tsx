@@ -11,9 +11,11 @@ const BASE_URL = process.env.BASE_URL;
 export default async function Home() {
   const workerList = await getWorkerList();
 
-  return (
-    <MainPage initWorkerList={workerList.sort(() => Math.random() - 0.5)} />
+  const sortedWorkerList = [...workerList].sort((a, b) =>
+    b.position.localeCompare(a.position)
   );
+
+  return <MainPage initWorkerList={sortedWorkerList} />;
 }
 
 export const metadata: Metadata = {
