@@ -45,7 +45,6 @@ const GlobalStyle = createGlobalStyle`
     }
     @media (max-width: 400px) {
       font-size: 11px;
-
     }
     @media (max-width: 370px) {
       font-size: 10px;
