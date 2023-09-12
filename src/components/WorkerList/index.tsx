@@ -72,9 +72,13 @@ const WorkerList: React.FC<Props> = ({
           ))}
         </S.WorkerList>
       ) : (
-        <>
+        <S.NotFoundContainer>
           <SearchNotFoundIcon />
-        </>
+          <S.NotFoundTextBox>
+            해당 정보를 가진 졸업생을 찾을 수 없어요 <br />
+            오타, 띄어쓰기 등을 확인 해주세요
+          </S.NotFoundTextBox>
+        </S.NotFoundContainer>
       )}
     </>
   );
