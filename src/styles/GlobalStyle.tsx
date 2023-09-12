@@ -58,6 +58,10 @@ const GlobalStyle = createGlobalStyle`
     }
   }
 
+  input {
+    font-size: 16px !important;
+  }
+
   button {
     padding: 0;
     border: none;
