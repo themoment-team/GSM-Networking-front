@@ -1,7 +1,7 @@
 const SearchNotFoundIcon = () => (
   <svg
-    width='181'
-    height='250'
+    width='11.3125rem'
+    height='15.625rem'
     viewBox='0 0 181 250'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
