@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import WorkerListHeader from './Header';
 import * as S from './style';
 
+import { SearchNotFoundIcon } from '@/assets';
 import { FilterModal, SearchBar, WorkerListItem } from '@/components';
 import type { GenerationType, WorkerType } from '@/types';
 
@@ -64,11 +65,17 @@ const WorkerList: React.FC<Props> = ({
         setIsShowFilterModal={setIsShowFilterModal}
       />
       <SearchBar setKeyword={setKeyword} keyword={keyword} />
-      <S.WorkerList>
-        {workerList.map((worker) => (
-          <WorkerListItem key={worker.id} worker={worker} />
-        ))}
-      </S.WorkerList>
+      {workerList.length ? (
+        <S.WorkerList>
+          {workerList.map((worker) => (
+            <WorkerListItem key={worker.id} worker={worker} />
+          ))}
+        </S.WorkerList>
+      ) : (
+        <>
+          <SearchNotFoundIcon />
+        </>
+      )}
     </>
   );
 };
