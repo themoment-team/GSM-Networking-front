@@ -1,7 +1,7 @@
 import React from 'react';
 import { GlobalStyle, theme } from '../src/styles';
 import type { Preview } from '@storybook/react';
-import { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from '@emotion/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
 
 const customViewports = {

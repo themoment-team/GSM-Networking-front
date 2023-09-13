@@ -7,7 +7,7 @@ import { ToastContainer } from 'react-toastify';
 import Providers from './providers';
 
 import { Layout, NavigationEvents } from '@/components';
-import { GA_TRACKING_ID, StyledComponentsRegistry } from '@/libs';
+import { GA_TRACKING_ID } from '@/libs';
 import { GlobalStyle } from '@/styles';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,16 +47,14 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <StyledComponentsRegistry>
-          <Providers>
-            <ToastContainer />
-            <GlobalStyle />
-            <Layout>{children}</Layout>
-          </Providers>
-        </StyledComponentsRegistry>
-        <Suspense fallback={null}>
-          <NavigationEvents />
-        </Suspense>
+        <Providers>
+          <ToastContainer />
+          <GlobalStyle />
+          <Layout>{children}</Layout>
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
+        </Providers>
       </body>
     </html>
   );
