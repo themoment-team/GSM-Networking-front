@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Opacity = styled.div`
   background: rgba(0, 0, 0, 0.25);
