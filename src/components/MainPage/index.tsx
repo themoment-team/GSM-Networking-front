@@ -5,6 +5,7 @@ import { Header, WorkerList } from '..';
 
 import { Container } from './style';
 
+import type { POSITION_ARRAY } from '@/constants';
 import type { WorkerType, GenerationType } from '@/types';
 
 interface Props {
@@ -14,6 +15,8 @@ interface Props {
 const MainPage: React.FC<Props> = ({ initWorkerList }) => {
   const [selectedGeneration, setSelectedGeneration] =
     useState<GenerationType>(null);
+  const [selectedPosition, setSelectedPosition] =
+    useState<(typeof POSITION_ARRAY)[number]>('프론트엔드');
   const [keyword, setKeyword] = useState<string>('');
 
   const clearList = () => {
