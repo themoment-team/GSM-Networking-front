@@ -1,8 +1,7 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Modal = styled.div`
   width: 100%;
-  height: 16.3125rem;
   background: ${({ theme }) => theme.color.white};
   box-shadow: 0.0625rem 0.5625rem 1.125rem 0rem rgba(0, 0, 0, 0.06);
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
@@ -33,10 +32,21 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const GenerationWrapper = styled.div`
-  margin-top: 1.5rem;
+export const SectionWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
+`;
+
+export const SectionTitle = styled.p`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.grey[500]};
+`;
+
+export const GenerationWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const GenerationButton = styled.button<{ selected: boolean }>`
@@ -59,9 +69,7 @@ export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
+  margin-top: 5rem;
 `;
 
 export const CheckButton = styled.button`

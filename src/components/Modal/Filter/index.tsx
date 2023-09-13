@@ -3,6 +3,7 @@
 import * as S from './style';
 
 import { CloseIcon } from '@/assets';
+import { SearchBar } from '@/components';
 import type { GenerationType } from '@/types';
 
 const GENERATION_LIST = [1, 2, 3, 4, 5] as const;
@@ -37,17 +38,24 @@ const FilterModal: React.FC<Props> = ({
           <CloseIcon />
         </S.CloseButton>
       </S.Top>
-      <S.GenerationWrapper>
-        {GENERATION_LIST.map((generation) => (
-          <S.GenerationButton
-            key={generation}
-            selected={selectedGeneration === generation}
-            onClick={() => handleGenerationClick(generation)}
-          >
-            {generation}기
-          </S.GenerationButton>
-        ))}
-      </S.GenerationWrapper>
+      <S.SectionWrapper>
+        <S.SectionTitle>기수</S.SectionTitle>
+        <S.GenerationWrapper>
+          {GENERATION_LIST.map((generation) => (
+            <S.GenerationButton
+              key={generation}
+              selected={selectedGeneration === generation}
+              onClick={() => handleGenerationClick(generation)}
+            >
+              {generation}기
+            </S.GenerationButton>
+          ))}
+        </S.GenerationWrapper>
+      </S.SectionWrapper>
+      <S.SectionWrapper>
+        <S.SectionTitle>직군</S.SectionTitle>
+        <SearchBar />
+      </S.SectionWrapper>
       <S.Bottom>
         <S.CheckButton onClick={closeModal}>조회</S.CheckButton>
         <S.Result isSelected={!!selectedGeneration}>
