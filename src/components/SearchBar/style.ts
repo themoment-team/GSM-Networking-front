@@ -1,10 +1,8 @@
-import { theme } from '@/styles';
 import styled from '@emotion/styled';
 
 export const SearchBarContainer = styled.div`
-  width: 100%;
   position: relative;
-  margin-bottom: 2rem;
+  flex: 1;
 `;
 
 export const SearchInput = styled.input`
