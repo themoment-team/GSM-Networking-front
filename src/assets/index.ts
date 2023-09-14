@@ -7,6 +7,7 @@ export { default as LogoIcon } from './LogoIcon';
 export { default as MoreIcon } from './MoreIcon';
 export { default as NotExistEmailIcon } from './NotExistEmailIcon';
 export { default as NotExistSNSIcon } from './NotExistSNSIcon';
+export { default as PersonImg_0 } from './PersonImg_0';
 export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SearchNotFoundIcon } from './SearchNotFoundIcon';
