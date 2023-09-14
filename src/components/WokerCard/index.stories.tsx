@@ -4,6 +4,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof WorkerCard> = {
   component: WorkerCard,
+  parameters: {
+    layout: 'padded',
+  },
 };
 
 export default meta;
