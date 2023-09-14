@@ -109,6 +109,9 @@ const FilterModal: React.FC<Props> = ({
             {position}
           </S.PositionButton>
         ))}
+        {searchedPosition.length < 1 && (
+          <S.PositionNotExist>검색 결과가 없습니다.</S.PositionNotExist>
+        )}
       </S.PositionWrapper>
       <S.Bottom>
         <S.CheckButton onClick={closeModal}>조회</S.CheckButton>

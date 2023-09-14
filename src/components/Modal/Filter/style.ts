@@ -88,6 +88,11 @@ export const PositionButton = styled(GenerationButton)`
   }
 `;
 
+export const PositionNotExist = styled.p`
+  ${({ theme }) => theme.typo.body2}
+  color: ${({ theme }) => theme.color.grey[400]};
+`;
+
 export const Bottom = styled.div`
   display: flex;
   justify-content: space-between;
