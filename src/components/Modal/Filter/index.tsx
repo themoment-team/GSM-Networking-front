@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import * as S from './style';
 
-import { CloseIcon } from '@/assets';
+import { CloseIcon, RemovePositionIcon } from '@/assets';
 import { SearchBar } from '@/components';
 import { POSITION_ARRAY } from '@/constants';
 import type { GenerationType, PositionType } from '@/types';
@@ -55,7 +55,7 @@ const FilterModal: React.FC<Props> = ({
       selectedGeneration === generation ? null : generation
     );
 
-  const positionReset = () => {
+  const removePosition = () => {
     setSelectedPosition(null);
   };
 
@@ -89,9 +89,14 @@ const FilterModal: React.FC<Props> = ({
       <S.SectionWrapper>
         <S.PositionHeader>
           <S.SectionTitle>직군</S.SectionTitle>
-          <S.PositionResetButton onClick={positionReset}>
-            초기화
-          </S.PositionResetButton>
+          {selectedPosition && (
+            <S.SelectedPosition>
+              {selectedPosition}
+              <S.RemoveButton type='button' onClick={removePosition}>
+                <RemovePositionIcon />
+              </S.RemoveButton>
+            </S.SelectedPosition>
+          )}
         </S.PositionHeader>
         <SearchBar
           setKeyword={setPositionKeyword}

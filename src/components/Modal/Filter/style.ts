@@ -66,13 +66,9 @@ export const GenerationButton = styled.button<{ isSelected: boolean }>`
 
 export const PositionHeader = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
-`;
-
-export const PositionResetButton = styled.button`
-  ${({ theme }) => theme.typo.body1}
-  color: ${({ theme }) => theme.color.skyBlue[300]};
+  gap: 1rem;
+  height: 2.25rem;
 `;
 
 export const PositionWrapper = styled(GenerationWrapper)`
@@ -85,6 +81,26 @@ export const PositionButton = styled(GenerationButton)`
 
   &:focus {
     border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  }
+`;
+
+export const SelectedPosition = styled.div`
+  ${({ theme }) => theme.typo.body1}
+  padding: 0.375rem 1rem;
+  color: ${({ theme }) => theme.color.skyBlue[400]};
+  background: ${({ theme }) => theme.color.skyBlue[50]};
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  border-radius: 1.25rem;
+`;
+
+export const RemoveButton = styled.button`
+  padding: 0.3125rem;
+  border-radius: 100%;
+  background: ${({ theme }) => theme.color.black};
+  & > svg {
+    display: block;
   }
 `;
 
