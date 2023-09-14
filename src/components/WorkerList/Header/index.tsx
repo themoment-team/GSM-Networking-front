@@ -1,21 +1,25 @@
 import * as S from './style';
 
-import { FilterButton } from '@/components';
+import { FilterButton, SearchBar } from '@/components';
 import type { GenerationType } from '@/types';
 
 interface Props {
   selectedGeneration: GenerationType;
+  keyword: string;
   isShowFilterModal: boolean;
+  setKeyword: React.Dispatch<React.SetStateAction<string>>;
   setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const WorkerListHeader: React.FC<Props> = ({
   selectedGeneration,
+  keyword,
   isShowFilterModal,
+  setKeyword,
   setIsShowFilterModal,
 }) => (
   <S.Header>
-    <S.Title>취업자 리스트 조회</S.Title>
+    <SearchBar keyword={keyword} setKeyword={setKeyword} />
     <FilterButton
       selectedGeneration={selectedGeneration}
       onClick={() =>

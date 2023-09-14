@@ -7,7 +7,7 @@ import WorkerListHeader from './Header';
 import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
-import { FilterModal, SearchBar, WorkerListItem } from '@/components';
+import { FilterModal, WorkerListItem } from '@/components';
 import type { GenerationType, WorkerType } from '@/types';
 
 interface Props {
@@ -60,11 +60,12 @@ const WorkerList: React.FC<Props> = ({
         />
       )}
       <WorkerListHeader
+        setKeyword={setKeyword}
+        keyword={keyword}
         selectedGeneration={selectedGeneration}
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
       />
-      <SearchBar setKeyword={setKeyword} keyword={keyword} />
       {workerList.length ? (
         <S.WorkerList>
           {workerList.map((worker) => (
