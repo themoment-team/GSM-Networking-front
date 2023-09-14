@@ -1,11 +1,11 @@
-import type { GenerationType } from '.';
+import type { GenerationType, PositionType } from '.';
 
 export interface WorkerType {
   id: string;
   name: string;
   email?: string;
   generation: GenerationType;
-  position: string;
+  position: PositionType;
   company: CompanyType;
   SNS: string;
 }
