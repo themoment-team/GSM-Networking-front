@@ -72,7 +72,6 @@ const WorkerList: React.FC<Props> = ({
         />
       )}
       <WorkerListHeader
-        selectedGeneration={selectedGeneration}
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
       />
