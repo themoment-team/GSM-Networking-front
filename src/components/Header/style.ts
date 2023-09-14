@@ -33,7 +33,7 @@ export const Logo = styled.button`
   font-style: normal;
   font-weight: 700;
   line-height: normal;
-  column-gap: 0.5rem;
+  column-gap: 0.38rem;
 `;
 
 export const IconContainer = styled.button`
