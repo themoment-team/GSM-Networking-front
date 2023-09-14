@@ -49,23 +49,46 @@ export const GenerationWrapper = styled.div`
   gap: 0.5rem;
 `;
 
-export const GenerationButton = styled.button<{ selected: boolean }>`
+export const GenerationButton = styled.button<{ isSelected: boolean }>`
   ${({ theme }) => theme.typo.body1}
   padding: 0.375rem 1rem;
   border-radius: 1.25rem;
   font-feature-settings: 'tnum';
-  color: ${({ theme, selected }) =>
-    selected ? theme.color.skyBlue[400] : theme.color.grey[600]};
-  background: ${({ theme, selected }) =>
-    selected ? theme.color.skyBlue[50] : theme.color.white};
+  color: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[400] : theme.color.grey[600]};
+  background: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[50] : theme.color.white};
 
   &:hover {
     background: ${({ theme }) => theme.color.grey[50]};
   }
 `;
 
+export const PositionHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`;
+
+export const PositionResetButton = styled.button`
+  ${({ theme }) => theme.typo.body1}
+  color: ${({ theme }) => theme.color.skyBlue[300]};
+`;
+
+export const PositionWrapper = styled(GenerationWrapper)`
+  height: 2.375rem;
+  margin-top: 1.5rem;
+`;
+
+export const PositionButton = styled(GenerationButton)`
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+
+  &:focus {
+    border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  }
+`;
+
 export const Bottom = styled.div`
-  width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
