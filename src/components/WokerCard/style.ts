@@ -3,29 +3,63 @@ import styled from 'styled-components';
 export const WorkerCardContainer = styled.div`
   max-width: 11.75rem;
   height: 14.0625rem;
-  background-color: red;
 `;
 
-export const WorkerImgBox = styled.div``;
+export const WorkerImgBox = styled.div`
+  background-color: #f5f6f8;
+  border-radius: 10px;
+  padding: 1.5625rem 2.5rem 0 2.6875rem;
+  width: 100%;
+`;
 
 export const WorkerInfoBox = styled.div``;
 
-export const WorkerInfoHead = styled.div``;
+export const WorkerInfoHead = styled.div`
+  font-size: 1.125rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  height: 1.25rem;
+  margin: 1rem 0 0.5rem 0;
+`;
 
-export const WorkerGeneration = styled.p``;
+export const WorkerGeneration = styled.span`
+  border-right: 0.0625rem solid #cbccce;
+  padding-right: 0.6rem;
+`;
 
-export const WorkerName = styled.p``;
+export const WorkerName = styled.span`
+  text-align: left;
+  padding-left: 0.5rem;
+  width: 4rem;
+`;
 
-export const WorkerInfoBody = styled.div``;
+export const WorkerInfoBody = styled.div`
+  display: flex;
+  width: 100%;
+  height: 3.8rem;
+  flex-direction: column;
+  justify-content: space-around;
+  font-size: 0.875rem;
+  font-style: normal;
+  font-weight: 500;
+  color: #a5a6a9;
+`;
 
 export const WorkerCompany = styled.p``;
 
 export const WorkerJob = styled.p``;
 
+export const ButtonBox = styled.div`
+  width: 5rem;
+  height: 1.25rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+`;
+
 export const MailTo = styled.a`
-  & > svg {
-    display: block;
-  }
+  margin-right: 0.75rem;
 
   &:hover {
     .first {
@@ -38,10 +72,6 @@ export const MailTo = styled.a`
 `;
 
 export const SNSLink = styled.a`
-  & > svg {
-    display: block;
-  }
-
   &:hover {
     .first {
       fill: ${({ theme }) => theme.color.skyBlue[100]};

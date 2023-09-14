@@ -35,31 +35,33 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
       </S.WorkerImgBox>
       <S.WorkerInfoBox>
         <S.WorkerInfoHead>
-          <S.WorkerGeneration>{worker.generation}</S.WorkerGeneration>
+          <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
           <S.WorkerName>{worker.name}</S.WorkerName>
-          {isEmailExist ? (
-            <S.MailTo href={`mailto:${worker.email}`}>
-              <I.EmailIcon />
-            </S.MailTo>
-          ) : (
-            <I.NotExistEmailIcon />
-          )}
-          {isSNSExist ? (
-            <S.SNSLink
-              href={worker.SNS}
-              target='_blank'
-              rel='noopener noreferrer'
-              onClick={handleSNSClick}
-            >
-              <I.SNSIcon />
-            </S.SNSLink>
-          ) : (
-            <I.NotExistSNSIcon />
-          )}
+          <S.ButtonBox>
+            {isEmailExist ? (
+              <S.MailTo href={`mailto:${worker.email}`}>
+                <I.EmailIcon />
+              </S.MailTo>
+            ) : (
+              <I.NotExistEmailIcon />
+            )}
+            {isSNSExist ? (
+              <S.SNSLink
+                href={worker.SNS}
+                target='_blank'
+                rel='noopener noreferrer'
+                onClick={handleSNSClick}
+              >
+                <I.SNSIcon />
+              </S.SNSLink>
+            ) : (
+              <I.NotExistSNSIcon />
+            )}
+          </S.ButtonBox>
         </S.WorkerInfoHead>
         <S.WorkerInfoBody>
-          <S.WorkerCompany>{worker.company.name}</S.WorkerCompany>
-          <S.WorkerJob>{worker.position}</S.WorkerJob>
+          <S.WorkerCompany>{worker.company.name} 🏢 </S.WorkerCompany>
+          <S.WorkerJob>{worker.position} 💻</S.WorkerJob>
         </S.WorkerInfoBody>
       </S.WorkerInfoBox>
     </S.WorkerCardContainer>
