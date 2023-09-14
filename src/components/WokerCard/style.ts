@@ -81,3 +81,12 @@ export const SNSLink = styled.a`
     }
   }
 `;
+
+export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
+  width: 11rem;
+  overflow: hidden;
+  white-space: nowrap;
+
+  cursor: ${({ isCompanyURLExist }) =>
+    isCompanyURLExist ? 'pointer' : 'default'};
+`;

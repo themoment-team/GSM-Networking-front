@@ -15,6 +15,7 @@ interface Props {
 }
 
 const WorkerCard: React.FC<Props> = ({ worker }) => {
+  const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
 
@@ -60,7 +61,15 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
           </S.ButtonBox>
         </S.WorkerInfoHead>
         <S.WorkerInfoBody>
-          <S.WorkerCompany>{worker.company.name} 🏢 </S.WorkerCompany>
+          <S.CompanyLink
+            href={worker.company.URL ?? ''}
+            target='_blank'
+            rel='noopener noreferrer'
+            onClick={(e) => !isCompanyURLExist && e.preventDefault()}
+            isCompanyURLExist={isCompanyURLExist}
+          >
+            <S.WorkerCompany>{worker.company.name} 🏢 </S.WorkerCompany>
+          </S.CompanyLink>
           <S.WorkerJob>{worker.position} 💻</S.WorkerJob>
         </S.WorkerInfoBody>
       </S.WorkerInfoBox>
