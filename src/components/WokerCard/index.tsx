@@ -68,7 +68,7 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
             onClick={(e) => !isCompanyURLExist && e.preventDefault()}
             isCompanyURLExist={isCompanyURLExist}
           >
-            <S.WorkerCompany>{worker.company.name} 🏢 </S.WorkerCompany>
+            {worker.company.name} 🏢
           </S.CompanyLink>
           <S.WorkerJob>{worker.position} 💻</S.WorkerJob>
         </S.WorkerInfoBody>
