@@ -36,7 +36,7 @@
             "position": "before"
           },
           {
-            "pattern": "styled-components",
+            "pattern": "@emotion/**",
             "group": "external",
             "position": "before"
           },

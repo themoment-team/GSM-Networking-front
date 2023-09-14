@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Header = styled.header`
   width: 100vw;
@@ -26,13 +26,14 @@ export const Inner = styled.div`
 `;
 
 export const Logo = styled.button`
+  display: flex;
+  align-items: center;
   color: #000;
-  leading-trim: both;
-  text-edge: cap;
   font-size: 1.3125rem;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+  column-gap: 0.38rem;
 `;
 
 export const IconContainer = styled.button`
