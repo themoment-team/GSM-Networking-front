@@ -46,9 +46,9 @@ const FilterModal: React.FC<Props> = ({
 
   useEffect(() => {
     setIsFilteredOrSearched(
-      !!selectedGeneration || !!searchedPosition || !!keyword
+      !!selectedGeneration || !!selectedPosition || !!keyword
     );
-  }, [keyword, searchedPosition, selectedGeneration]);
+  }, [keyword, selectedGeneration, selectedPosition]);
 
   useEffect(() => {
     setSearchedPosition(
