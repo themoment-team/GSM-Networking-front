@@ -65,6 +65,7 @@ const WorkerList: React.FC<Props> = ({
         <FilterModal
           setIsShowFilterModal={setIsShowFilterModal}
           filteredWorkerLength={workerList.length}
+          keyword={keyword}
           selectedGeneration={selectedGeneration}
           selectedPosition={selectedPosition}
           setSelectedGeneration={setSelectedGeneration}

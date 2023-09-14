@@ -13,13 +13,14 @@ const GENERATION_LIST = [1, 2, 3, 4, 5] as const;
 
 interface Props {
   filteredWorkerLength: number;
+  keyword: string;
   selectedGeneration: GenerationType;
   selectedPosition: PositionType | null;
   setSelectedGeneration: React.Dispatch<React.SetStateAction<GenerationType>>;
-  setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
   setSelectedPosition: React.Dispatch<
     React.SetStateAction<PositionType | null>
   >;
+  setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 const sliceArray = (array: PositionType[]) => array.slice(0, 4);
@@ -29,16 +30,25 @@ const filterPosition = (array: PositionType[], keyword: string) =>
 
 const FilterModal: React.FC<Props> = ({
   filteredWorkerLength,
+  keyword,
   selectedGeneration,
   selectedPosition,
   setSelectedGeneration,
-  setIsShowFilterModal,
   setSelectedPosition,
+  setIsShowFilterModal,
 }) => {
   const [positionKeyword, setPositionKeyword] = useState<string>('');
   const [searchedPosition, setSearchedPosition] = useState<PositionType[]>(
     sliceArray([...POSITION_ARRAY])
   );
+  const [isFilteredOrSearched, setIsFilteredOrSearched] =
+    useState<boolean>(false);
+
+  useEffect(() => {
+    setIsFilteredOrSearched(
+      !!selectedGeneration || !!searchedPosition || !!keyword
+    );
+  }, [keyword, searchedPosition, selectedGeneration]);
 
   useEffect(() => {
     setSearchedPosition(
@@ -120,8 +130,8 @@ const FilterModal: React.FC<Props> = ({
       </S.PositionWrapper>
       <S.Bottom>
         <S.CheckButton onClick={closeModal}>조회</S.CheckButton>
-        <S.Result isSelected={!!selectedGeneration}>
-          {selectedGeneration
+        <S.Result isSelected={isFilteredOrSearched}>
+          {isFilteredOrSearched
             ? `총 ${filteredWorkerLength}명을 찾았어요.`
             : `등록된 취업자 ${filteredWorkerLength}명`}
         </S.Result>
