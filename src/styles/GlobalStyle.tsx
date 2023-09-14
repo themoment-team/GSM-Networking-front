@@ -39,10 +39,6 @@ export function GlobalStyle() {
         a {
           text-decoration: none;
           color: inherit;
-          &:focus {
-            border: none;
-            outline: none;
-          }
         }
 
         html {
@@ -81,18 +77,6 @@ export function GlobalStyle() {
           outline: none;
           background: inherit;
           cursor: pointer;
-
-          &:focus {
-            border: none;
-            outline: none;
-          }
-        }
-
-        a {
-          &:focus {
-            outline: none;
-            border: none;
-          }
         }
       `}
     />
