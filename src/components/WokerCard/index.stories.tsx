@@ -13,12 +13,12 @@ type Story = StoryObj<typeof WorkerCard>;
 export const Primary: Story = {
   args: {
     worker: {
-      id: 'asdfghjkl',
-      name: '김형록',
-      email: 'khr5k0228@gmail.com',
+      id: 'tlsgmltjd',
+      name: '신희성',
+      email: 's23012@gsm.hs.kr',
       generation: 5,
-      position: '프론트엔드',
-      SNS: 'https://instagram.com/khr5k_0228',
+      position: '백엔드',
+      SNS: 'https://instagram.com/shs.o_o',
       company: {
         name: '더모먼트',
         URL: 'https://official.hellogsm.kr/',
