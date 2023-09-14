@@ -19,6 +19,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
       <S.Header>
         <S.Inner>
           <S.Logo type='button' onClick={clearList}>
+            <I.GsmNetworkingIcon />
             GSM Networking
           </S.Logo>
           <S.IconContainer

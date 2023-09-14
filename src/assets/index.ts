@@ -10,3 +10,4 @@ export { default as NotExistSNSIcon } from './NotExistSNSIcon';
 export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SearchNotFoundIcon } from './SearchNotFoundIcon';
+export { default as GsmNetworkingIcon } from './GsmNetworkingIcon';
