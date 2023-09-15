@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { PersonImg_0 } from '@/assets';
+import { PersonImg0 } from '@/assets';
 import type { WorkerType } from '@/types/worker';
 
 interface Props {
@@ -32,7 +32,7 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
-        <PersonImg_0 />
+        <PersonImg0 />
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>

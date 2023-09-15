@@ -1,9 +1,9 @@
-const PersonImg_0 = () => (
+const PersonImg0 = () => (
   <svg
     id='_레이어_1'
     xmlns='http://www.w3.org/2000/svg'
-    width='105'
-    height='85'
+    width='6.5625rem'
+    height='5.125rem'
     viewBox='0 0 661.79 514.72'
   >
     <defs>
@@ -48,4 +48,4 @@ const PersonImg_0 = () => (
   </svg>
 );
 
-export default PersonImg_0;
+export default PersonImg0;
