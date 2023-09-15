@@ -5,8 +5,8 @@ export const WorkerList = styled.div`
   flex-direction: column;
   gap: 1rem;
   // 100vh - (리스트 상단 height + 리스트 하단 여백 2.5rem)
-  height: calc(100vh - 20.2125rem);
-  height: calc(100dvh - 20.2125rem);
+  height: calc(100vh - 11.6825rem);
+  height: calc(100dvh - 11.6825rem);
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
