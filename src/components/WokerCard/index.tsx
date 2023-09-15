@@ -35,8 +35,10 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
         <PersonImg_0 />
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
-        <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
-        <S.WorkerName>{worker.name}</S.WorkerName>
+        <S.WorkerNameBox>
+          <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
+          <S.WorkerName>{worker.name}</S.WorkerName>
+        </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (
             <S.MailTo href={`mailto:${worker.email}`}>

@@ -23,13 +23,17 @@ export const WorkerInfoHead = styled.div`
 
 export const WorkerGeneration = styled.span`
   border-right: 0.0625rem solid #cbccce;
-  padding-right: 0.6rem;
+  padding-right: 0.5rem;
 `;
 
 export const WorkerName = styled.span`
   text-align: left;
-  padding-left: 0.5rem;
   width: 4rem;
+`;
+
+export const WorkerNameBox = styled.div`
+  display: flex;
+  gap: 0.5rem;
 `;
 
 export const WorkerInfoBody = styled.div`
