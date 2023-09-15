@@ -8,7 +8,10 @@ export const WorkerCardContainer = styled.div`
 export const WorkerImgBox = styled.div`
   background-color: #f5f6f8;
   border-radius: 10px;
-  padding: 1.5625rem 2.5rem 0 2.6875rem;
+  display: flex;
+  padding: 1.6875rem 2.5rem 0rem 2.6875rem;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 `;
 
@@ -18,7 +21,7 @@ export const WorkerInfoHead = styled.div`
   display: flex;
   justify-content: space-between;
   height: 1.25rem;
-  margin: 1rem 0 0.5rem 0;
+  margin: 1.3rem 0 0.5rem 0;
 `;
 
 export const WorkerBoder = styled.div`
@@ -34,9 +37,10 @@ export const WorkerNameBox = styled.div`
 export const WorkerInfoBody = styled.div`
   display: flex;
   width: 100%;
-  height: 3.8rem;
+  height: 4rem;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-end;
+  gap: 1rem;
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
