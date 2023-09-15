@@ -21,18 +21,13 @@ export const WorkerInfoHead = styled.div`
   margin: 1rem 0 0.5rem 0;
 `;
 
-export const WorkerGeneration = styled.span`
+export const WorkerBoder = styled.div`
   border-right: 0.0625rem solid #cbccce;
-  padding-right: 0.5rem;
-`;
-
-export const WorkerName = styled.span`
-  text-align: left;
-  width: 4rem;
 `;
 
 export const WorkerNameBox = styled.div`
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
 `;
 
@@ -51,14 +46,13 @@ export const WorkerInfoBody = styled.div`
 export const ButtonBox = styled.div`
   width: 5rem;
   height: 1.25rem;
+  gap: 0.75rem;
   display: flex;
   justify-content: flex-end;
   align-items: center;
 `;
 
 export const MailTo = styled.a`
-  margin-right: 0.75rem;
-
   &:hover {
     .first {
       fill: ${({ theme }) => theme.color.skyBlue[100]};
