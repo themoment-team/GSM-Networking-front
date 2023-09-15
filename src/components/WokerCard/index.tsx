@@ -34,45 +34,43 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
       <S.WorkerImgBox>
         <PersonImg_0 />
       </S.WorkerImgBox>
-      <S.WorkerInfoBox>
-        <S.WorkerInfoHead>
-          <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
-          <S.WorkerName>{worker.name}</S.WorkerName>
-          <S.ButtonBox>
-            {isEmailExist ? (
-              <S.MailTo href={`mailto:${worker.email}`}>
-                <I.EmailIcon />
-              </S.MailTo>
-            ) : (
-              <I.NotExistEmailIcon />
-            )}
-            {isSNSExist ? (
-              <S.SNSLink
-                href={worker.SNS}
-                target='_blank'
-                rel='noopener noreferrer'
-                onClick={handleSNSClick}
-              >
-                <I.SNSIcon />
-              </S.SNSLink>
-            ) : (
-              <I.NotExistSNSIcon />
-            )}
-          </S.ButtonBox>
-        </S.WorkerInfoHead>
-        <S.WorkerInfoBody>
-          <S.CompanyLink
-            href={worker.company.URL ?? ''}
-            target='_blank'
-            rel='noopener noreferrer'
-            onClick={(e) => !isCompanyURLExist && e.preventDefault()}
-            isCompanyURLExist={isCompanyURLExist}
-          >
-            {worker.company.name} 🏢
-          </S.CompanyLink>
-          <S.WorkerJob>{worker.position} 💻</S.WorkerJob>
-        </S.WorkerInfoBody>
-      </S.WorkerInfoBox>
+      <S.WorkerInfoHead>
+        <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
+        <S.WorkerName>{worker.name}</S.WorkerName>
+        <S.ButtonBox>
+          {isEmailExist ? (
+            <S.MailTo href={`mailto:${worker.email}`}>
+              <I.EmailIcon />
+            </S.MailTo>
+          ) : (
+            <I.NotExistEmailIcon />
+          )}
+          {isSNSExist ? (
+            <S.SNSLink
+              href={worker.SNS}
+              target='_blank'
+              rel='noopener noreferrer'
+              onClick={handleSNSClick}
+            >
+              <I.SNSIcon />
+            </S.SNSLink>
+          ) : (
+            <I.NotExistSNSIcon />
+          )}
+        </S.ButtonBox>
+      </S.WorkerInfoHead>
+      <S.WorkerInfoBody>
+        <S.CompanyLink
+          href={worker.company.URL ?? ''}
+          target='_blank'
+          rel='noopener noreferrer'
+          onClick={(e) => !isCompanyURLExist && e.preventDefault()}
+          isCompanyURLExist={isCompanyURLExist}
+        >
+          {worker.company.name} 🏢
+        </S.CompanyLink>
+        {worker.position} 💻
+      </S.WorkerInfoBody>
     </S.WorkerCardContainer>
   );
 };

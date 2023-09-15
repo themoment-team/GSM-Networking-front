@@ -12,8 +12,6 @@ export const WorkerImgBox = styled.div`
   width: 100%;
 `;
 
-export const WorkerInfoBox = styled.div``;
-
 export const WorkerInfoHead = styled.div`
   font-size: 1.125rem;
   font-weight: 600;
@@ -45,10 +43,6 @@ export const WorkerInfoBody = styled.div`
   font-weight: 500;
   color: #a5a6a9;
 `;
-
-export const WorkerCompany = styled.p``;
-
-export const WorkerJob = styled.p``;
 
 export const ButtonBox = styled.div`
   width: 5rem;
