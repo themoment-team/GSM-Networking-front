@@ -34,6 +34,10 @@ export const WorkerNameBox = styled.div`
   gap: 0.5rem;
 `;
 
+export const WorkerName = styled.p``;
+export const WorkerGeneration = styled.p``;
+export const WorkerPosition = styled.p``;
+
 export const WorkerInfoBody = styled.div`
   display: flex;
   width: 100%;

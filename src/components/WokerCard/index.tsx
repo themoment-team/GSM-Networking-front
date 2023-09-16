@@ -36,9 +36,9 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
-          {worker.generation}기
+          <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
           <S.WorkerBoder />
-          {worker.name}
+          <S.WorkerName>{worker.name}</S.WorkerName>
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (
@@ -72,7 +72,7 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
         >
           {worker.company.name} 🏢
         </S.CompanyLink>
-        {worker.position} 💻
+        <S.WorkerPosition>{worker.position} 💻</S.WorkerPosition>
       </S.WorkerInfoBody>
     </S.WorkerCardContainer>
   );
