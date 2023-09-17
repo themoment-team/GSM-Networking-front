@@ -8,14 +8,16 @@ import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
 import { FilterModal, SearchBar, WorkerListItem } from '@/components';
-import type { GenerationType, WorkerType } from '@/types';
+import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
   initWorkerList: WorkerType[];
-  selectedGeneration: GenerationType;
-  setSelectedGeneration: Dispatch<SetStateAction<GenerationType>>;
   keyword: string;
+  selectedGeneration: GenerationType;
+  selectedPosition: PositionType | null;
   setKeyword: Dispatch<SetStateAction<string>>;
+  setSelectedGeneration: Dispatch<SetStateAction<GenerationType>>;
+  setSelectedPosition: Dispatch<SetStateAction<PositionType | null>>;
 }
 
 const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
@@ -29,12 +31,19 @@ const isSelectedGeneration = (
 ) =>
   selectedGeneration === null ? true : worker.generation === selectedGeneration;
 
+const isSelectedPosition = (
+  worker: WorkerType,
+  selectedPosition: PositionType | null
+) => (selectedPosition === null ? true : worker.position === selectedPosition);
+
 const WorkerList: React.FC<Props> = ({
   initWorkerList,
-  selectedGeneration,
-  setSelectedGeneration,
   keyword,
+  selectedGeneration,
+  selectedPosition,
   setKeyword,
+  setSelectedGeneration,
+  setSelectedPosition,
 }) => {
   const [workerList, setWorkerList] = useState<WorkerType[]>(initWorkerList);
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
@@ -44,27 +53,34 @@ const WorkerList: React.FC<Props> = ({
       initWorkerList.filter(
         (worker) =>
           isSelectedGeneration(worker, selectedGeneration) &&
+          isSelectedPosition(worker, selectedPosition) &&
           isIncludesKeyword(worker, keyword)
       )
     );
-  }, [keyword, selectedGeneration, initWorkerList]);
+  }, [keyword, selectedGeneration, initWorkerList, selectedPosition]);
 
   return (
     <>
       {isShowFilterModal && (
         <FilterModal
-          filteredWorkerLength={workerList.length}
-          selectedGeneration={selectedGeneration}
-          setSelectedGeneration={setSelectedGeneration}
           setIsShowFilterModal={setIsShowFilterModal}
+          filteredWorkerLength={workerList.length}
+          keyword={keyword}
+          selectedGeneration={selectedGeneration}
+          selectedPosition={selectedPosition}
+          setSelectedGeneration={setSelectedGeneration}
+          setSelectedPosition={setSelectedPosition}
         />
       )}
       <WorkerListHeader
-        selectedGeneration={selectedGeneration}
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
       />
-      <SearchBar setKeyword={setKeyword} keyword={keyword} />
+      <SearchBar
+        setKeyword={setKeyword}
+        keyword={keyword}
+        placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
+      />
       {workerList.length ? (
         <S.WorkerList>
           {workerList.map((worker) => (
