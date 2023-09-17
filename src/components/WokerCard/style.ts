@@ -21,7 +21,7 @@ export const WorkerInfoHead = styled.div`
   display: flex;
   justify-content: space-between;
   height: 1.25rem;
-  margin: 1.3rem 0 0.5rem 0;
+  margin: 1.3rem 0 0 0;
 `;
 
 export const WorkerBoder = styled.div`
