@@ -41,7 +41,7 @@ export const WorkerPosition = styled.p``;
 export const WorkerInfoBody = styled.div`
   display: flex;
   width: 100%;
-  height: 4rem;
+  margin-top: 1.75rem;
   flex-direction: column;
   justify-content: flex-end;
   gap: 1rem;
@@ -52,7 +52,6 @@ export const WorkerInfoBody = styled.div`
 `;
 
 export const ButtonBox = styled.div`
-  width: 5rem;
   height: 1.25rem;
   gap: 0.75rem;
   display: flex;
