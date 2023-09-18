@@ -9,6 +9,7 @@ export { default as MoreIcon } from './MoreIcon';
 export { default as NotExistEmailIcon } from './NotExistEmailIcon';
 export { default as NotExistSNSIcon } from './NotExistSNSIcon';
 export { default as PersonImg0 } from './PersonImg0';
+export { default as RemovePositionIcon } from './RemovePositionIcon';
 export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SearchNotFoundIcon } from './SearchNotFoundIcon';
