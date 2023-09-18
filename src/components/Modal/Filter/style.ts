@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const Modal = styled.div`
   width: 100%;
-  height: 16.3125rem;
   background: ${({ theme }) => theme.color.white};
   box-shadow: 0.0625rem 0.5625rem 1.125rem 0rem rgba(0, 0, 0, 0.06);
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
@@ -33,35 +32,88 @@ export const CloseButton = styled.button`
   }
 `;
 
-export const GenerationWrapper = styled.div`
-  margin-top: 1.5rem;
+export const SectionWrapper = styled.div`
   display: flex;
-  gap: 1rem;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 2.5rem;
 `;
 
-export const GenerationButton = styled.button<{ selected: boolean }>`
+export const SectionTitle = styled.p`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.grey[500]};
+`;
+
+export const GenerationWrapper = styled.div`
+  display: flex;
+  gap: 0.5rem;
+`;
+
+export const GenerationButton = styled.button<{ isSelected: boolean }>`
   ${({ theme }) => theme.typo.body1}
   padding: 0.375rem 1rem;
   border-radius: 1.25rem;
   font-feature-settings: 'tnum';
-  color: ${({ theme, selected }) =>
-    selected ? theme.color.skyBlue[400] : theme.color.grey[600]};
-  background: ${({ theme, selected }) =>
-    selected ? theme.color.skyBlue[50] : theme.color.white};
+  color: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[400] : theme.color.grey[600]};
+  background: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[50] : theme.color.white};
 
   &:hover {
     background: ${({ theme }) => theme.color.grey[50]};
   }
 `;
 
+export const PositionHeader = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  height: 2.25rem;
+`;
+
+export const PositionWrapper = styled(GenerationWrapper)`
+  height: 2.375rem;
+  margin-top: 1.5rem;
+`;
+
+export const PositionButton = styled(GenerationButton)`
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+
+  &:focus {
+    border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  }
+`;
+
+export const SelectedPosition = styled.div`
+  ${({ theme }) => theme.typo.body1}
+  padding: 0.375rem 1rem;
+  color: ${({ theme }) => theme.color.skyBlue[400]};
+  background: ${({ theme }) => theme.color.skyBlue[50]};
+  display: flex;
+  align-items: center;
+  gap: 0.38rem;
+  border-radius: 1.25rem;
+`;
+
+export const RemoveButton = styled.button`
+  padding: 0.3125rem;
+  border-radius: 100%;
+  background: ${({ theme }) => theme.color.black};
+  & > svg {
+    display: block;
+  }
+`;
+
+export const PositionNotExist = styled.p`
+  ${({ theme }) => theme.typo.body2}
+  color: ${({ theme }) => theme.color.grey[400]};
+`;
+
 export const Bottom = styled.div`
-  width: 92%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: absolute;
-  bottom: 1.5rem;
-  left: 1.5rem;
+  margin-top: 5rem;
 `;
 
 export const CheckButton = styled.button`

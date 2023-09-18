@@ -39,36 +39,35 @@ export function GlobalStyle() {
         a {
           text-decoration: none;
           color: inherit;
-          &:focus {
-            border: none;
-            outline: none;
-          }
         }
 
         html {
           @media (max-width: 599px) {
             font-size: 15px;
           }
-          @media (max-width: 520px) {
+          @media (max-width: 530px) {
             font-size: 14px;
           }
-          @media (max-width: 470px) {
+          @media (max-width: 490px) {
             font-size: 13px;
           }
-          @media (max-width: 430px) {
+          @media (max-width: 460px) {
             font-size: 12px;
           }
-          @media (max-width: 400px) {
+          @media (max-width: 420px) {
             font-size: 11px;
           }
-          @media (max-width: 370px) {
+          @media (max-width: 390px) {
             font-size: 10px;
           }
-          @media (max-width: 330px) {
+          @media (max-width: 350px) {
             font-size: 9px;
           }
-          @media (max-width: 300px) {
+          @media (max-width: 320px) {
             font-size: 8px;
+          }
+          @media (max-width: 290px) {
+            font-size: 7px;
           }
         }
 
@@ -78,18 +77,6 @@ export function GlobalStyle() {
           outline: none;
           background: inherit;
           cursor: pointer;
-
-          &:focus {
-            border: none;
-            outline: none;
-          }
-        }
-
-        a {
-          &:focus {
-            outline: none;
-            border: none;
-          }
         }
       `}
     />

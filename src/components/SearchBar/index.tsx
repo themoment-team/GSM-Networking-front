@@ -1,17 +1,17 @@
 'use client';
 
-import type { Dispatch, SetStateAction } from 'react';
+import type { Dispatch, InputHTMLAttributes, SetStateAction } from 'react';
 
 import * as S from './style';
 
 import { SearchIcon } from '@/assets';
 
-interface Props {
+interface Props extends InputHTMLAttributes<HTMLInputElement> {
   setKeyword: Dispatch<SetStateAction<string>>;
   keyword: string;
 }
 
-const SearchBar: React.FC<Props> = ({ setKeyword, keyword }) => {
+const SearchBar: React.FC<Props> = ({ setKeyword, keyword, ...attributes }) => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const inputValue = e.currentTarget.value;
 
@@ -20,11 +20,7 @@ const SearchBar: React.FC<Props> = ({ setKeyword, keyword }) => {
 
   return (
     <S.SearchBarContainer>
-      <S.SearchInput
-        value={keyword}
-        onChange={handleChange}
-        placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
-      />
+      <S.SearchInput value={keyword} onChange={handleChange} {...attributes} />
       <S.SearchImg>
         <SearchIcon />
       </S.SearchImg>
