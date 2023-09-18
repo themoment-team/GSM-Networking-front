@@ -8,6 +8,7 @@ export const WorkerList = styled.div`
   height: calc(100vh - 11.6825rem);
   height: calc(100dvh - 11.6825rem);
   overflow-y: scroll;
+  margin-top: 2rem;
 
   &::-webkit-scrollbar {
     width: 0.375rem;
@@ -29,7 +30,7 @@ export const NotFoundContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 7rem;
 `;
 
 export const NotFoundTextBox = styled.div`
