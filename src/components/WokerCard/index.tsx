@@ -28,11 +28,29 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
     }
   };
 
+  const randomNumber = Math.floor(Math.random() * 5);
+  let personImage;
+
+  switch (randomNumber) {
+    case 0:
+      personImage = <I.PersonImg0 />;
+      break;
+    case 1:
+      personImage = <I.PersonImg1 />;
+      break;
+    case 2:
+      personImage = <I.PersonImg2 />;
+      break;
+    case 3:
+      personImage = <I.PersonImg3 />;
+      break;
+    case 4:
+      personImage = <I.PersonImg4 />;
+      break;
+  }
   return (
     <S.WorkerCardContainer>
-      <S.WorkerImgBox>
-        <I.PersonImg0 />
-      </S.WorkerImgBox>
+      <S.WorkerImgBox>{personImage}</S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
