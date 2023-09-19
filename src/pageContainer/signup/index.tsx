@@ -43,16 +43,24 @@ const SignUp = () => {
       <Header />
       <S.Form onSubmit={() => handleSubmit()}>
         <S.Title>개인정보</S.Title>
-        <Input
-          inputTitle='이름'
-          errorMessage='이름을 입력해주세요.'
-          isError={true}
-        />
-        <Input inputTitle='전화번호' errorMessage='전화번호를 입력해주세요.' />
-        <Input inputTitle='SNS' errorMessage='SNS를 입력해주세요.' />
-        <Input inputTitle='기수' errorMessage='기수를 입력해주세요.' />
+        <S.Section>
+          <Input
+            inputTitle='이름'
+            errorMessage='이름을 입력해주세요.'
+            isError={true}
+          />
+          <Input
+            inputTitle='전화번호'
+            errorMessage='전화번호를 입력해주세요.'
+          />
+          <Input inputTitle='SNS' errorMessage='SNS를 입력해주세요.' />
+          <Input inputTitle='기수' errorMessage='기수를 입력해주세요.' />
+        </S.Section>
         <S.CompanyBox>
           <S.Title>제직 회사 정보</S.Title>
+          <S.Section>
+            <Input inputTitle='회사명' errorMessage='회사명을 입력해주세요.' />
+          </S.Section>
         </S.CompanyBox>
         <S.SubmitButton>등록</S.SubmitButton>
       </S.Form>
