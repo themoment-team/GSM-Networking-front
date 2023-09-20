@@ -19,11 +19,13 @@ const SelectStatus = () => {
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>
         <S.AgreementButtonBox>
-          <S.AgreementButton type='checkbox' />
+          <S.AgreementButton />
           <S.AgreementButtonContent>개인정보 처리방침</S.AgreementButtonContent>
         </S.AgreementButtonBox>
       </S.AgreementBox>
-      <S.SubmitButton>다음</S.SubmitButton>
+      <S.SubmitButtonBox>
+        <S.SubmitButton>다음</S.SubmitButton>
+      </S.SubmitButtonBox>
     </S.Container>
   );
 };
