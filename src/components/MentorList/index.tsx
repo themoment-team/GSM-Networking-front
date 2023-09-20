@@ -7,7 +7,7 @@ import WorkerListHeader from './Header';
 import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
-import { FilterModal, SearchBar, WorkerCard } from '@/components';
+import { FilterModal, WorkerCard } from '@/components';
 import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
@@ -75,11 +75,8 @@ const MentorList: React.FC<Props> = ({
       <WorkerListHeader
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
-      />
-      <SearchBar
-        setKeyword={setKeyword}
         keyword={keyword}
-        placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
+        setKeyword={setKeyword}
       />
       {workerList.length ? (
         <S.WorkerList>
