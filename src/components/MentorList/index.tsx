@@ -7,7 +7,7 @@ import WorkerListHeader from './Header';
 import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
-import { FilterModal, SearchBar, WorkerListItem } from '@/components';
+import { FilterModal, SearchBar, WorkerCard } from '@/components';
 import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
@@ -84,7 +84,7 @@ const MentorList: React.FC<Props> = ({
       {workerList.length ? (
         <S.WorkerList>
           {workerList.map((worker) => (
-            <WorkerListItem key={worker.id} worker={worker} />
+            <WorkerCard key={worker.id} worker={worker} />
           ))}
         </S.WorkerList>
       ) : (
