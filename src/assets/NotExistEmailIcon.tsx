@@ -6,30 +6,20 @@ const NotExistEmailIcon = () => (
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clipPath='url(#clip0_205_7665)'>
-      <path d='M3 19V5H21V19H3Z' stroke='#CBCCCE' strokeWidth='4' />
+    <g clip-path='url(#clip0_205_7665)'>
       <path
-        d='M10.7721 12.045L3 6H12H21L13.2279 12.045C12.5057 12.6067 11.4943 12.6067 10.7721 12.045Z'
-        stroke='#828387'
-        strokeWidth='2'
+        fill-rule='evenodd'
+        clip-rule='evenodd'
+        d='M3 5V18.5L5 16.5V7H15L17 5H3ZM19 8V17H10L8 19H21V6L19 8Z'
+        fill='#CBCCCE'
+      />
+      <path
+        d='M3 8V5H17L15 7H5L11.3505 10.387L10 11.6842L3 8Z'
+        fill='#CBCCCE'
       />
     </g>
-    <rect
-      x='1'
-      y='20.3848'
-      width='26'
-      height='4'
-      rx='2'
-      transform='rotate(-45 1 20.3848)'
-      fill='white'
-    />
-    <rect
-      x='1.70711'
-      y='21.0435'
-      width='26'
-      height='2'
-      rx='1'
-      transform='rotate(-45 1.70711 21.0435)'
+    <path
+      d='M3.5 20.5C3.10477 20.0952 3.10477 19.4389 3.5 19.0341L19.5 3.50002C19.8952 3.09521 20.536 3.09521 20.9313 3.50002C21.3265 3.90483 21.3265 4.56116 20.9313 4.96597L4.93125 20.5C4.53602 20.9048 3.89523 20.9048 3.5 20.5Z'
       fill='#CBCCCE'
     />
     <defs>
