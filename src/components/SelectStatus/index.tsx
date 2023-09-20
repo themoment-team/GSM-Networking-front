@@ -13,8 +13,8 @@ const SelectStatus = () => {
         자신의 상태를 골라주세요.
       </S.HeaderTitle>
       <S.SelectButtonBox>
-        <SelectButton />
-        <SelectButton />
+        <SelectButton type='mentee' />
+        <SelectButton type='mentor' />
       </S.SelectButtonBox>
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>
