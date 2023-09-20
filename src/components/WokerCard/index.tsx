@@ -31,7 +31,9 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
 
   return (
     <S.WorkerCardContainer>
-      <RandomWorkerImg />
+      <S.WorkerImgBox>
+        <RandomWorkerImg />
+      </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
