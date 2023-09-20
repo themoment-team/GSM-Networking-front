@@ -73,6 +73,10 @@ export const SNSLink = styled.a`
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
   }
+
+  & > svg {
+    display: block;
+  }
 `;
 
 export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
