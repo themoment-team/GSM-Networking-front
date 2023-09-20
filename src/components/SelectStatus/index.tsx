@@ -5,8 +5,11 @@ import { useState } from 'react';
 import SelectButton from './SelectButton';
 import * as S from './style';
 
+import { CheckBoxImg } from '@/assets';
+
 const SelectStatus = () => {
   const [state, setState] = useState<'mentee' | 'mentor' | null>(null);
+  const [privacyPolicy, setPrivacyPolicy] = useState<boolean>(false);
 
   return (
     <S.Container>
@@ -21,7 +24,12 @@ const SelectStatus = () => {
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>
         <S.AgreementButtonBox>
-          <S.AgreementButton />
+          <S.AgreementButton
+            privacyPolicy={privacyPolicy}
+            onClick={() => setPrivacyPolicy((prev) => !prev)}
+          >
+            {privacyPolicy ? <CheckBoxImg /> : null}
+          </S.AgreementButton>
           <S.AgreementButtonContent>개인정보 처리방침</S.AgreementButtonContent>
         </S.AgreementButtonBox>
       </S.AgreementBox>

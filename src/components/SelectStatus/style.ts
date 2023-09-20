@@ -44,12 +44,19 @@ export const AgreementButtonBox = styled.div`
   gap: 0.5rem;
 `;
 
-export const AgreementButton = styled.button`
-  width: 1.3rem;
-  height: 1.3rem;
+export const AgreementButton = styled.button<{ privacyPolicy: boolean }>`
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 0.5rem;
-  background-color: rgba(0, 0, 0, 0);
-  border: 1px solid #707070;
+  background-color: ${({ privacyPolicy }) =>
+    privacyPolicy ? '#148eff' : 'rgba(0, 0, 0, 0)'};
+  border: 1px solid
+    ${({ privacyPolicy }) => (privacyPolicy ? '#148eff' : '#707070')};
+
+  &:hover {
+    border: 1px solid
+      ${({ privacyPolicy }) => (privacyPolicy ? '#148eff' : '#6ab7ff')};
+  }
 `;
 
 export const AgreementButtonContent = styled.div`
