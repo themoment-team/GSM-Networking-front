@@ -8,28 +8,14 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const SelectButtonBox = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
 export const HeaderTitle = styled.div``;
 
 export const FormBox = styled.form``;
-
-export const SelectButtonBox = styled.div`
-  display: flex;
-  width: 18.25rem;
-  height: 18.25rem;
-  padding: 3.3125rem 3.65625rem;
-  justify-content: center;
-  align-items: center;
-  background-color: #f5f6f8;
-  border-radius: 10px;
-`;
-
-export const SelectButton = styled.button``;
-
-export const ButtonTitle = styled.div``;
-
-export const ButtonSubTitle = styled.span``;
-
-export const ButtonContent = styled.p``;
 
 export const AgreementBox = styled.div``;
 
