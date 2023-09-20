@@ -1,10 +1,12 @@
 'use client';
 
+import { useState } from 'react';
+
 import SelectButton from './SelectButton';
 import * as S from './style';
 
 const SelectStatus = () => {
-  let a;
+  const [state, setState] = useState<'mentee' | 'mentor' | null>(null);
 
   return (
     <S.Container>
@@ -13,8 +15,8 @@ const SelectStatus = () => {
         자신의 상태를 골라주세요.
       </S.HeaderTitle>
       <S.SelectButtonBox>
-        <SelectButton type='mentee' />
-        <SelectButton type='mentor' />
+        <SelectButton type='mentee' state={state} setState={setState} />
+        <SelectButton type='mentor' state={state} setState={setState} />
       </S.SelectButtonBox>
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>

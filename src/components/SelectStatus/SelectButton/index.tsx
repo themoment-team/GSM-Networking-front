@@ -1,16 +1,30 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
+import React from 'react';
+
 import * as S from './style';
 
 import { MenteeSelectIcon, MentorSelectIcon } from '@/assets';
 
-const SelectButton = ({ type }: { type: 'mentee' | 'mentor' }) => {
-  let a;
+type Props = {
+  type: 'mentee' | 'mentor';
+  state: 'mentee' | 'mentor' | null;
+  setState: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
+};
+
+const SelectButton: React.FC<Props> = ({ type, state, setState }) => {
+  const onChangeState = (currentState: 'mentee' | 'mentor') => {
+    setState(currentState);
+  };
 
   return (
     <>
       {type === 'mentee' ? (
-        <S.SelectButton>
+        <S.SelectButton
+          isActive={state === 'mentee'}
+          onClick={() => onChangeState('mentee')}
+        >
           <MenteeSelectIcon />
           <S.ButtonTitle>
             멘티
@@ -22,7 +36,10 @@ const SelectButton = ({ type }: { type: 'mentee' | 'mentor' }) => {
           </S.ButtonContent>
         </S.SelectButton>
       ) : type === 'mentor' ? (
-        <S.SelectButton>
+        <S.SelectButton
+          isActive={state === 'mentor'}
+          onClick={() => onChangeState('mentor')}
+        >
           <MentorSelectIcon />
           <S.ButtonTitle>
             멘토
