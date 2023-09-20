@@ -66,9 +66,6 @@ export function GlobalStyle() {
           @media (max-width: 320px) {
             font-size: 8px;
           }
-          @media (max-width: 290px) {
-            font-size: 7px;
-          }
         }
 
         button {
