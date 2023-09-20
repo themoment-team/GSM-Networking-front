@@ -1,12 +1,11 @@
 import styled from '@emotion/styled';
 
 export const WorkerList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: repeat(3, 11.75rem);
+  gap: 2.5rem calc((100% - (11.75rem * 3)) / 2);
   // 100vh - (리스트 상단 height + 리스트 하단 여백 2.5rem)
   height: calc(100vh - 20.2125rem);
-  height: calc(100dvh - 20.2125rem);
   overflow-y: scroll;
   margin-top: 2rem;
 
