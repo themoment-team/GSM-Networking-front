@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-import { Header, WorkerList } from '..';
+import { Header, MentorList } from '..';
 
 import { Container } from './style';
 
@@ -29,7 +29,7 @@ const MainPage: React.FC<Props> = ({ initWorkerList }) => {
     <>
       <Header clearList={clearList} />
       <Container>
-        <WorkerList
+        <MentorList
           initWorkerList={initWorkerList}
           keyword={keyword}
           selectedGeneration={selectedGeneration}
