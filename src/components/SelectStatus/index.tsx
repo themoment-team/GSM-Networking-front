@@ -5,7 +5,7 @@ import { useState } from 'react';
 import SelectButton from './SelectButton';
 import * as S from './style';
 
-import { CheckBoxImg } from '@/assets';
+import { CheckBoxIcon } from '@/assets';
 
 const SelectStatus = () => {
   const [state, setState] = useState<'mentee' | 'mentor' | null>(null);
@@ -28,7 +28,7 @@ const SelectStatus = () => {
             privacyPolicy={privacyPolicy}
             onClick={() => setPrivacyPolicy((prev) => !prev)}
           >
-            {privacyPolicy ? <CheckBoxImg /> : null}
+            {privacyPolicy ? <CheckBoxIcon /> : null}
           </S.AgreementButton>
           <S.AgreementButtonContent>개인정보 처리방침</S.AgreementButtonContent>
         </S.AgreementButtonBox>
