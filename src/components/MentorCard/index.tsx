@@ -37,8 +37,8 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
-          <S.WorkerBorder />
           <S.WorkerName>{worker.name}</S.WorkerName>
+          {/* <I.BlueCheckIcon /> */}
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (
