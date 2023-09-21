@@ -6,10 +6,10 @@ const NotExistEmailIcon = () => (
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clip-path='url(#clip0_205_7665)'>
+    <g clipPath='url(#clip0_205_7665)'>
       <path
-        fill-rule='evenodd'
-        clip-rule='evenodd'
+        fillRule='evenodd'
+        clipRule='evenodd'
         d='M3 5V18.5L5 16.5V7H15L17 5H3ZM19 8V17H10L8 19H21V6L19 8Z'
         fill='#CBCCCE'
       />

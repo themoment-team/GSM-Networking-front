@@ -7,20 +7,20 @@ const NotExistSNSIcon = () => (
     xmlns='http://www.w3.org/2000/svg'
   >
     <path
-      fill-rule='evenodd'
-      clip-rule='evenodd'
+      fillRule='evenodd'
+      clipRule='evenodd'
       d='M7 9C6.44772 9 6 9.44772 6 10C6 10.5523 6.44772 11 7 11H10.5L12.6133 9H7ZM17.5 9.13378L15.5 11H17C17.5523 11 18 10.5523 18 10C18 9.62986 17.7989 9.30669 17.5 9.13378Z'
       fill='#CBCCCE'
     />
     <path
-      fill-rule='evenodd'
-      clip-rule='evenodd'
+      fillRule='evenodd'
+      clipRule='evenodd'
       d='M7 13C6.44772 13 6 13.4477 6 14C6 14.3701 6.2011 14.6933 6.5 14.8662C6.50321 14.8681 6.50643 14.8699 6.50966 14.8717L8.5 13H8H7ZM11.5 15H17C17.5523 15 18 14.5523 18 14C18 13.4477 17.5523 13 17 13H13.6203L11.5 15Z'
       fill='#CBCCCE'
     />
     <path
-      fill-rule='evenodd'
-      clip-rule='evenodd'
+      fillRule='evenodd'
+      clipRule='evenodd'
       d='M5 5C3.89543 5 3 5.89543 3 7V18.5L5 16.5V7H15L17 5H5ZM19 8V17H9.61096L7.62098 19H19C20.1046 19 21 18.1046 21 17V6L19 8Z'
       fill='#CBCCCE'
     />
