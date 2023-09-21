@@ -9,20 +9,20 @@ import { MenteeSelectIcon, MentorSelectIcon } from '@/assets';
 
 type Props = {
   type: 'mentee' | 'mentor';
-  state: 'mentee' | 'mentor' | null;
-  setState: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
+  role: 'mentee' | 'mentor' | null;
+  setRole: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
 };
 
-const SelectButton: React.FC<Props> = ({ type, state, setState }) => {
+const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
   const onChangeState = (currentState: 'mentee' | 'mentor') => {
-    setState(currentState);
+    setRole(currentState);
   };
 
   return (
     <>
       {type === 'mentee' ? (
         <S.SelectButton
-          isActive={state === 'mentee'}
+          isActive={role === 'mentee'}
           onClick={() => onChangeState('mentee')}
         >
           <MenteeSelectIcon />
@@ -37,7 +37,7 @@ const SelectButton: React.FC<Props> = ({ type, state, setState }) => {
         </S.SelectButton>
       ) : type === 'mentor' ? (
         <S.SelectButton
-          isActive={state === 'mentor'}
+          isActive={role === 'mentor'}
           onClick={() => onChangeState('mentor')}
         >
           <MentorSelectIcon />

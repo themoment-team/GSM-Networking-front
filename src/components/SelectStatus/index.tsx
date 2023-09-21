@@ -8,8 +8,8 @@ import * as S from './style';
 import { CheckBoxIcon } from '@/assets';
 
 const SelectStatus = () => {
-  const [state, setState] = useState<'mentee' | 'mentor' | null>(null);
-  const [privacyPolicy, setPrivacyPolicy] = useState<boolean>(false);
+  const [role, setRole] = useState<'mentee' | 'mentor' | null>(null);
+  const [checkPolicy, setCheckPolicy] = useState<boolean>(false);
 
   return (
     <S.Container>
@@ -18,17 +18,17 @@ const SelectStatus = () => {
         자신의 상태를 골라주세요.
       </S.HeaderTitle>
       <S.SelectButtonBox>
-        <SelectButton type='mentee' state={state} setState={setState} />
-        <SelectButton type='mentor' state={state} setState={setState} />
+        <SelectButton type='mentee' role={role} setRole={setRole} />
+        <SelectButton type='mentor' role={role} setRole={setRole} />
       </S.SelectButtonBox>
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>
         <S.AgreementButtonBox>
           <S.AgreementButton
-            privacyPolicy={privacyPolicy}
-            onClick={() => setPrivacyPolicy((prev) => !prev)}
+            checkPolicy={checkPolicy}
+            onClick={() => setCheckPolicy((prev) => !prev)}
           >
-            {privacyPolicy ? <CheckBoxIcon /> : null}
+            {checkPolicy ? <CheckBoxIcon /> : null}
           </S.AgreementButton>
           <S.AgreementButtonContent>개인정보 처리방침</S.AgreementButtonContent>
         </S.AgreementButtonBox>

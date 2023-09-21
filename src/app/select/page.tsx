@@ -1,5 +1,5 @@
 import SelectStatus from '@/components/SelectStatus';
 
-export default function select() {
+export default function Select() {
   return <SelectStatus />;
 }
