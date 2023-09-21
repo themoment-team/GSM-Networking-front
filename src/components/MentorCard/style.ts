@@ -61,6 +61,10 @@ export const MailTo = styled.a`
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
   }
+
+  & > svg {
+    display: block;
+  }
 `;
 
 export const SNSLink = styled.a`
@@ -71,6 +75,10 @@ export const SNSLink = styled.a`
     .second {
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
+  }
+
+  & > svg {
+    display: block;
   }
 `;
 
