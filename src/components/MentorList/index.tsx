@@ -3,11 +3,11 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
-import WorkerListHeader from './Header';
+import MentorListHeader from './Header';
 import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
-import { FilterModal, WorkerCard } from '@/components';
+import { FilterModal, MentorCard } from '@/components';
 import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
@@ -72,7 +72,7 @@ const MentorList: React.FC<Props> = ({
           setSelectedPosition={setSelectedPosition}
         />
       )}
-      <WorkerListHeader
+      <MentorListHeader
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
         keyword={keyword}
@@ -81,7 +81,7 @@ const MentorList: React.FC<Props> = ({
       {workerList.length ? (
         <S.WorkerList>
           {workerList.map((worker) => (
-            <WorkerCard key={worker.id} worker={worker} />
+            <MentorCard key={worker.id} worker={worker} />
           ))}
         </S.WorkerList>
       ) : (
