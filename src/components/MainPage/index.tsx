@@ -1,10 +1,9 @@
 'use client';
 import { useState } from 'react';
 
-import { Header, MentorList } from '..';
-
 import { Container } from './style';
 
+import { Header, MentorList } from '@/components';
 import type { WorkerType, GenerationType, PositionType } from '@/types';
 
 interface Props {
