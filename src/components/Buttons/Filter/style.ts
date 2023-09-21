@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const Button = styled.button<{ isActive: boolean }>`
   ${({ theme }) => theme.typo.body1}
-  padding: 0.375rem 1rem;
+  padding: 0.75rem 1rem;
   display: flex;
   gap: 0.25rem;
   align-items: center;

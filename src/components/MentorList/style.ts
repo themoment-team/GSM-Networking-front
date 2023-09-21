@@ -4,12 +4,10 @@ export const WorkerList = styled.div`
   display: grid;
   width: 100%;
   // 100vh - (리스트 상단 height)
-  height: calc(100vh - 11.6825rem);
-  height: calc(100dvh - 11.6825rem);
+  height: calc(100dvh - 11.689rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.5rem 1.13rem;
   overflow-y: scroll;
-  margin-top: 2rem;
 
   &::-webkit-scrollbar {
     width: 0.375rem;
