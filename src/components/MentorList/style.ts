@@ -8,7 +8,6 @@ export const WorkerList = styled.div`
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.5rem 1.13rem;
   overflow-y: scroll;
-  /* margin-top: 2rem; */
 
   &::-webkit-scrollbar {
     width: 0.375rem;
