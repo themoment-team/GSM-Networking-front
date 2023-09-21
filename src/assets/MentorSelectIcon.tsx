@@ -1,7 +1,7 @@
 const MentorSelectIcon = () => (
   <svg
-    width='86'
-    height='85'
+    width='5.3125rem'
+    height='5.3125rem'
     viewBox='0 0 86 85'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
