@@ -8,6 +8,7 @@ export interface WorkerType {
   position: PositionType;
   company: CompanyType;
   SNS: string;
+  temporaryImgNumber: number;
 }
 
 interface CompanyType {

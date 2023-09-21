@@ -1,18 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
 import React from 'react';
 
 import * as I from '@/assets';
 
-const RandomMentorImg = () => {
-  const [randomNumber, setRandomNumber] = useState<number>();
+interface Props {
+  temporaryImgNumber: number;
+}
 
-  useEffect(() => {
-    setRandomNumber(Math.floor(Math.random() * 5));
-  }, []);
-
-  switch (randomNumber) {
+const RandomMentorImg: React.FC<Props> = ({ temporaryImgNumber }) => {
+  switch (temporaryImgNumber) {
     case 0:
       return <I.PersonImg0 />;
     case 1:
