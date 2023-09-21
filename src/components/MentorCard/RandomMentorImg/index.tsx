@@ -1,9 +1,16 @@
 'use client';
 
+import { useEffect, useState } from 'react';
+import React from 'react';
+
 import * as I from '@/assets';
 
-const RandomWorkerImg = () => {
-  const randomNumber = Math.floor(Math.random() * 5);
+const RandomMentorImg = () => {
+  const [randomNumber, setRandomNumber] = useState<number>();
+
+  useEffect(() => {
+    setRandomNumber(Math.floor(Math.random() * 5));
+  }, []);
 
   switch (randomNumber) {
     case 0:
@@ -21,4 +28,4 @@ const RandomWorkerImg = () => {
   }
 };
 
-export default RandomWorkerImg;
+export default RandomMentorImg;

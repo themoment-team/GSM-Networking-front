@@ -1,12 +1,13 @@
 import styled from '@emotion/styled';
 
 export const WorkerList = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  // 100vh - (리스트 상단 height + 리스트 하단 여백 2.5rem)
+  display: grid;
+  width: 100%;
+  // 100vh - (리스트 상단 height)
   height: calc(100vh - 11.6825rem);
   height: calc(100dvh - 11.6825rem);
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.5rem 1.13rem;
   overflow-y: scroll;
   margin-top: 2rem;
 
