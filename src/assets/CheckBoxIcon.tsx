@@ -1,4 +1,4 @@
-const CheckBoxImg = () => (
+const CheckBoxIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
     width='1.5rem'
@@ -13,4 +13,4 @@ const CheckBoxImg = () => (
   </svg>
 );
 
-export default CheckBoxImg;
+export default CheckBoxIcon;
