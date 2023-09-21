@@ -32,7 +32,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
-        <RandomWorkerImg />
+        <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>

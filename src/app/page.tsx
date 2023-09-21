@@ -52,8 +52,14 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
 
     const workerList = await response.json();
 
-    return workerList;
+    return addTemporaryImgNumber(workerList);
   } catch (error) {
     return redirect(`${BASE_URL}/auth/refresh`);
   }
 };
+
+const addTemporaryImgNumber = (workerList: WorkerType[]) =>
+  workerList.map((worker) => ({
+    ...worker,
+    temporaryImgNumber: Math.floor(Math.random() * 5),
+  }));
