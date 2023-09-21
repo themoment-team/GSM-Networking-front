@@ -22,8 +22,6 @@ export const HeaderTitle = styled.div`
   line-height: 120%;
 `;
 
-export const FormBox = styled.form``;
-
 export const AgreementBox = styled.div`
   display: flex;
   flex-direction: column;
