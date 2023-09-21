@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import React from 'react';
 
 import * as I from '@/assets';
@@ -8,11 +8,9 @@ import * as I from '@/assets';
 const RandomMentorImg = () => {
   const [randomNumber, setRandomNumber] = useState<number>();
 
-  const value = useMemo(() => Math.floor(Math.random() * 5), []);
-
   useEffect(() => {
-    setRandomNumber(value);
-  }, [value]);
+    setRandomNumber(Math.floor(Math.random() * 5));
+  }, []);
 
   switch (randomNumber) {
     case 0:
