@@ -26,14 +26,8 @@ const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
           onClick={() => onChangeState('mentee')}
         >
           <MenteeSelectIcon />
-          <S.ButtonTitle>
-            멘티
-            <S.ButtonSubTitle>{'(재학생)'}</S.ButtonSubTitle>
-          </S.ButtonTitle>
-          <S.ButtonContent>
-            *취업하신 선배들과 자유롭게 <br />
-            이야기를 나눌 수 있어요
-          </S.ButtonContent>
+          <S.ButtonTitle>멘티</S.ButtonTitle>
+          <S.ButtonContent>재학생 / 구직자</S.ButtonContent>
         </S.SelectButton>
       ) : type === 'mentor' ? (
         <S.SelectButton
@@ -41,13 +35,8 @@ const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
           onClick={() => onChangeState('mentor')}
         >
           <MentorSelectIcon />
-          <S.ButtonTitle>
-            멘토
-            <S.ButtonSubTitle>{'(졸업자)'}</S.ButtonSubTitle>
-          </S.ButtonTitle>
-          <S.ButtonContent>
-            *재학생, 취업을 준비하는 학생들에게 도움을 줄 수 있어요
-          </S.ButtonContent>
+          <S.ButtonTitle>멘토</S.ButtonTitle>
+          <S.ButtonContent>대학생 / 재작자</S.ButtonContent>
         </S.SelectButton>
       ) : null}
     </>

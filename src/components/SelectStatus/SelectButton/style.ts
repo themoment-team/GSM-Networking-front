@@ -61,13 +61,9 @@ export const ButtonTitle = styled.div`
   font-weight: 600;
 `;
 
-export const ButtonSubTitle = styled.span`
-  color: #828387;
-`;
-
 export const ButtonContent = styled.p`
   color: #a5a6a9;
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   font-style: normal;
   font-weight: 500;
   line-height: 150%;
