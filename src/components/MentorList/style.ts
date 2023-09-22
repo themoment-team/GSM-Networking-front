@@ -3,8 +3,8 @@ import styled from '@emotion/styled';
 export const WorkerList = styled.div`
   display: grid;
   width: 100%;
-  // 100vh - (리스트 상단 height)
-  height: calc(100dvh - 11.689rem);
+  // 100vh - (리스트 상단 height + 하단 여백 2.5rem)
+  height: calc(100dvh - 14.189rem);
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 2.5rem 1.13rem;
   overflow-y: scroll;
