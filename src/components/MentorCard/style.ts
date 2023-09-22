@@ -12,14 +12,11 @@ export const WorkerInfoHead = styled.div`
   margin-top: 1.3rem;
 `;
 
-export const WorkerBorder = styled.div`
-  border-right: 0.0625rem solid #cbccce;
-`;
-
 export const WorkerNameBox = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.25rem;
 `;
 
 export const WorkerName = styled.p``;
