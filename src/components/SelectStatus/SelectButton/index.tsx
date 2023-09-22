@@ -7,11 +7,11 @@ import * as S from './style';
 
 import { MenteeSelectIcon, MentorSelectIcon } from '@/assets';
 
-type Props = {
+interface Props {
   type: 'mentee' | 'mentor';
   role: 'mentee' | 'mentor' | null;
   setRole: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
-};
+}
 
 const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
   const onChangeState = (currentState: 'mentee' | 'mentor') => {
@@ -31,8 +31,8 @@ const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
             <S.ButtonSubTitle>{'(재학생)'}</S.ButtonSubTitle>
           </S.ButtonTitle>
           <S.ButtonContent>
-            *멘토들에게 자유롭게 커피챗을 <br />
-            신청할 수 있어요
+            *취업하신 선배들과 자유롭게 <br />
+            이야기를 나눌 수 있어요
           </S.ButtonContent>
         </S.SelectButton>
       ) : type === 'mentor' ? (
@@ -45,7 +45,9 @@ const SelectButton: React.FC<Props> = ({ type, role, setRole }) => {
             멘토
             <S.ButtonSubTitle>{'(졸업자)'}</S.ButtonSubTitle>
           </S.ButtonTitle>
-          <S.ButtonContent>*멘티들에게 도움을 줄 수 있어요</S.ButtonContent>
+          <S.ButtonContent>
+            *재학생, 취업을 준비하는 학생들에게 도움을 줄 수 있어요
+          </S.ButtonContent>
         </S.SelectButton>
       ) : null}
     </>
