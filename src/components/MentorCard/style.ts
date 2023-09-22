@@ -5,9 +5,7 @@ export const WorkerCardContainer = styled.div`
 `;
 
 export const WorkerInfoHead = styled.div`
-  font-size: ${({ theme }) => theme.typo.body1.fontSize};
-  font-weight: ${({ theme }) => theme.typo.body1.fontWeight};
-  line-height: ${({ theme }) => theme.typo.body1.lineHeight};
+  ${({ theme }) => theme.typo.body1};
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
@@ -38,9 +36,7 @@ export const WorkerInfoBody = styled.div`
   font-style: normal;
   color: #a5a6a9;
   overflow: hidden;
-  font-size: ${({ theme }) => theme.typo.body2.fontSize};
-  font-weight: ${({ theme }) => theme.typo.body2.fontWeight};
-  line-height: ${({ theme }) => theme.typo.body2.lineHeight};
+  ${({ theme }) => theme.typo.body2};
 `;
 
 export const ButtonBox = styled.div`
