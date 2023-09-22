@@ -21,9 +21,9 @@ interface Props {
 }
 
 const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
-  worker.name.includes(keyword) ||
-  worker.company.name.includes(keyword) ||
-  worker.position.includes(keyword);
+  worker.name.toLowerCase().includes(keyword.toLowerCase()) ||
+  worker.company.name.toLowerCase().includes(keyword.toLowerCase()) ||
+  worker.position.toLowerCase().includes(keyword.toLowerCase());
 
 const isSelectedGeneration = (
   worker: WorkerType,
