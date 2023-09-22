@@ -28,6 +28,7 @@ export const WorkerPosition = styled.p`
 `;
 
 export const WorkerInfoBody = styled.div`
+  ${({ theme }) => theme.typo.body2};
   display: flex;
   width: 100%;
   margin-top: 1.37rem;
@@ -36,7 +37,6 @@ export const WorkerInfoBody = styled.div`
   font-style: normal;
   color: #a5a6a9;
   overflow: hidden;
-  ${({ theme }) => theme.typo.body2};
 `;
 
 export const ButtonBox = styled.div`
