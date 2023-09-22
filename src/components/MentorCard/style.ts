@@ -5,9 +5,7 @@ export const WorkerCardContainer = styled.div`
 `;
 
 export const WorkerInfoHead = styled.div`
-  font-size: ${({ theme }) => theme.typo.body1.fontSize};
-  font-weight: ${({ theme }) => theme.typo.body1.fontWeight};
-  line-height: ${({ theme }) => theme.typo.body1.lineHeight};
+  ${({ theme }) => theme.typo.body1};
   display: flex;
   justify-content: space-between;
   margin-top: 1rem;
