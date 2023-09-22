@@ -34,6 +34,7 @@ export function GlobalStyle() {
           background: '#ffffff';
           height: 100vh;
           height: 100dvh;
+          overscroll-behavior-y: none;
         }
 
         a {
