@@ -60,7 +60,7 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
   }
 `;
 
-export const AgreementButtonContent = styled.div`
+export const AgreementButtonContent = styled.a`
   font-size: 0.875rem;
   font-style: normal;
   font-weight: 500;
