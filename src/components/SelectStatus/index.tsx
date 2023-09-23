@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-import SelectButton from './SelectButton';
+import SelectButtonBox from './SelectButtonBox';
 import * as S from './style';
 
 import { CheckBoxIcon } from '@/assets';
@@ -17,10 +17,7 @@ const SelectStatus = () => {
         저희 서비스가 처음이시군요, <br />
         자신의 상태를 골라주세요.
       </S.HeaderTitle>
-      <S.SelectButtonBox>
-        <SelectButton type='mentee' role={role} setRole={setRole} />
-        <SelectButton type='mentor' role={role} setRole={setRole} />
-      </S.SelectButtonBox>
+      <SelectButtonBox role={role} setRole={setRole} />
       <S.AgreementBox>
         <S.AgreementTitle>약관동의</S.AgreementTitle>
         <S.AgreementButtonBox>

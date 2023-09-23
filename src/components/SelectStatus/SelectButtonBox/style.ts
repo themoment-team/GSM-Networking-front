@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
 
+export const Container = styled.div`
+  width: 100%;
+  display: flex;
+  gap: 1rem;
+`;
+
 export const SelectButton = styled.button<{ isActive: boolean }>`
   display: flex;
   width: 18.25rem;

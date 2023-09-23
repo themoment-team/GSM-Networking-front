@@ -14,12 +14,6 @@ export const Container = styled.div`
   }
 `;
 
-export const SelectButtonBox = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 1rem;
-`;
-
 export const HeaderTitle = styled.div`
   font-size: 2rem;
   font-style: normal;
