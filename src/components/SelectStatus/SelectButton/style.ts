@@ -12,6 +12,11 @@ export const SelectButton = styled.button<{ isActive: boolean }>`
   flex-direction: column;
   gap: 1rem;
 
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    height: 18.25rem;
+  }
+
   path {
     fill: ${({ isActive }) => (isActive ? '#148eff' : '#A5A6A9')};
   }

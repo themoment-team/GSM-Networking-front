@@ -8,9 +8,14 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3rem;
+
+  @media screen and (max-width: 600px) {
+    padding: 1rem;
+  }
 `;
 
 export const SelectButtonBox = styled.div`
+  width: 100%;
   display: flex;
   gap: 1rem;
 `;
