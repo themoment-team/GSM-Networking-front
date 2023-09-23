@@ -5,11 +5,10 @@ export const WorkerCardContainer = styled.div`
 `;
 
 export const WorkerInfoHead = styled.div`
-  font-size: 1.125rem;
-  font-weight: 600;
+  ${({ theme }) => theme.typo.body1};
   display: flex;
   justify-content: space-between;
-  margin-top: 1.3rem;
+  margin-top: 1rem;
 `;
 
 export const WorkerNameBox = styled.div`
@@ -29,14 +28,13 @@ export const WorkerPosition = styled.p`
 `;
 
 export const WorkerInfoBody = styled.div`
+  ${({ theme }) => theme.typo.body2};
   display: flex;
   width: 100%;
-  margin-top: 1.75rem;
+  margin-top: 1.37rem;
   flex-direction: column;
-  gap: 1rem;
-  font-size: 0.875rem;
+  gap: 0.75rem;
   font-style: normal;
-  font-weight: 500;
   color: #a5a6a9;
   overflow: hidden;
 `;
@@ -89,7 +87,7 @@ export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
 `;
 
 export const WorkerImgBox = styled.div`
-  background-color: #f5f6f8;
+  background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 10px;
   display: flex;
   justify-content: center;
