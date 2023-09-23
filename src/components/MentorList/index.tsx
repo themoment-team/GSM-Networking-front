@@ -20,10 +20,14 @@ interface Props {
   setSelectedPosition: Dispatch<SetStateAction<PositionType | null>>;
 }
 
-const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
-  worker.name.toLowerCase().includes(keyword) ||
-  worker.company.name.toLowerCase().includes(keyword) ||
-  worker.position.toLowerCase().includes(keyword);
+const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
+  const lowerCaseKeyword = keyword.toLowerCase();
+  return (
+    worker.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.company.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.position.toLowerCase().includes(lowerCaseKeyword)
+  );
+};
 
 const isSelectedGeneration = (
   worker: WorkerType,
@@ -54,7 +58,7 @@ const MentorList: React.FC<Props> = ({
         (worker) =>
           isSelectedGeneration(worker, selectedGeneration) &&
           isSelectedPosition(worker, selectedPosition) &&
-          isIncludesKeyword(worker, keyword.toLowerCase())
+          isIncludesKeyword(worker, keyword)
       )
     );
   }, [keyword, selectedGeneration, initWorkerList, selectedPosition]);
