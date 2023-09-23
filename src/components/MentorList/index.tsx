@@ -21,9 +21,9 @@ interface Props {
 }
 
 const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
-  worker.name.toLowerCase().includes(keyword.toLowerCase()) ||
-  worker.company.name.toLowerCase().includes(keyword.toLowerCase()) ||
-  worker.position.toLowerCase().includes(keyword.toLowerCase());
+  worker.name.toLowerCase().includes(keyword) ||
+  worker.company.name.toLowerCase().includes(keyword) ||
+  worker.position.toLowerCase().includes(keyword);
 
 const isSelectedGeneration = (
   worker: WorkerType,
@@ -54,7 +54,7 @@ const MentorList: React.FC<Props> = ({
         (worker) =>
           isSelectedGeneration(worker, selectedGeneration) &&
           isSelectedPosition(worker, selectedPosition) &&
-          isIncludesKeyword(worker, keyword)
+          isIncludesKeyword(worker, keyword.toLowerCase())
       )
     );
   }, [keyword, selectedGeneration, initWorkerList, selectedPosition]);
