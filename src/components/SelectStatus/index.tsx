@@ -25,7 +25,7 @@ const SelectStatus = () => {
             checkPolicy={checkPolicy}
             onClick={() => setCheckPolicy((prev) => !prev)}
           >
-            {checkPolicy ? <CheckBoxIcon /> : null}
+            {checkPolicy && <CheckBoxIcon />}
           </S.AgreementButton>
           <S.AgreementButtonLink
             href='https://themoment-team.notion.site/e25e5e3cac8e4968893733f5cddb0329?pvs=4'
