@@ -20,10 +20,15 @@ interface Props {
   setSelectedPosition: Dispatch<SetStateAction<PositionType | null>>;
 }
 
-const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
-  worker.name.includes(keyword) ||
-  worker.company.name.includes(keyword) ||
-  worker.position.includes(keyword);
+const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
+  const lowerCaseKeyword = keyword.toLowerCase();
+  
+  return (
+    worker.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.company.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.position.toLowerCase().includes(lowerCaseKeyword)
+  );
+};
 
 const isSelectedGeneration = (
   worker: WorkerType,
