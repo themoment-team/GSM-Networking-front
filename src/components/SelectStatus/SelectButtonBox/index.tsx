@@ -33,7 +33,7 @@ const SelectButtonBox: React.FC<Props> = ({ role, setRole }) => {
       >
         <MentorSelectIcon />
         <S.ButtonTitle>멘토</S.ButtonTitle>
-        <S.ButtonContent>대학생 / 재작자</S.ButtonContent>
+        <S.ButtonContent>대학생 / 재직자</S.ButtonContent>
       </S.SelectButton>
     </S.Container>
   );
