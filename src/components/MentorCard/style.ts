@@ -5,21 +5,18 @@ export const WorkerCardContainer = styled.div`
 `;
 
 export const WorkerInfoHead = styled.div`
-  font-size: 1.125rem;
-  font-weight: 600;
+  ${({ theme }) => theme.typo.body1};
   display: flex;
   justify-content: space-between;
-  margin-top: 1.3rem;
-`;
-
-export const WorkerBorder = styled.div`
-  border-right: 0.0625rem solid #cbccce;
+  align-items: center;
+  margin-top: 1rem;
 `;
 
 export const WorkerNameBox = styled.div`
   display: flex;
   justify-content: center;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.25rem;
 `;
 
 export const WorkerName = styled.p``;
@@ -32,14 +29,13 @@ export const WorkerPosition = styled.p`
 `;
 
 export const WorkerInfoBody = styled.div`
+  ${({ theme }) => theme.typo.body2};
   display: flex;
   width: 100%;
-  margin-top: 1.75rem;
+  margin-top: 1.38rem;
   flex-direction: column;
-  gap: 1rem;
-  font-size: 0.875rem;
+  gap: 0.75rem;
   font-style: normal;
-  font-weight: 500;
   color: #a5a6a9;
   overflow: hidden;
 `;
@@ -61,6 +57,10 @@ export const MailTo = styled.a`
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
   }
+
+  & > svg {
+    display: block;
+  }
 `;
 
 export const SNSLink = styled.a`
@@ -71,6 +71,10 @@ export const SNSLink = styled.a`
     .second {
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
+  }
+
+  & > svg {
+    display: block;
   }
 `;
 
@@ -84,7 +88,7 @@ export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
 `;
 
 export const WorkerImgBox = styled.div`
-  background-color: #f5f6f8;
+  background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 10px;
   display: flex;
   justify-content: center;

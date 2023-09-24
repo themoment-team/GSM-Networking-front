@@ -4,7 +4,7 @@ import React from 'react';
 
 import { toast } from 'react-toastify';
 
-import RandomWorkerImg from './RandomWorkerImg';
+import RandomWorkerImg from './RandomMentorImg';
 import * as S from './style';
 
 import * as I from '@/assets';
@@ -14,7 +14,7 @@ interface Props {
   worker: WorkerType;
 }
 
-const WorkerCard: React.FC<Props> = ({ worker }) => {
+const MentorCard: React.FC<Props> = ({ worker }) => {
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
@@ -32,13 +32,13 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
-        <RandomWorkerImg />
+        <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
-          <S.WorkerBoder />
           <S.WorkerName>{worker.name}</S.WorkerName>
+          {/* <I.BlueCheckIcon /> */}
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (
@@ -78,4 +78,4 @@ const WorkerCard: React.FC<Props> = ({ worker }) => {
   );
 };
 
-export default WorkerCard;
+export default MentorCard;

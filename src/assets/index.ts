@@ -1,3 +1,4 @@
+export { default as BlueCheckIcon } from './BlueCheckIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CloseIcon } from './CloseIcon';
 export { default as EmailIcon } from './EmailIcon';

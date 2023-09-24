@@ -1,9 +1,9 @@
-import WorkerCard from '.';
+import MentorCard from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof WorkerCard> = {
-  component: WorkerCard,
+const meta: Meta<typeof MentorCard> = {
+  component: MentorCard,
   parameters: {
     layout: 'padded',
   },
@@ -11,7 +11,7 @@ const meta: Meta<typeof WorkerCard> = {
 
 export default meta;
 
-type Story = StoryObj<typeof WorkerCard>;
+type Story = StoryObj<typeof MentorCard>;
 
 export const Primary: Story = {
   args: {
@@ -26,6 +26,7 @@ export const Primary: Story = {
         name: '더모먼트',
         URL: 'https://official.hellogsm.kr/',
       },
+      temporaryImgNumber: 0,
     },
   },
 };

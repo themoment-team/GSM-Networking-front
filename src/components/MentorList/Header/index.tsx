@@ -9,7 +9,7 @@ interface Props {
   setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const WorkerListHeader: React.FC<Props> = ({
+const MentorListHeader: React.FC<Props> = ({
   keyword,
   isShowFilterModal,
   setKeyword,
@@ -30,4 +30,4 @@ const WorkerListHeader: React.FC<Props> = ({
   </S.Header>
 );
 
-export default WorkerListHeader;
+export default MentorListHeader;

@@ -1,11 +1,15 @@
 'use client';
 
+import React from 'react';
+
 import * as I from '@/assets';
 
-const RandomWorkerImg = () => {
-  const randomNumber = Math.floor(Math.random() * 5);
+interface Props {
+  temporaryImgNumber: number;
+}
 
-  switch (randomNumber) {
+const RandomMentorImg: React.FC<Props> = ({ temporaryImgNumber }) => {
+  switch (temporaryImgNumber) {
     case 0:
       return <I.PersonImg0 />;
     case 1:
@@ -21,4 +25,4 @@ const RandomWorkerImg = () => {
   }
 };
 
-export default RandomWorkerImg;
+export default RandomMentorImg;
