@@ -8,6 +8,7 @@ export const WorkerInfoHead = styled.div`
   ${({ theme }) => theme.typo.body1};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-top: 1rem;
 `;
 
