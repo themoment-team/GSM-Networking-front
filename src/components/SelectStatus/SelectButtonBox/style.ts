@@ -13,7 +13,8 @@ export const SelectButton = styled.button<{ isActive: boolean }>`
   padding: 3.3125rem 3.65625rem;
   justify-content: center;
   align-items: center;
-  background-color: ${({ isActive }) => (isActive ? '#e4f2ff' : '#f5f6f8')};
+  background-color: ${({ isActive, theme }) =>
+    isActive ? theme.color.skyBlue[50] : theme.color.grey[50]};
   border-radius: 10px;
   flex-direction: column;
   gap: 1rem;
@@ -24,44 +25,53 @@ export const SelectButton = styled.button<{ isActive: boolean }>`
   }
 
   path {
-    fill: ${({ isActive }) => (isActive ? '#148eff' : '#A5A6A9')};
+    fill: ${({ isActive, theme }) =>
+      isActive ? theme.color.skyBlue[400] : theme.color.grey[400]};
   }
 
   #this {
-    fill: ${({ isActive }) => (isActive ? '#148eff' : '#A5A6A9')};
+    fill: ${({ isActive, theme }) =>
+      isActive ? theme.color.skyBlue[400] : theme.color.grey[400]};
   }
 
   #other {
-    fill: ${({ isActive }) => (isActive ? '#6ab7ff' : '#CBCCCE')};
+    fill: ${({ isActive, theme }) =>
+      isActive ? theme.color.skyBlue[200] : theme.color.grey[200]};
   }
 
   &:hover {
     path {
-      fill: ${({ isActive }) => (!isActive ? '#6ab7ff' : '#148eff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[200] : theme.color.skyBlue[400]};
     }
 
     #this {
-      fill: ${({ isActive }) => (!isActive ? '#6ab7ff' : '#148eff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[200] : theme.color.skyBlue[400]};
     }
 
     #other {
-      fill: ${({ isActive }) => (!isActive ? '#94ccff' : '#6ab7ff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[100] : theme.color.skyBlue[200]};
     }
   }
 
   &:active {
-    background-color: #e4f2ff;
+    background-color: ${({ theme }) => theme.color.skyBlue[50]};
 
     path {
-      fill: ${({ isActive }) => (!isActive ? '#148eff' : '#148eff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[400] : theme.color.skyBlue[400]};
     }
 
     #this {
-      fill: ${({ isActive }) => (!isActive ? '#148eff' : '#148eff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[400] : theme.color.skyBlue[400]};
     }
 
     #other {
-      fill: ${({ isActive }) => (!isActive ? '#6ab7ff' : '#6ab7ff')};
+      fill: ${({ isActive, theme }) =>
+        !isActive ? theme.color.skyBlue[200] : theme.color.skyBlue[200]};
     }
   }
 `;
@@ -73,7 +83,7 @@ export const ButtonTitle = styled.div`
 `;
 
 export const ButtonContent = styled.p`
-  color: #a5a6a9;
+  color: ${({ theme }) => theme.color.grey[400]};
   font-size: 0.9rem;
   font-style: normal;
   font-weight: 500;

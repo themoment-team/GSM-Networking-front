@@ -48,14 +48,16 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${({ checkPolicy }) =>
-    checkPolicy ? '#148eff' : 'rgba(0, 0, 0, 0)'};
+  background-color: ${({ checkPolicy, theme }) =>
+    checkPolicy ? theme.color.skyBlue[400] : 'rgba(0, 0, 0, 0)'};
   border: 1px solid
-    ${({ checkPolicy }) => (checkPolicy ? '#148eff' : '#707070')};
+    ${({ checkPolicy, theme }) =>
+      checkPolicy ? theme.color.skyBlue[400] : '#707070'};
 
   &:hover {
     border: 1px solid
-      ${({ checkPolicy }) => (checkPolicy ? '#148eff' : '#6ab7ff')};
+      ${({ checkPolicy, theme }) =>
+        checkPolicy ? theme.color.skyBlue[400] : theme.color.skyBlue[200]};
   }
 `;
 
@@ -77,7 +79,7 @@ export const SubmitButtonBox = styled.div`
 export const SubmitButton = styled.button`
   width: 100%;
   min-height: 2.75rem;
-  background-color: #148eff;
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
   font-size: 1.0625rem;
   font-style: normal;
   font-weight: 700;
