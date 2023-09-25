@@ -51,13 +51,12 @@ export const ButtonBox = styled.div`
 export const MailTo = styled.a`
   &:hover {
     .first {
-      fill: ${({ theme }) => theme.color.skyBlue[100]};
-    }
-    .second {
       fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
+    .second {
+      fill: ${({ theme }) => theme.color.skyBlue[100]};
+    }
   }
-
   & > svg {
     display: block;
   }
@@ -66,10 +65,10 @@ export const MailTo = styled.a`
 export const SNSLink = styled.a`
   &:hover {
     .first {
-      fill: ${({ theme }) => theme.color.skyBlue[100]};
+      fill: ${({ theme }) => theme.color.skyBlue[400]};
     }
     .second {
-      fill: ${({ theme }) => theme.color.skyBlue[400]};
+      fill: ${({ theme }) => theme.color.skyBlue[100]};
     }
   }
 

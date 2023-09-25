@@ -1,22 +1,22 @@
 const EmailIcon = () => (
   <svg
-    width='1.5rem'
-    height='1.5rem'
-    viewBox='0 0 24 24'
-    fill='none'
     xmlns='http://www.w3.org/2000/svg'
+    width='1.125rem'
+    height='0.875rem'
+    viewBox='0 0 18 14'
+    fill='none'
   >
-    <g clipPath='url(#clip0_10_217)'>
-      <path d='M3 19V5H21V19H3Z' className='first' fill='#CBCCCE' />
+    <g clipPath='url(#clip0_1116_4466)'>
+      <path d='M0 14V0H18V14H0Z' className='first' fill='#94CCFF' />
       <path
-        d='M10.7721 11.045L3 5H21L13.2279 11.045C12.5057 11.6067 11.4943 11.6067 10.7721 11.045Z'
+        d='M7.77212 6.04498L0 0H18L10.2279 6.04498C9.50566 6.60671 8.49434 6.60671 7.77212 6.04498Z'
         className='second'
-        fill='#828387'
+        fill='#148EFF'
       />
     </g>
     <defs>
-      <clipPath id='clip0_10_217'>
-        <rect x='3' y='5' width='18' height='14' rx='2' fill='white' />
+      <clipPath id='clip0_1116_4466'>
+        <rect width='18' height='14' rx='2' fill='white' />
       </clipPath>
     </defs>
   </svg>
