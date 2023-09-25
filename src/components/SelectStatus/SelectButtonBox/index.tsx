@@ -12,31 +12,25 @@ interface Props {
   setRole: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
 }
 
-const SelectButtonBox: React.FC<Props> = ({ role, setRole }) => {
-  const onChangeState = (currentState: 'mentee' | 'mentor') => {
-    setRole(currentState);
-  };
-
-  return (
-    <S.Container>
-      <S.SelectButton
-        isActive={role === 'mentee'}
-        onClick={() => onChangeState('mentee')}
-      >
-        <MenteeSelectIcon />
-        <S.ButtonTitle>멘티</S.ButtonTitle>
-        <S.ButtonContent>재학생 / 구직자</S.ButtonContent>
-      </S.SelectButton>
-      <S.SelectButton
-        isActive={role === 'mentor'}
-        onClick={() => onChangeState('mentor')}
-      >
-        <MentorSelectIcon />
-        <S.ButtonTitle>멘토</S.ButtonTitle>
-        <S.ButtonContent>대학생 / 재직자</S.ButtonContent>
-      </S.SelectButton>
-    </S.Container>
-  );
-};
+const SelectButtonBox: React.FC<Props> = ({ role, setRole }) => (
+  <S.Container>
+    <S.SelectButton
+      isActive={role === 'mentee'}
+      onClick={() => setRole('mentee')}
+    >
+      <MenteeSelectIcon />
+      <S.ButtonTitle>멘티</S.ButtonTitle>
+      <S.ButtonContent>재학생 / 구직자</S.ButtonContent>
+    </S.SelectButton>
+    <S.SelectButton
+      isActive={role === 'mentor'}
+      onClick={() => setRole('mentor')}
+    >
+      <MentorSelectIcon />
+      <S.ButtonTitle>멘토</S.ButtonTitle>
+      <S.ButtonContent>재직자 / 대학생</S.ButtonContent>
+    </S.SelectButton>
+  </S.Container>
+);
 
 export default SelectButtonBox;
