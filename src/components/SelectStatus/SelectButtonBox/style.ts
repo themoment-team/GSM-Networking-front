@@ -82,7 +82,7 @@ export const ButtonTitle = styled.div`
 
 export const ButtonContent = styled.p`
   color: ${({ theme }) => theme.color.grey[400]};
-  font-size: 0.9rem;
   font-weight: ${({ theme }) => theme.typo.caption.fontWeight};
   line-height: ${({ theme }) => theme.typo.caption.lineHeight};
+  font-size: 0.9rem;
 `;

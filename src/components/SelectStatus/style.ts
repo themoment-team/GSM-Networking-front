@@ -10,7 +10,7 @@ export const Container = styled.div`
   gap: 3rem;
 
   @media screen and (max-width: 600px) {
-    padding: 1rem;
+    padding: 6rem 1rem 1rem 1rem;
   }
 `;
 
@@ -26,7 +26,7 @@ export const AgreementBox = styled.div`
 
 export const AgreementTitle = styled.div`
   ${({ theme }) => theme.typo.body1};
-  color: #111112;
+  color: ${({ theme }) => theme.color.black};
 `;
 
 export const AgreementButtonBox = styled.div`
@@ -47,7 +47,7 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
     checkPolicy ? theme.color.skyBlue[400] : 'rgba(0, 0, 0, 0)'};
   border: 1px solid
     ${({ checkPolicy, theme }) =>
-      checkPolicy ? theme.color.skyBlue[400] : '#707070'};
+      checkPolicy ? theme.color.skyBlue[400] : theme.color.grey[200]};
 
   &:hover {
     border: 1px solid
@@ -58,7 +58,7 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
 
 export const AgreementButtonLink = styled.a`
   ${({ theme }) => theme.typo.body2};
-  color: #8f9094;
+  color: ${({ theme }) => theme.color.grey[500]};
 `;
 
 export const SubmitButtonBox = styled.div`
@@ -71,8 +71,8 @@ export const SubmitButtonBox = styled.div`
 
 export const SubmitButton = styled.button`
   ${({ theme }) => theme.typo.button};
-  width: 100%;
   background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  width: 100%;
   min-height: 2.75rem;
   color: white;
   border-radius: 0.625rem;
