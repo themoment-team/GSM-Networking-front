@@ -1,30 +1,21 @@
 const NotExistEmailIcon = () => (
   <svg
-    width='1.5rem'
-    height='1.5rem'
-    viewBox='0 0 24 24'
-    fill='none'
     xmlns='http://www.w3.org/2000/svg'
+    width='1.125rem'
+    height='0.875rem'
+    viewBox='0 0 18 14'
+    fill='none'
   >
-    <g clipPath='url(#clip0_205_7665)'>
+    <g clipPath='url(#clip0_1_172)'>
+      <path d='M0 14V0H18V14H0Z' fill='#EFF0F2' />
       <path
-        fillRule='evenodd'
-        clipRule='evenodd'
-        d='M3 5V18.5L5 16.5V7H15L17 5H3ZM19 8V17H10L8 19H21V6L19 8Z'
-        fill='#CBCCCE'
-      />
-      <path
-        d='M3 8V5H17L15 7H5L11.3505 10.387L10 11.6842L3 8Z'
-        fill='#CBCCCE'
+        d='M7.77212 6.04498L0 0H18L10.2279 6.04498C9.50566 6.60671 8.49434 6.60671 7.77212 6.04498Z'
+        fill='#B4B5B7'
       />
     </g>
-    <path
-      d='M3.5 20.5C3.10477 20.0952 3.10477 19.4389 3.5 19.0341L19.5 3.50002C19.8952 3.09521 20.536 3.09521 20.9313 3.50002C21.3265 3.90483 21.3265 4.56116 20.9313 4.96597L4.93125 20.5C4.53602 20.9048 3.89523 20.9048 3.5 20.5Z'
-      fill='#CBCCCE'
-    />
     <defs>
-      <clipPath id='clip0_205_7665'>
-        <rect x='3' y='5' width='18' height='14' rx='2' fill='white' />
+      <clipPath id='clip0_1_172'>
+        <rect width='18' height='14' rx='2' fill='white' />
       </clipPath>
     </defs>
   </svg>
