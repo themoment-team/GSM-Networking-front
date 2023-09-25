@@ -15,10 +15,7 @@ export const Container = styled.div`
 `;
 
 export const HeaderTitle = styled.div`
-  font-size: 2rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
+  ${({ theme }) => theme.typo.h3};
 `;
 
 export const AgreementBox = styled.div`
@@ -28,9 +25,7 @@ export const AgreementBox = styled.div`
 `;
 
 export const AgreementTitle = styled.div`
-  font-size: 1rem;
-  font-style: normal;
-  font-weight: 500;
+  ${({ theme }) => theme.typo.body1};
   color: #111112;
 `;
 
@@ -62,9 +57,7 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
 `;
 
 export const AgreementButtonLink = styled.a`
-  font-size: 0.875rem;
-  font-style: normal;
-  font-weight: 500;
+  ${({ theme }) => theme.typo.body2};
   color: #8f9094;
 `;
 
@@ -78,11 +71,9 @@ export const SubmitButtonBox = styled.div`
 
 export const SubmitButton = styled.button`
   width: 100%;
-  min-height: 2.75rem;
   background-color: ${({ theme }) => theme.color.skyBlue[400]};
-  font-size: 1.0625rem;
-  font-style: normal;
-  font-weight: 700;
+  min-height: 2.75rem;
   color: white;
   border-radius: 0.625rem;
+  ${({ theme }) => theme.typo.button};
 `;

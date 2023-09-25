@@ -77,15 +77,12 @@ export const SelectButton = styled.button<{ isActive: boolean }>`
 `;
 
 export const ButtonTitle = styled.div`
-  font-size: 1.125rem;
-  font-style: normal;
-  font-weight: 600;
+  ${({ theme }) => theme.typo.subtitle};
 `;
 
 export const ButtonContent = styled.p`
   color: ${({ theme }) => theme.color.grey[400]};
   font-size: 0.9rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 150%;
+  font-weight: ${({ theme }) => theme.typo.subtitle.fontWeight};
+  line-height: ${({ theme }) => theme.typo.subtitle.lineHeight};
 `;
