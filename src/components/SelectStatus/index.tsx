@@ -30,6 +30,7 @@ const SelectStatus = () => {
           <S.AgreementButtonLink
             href='https://themoment-team.notion.site/e25e5e3cac8e4968893733f5cddb0329?pvs=4'
             target='_blank'
+            rel='noopener noreferrer'
           >
             개인정보 처리방침
           </S.AgreementButtonLink>
