@@ -70,10 +70,10 @@ export const SubmitButtonBox = styled.div`
 `;
 
 export const SubmitButton = styled.button`
+  ${({ theme }) => theme.typo.button};
   width: 100%;
   background-color: ${({ theme }) => theme.color.skyBlue[400]};
   min-height: 2.75rem;
   color: white;
   border-radius: 0.625rem;
-  ${({ theme }) => theme.typo.button};
 `;
