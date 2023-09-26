@@ -14,6 +14,9 @@ $ pnpm dev
 
 # run build
 $ pnpm build
+
+# run storybook
+$ pnpm storybook
 ```
 
 ## Skill set
