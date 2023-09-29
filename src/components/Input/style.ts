@@ -7,8 +7,13 @@ export const InputContainer = styled.div`
 `;
 
 export const InputTitle = styled.p`
+  display: inline;
   ${({ theme }) => theme.typo.body2}
   color: ${({ theme }) => theme.color.grey[600]};
+`;
+
+export const Required = styled.span`
+  color: ${({ theme }) => theme.color.error};
 `;
 
 export const CustomInput = styled.input<{ isError?: boolean }>`
