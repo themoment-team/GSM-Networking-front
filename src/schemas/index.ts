@@ -1,1 +1,1 @@
-export * from './userInfoForm';
+export * from './mentorInfoForm';
