@@ -1,7 +1,7 @@
 const CloseIcon = () => (
   <svg
-    width='18'
-    height='19'
+    width='1.125rem'
+    height='1.1875rem'
     viewBox='0 0 18 19'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'

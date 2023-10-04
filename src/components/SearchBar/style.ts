@@ -1,10 +1,8 @@
-import { theme } from '@/styles';
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const SearchBarContainer = styled.div`
-  width: 100%;
   position: relative;
-  margin-bottom: 2rem;
+  flex: 1;
 `;
 
 export const SearchInput = styled.input`
@@ -15,13 +13,17 @@ export const SearchInput = styled.input`
   border-radius: 0.625rem;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 
+  @media (max-width: 600px) {
+    font-size: 16px;
+  }
+
   &::placeholder {
-    ${({ theme }) => theme.typo.body1}
+    ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]}};
   }
 
   &:focus {
-    outline: 1px solid #148eff;
+    outline: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
 `;
 

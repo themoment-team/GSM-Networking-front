@@ -1,16 +1,40 @@
 'use client';
 
+import React, { useState } from 'react';
+
 import * as S from './style';
 
-import { LogoIcon } from '@/assets';
+import * as I from '@/assets';
+import { DropDown } from '@/components';
 
-const Header = () => (
-  <S.Header>
-    <S.Inner>
-      <LogoIcon />
-      <S.PageName>취업자 리스트 조회</S.PageName>
-    </S.Inner>
-  </S.Header>
-);
+interface Props {
+  clearList: () => void;
+}
+
+const Header: React.FC<Props> = ({ clearList }) => {
+  const [isDrop, setIsDrop] = useState<boolean>(false);
+
+  return (
+    <>
+      <S.Header>
+        <S.Inner>
+          <S.Logo type='button' onClick={clearList}>
+            <I.GsmNetworkingIcon />
+            GSM Networking
+          </S.Logo>
+          <S.IconContainer
+            type='button'
+            onClick={() => {
+              setIsDrop((isDrop) => !isDrop);
+            }}
+          >
+            {isDrop ? <I.FoldIcon /> : <I.MoreIcon />}
+          </S.IconContainer>
+        </S.Inner>
+      </S.Header>
+      {isDrop && <DropDown setIsDrop={setIsDrop} />}
+    </>
+  );
+};
 
 export default Header;

@@ -1,8 +1,16 @@
+import { Suspense } from 'react';
+
+import Script from 'next/script';
+
+import { ToastContainer } from 'react-toastify';
+
 import Providers from './providers';
 
-import { Layout } from '@/components';
-import { StyledComponentsRegistry } from '@/lib';
+import { Layout, NavigationEvents } from '@/components';
+import { GA_TRACKING_ID } from '@/libs';
 import { GlobalStyle } from '@/styles';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function RootLayout({
   children,
@@ -18,16 +26,35 @@ export default function RootLayout({
           crossOrigin=''
           href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css'
         />
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <Script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+        />
+        <Script
+          id='gtag-init'
+          strategy='afterInteractive'
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
+          }}
+        />
       </head>
       <body>
-        <StyledComponentsRegistry>
-          <Providers>
-            <GlobalStyle />
-            {/* for inspection */}
-            {/* <Header /> */}
-            <Layout>{children}</Layout>
-          </Providers>
-        </StyledComponentsRegistry>
+        <Providers>
+          <ToastContainer />
+          <GlobalStyle />
+          <Layout>{children}</Layout>
+          <Suspense fallback={null}>
+            <NavigationEvents />
+          </Suspense>
+        </Providers>
       </body>
     </html>
   );

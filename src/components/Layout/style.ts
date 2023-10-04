@@ -1,14 +1,11 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 export const Layout = styled.main`
   width: 600px;
+  height: 100%;
   margin: 0 auto;
-  /* for inspection */
-  /* padding-top: 5rem; */
-  position: relative;
 
   @media (max-width: 600px) {
     width: 100%;
-    padding: 5rem 1rem 0 1rem;
   }
 `;
