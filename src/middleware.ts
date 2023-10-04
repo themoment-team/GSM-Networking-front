@@ -7,6 +7,6 @@ export const config = {
 
 export function middleware(request: NextRequest) {
   if (request.nextUrl.hostname === 'gsm.moip.shop') {
-    return NextResponse.rewrite(new URL('/', 'https://gsm-networking.com'));
+    return NextResponse.redirect(new URL('/', 'https://gsm-networking.com'));
   }
 }
