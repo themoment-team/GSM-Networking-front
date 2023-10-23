@@ -3,11 +3,11 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect, useState } from 'react';
 
-import WorkerListHeader from './Header';
+import MentorListHeader from './Header';
 import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
-import { FilterModal, SearchBar, WorkerListItem } from '@/components';
+import { FilterModal, MentorCard } from '@/components';
 import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
@@ -20,10 +20,15 @@ interface Props {
   setSelectedPosition: Dispatch<SetStateAction<PositionType | null>>;
 }
 
-const isIncludesKeyword = (worker: WorkerType, keyword: string) =>
-  worker.name.includes(keyword) ||
-  worker.company.name.includes(keyword) ||
-  worker.position.includes(keyword);
+const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
+  const lowerCaseKeyword = keyword.toLowerCase();
+  
+  return (
+    worker.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.company.name.toLowerCase().includes(lowerCaseKeyword) ||
+    worker.position.toLowerCase().includes(lowerCaseKeyword)
+  );
+};
 
 const isSelectedGeneration = (
   worker: WorkerType,
@@ -36,7 +41,7 @@ const isSelectedPosition = (
   selectedPosition: PositionType | null
 ) => (selectedPosition === null ? true : worker.position === selectedPosition);
 
-const WorkerList: React.FC<Props> = ({
+const MentorList: React.FC<Props> = ({
   initWorkerList,
   keyword,
   selectedGeneration,
@@ -72,19 +77,16 @@ const WorkerList: React.FC<Props> = ({
           setSelectedPosition={setSelectedPosition}
         />
       )}
-      <WorkerListHeader
+      <MentorListHeader
         isShowFilterModal={isShowFilterModal}
         setIsShowFilterModal={setIsShowFilterModal}
-      />
-      <SearchBar
-        setKeyword={setKeyword}
         keyword={keyword}
-        placeholder='찾고 싶은 사람, 전공, 회사명 등을 검색해보세요'
+        setKeyword={setKeyword}
       />
       {workerList.length ? (
         <S.WorkerList>
           {workerList.map((worker) => (
-            <WorkerListItem key={worker.id} worker={worker} />
+            <MentorCard key={worker.id} worker={worker} />
           ))}
         </S.WorkerList>
       ) : (
@@ -100,4 +102,4 @@ const WorkerList: React.FC<Props> = ({
   );
 };
 
-export default WorkerList;
+export default MentorList;

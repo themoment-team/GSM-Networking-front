@@ -34,6 +34,7 @@ export function GlobalStyle() {
           background: '#ffffff';
           height: 100vh;
           height: 100dvh;
+          overscroll-behavior-y: none;
         }
 
         a {
@@ -65,9 +66,6 @@ export function GlobalStyle() {
           }
           @media (max-width: 320px) {
             font-size: 8px;
-          }
-          @media (max-width: 290px) {
-            font-size: 7px;
           }
         }
 

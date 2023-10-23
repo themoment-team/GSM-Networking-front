@@ -1,40 +1,21 @@
 const NotExistEmailIcon = () => (
   <svg
-    width='1.5rem'
-    height='1.5rem'
-    viewBox='0 0 24 24'
-    fill='none'
     xmlns='http://www.w3.org/2000/svg'
+    width='1.125rem'
+    height='0.875rem'
+    viewBox='0 0 18 14'
+    fill='none'
   >
-    <g clipPath='url(#clip0_205_7665)'>
-      <path d='M3 19V5H21V19H3Z' stroke='#CBCCCE' strokeWidth='4' />
+    <g clipPath='url(#clip0_1_172)'>
+      <path d='M0 14V0H18V14H0Z' fill='#EFF0F2' />
       <path
-        d='M10.7721 12.045L3 6H12H21L13.2279 12.045C12.5057 12.6067 11.4943 12.6067 10.7721 12.045Z'
-        stroke='#828387'
-        strokeWidth='2'
+        d='M7.77212 6.04498L0 0H18L10.2279 6.04498C9.50566 6.60671 8.49434 6.60671 7.77212 6.04498Z'
+        fill='#B4B5B7'
       />
     </g>
-    <rect
-      x='1'
-      y='20.3848'
-      width='26'
-      height='4'
-      rx='2'
-      transform='rotate(-45 1 20.3848)'
-      fill='white'
-    />
-    <rect
-      x='1.70711'
-      y='21.0435'
-      width='26'
-      height='2'
-      rx='1'
-      transform='rotate(-45 1.70711 21.0435)'
-      fill='#CBCCCE'
-    />
     <defs>
-      <clipPath id='clip0_205_7665'>
-        <rect x='3' y='5' width='18' height='14' rx='2' fill='white' />
+      <clipPath id='clip0_1_172'>
+        <rect width='18' height='14' rx='2' fill='white' />
       </clipPath>
     </defs>
   </svg>
