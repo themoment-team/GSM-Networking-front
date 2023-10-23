@@ -4,6 +4,8 @@ import { forwardRef } from 'react';
 
 import * as S from './style';
 
+import { FormItemWrapper } from '@/components';
+
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   inputTitle: string;
   errorMessage?: string;
@@ -12,14 +14,13 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
 
 const Input = forwardRef<HTMLInputElement, Props>(
   ({ inputTitle, errorMessage, required, ...attributes }, ref) => (
-    <S.InputContainer>
-      <S.InputTitle>
-        {inputTitle}
-        {required && <S.Required>*</S.Required>}
-      </S.InputTitle>
+    <FormItemWrapper
+      title={inputTitle}
+      errorMessage={errorMessage}
+      required={required}
+    >
       <S.CustomInput ref={ref} isError={!!errorMessage} {...attributes} />
-      <S.ErrorMessage>{errorMessage}</S.ErrorMessage>
-    </S.InputContainer>
+    </FormItemWrapper>
   )
 );
 

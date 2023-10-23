@@ -1,21 +1,5 @@
 import styled from '@emotion/styled';
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-export const InputTitle = styled.p`
-  display: inline;
-  ${({ theme }) => theme.typo.body2}
-  color: ${({ theme }) => theme.color.grey[600]};
-`;
-
-export const Required = styled.span`
-  color: ${({ theme }) => theme.color.error};
-`;
-
 export const CustomInput = styled.input<{ isError?: boolean }>`
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.black};
@@ -35,9 +19,4 @@ export const CustomInput = styled.input<{ isError?: boolean }>`
       ${({ theme, isError }) =>
         isError ? theme.color.error : theme.color.skyBlue[400]};
   }
-`;
-
-export const ErrorMessage = styled.p`
-  ${({ theme }) => theme.typo.caption}
-  color: ${({ theme }) => theme.color.error};
 `;
