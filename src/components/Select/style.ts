@@ -1,21 +1,11 @@
 import styled from '@emotion/styled';
 
-export const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-`;
-
-export const InputTitle = styled.p`
-  ${({ theme }) => theme.typo.body2}
-  color: ${({ theme }) => theme.color.grey[600]};
-`;
-
 export const CustomSelect = styled.select<{
   isError?: boolean;
   isDefault: boolean;
 }>`
   ${({ theme }) => theme.typo.body1}
+  width: 100%;
   color: ${({ theme, isDefault }) =>
     isDefault ? theme.color.grey[400] : theme.color.black};
   padding: 0.75rem 1rem;
@@ -39,9 +29,4 @@ export const CustomSelect = styled.select<{
   :default {
     color: ${({ theme }) => theme.color.grey[400]};
   }
-`;
-
-export const ErrorMessage = styled.p`
-  ${({ theme }) => theme.typo.caption}
-  color: ${({ theme }) => theme.color.error};
 `;
