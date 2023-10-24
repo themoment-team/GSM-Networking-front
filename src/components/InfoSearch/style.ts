@@ -20,7 +20,7 @@ export const Title = styled.h1`
   ${({ theme }) => theme.typo.h3};
 `;
 
-export const SkipButton = styled.button`
+export const SkipLink = styled.button`
   color: ${({ theme }) => theme.color.skyBlue[400]};
   ${({ theme }) => theme.typo.body1};
 `;
@@ -28,6 +28,7 @@ export const SkipButton = styled.button`
 export const SearchContainer = styled.div`
   margin-top: 2.5rem;
   position: relative;
+  width: 100%;
 `;
 
 export const SearchInput = styled.input`
@@ -35,25 +36,26 @@ export const SearchInput = styled.input`
   ${({ theme }) => theme.typo.body1};
   width: 100%;
   border-radius: 0.625rem;
-  display: flex;
   padding: 0.75rem 1rem;
-  justify-content: space-between;
-  align-items: center;
   background: #fff;
-
   &::placeholder {
     color: ${({ theme }) => theme.color.grey[400]};
   }
 `;
 
-export const SearchImg = styled.div`
+export const SearchButton = styled.button`
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  color: ${({ theme }) => theme.color.white};
+  ${({ theme }) => theme.typo.body2};
   position: absolute;
-  right: 0.5rem;
+  right: 0.25rem;
   top: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+  padding: 0.59375rem 1.0625rem;
+  border-radius: 0.625rem;
 `;
 
-export const SearchButton = styled.button`
+export const SkipButton = styled.button`
   background-color: ${({ theme }) => theme.color.grey[200]};
   color: ${({ theme }) => theme.color.grey[500]};
   ${({ theme }) => theme.typo.button};
