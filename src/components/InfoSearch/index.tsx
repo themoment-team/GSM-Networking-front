@@ -4,8 +4,6 @@ import React, { useState } from 'react';
 
 import * as S from './style';
 
-import { SearchIcon } from '@/assets';
-
 const InfoSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState('');
 
@@ -16,7 +14,7 @@ const InfoSearch: React.FC = () => {
     <S.Container>
       <S.TitleBox>
         <S.Title>내 정보 연동</S.Title>
-        <S.SkipButton>건너뛰기</S.SkipButton>
+        <S.SkipLink>건너뛰기</S.SkipLink>
       </S.TitleBox>
       <S.SearchContainer>
         <S.SearchInput
@@ -24,11 +22,9 @@ const InfoSearch: React.FC = () => {
           value={inputValue}
           onChange={handleInputChange}
         />
-        <S.SearchImg>
-          <SearchIcon />
-        </S.SearchImg>
+        <S.SearchButton>검색</S.SearchButton>
       </S.SearchContainer>
-      <S.SearchButton>다음</S.SearchButton>
+      <S.SkipButton>다음</S.SkipButton>
     </S.Container>
   );
 };
