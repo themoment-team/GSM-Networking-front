@@ -32,6 +32,13 @@ const SignUp = () => {
     formState: { errors },
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
+    defaultValues: {
+      name: '',
+      phoneNumber: '',
+      email: null,
+      generation: '',
+      snsUrl: null,
+    },
   });
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
