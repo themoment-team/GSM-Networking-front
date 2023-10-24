@@ -21,8 +21,8 @@ export const Title = styled.h1`
 `;
 
 export const SkipLink = styled.button`
-  color: ${({ theme }) => theme.color.skyBlue[400]};
   ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
 
 export const SearchContainer = styled.div`
@@ -32,8 +32,8 @@ export const SearchContainer = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  border: 1px solid ${({ theme }) => theme.color.grey[100]};
   ${({ theme }) => theme.typo.body1};
+  border: 1px solid ${({ theme }) => theme.color.grey[100]};
   width: 100%;
   border-radius: 0.625rem;
   padding: 0.75rem 1rem;
