@@ -1,6 +1,7 @@
 export { default as BlueCheckIcon } from './BlueCheckIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CloseIcon } from './CloseIcon';
+export { default as DeleteIcon } from './DeleteIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as FilterIcon } from './FilterIcon';
 export { default as FoldIcon } from './FoldIcon';
