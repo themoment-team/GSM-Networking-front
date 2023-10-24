@@ -44,9 +44,9 @@ export const SearchInput = styled.input`
 `;
 
 export const SearchButton = styled.button`
+  ${({ theme }) => theme.typo.body2};
   background-color: ${({ theme }) => theme.color.skyBlue[400]};
   color: ${({ theme }) => theme.color.white};
-  ${({ theme }) => theme.typo.body2};
   position: absolute;
   right: 0.25rem;
   top: 50%;
@@ -56,9 +56,9 @@ export const SearchButton = styled.button`
 `;
 
 export const SkipButton = styled.button`
+  ${({ theme }) => theme.typo.button};
   background-color: ${({ theme }) => theme.color.grey[200]};
   color: ${({ theme }) => theme.color.grey[500]};
-  ${({ theme }) => theme.typo.button};
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
