@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import * as S from './style';
 
 const InfoSearch: React.FC = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) =>
     setInputValue(e.currentTarget.value);
