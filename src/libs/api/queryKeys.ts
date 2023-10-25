@@ -3,7 +3,7 @@ export const fileQueryKeys = {
 } as const;
 
 export const menteeQueryKeys = {
-  postChangeMenteeToMentor: () => ['mentee'],
+  postMenteeRole: () => ['mentee'],
 } as const;
 
 export const mentorQueryKeys = {

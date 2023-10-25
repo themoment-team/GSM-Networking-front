@@ -1,5 +1,5 @@
 export const authUrl = {
-  LoginLink: () => '/auth/oauth2/authorization/google',
+  loginLink: () => '/auth/oauth2/authorization/google',
   patchRefresh: () => '/auth/reissue',
   getLogout: () => '/auth/logout',
 };
@@ -9,7 +9,7 @@ export const fileUrl = {
 };
 
 export const menteeUrl = {
-  postChangeMenteeToMentor: () => '/mentee',
+  postMenteeRole: () => '/mentee',
 };
 
 export const mentorUrl = {
