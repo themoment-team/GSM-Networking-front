@@ -19,7 +19,7 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gsm.moip.shop'),
+  metadataBase: new URL('https://www.gsm-networking.com'),
   title: '취업자 리스트 조회',
   description:
     '광주소프트웨어마이스터고등학교 학생들의 취업 정보를 확인 할 수 있어요.',
