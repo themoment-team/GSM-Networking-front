@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const Container = styled.div`
   height: 100vh;
+  height: 100dvh;
   position: relative;
   padding-top: 5rem;
 
