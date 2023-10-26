@@ -1,17 +1,24 @@
+import type { PositionType } from '@/types';
+
+interface CareerFormFieldType<T> {
+  value: T;
+  errorMessage: string | null;
+}
+
 export interface CareerFormType {
-  companyName: string;
-  companyUrl: string;
-  position: string;
-  startYear: '년' | number;
-  startMonth: '월' | number;
-  endYear: '년' | number;
-  endMonth: '월' | number;
-  isWorking: boolean;
+  companyName: CareerFormFieldType<string>;
+  companyUrl: CareerFormFieldType<string>;
+  position: CareerFormFieldType<PositionType | '포지션 선택'>;
+  startYear: CareerFormFieldType<'년' | number>;
+  startMonth: CareerFormFieldType<'월' | number>;
+  endYear: CareerFormFieldType<'년' | number>;
+  endMonth: CareerFormFieldType<'월' | number>;
+  isWorking: CareerFormFieldType<boolean>;
 }
 
 export interface CareerType {
   companyName: string;
-  companyUrl: string;
+  companyUrl?: string | null;
   position: string;
   startDate: Date;
   endDate: Date;
