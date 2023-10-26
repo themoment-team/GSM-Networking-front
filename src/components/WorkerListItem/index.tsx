@@ -7,10 +7,10 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import type { WorkerType } from '@/types/worker';
+import type { MentorType } from '@/types/worker';
 
 interface Props {
-  worker: WorkerType;
+  worker: MentorType;
 }
 
 const WorkerListItem: React.FC<Props> = ({ worker }) => {
