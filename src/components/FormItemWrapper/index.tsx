@@ -5,7 +5,7 @@ import * as S from './style';
 interface Props {
   title: string;
   required?: boolean;
-  errorMessage?: string;
+  errorMessage?: string | null;
   children: React.ReactNode;
 }
 
