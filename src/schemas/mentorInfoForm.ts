@@ -9,9 +9,8 @@ export const mentorInfoFormSchema = z.object({
     .string()
     .length(11, { message: '전화번호는 11글자로 입력해주세요.' }),
   email: z
-    .string()
-    .email({ message: '이메일 형식으로 입력해주세요.' })
-    .nullable(),
+    .string({ required_error: '이메일을 입력해주세요.' })
+    .email({ message: '이메일 형식으로 입력해주세요.' }),
   generation: z
     .string({
       required_error: '기수를 입력해주세요.',
