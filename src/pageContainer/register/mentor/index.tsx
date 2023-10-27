@@ -3,10 +3,11 @@
 import type { ChangeEvent } from 'react';
 import { useState } from 'react';
 
-import type { SubmitHandler } from 'react-hook-form';
+import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
 
 import * as S from './style';
 
@@ -14,6 +15,7 @@ import { CareerRegistrationBox, Header, Input } from '@/components';
 import { defaultCareer } from '@/constants';
 import { mentorInfoFormSchema } from '@/schemas';
 import type { CareerFormType, MentorInfoFormType } from '@/types';
+import { careerValidation } from '@/utils';
 
 const onlyAllowNumberInput = (e: ChangeEvent<HTMLInputElement>) => {
   const inputValue = e.target.value;
@@ -21,7 +23,19 @@ const onlyAllowNumberInput = (e: ChangeEvent<HTMLInputElement>) => {
   e.target.value = inputValue.replace(/[^0-9]/g, '');
 };
 
-const SignUp = () => {
+const hasErrorInCareerArray = (careerArray: CareerFormType[]) =>
+  careerArray.some(
+    (career) =>
+      career.companyName.errorMessage ||
+      career.companyUrl.errorMessage ||
+      career.endMonth.errorMessage ||
+      career.endYear.errorMessage ||
+      career.position.errorMessage ||
+      career.startMonth.errorMessage ||
+      career.startYear.errorMessage
+  );
+
+const MentorRegister = () => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     defaultCareer,
   ]);
@@ -35,20 +49,36 @@ const SignUp = () => {
     defaultValues: {
       name: '',
       phoneNumber: '',
-      email: null,
+      email: '',
       generation: '',
       snsUrl: null,
     },
   });
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
-    console.log(data.name);
+    careerValidation(setCareerArray);
+
+    if (hasErrorInCareerArray(careerArray)) {
+      return;
+    }
+
+    const body = {
+      name: data.name,
+      email: data.email,
+      generation: data.generation,
+    };
+
+    toast.success('등록 성공');
+  };
+
+  const onError: SubmitErrorHandler<MentorInfoFormType> = (data) => {
+    careerValidation(setCareerArray);
   };
 
   return (
     <>
       <Header />
-      <S.Form onSubmit={handleSubmit(onSubmit)}>
+      <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
         <S.PrivacyBox>
           <S.Title>개인정보</S.Title>
           <S.InputWrapper>
@@ -99,4 +129,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default MentorRegister;

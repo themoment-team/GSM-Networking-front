@@ -1,1 +1,1 @@
-export { default as SignUp } from './signup';
+export { default as MentorRegister } from './register/mentor';
