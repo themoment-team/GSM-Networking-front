@@ -1,6 +1,6 @@
 import type { GenerationType, PositionType } from '.';
 
-export interface MentorType {
+export interface WorkerType {
   id: string;
   name: string;
   email?: string;

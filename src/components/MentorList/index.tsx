@@ -8,10 +8,10 @@ import * as S from './style';
 
 import { SearchNotFoundIcon } from '@/assets';
 import { FilterModal, MentorCard } from '@/components';
-import type { GenerationType, PositionType, MentorType } from '@/types';
+import type { GenerationType, PositionType, WorkerType } from '@/types';
 
 interface Props {
-  initWorkerList: MentorType[];
+  initWorkerList: WorkerType[];
   keyword: string;
   selectedGeneration: GenerationType;
   selectedPosition: PositionType | null;
@@ -20,7 +20,7 @@ interface Props {
   setSelectedPosition: Dispatch<SetStateAction<PositionType | null>>;
 }
 
-const isIncludesKeyword = (worker: MentorType, keyword: string) => {
+const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
   const lowerCaseKeyword = keyword.toLowerCase();
 
   return (
@@ -31,13 +31,13 @@ const isIncludesKeyword = (worker: MentorType, keyword: string) => {
 };
 
 const isSelectedGeneration = (
-  worker: MentorType,
+  worker: WorkerType,
   selectedGeneration: GenerationType
 ) =>
   selectedGeneration === null ? true : worker.generation === selectedGeneration;
 
 const isSelectedPosition = (
-  worker: MentorType,
+  worker: WorkerType,
   selectedPosition: PositionType | null
 ) => (selectedPosition === null ? true : worker.position === selectedPosition);
 
@@ -50,7 +50,7 @@ const MentorList: React.FC<Props> = ({
   setSelectedGeneration,
   setSelectedPosition,
 }) => {
-  const [workerList, setWorkerList] = useState<MentorType[]>(initWorkerList);
+  const [workerList, setWorkerList] = useState<WorkerType[]>(initWorkerList);
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   useEffect(() => {
