@@ -8,10 +8,10 @@ import RandomWorkerImg from './RandomMentorImg';
 import * as S from './style';
 
 import * as I from '@/assets';
-import type { WorkerType } from '@/types/worker';
+import type { MentorType } from '@/types/worker';
 
 interface Props {
-  worker: WorkerType;
+  worker: MentorType;
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {

@@ -6,6 +6,7 @@ export { default as FilterButton } from './Buttons/Filter';
 export { default as FormItemWrapper } from './FormItemWrapper';
 export { default as Header } from './Header';
 export { default as Input } from './Input';
+export { default as InfoSearch } from './InfoSearch';
 export { default as Layout } from './Layout';
 export { default as MainPage } from './MainPage';
 export { default as MentorCard } from './MentorCard';

@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import Script from 'next/script';
 
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
 import Providers from './providers';
@@ -48,6 +49,7 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>
+          <ReactQueryDevtools />
           <ToastContainer />
           <GlobalStyle />
           <Layout>{children}</Layout>
