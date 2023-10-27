@@ -64,7 +64,6 @@ export const PeriodSelectWrapper = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 0.5rem;
-  margin: 0.5rem 0 1rem;
 `;
 
 export const Tilde = styled.span`
@@ -82,6 +81,7 @@ export const TenureCheckLabel = styled.label`
   align-items: center;
   gap: 0.5rem;
   color: ${({ theme }) => theme.color.grey[500]};
+  margin-top: 1rem;
   cursor: pointer;
   :hover {
     div {
