@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
-import type { MentorType } from '@/types';
+import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
 
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
 };
 
-const getWorkerList = async (): Promise<MentorType[]> => {
+const getWorkerList = async (): Promise<WorkerType[]> => {
   const cookieStore = cookies();
 
   const accessToken = cookieStore.get('accessToken')?.value;
@@ -58,7 +58,7 @@ const getWorkerList = async (): Promise<MentorType[]> => {
   }
 };
 
-const addTemporaryImgNumber = (workerList: MentorType[]) =>
+const addTemporaryImgNumber = (workerList: WorkerType[]) =>
   workerList.map((worker) => ({
     ...worker,
     temporaryImgNumber: Math.floor(Math.random() * 5),
