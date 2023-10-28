@@ -1,4 +1,4 @@
-import { SignIn } from '@/components';
+import { SignIn } from '@/pageContainer';
 
 import type { Metadata } from 'next';
 
