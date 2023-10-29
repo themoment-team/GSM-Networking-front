@@ -19,9 +19,9 @@ const SignUp = () => {
 
   const { push } = useRouter();
 
-  const { mutate: menteeRoleMutate, isError } = usePostMenteeRole();
-
-  isError && toast.error('멘티 등록에 실패했습니다.');
+  const { mutate: menteeRoleMutate } = usePostMenteeRole({
+    onError: () => toast.error('멘티 등록에 실패했습니다.'),
+  });
 
   const handleNextButtonClick = () => {
     if (checkPolicy === false)
