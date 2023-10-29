@@ -21,7 +21,13 @@ const SignUp = () => {
 
   const { mutate: menteeRoleMutate } = usePostMenteeRole({
     onError: () => toast.error('멘티 등록에 실패했습니다.'),
+    onSuccess: () => handleMutateSuccess(),
   });
+
+  const handleMutateSuccess = () => {
+    toast.success('멘티 등록에 성공했습니다. 재 로그인 해주세요.');
+    push('/auth/signin');
+  };
 
   const handleNextButtonClick = () => {
     if (checkPolicy === false)
