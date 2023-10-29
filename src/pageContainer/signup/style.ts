@@ -8,6 +8,7 @@ export const Container = styled.div`
   justify-content: flex-start;
   align-items: flex-start;
   gap: 3rem;
+  position: relative;
 
   @media screen and (max-width: 600px) {
     padding: 6rem 1rem 1rem 1rem;
@@ -61,19 +62,23 @@ export const AgreementButtonLink = styled.a`
   color: ${({ theme }) => theme.color.grey[500]};
 `;
 
-export const SubmitButtonBox = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  padding-bottom: 3rem;
-`;
-
 export const SubmitButton = styled.button`
+  width: 100%;
+  position: absolute;
+  bottom: 3rem;
   ${({ theme }) => theme.typo.button};
   background-color: ${({ theme }) => theme.color.skyBlue[400]};
-  width: 100%;
   min-height: 2.75rem;
   color: white;
   border-radius: 0.625rem;
+
+  :disabled {
+    background-color: ${({ theme }) => theme.color.grey[200]};
+    color: ${({ theme }) => theme.color.grey[500]};
+    cursor: default;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: calc(100% - 2rem);
+  }
 `;
