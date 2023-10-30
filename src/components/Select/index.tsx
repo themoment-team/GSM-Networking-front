@@ -8,8 +8,8 @@ import * as S from './style';
 import { useForwardRef } from '@/hooks';
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
-  errorMessage?: string;
-  options: string[] | number[];
+  errorMessage?: string | null;
+  options: any[];
 }
 
 /**
