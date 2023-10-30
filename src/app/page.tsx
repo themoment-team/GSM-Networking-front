@@ -2,6 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
+import { mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
@@ -19,7 +20,7 @@ export default async function Home() {
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gsm.moip.shop'),
+  metadataBase: new URL('https://www.gsm-networking.com'),
   title: '취업자 리스트 조회',
   description:
     '광주소프트웨어마이스터고등학교 학생들의 취업 정보를 확인 할 수 있어요.',
@@ -31,17 +32,15 @@ export const metadata: Metadata = {
 };
 
 const getWorkerList = async (): Promise<WorkerType[]> => {
-  const cookieStore = cookies();
-
-  const accessToken = cookieStore.get('accessToken')?.value;
-
   try {
+    const accessToken = cookies().get('accessToken');
+
     const response = await fetch(
-      new URL('/api/worker/list', process.env.API_BASE_URL),
+      new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Cookie: `accessToken=${accessToken?.value}`,
         },
       }
     );
