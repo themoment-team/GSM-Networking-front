@@ -10,7 +10,7 @@ import type { Metadata } from 'next';
 const BASE_URL = process.env.BASE_URL;
 
 export default async function Home() {
-  const workerList = await getWorkerList();
+  const workerList = await getMentorList();
 
   const sortedWorkerList = [...workerList].sort((a, b) =>
     a.position.localeCompare(b.position)
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   },
 };
 
-const getWorkerList = async (): Promise<WorkerType[]> => {
+const getMentorList = async (): Promise<WorkerType[]> => {
   try {
     const accessToken = cookies().get('accessToken');
 
@@ -49,16 +49,16 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
       throw new Error('accessToken이 만료되었습니다.');
     }
 
-    const workerList = await response.json();
+    const mentorList = await response.json();
 
-    return addTemporaryImgNumber(workerList);
+    return addTemporaryImgNumber(mentorList);
   } catch (error) {
     return redirect(`${BASE_URL}/auth/refresh`);
   }
 };
 
-const addTemporaryImgNumber = (workerList: WorkerType[]) =>
-  workerList.map((worker) => ({
+const addTemporaryImgNumber = (mentorList: WorkerType[]) =>
+  mentorList.map((worker) => ({
     ...worker,
     temporaryImgNumber: Math.floor(Math.random() * 5),
   }));
