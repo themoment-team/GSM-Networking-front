@@ -28,7 +28,7 @@ const careerValidation = (setCareerArray: SetCareerArrayType) => {
       } else if (companyName.value.length > 20) {
         companyName.errorMessage = '20글자 이내로 입력 부탁드립니다.';
       } else {
-        companyName.errorMessage = '';
+        companyName.errorMessage = null;
       }
 
       // companyURL
