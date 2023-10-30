@@ -1,7 +1,7 @@
 'use client';
 
 import type { ChangeEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
@@ -11,10 +11,17 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { CareerRegistrationBox, Header, Input } from '@/components';
-import { defaultCareer } from '@/constants';
+import {
+  CareerRegistrationBox,
+  FormItemWrapper,
+  Header,
+  Input,
+  Select,
+  SelectFormItem,
+} from '@/components';
+import { GENERATION_ARRAY, defaultCareer } from '@/constants';
 import { mentorInfoFormSchema } from '@/schemas';
-import type { CareerFormType, MentorInfoFormType } from '@/types';
+import type { CareerFormType, MentorInfoFormType, MentorType } from '@/types';
 import { careerValidation } from '@/utils';
 
 const onlyAllowNumberInput = (e: ChangeEvent<HTMLInputElement>) => {
@@ -40,6 +47,10 @@ const MentorRegister = () => {
     defaultCareer,
   ]);
 
+  useEffect(() => {
+    console.log(careerArray);
+  }, [careerArray]);
+
   const {
     register,
     handleSubmit,
@@ -50,7 +61,6 @@ const MentorRegister = () => {
       name: '',
       phoneNumber: '',
       email: '',
-      generation: '',
       snsUrl: null,
     },
   });
@@ -62,7 +72,7 @@ const MentorRegister = () => {
       return;
     }
 
-    const body = {
+    const body: MentorType = {
       name: data.name,
       email: data.email,
       generation: data.generation,
@@ -105,13 +115,13 @@ const MentorRegister = () => {
               inputTitle='SNS'
               errorMessage={errors.snsUrl?.message}
             />
-            <Input
+            <SelectFormItem
               {...register('generation')}
-              inputTitle='기수'
-              errorMessage={errors.generation?.message}
               required={true}
-              onChange={onlyAllowNumberInput}
-              maxLength={1}
+              selectTitle='기수'
+              options={[...GENERATION_ARRAY]}
+              defaultValue='기수를 선택해주세요.'
+              errorMessage={errors.generation?.message}
             />
           </S.InputWrapper>
         </S.PrivacyBox>
