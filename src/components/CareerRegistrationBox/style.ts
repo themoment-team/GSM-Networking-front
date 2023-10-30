@@ -90,7 +90,7 @@ export const TenureCheckLabel = styled.label`
   }
 `;
 
-export const CheckBox = styled.button<{ isChecked: boolean }>`
+export const CheckBox = styled.div<{ isChecked: boolean }>`
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 0.5rem;

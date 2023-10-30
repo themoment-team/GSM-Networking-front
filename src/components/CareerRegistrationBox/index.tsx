@@ -1,11 +1,11 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
 import * as S from './style';
 
 import { CheckBoxIcon, DeleteIcon, PlusIcon } from '@/assets';
-import { FormItemWrapper, Input, Select } from '@/components';
+import { FormItemWrapper, Input, Select, SelectFormItem } from '@/components';
 import {
   MONTH_ARRAY,
   POSITION_ARRAY,
@@ -35,6 +35,9 @@ const CareerRegistrationBox: React.FC<Props> = ({
   setCareerArray,
   index,
 }) => {
+  const endYearRef = useRef<HTMLSelectElement>(null);
+  const endMonthRef = useRef<HTMLSelectElement>(null);
+
   const handleRemoveClick = () =>
     setCareerArray((prev) => prev.filter((_, i) => i !== index));
 
@@ -75,7 +78,19 @@ const CareerRegistrationBox: React.FC<Props> = ({
   const handleTenureCheck = (e: React.ChangeEvent<HTMLInputElement>) =>
     setCareerArray((prev) => {
       const newCareerArray = [...prev];
-      newCareerArray[index].isWorking.value = e.target.checked;
+      const isChecked = e.target.checked;
+
+      newCareerArray[index].isWorking.value = isChecked;
+
+      if (isChecked) {
+        if (endYearRef.current) endYearRef.current.value = '';
+        if (endMonthRef.current) endMonthRef.current.value = '';
+        newCareerArray[index].endYear.value = '년';
+        newCareerArray[index].endYear.errorMessage = null;
+        newCareerArray[index].endMonth.value = '월';
+        newCareerArray[index].endMonth.errorMessage = null;
+      }
+
       return newCareerArray;
     });
 
@@ -108,17 +123,14 @@ const CareerRegistrationBox: React.FC<Props> = ({
           onChange={(e) => handleInputChange(e, 'companyUrl')}
           errorMessage={companyUrl.errorMessage}
         />
-        <FormItemWrapper
-          title='포지션(직책, 직무)선택'
-          required={true}
+        <SelectFormItem
+          required
+          selectTitle='포지션(직책, 직무)'
+          options={[...POSITION_ARRAY]}
           errorMessage={position.errorMessage}
-        >
-          <Select
-            defaultValue='포지션 선택'
-            options={[...POSITION_ARRAY]}
-            onChange={handlePositionChange}
-          />
-        </FormItemWrapper>
+          defaultValue='포지션 선택'
+          onChange={handlePositionChange}
+        />
         <S.EmploymentDurationBox>
           <FormItemWrapper
             title='재직 기간'
@@ -135,22 +147,30 @@ const CareerRegistrationBox: React.FC<Props> = ({
                 defaultValue={startYear.value}
                 options={[...YEAR_ARRAY]}
                 onChange={(e) => handlePeriodChange(e, 'startYear')}
+                errorMessage={startYear.errorMessage}
               />
               <Select
                 defaultValue={startMonth.value}
                 options={[...MONTH_ARRAY]}
                 onChange={(e) => handlePeriodChange(e, 'startMonth')}
+                errorMessage={startMonth.errorMessage}
               />
               <S.Tilde>~</S.Tilde>
               <Select
+                ref={endYearRef}
                 defaultValue={endYear.value}
                 options={[...YEAR_ARRAY]}
+                disabled={isWorking.value}
                 onChange={(e) => handlePeriodChange(e, 'endYear')}
+                errorMessage={endYear.errorMessage}
               />
               <Select
+                ref={endMonthRef}
                 defaultValue={endMonth.value}
                 options={[...MONTH_ARRAY]}
+                disabled={isWorking.value}
                 onChange={(e) => handlePeriodChange(e, 'endMonth')}
+                errorMessage={endMonth.errorMessage}
               />
             </S.PeriodSelectWrapper>
           </FormItemWrapper>
@@ -160,7 +180,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
             onChange={handleTenureCheck}
           />
           <S.TenureCheckLabel htmlFor={`checkbox-${index}`}>
-            <S.CheckBox type='button' isChecked={isWorking.value}>
+            <S.CheckBox isChecked={isWorking.value}>
               {isWorking && <CheckBoxIcon />}
             </S.CheckBox>
             재직 중
