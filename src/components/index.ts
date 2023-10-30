@@ -14,7 +14,6 @@ export { default as MentorList } from './MentorList';
 export { default as NavigationEvents } from './NavigationEvents';
 export { default as SearchBar } from './SearchBar';
 export { default as Select } from './Select';
-export { default as SignIn } from './SignIn';
 export { default as WorkerListItem } from './WorkerListItem';
 export { default as SelectFormItem } from './SelectFormItem';
 // export { default as RegisterForm } from './RegisterForm';

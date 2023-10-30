@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { Container } from './style';
 
 import { Header, MentorList } from '@/components';
-import type { MentorType, GenerationType, PositionType } from '@/types';
+import type { WorkerType, GenerationType, PositionType } from '@/types';
 
 interface Props {
-  initWorkerList: MentorType[];
+  initWorkerList: WorkerType[];
 }
 
 const MainPage: React.FC<Props> = ({ initWorkerList }) => {
