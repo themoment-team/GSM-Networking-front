@@ -15,6 +15,11 @@ export const CustomSelect = styled.select<{
   border-radius: 0.625rem;
   cursor: pointer;
 
+  :disabled {
+    background-color: ${({ theme }) => theme.color.grey[50]};
+    cursor: default;
+  }
+
   ::placeholder {
     color: ${({ theme }) => theme.color.grey[400]};
   }
