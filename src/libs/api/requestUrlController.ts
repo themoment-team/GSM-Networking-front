@@ -14,5 +14,5 @@ export const menteeUrl = {
 
 export const mentorUrl = {
   postCreateMentor: () => '/mentor',
-  getMentorList: () => '/mentor/list',
+  getMentorList: () => '/mentor',
 };
