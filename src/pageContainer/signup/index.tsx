@@ -20,17 +20,13 @@ const SignUp = () => {
   const { push } = useRouter();
 
   const { mutate: menteeRoleMutate } = usePostMenteeRole({
-    onError: (error) => {
-      toast.error('멘티 등록에 실패했습니다.');
-      // eslint-disable-next-line no-console
-      console.error(error);
-    },
+    onError: () => toast.error('멘티 등록에 실패했습니다.'),
     onSuccess: () => handleMutateSuccess(),
   });
 
   const handleMutateSuccess = () => {
-    toast.success('멘티 등록에 성공했습니다. 재 로그인 해주세요.');
-    push('/auth/signin');
+    toast.success('멘티 등록에 성공했습니다.');
+    push('/');
   };
 
   const handleNextButtonClick = () => {
