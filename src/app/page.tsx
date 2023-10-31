@@ -32,15 +32,18 @@ export const metadata: Metadata = {
 };
 
 const getMentorList = async (): Promise<WorkerType[]> => {
-  try {
-    const accessToken = cookies().get('accessToken');
+  const accessToken = cookies().get('accessToken')?.value;
 
+  // TODO refresh
+  // if(!accessToken)
+
+  try {
     const response = await fetch(
       new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
       {
         method: 'GET',
         headers: {
-          Cookie: `accessToken=${accessToken?.value}`,
+          Cookie: `accessToken=${accessToken}`,
         },
       }
     );
