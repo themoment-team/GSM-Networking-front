@@ -9,7 +9,7 @@ import * as S from './style';
 import { GoogleIcon } from '@/assets';
 import { authUrl } from '@/libs';
 
-const API_URL = '/api/v1';
+const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`;
 
 const signInLink = API_URL + authUrl.loginLink();
 
