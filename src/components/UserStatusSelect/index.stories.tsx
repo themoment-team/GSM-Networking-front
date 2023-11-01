@@ -8,7 +8,7 @@ const meta: Meta<typeof UserStatusSelect> = {
     layout: 'padded',
   },
   args: {
-    role: 'mentee',
+    role: null,
     setRole: () => {},
   },
 };
@@ -17,8 +17,4 @@ export default meta;
 
 type Story = StoryObj<typeof UserStatusSelect>;
 
-export const Primary: Story = {
-  args: {
-    role: 'mentee',
-  },
-};
+export const Primary: Story = {};
