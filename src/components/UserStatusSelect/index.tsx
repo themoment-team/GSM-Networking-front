@@ -12,7 +12,7 @@ interface Props {
   setRole: Dispatch<SetStateAction<'mentee' | 'mentor' | null>>;
 }
 
-const SelectButtonBox: React.FC<Props> = ({ role, setRole }) => (
+const UserStatusSelect: React.FC<Props> = ({ role, setRole }) => (
   <S.Container>
     <S.SelectButton
       isActive={role === 'mentee'}
@@ -33,4 +33,4 @@ const SelectButtonBox: React.FC<Props> = ({ role, setRole }) => (
   </S.Container>
 );
 
-export default SelectButtonBox;
+export default UserStatusSelect;
