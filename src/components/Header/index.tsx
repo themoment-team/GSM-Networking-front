@@ -1,39 +1,41 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import * as S from './style';
 
 import * as I from '@/assets';
-import { DropDown } from '@/components';
 
 interface Props {
   clearList: () => void;
 }
 
 const Header: React.FC<Props> = ({ clearList }) => {
-  const [isDrop, setIsDrop] = useState<boolean>(false);
+  const router = useRouter();
+
+  const mentorRegisteClick = () => router.push('/register/mentor');
 
   return (
-    <>
-      <S.Header>
-        <S.Inner>
-          <S.Logo type='button' onClick={clearList}>
-            <I.GsmNetworkingIcon />
-            GSM Networking
-          </S.Logo>
-          <S.IconContainer
-            type='button'
-            onClick={() => {
-              setIsDrop((isDrop) => !isDrop);
-            }}
-          >
-            {isDrop ? <I.FoldIcon /> : <I.MoreIcon />}
-          </S.IconContainer>
-        </S.Inner>
-      </S.Header>
-      {isDrop && <DropDown setIsDrop={setIsDrop} />}
-    </>
+    <S.Header>
+      <S.Inner>
+        <S.Logo type='button' onClick={clearList}>
+          <I.GsmNetworkingIcon />
+          GSM Networking
+        </S.Logo>
+        <S.GapBox />
+        <S.RedirectBox>
+          <S.RedirectButton>멘토 컨택</S.RedirectButton>
+          <S.RedirectButton onClick={mentorRegisteClick}>
+            멘토 등록
+          </S.RedirectButton>
+        </S.RedirectBox>
+        <S.ProfileBox>
+          <I.ProfileImg0 />
+        </S.ProfileBox>
+      </S.Inner>
+    </S.Header>
   );
 };
 
