@@ -22,7 +22,7 @@ interface Props {
 
 const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
   const lowerCaseKeyword = keyword.toLowerCase();
-  
+
   return (
     worker.name.toLowerCase().includes(lowerCaseKeyword) ||
     worker.company.name.toLowerCase().includes(lowerCaseKeyword) ||

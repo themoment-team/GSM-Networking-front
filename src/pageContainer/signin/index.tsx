@@ -7,9 +7,11 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import { GoogleIcon } from '@/assets';
+import { authUrl } from '@/libs';
 
-const oauthLink =
-  'https://accounts.google.com/o/oauth2/auth/oauthchooseaccount?client_id=807267617496-dvq6b3b9phu5p8pu2k43iakec6jb1149.apps.googleusercontent.com&redirect_uri=https://gsm.moip.shop/auth/signin/google&response_type=code&scope=email%20profile%20openid&access_type=offline&service=lso&o2v=1&flowName=GeneralOAuthFlow';
+const API_URL = `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1`;
+
+const signInLink = API_URL + authUrl.loginLink();
 
 const SignIn = () => {
   const searchParams = useSearchParams();
@@ -27,7 +29,7 @@ const SignIn = () => {
   return (
     <S.Container>
       <S.Title>GSM Networking</S.Title>
-      <S.LoginLink href={oauthLink}>
+      <S.LoginLink href={signInLink}>
         <GoogleIcon />
         구글로 로그인
       </S.LoginLink>

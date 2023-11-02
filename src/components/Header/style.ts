@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const Header = styled.header`
   width: 100%;
@@ -25,7 +26,7 @@ export const Inner = styled.div`
   }
 `;
 
-export const Logo = styled.button`
+export const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
   color: #000;

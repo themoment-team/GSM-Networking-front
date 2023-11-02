@@ -9,13 +9,15 @@ import * as S from './style';
 import * as I from '@/assets';
 
 interface Props {
-  clearList: () => void;
+  clearList?: () => void;
 }
 
 const Header: React.FC<Props> = ({ clearList }) => {
   const router = useRouter();
 
   const mentorRegisteClick = () => router.push('/register/mentor');
+
+  const handleLogoClick = () => clearList && clearList();
 
   return (
     <S.Header>
