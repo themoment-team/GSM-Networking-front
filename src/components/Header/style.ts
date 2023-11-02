@@ -16,8 +16,8 @@ export const Header = styled.header`
 export const Inner = styled.div`
   width: 600px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -36,17 +36,20 @@ export const Logo = styled.button`
   column-gap: 0.38rem;
 `;
 
-export const IconContainer = styled.button`
-  & > svg {
-    display: block;
-  }
-`;
-
-export const PageName = styled.p`
+export const RedirectButton = styled.button`
   ${({ theme }) => theme.typo.body1};
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.grey[400]};
+  border: none;
 `;
 
-export const LogoButton = styled.button`
-  cursor: pointer;
+export const RedirectBox = styled.div`
+  /* padding: 0 3rem 0 10.33rem; */
+  display: flex;
+  column-gap: 1.5rem;
 `;
+
+export const GapBox = styled.div`
+  width: 4rem;
+`;
+
+export const ProfileBox = styled.div``;
