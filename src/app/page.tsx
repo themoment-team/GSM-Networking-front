@@ -7,8 +7,6 @@ import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
 
-const BASE_URL = process.env.BASE_URL;
-
 export default async function Home() {
   const workerList = await getMentorList();
 
@@ -56,7 +54,8 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
     return addTemporaryImgNumber(mentorList);
   } catch (error) {
-    return redirect(`${BASE_URL}/auth/refresh`);
+    // TODO refresh
+    return redirect('/auth/signin');
   }
 };
 
