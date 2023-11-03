@@ -44,7 +44,6 @@ export const RedirectButton = styled.button`
 `;
 
 export const RedirectBox = styled.div`
-  /* padding: 0 3rem 0 10.33rem; */
   display: flex;
   column-gap: 1.5rem;
 `;
