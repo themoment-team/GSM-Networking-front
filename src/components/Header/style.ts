@@ -52,7 +52,19 @@ export const GapBox = styled.div`
   width: 4rem;
 `;
 
-export const ProfileBox = styled.div``;
+export const ProfileBox = styled.div`
+  background-color: ${({ theme }) => theme.color.grey[50]};
+  border-radius: 3.125rem;
+  overflow: hidden;
+  width: 2.25rem;
+  height: 2.25rem;
+
+  & > svg {
+    margin: 0.44rem 0 0 0.13rem;
+    width: 2.1875rem;
+    height: 2rem;
+  }
+`;
 
 export const Logo = styled.button`
   display: flex;
