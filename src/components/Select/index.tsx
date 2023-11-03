@@ -9,6 +9,7 @@ import { useForwardRef } from '@/hooks';
 
 interface Props extends React.InputHTMLAttributes<HTMLSelectElement> {
   errorMessage?: string | null;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: any[];
 }
 
