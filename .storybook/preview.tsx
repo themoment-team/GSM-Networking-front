@@ -40,9 +40,9 @@ const preview: Preview = {
           },
         ],
       },
-      nextjs: {
-        appDirectory: true,
-      },
+    },
+    nextjs: {
+      appDirectory: true,
     },
     layout: 'fullscreen',
     viewport: {
