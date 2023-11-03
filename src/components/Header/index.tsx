@@ -32,7 +32,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
           </S.RedirectButton>
         </S.RedirectBox>
         <S.ProfileBox>
-          <I.ProfileImg0 />
+          <I.PersonImg4 />
         </S.ProfileBox>
       </S.Inner>
     </S.Header>
