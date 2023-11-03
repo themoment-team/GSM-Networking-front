@@ -17,8 +17,6 @@ const Header: React.FC<Props> = ({ clearList }) => {
 
   const mentorRegisteClick = () => router.push('/register/mentor');
 
-  const handleLogoClick = () => clearList && clearList();
-
   return (
     <S.Header>
       <S.Inner>
