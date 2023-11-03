@@ -13,9 +13,9 @@ interface Props {
 }
 
 const Header: React.FC<Props> = ({ clearList }) => {
-  const router = useRouter();
+  const { push } = useRouter();
 
-  const mentorRegisteClick = () => router.push('/register/mentor');
+  const mentorRegisteClick = () => push('/register/mentor');
 
   return (
     <S.Header>
