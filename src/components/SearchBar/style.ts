@@ -19,7 +19,7 @@ export const SearchInput = styled.input`
 
   &::placeholder {
     ${({ theme }) => theme.typo.body1};
-    color: ${({ theme }) => theme.color.grey[400]}};
+    color: ${({ theme }) => theme.color.grey[400]};
   }
 
   &:focus {
