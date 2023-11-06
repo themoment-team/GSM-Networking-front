@@ -37,6 +37,13 @@ export const LogoLink = styled(Link)`
   column-gap: 0.38rem;
 `;
 
+// for test
+export const DeleteButton = styled.button`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[400]};
+  border: none;
+`;
+
 export const RedirectLink = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
