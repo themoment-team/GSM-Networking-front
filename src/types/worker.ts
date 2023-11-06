@@ -9,6 +9,7 @@ export interface WorkerType {
   company: CompanyType;
   SNS: string;
   temporaryImgNumber: number;
+  registered: boolean;
 }
 
 interface CompanyType {
