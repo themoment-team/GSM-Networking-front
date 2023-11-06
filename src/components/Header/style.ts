@@ -37,7 +37,7 @@ export const LogoLink = styled(Link)`
   column-gap: 0.38rem;
 `;
 
-export const RedirectButton = styled.button`
+export const RedirectButton = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
   border: none;
