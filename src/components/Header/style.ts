@@ -17,8 +17,8 @@ export const Header = styled.header`
 export const Inner = styled.div`
   width: 600px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -37,17 +37,44 @@ export const LogoLink = styled(Link)`
   column-gap: 0.38rem;
 `;
 
-export const IconContainer = styled.button`
+export const RedirectLink = styled(Link)`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[400]};
+  border: none;
+`;
+
+export const RedirectBox = styled.div`
+  display: flex;
+  column-gap: 1.5rem;
+`;
+
+export const GapBox = styled.div`
+  width: 4rem;
+`;
+
+export const ProfileBox = styled.div`
+  background-color: ${({ theme }) => theme.color.grey[50]};
+  border-radius: 3.125rem;
+  overflow: hidden;
+  width: 2.25rem;
+  height: 2.25rem;
+
   & > svg {
-    display: block;
+    width: 2.1875rem;
+    height: 2rem;
+    position: relative;
+    top: 0.44rem;
+    left: 0.13rem;
   }
 `;
 
-export const PageName = styled.p`
-  ${({ theme }) => theme.typo.body1};
-  color: ${({ theme }) => theme.color.black};
-`;
-
-export const LogoButton = styled.button`
-  cursor: pointer;
+export const Logo = styled.button`
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-size: 1.3125rem;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  column-gap: 0.38rem;
 `;
