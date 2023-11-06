@@ -60,9 +60,11 @@ export const ProfileBox = styled.div`
   height: 2.25rem;
 
   & > svg {
-    margin: 0.44rem 0 0 0.13rem;
     width: 2.1875rem;
     height: 2rem;
+    position: relative;
+    top: 0.44rem;
+    left: 0.13rem;
   }
 `;
 
