@@ -4,12 +4,11 @@ import React from 'react';
 
 import * as S from './style';
 
+import { PRIVACY_POLICY_URL } from '@/constants';
+
 interface Props {
   setIsDrop: React.Dispatch<React.SetStateAction<boolean>>;
 }
-
-const policyUrl =
-  'https://gsm-networking.notion.site/GSM-Networking-06e11dfad2c34be18559fa0c0b1f8573?pvs=4';
 
 const teamUrl =
   'https://gsm-networking.notion.site/GSM-Networking-30599e51feb345a781d1f41be1962f31?pvs=4';
@@ -20,7 +19,7 @@ const DropDown: React.FC<Props> = ({ setIsDrop }) => (
       <S.ListContainer>
         <S.ListItem>
           <S.LinkItem
-            href={policyUrl}
+            href={PRIVACY_POLICY_URL}
             target='_blank'
             rel='noopener noreferrer'
           >
