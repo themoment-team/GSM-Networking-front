@@ -1,7 +1,8 @@
 'use client';
 
-import type { ChangeEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
@@ -13,22 +14,20 @@ import * as S from './style';
 
 import {
   CareerRegistrationBox,
-  FormItemWrapper,
   Header,
   Input,
-  Select,
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY, defaultCareer } from '@/constants';
+import { usePostMentorCreate } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
-import type { CareerFormType, MentorInfoFormType, MentorType } from '@/types';
+import type {
+  CareerFormType,
+  CareerType,
+  MentorInfoFormType,
+  MentorType,
+} from '@/types';
 import { careerValidation } from '@/utils';
-
-const onlyAllowNumberInput = (e: ChangeEvent<HTMLInputElement>) => {
-  const inputValue = e.target.value;
-
-  e.target.value = inputValue.replace(/[^0-9]/g, '');
-};
 
 const hasErrorInCareerArray = (careerArray: CareerFormType[]) =>
   careerArray.some(
@@ -47,9 +46,17 @@ const MentorRegister = () => {
     defaultCareer,
   ]);
 
-  useEffect(() => {
-    console.log(careerArray);
-  }, [careerArray]);
+  const { push } = useRouter();
+
+  const { mutate } = usePostMentorCreate({
+    onError: () => toast.error('멘토 등록에 실패하였습니다.'),
+    onSuccess: () => handleMutateSuccess(),
+  });
+
+  const handleMutateSuccess = () => {
+    toast.success('멘토 등록에 성공하였습니다.');
+    push('/');
+  };
 
   const {
     register,
@@ -61,7 +68,6 @@ const MentorRegister = () => {
       name: '',
       phoneNumber: '',
       email: '',
-      snsUrl: null,
     },
   });
 
@@ -75,13 +81,45 @@ const MentorRegister = () => {
     const body: MentorType = {
       name: data.name,
       email: data.email,
-      generation: data.generation,
+      generation: Number(data.generation),
+      phoneNumber: data.phoneNumber,
+      snsUrl: data.snsUrl || null,
+      career: [],
     };
 
-    toast.success('등록 성공');
+    careerArray.forEach((career) => {
+      const startYear =
+        career.startYear.value !== '년' ? career.startYear.value : 0;
+      /** 0 ~ 11 */
+      const startMonth =
+        career.startMonth.value !== '월' ? career.startMonth.value - 1 : 0;
+
+      const endYear = career.endYear.value !== '년' ? career.endYear.value : 0;
+      /** 0 ~ 11 */
+      const endMonth =
+        career.endMonth.value !== '월' ? career.endMonth.value - 1 : 0;
+
+      const startDate = new Date(startYear, startMonth);
+      const endDate = career.isWorking.value
+        ? null
+        : new Date(endYear, endMonth);
+
+      const careerData: CareerType = {
+        companyName: career.companyName.value,
+        companyUrl: career.companyUrl.value || null,
+        position: career.position.value,
+        startDate: startDate,
+        endDate: endDate,
+        isWorking: career.isWorking.value,
+      };
+
+      body.career.push(careerData);
+    });
+
+    mutate(body);
   };
 
-  const onError: SubmitErrorHandler<MentorInfoFormType> = (data) => {
+  const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
     careerValidation(setCareerArray);
   };
 
