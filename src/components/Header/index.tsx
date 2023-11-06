@@ -19,8 +19,8 @@ const Header: React.FC<Props> = ({ clearList }) => (
       </S.Logo>
       <S.GapBox />
       <S.RedirectBox>
-        <S.RedirectButton href='/'>멘토 컨택</S.RedirectButton>
-        <S.RedirectButton href='/register/mentor'>멘토 등록</S.RedirectButton>
+        <S.RedirectLink href='/'>멘토 컨택</S.RedirectLink>
+        <S.RedirectLink href='/register/mentor'>멘토 등록</S.RedirectLink>
       </S.RedirectBox>
       <S.ProfileBox>
         <I.PersonImg4 />
