@@ -4,11 +4,11 @@ import * as S from './style';
 
 import { TriangleIcon } from '@/assets';
 
-interface ToolTilProps {
+interface ToolTipProps {
   textArr: string[];
 }
 
-const ToolTip: React.FC<ToolTilProps> = ({ textArr }) => (
+const ToolTip: React.FC<ToolTipProps> = ({ textArr }) => (
   <S.ToolTipWrapper>
     <S.IconWrapper>
       <TriangleIcon />
