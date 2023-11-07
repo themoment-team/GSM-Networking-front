@@ -6,7 +6,7 @@ export const ToolTipWrapper = styled.div`
   width: fit-content;
 `;
 
-export const ToolTilpContent = styled.div`
+export const ToolTipContent = styled.div`
   display: inline-flex;
   padding: 0.375rem 0.5rem;
   flex-direction: column;
