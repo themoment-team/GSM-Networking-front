@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useDeleteMyMentorData } from '@/hooks/api/mentor/useDeleteMyMentorData';
+import { useDeleteMyMentorData } from '@/hooks';
 
 interface Props {
   clearList?: () => void;
