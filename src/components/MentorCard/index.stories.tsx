@@ -19,6 +19,7 @@ export const Primary: Story = {
       id: 'tlsgmltjd',
       name: '신희성',
       email: 's23012@gsm.hs.kr',
+      registered: true,
       generation: 5,
       position: '백엔드',
       SNS: 'https://instagram.com/shs.o_o',

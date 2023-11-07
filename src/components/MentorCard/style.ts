@@ -13,6 +13,7 @@ export const WorkerInfoHead = styled.div`
 `;
 
 export const WorkerNameBox = styled.div`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -94,4 +95,11 @@ export const WorkerImgBox = styled.div`
   align-items: end;
   width: 100%;
   height: 6.8125rem;
+`;
+
+export const ToolTipWrapper = styled.div`
+  position: absolute;
+  top: 1.5rem;
+  left: 3.25rem;
+  width: 12.5rem;
 `;
