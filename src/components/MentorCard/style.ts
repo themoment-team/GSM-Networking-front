@@ -99,6 +99,7 @@ export const WorkerImgBox = styled.div`
 
 export const BlueCheckIconWrapper = styled.div`
   cursor: pointer;
+  display: flex;
 
   :hover {
     .tool-tip {
@@ -109,7 +110,7 @@ export const BlueCheckIconWrapper = styled.div`
 
 export const ToolTipWrapper = styled.div`
   position: absolute;
-  top: 1.5rem;
+  padding-top: 1.5rem;
   left: 3.25rem;
   width: 12.5rem;
   display: none;
