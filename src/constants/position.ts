@@ -28,6 +28,7 @@ const POSITION_ARRAY = [
   '설비 엔지니어',
   'ICT',
   '정보개발 엔지니어',
+  '클라이언트 개발',
 ] as const;
 
 export default POSITION_ARRAY;
