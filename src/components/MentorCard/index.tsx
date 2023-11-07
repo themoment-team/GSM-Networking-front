@@ -18,6 +18,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
+  const isRegistered = worker.registered;
 
   const handleSNSClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -38,7 +39,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
           <S.WorkerName>{worker.name}</S.WorkerName>
-          {/* <I.BlueCheckIcon /> */}
+          {isRegistered && <I.BlueCheckIcon />}
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (

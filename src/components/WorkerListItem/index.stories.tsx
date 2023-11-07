@@ -16,6 +16,7 @@ export const Primary: Story = {
       id: 'asdfghjkl',
       name: '김형록',
       email: 'khr5k0228@gmail.com',
+      registered: true,
       generation: 5,
       position: '프론트엔드',
       SNS: 'https://instagram.com/khr5k_0228',
