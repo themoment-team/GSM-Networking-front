@@ -1,5 +1,4 @@
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
 import { mentorUrl } from '@/libs';
@@ -55,7 +54,8 @@ const getMentorList = async (): Promise<WorkerType[]> => {
     return addTemporaryImgNumber(mentorList);
   } catch (error) {
     // TODO refresh
-    return redirect('/auth/signin');
+    return [];
+    // return redirect('/auth/signin');
   }
 };
 
