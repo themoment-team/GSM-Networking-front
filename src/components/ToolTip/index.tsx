@@ -13,11 +13,11 @@ const ToolTip: React.FC<ToolTipProps> = ({ textArr }) => (
     <S.IconWrapper>
       <TriangleIcon />
     </S.IconWrapper>
-    <S.ToolTilpContent>
+    <S.ToolTipContent>
       {textArr.map((text, i) => (
         <S.ToolTipText key={text + i}>{text}</S.ToolTipText>
       ))}
-    </S.ToolTilpContent>
+    </S.ToolTipContent>
   </S.ToolTipWrapper>
 );
 
