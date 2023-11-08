@@ -19,6 +19,7 @@ export const ToolTipText = styled.p`
   ${({ theme }) => theme.typo.overline}
   color: ${({ theme }) => theme.color.white};
   font-weight: 500;
+  white-space: nowrap;
 `;
 
 export const IconWrapper = styled.div`
