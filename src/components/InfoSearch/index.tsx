@@ -14,8 +14,8 @@ const InfoSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const { data } = useGetTempMentor(inputValue);
-  const [selectUser, setSelectUser] = useState<string | null>(null);
-  const isUserSelect = !!selectUser;
+  const [selectMentorId, setSelectMentorId] = useState<string | null>(null);
+  const isUserSelect = !!selectMentorId;
   const { push } = useRouter();
 
   // console.log(data);
@@ -24,7 +24,7 @@ const InfoSearch: React.FC = () => {
     inputRef.current && setInputValue(inputRef.current.value);
 
   const handleButtonClick = () =>
-    isUserSelect && push(`/register/mentor?id=${selectUser}`);
+    isUserSelect && push(`/register/mentor?id=${selectMentorId}`);
 
   return (
     <S.Container>
@@ -41,8 +41,8 @@ const InfoSearch: React.FC = () => {
           <TempMentorCard
             key={user.id}
             worker={user}
-            selectUser={selectUser}
-            setSelectUser={setSelectUser}
+            selectMentorId={selectMentorId}
+            setSelectMentorId={setSelectMentorId}
           />
         ))}
       </S.TempMentorCardBox>
