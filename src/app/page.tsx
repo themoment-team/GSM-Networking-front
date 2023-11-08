@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
-import { authUrl, mentorUrl } from '@/libs';
+import { mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
@@ -10,11 +10,7 @@ import type { Metadata } from 'next';
 export default async function Home() {
   const workerList = await getMentorList();
 
-  const sortedWorkerList = [...workerList].sort((a, b) =>
-    a.position.localeCompare(b.position)
-  );
-
-  return <MainPage initWorkerList={sortedWorkerList} />;
+  return <MainPage initWorkerList={[...workerList]} />;
 }
 
 export const metadata: Metadata = {
@@ -32,7 +28,7 @@ export const metadata: Metadata = {
 const getMentorList = async (): Promise<WorkerType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  if (!accessToken) return patchRefresh();
+  if (!accessToken) return redirect('/auth/refresh');
 
   try {
     const response = await fetch(
@@ -53,31 +49,7 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
     return addTemporaryImgNumber(mentorList);
   } catch (error) {
-    return patchRefresh();
-  }
-};
-
-const patchRefresh = async (): Promise<WorkerType[]> => {
-  const refreshToken = cookies().get('refreshToken')?.value;
-
-  if (!refreshToken) return redirect('/auth/signin');
-
-  try {
-    const response = await fetch(
-      new URL(`/api/v1${authUrl.patchRefresh()}`, process.env.BASE_URL),
-      {
-        method: 'PATCH',
-        headers: {
-          Cookie: `refreshToken=${refreshToken}`,
-        },
-      }
-    );
-
-    if (!response.ok) throw new Error('refreshToken이 만료되었습니다.');
-
-    return getMentorList();
-  } catch (e) {
-    return redirect('/auth/signin');
+    return redirect('/auth/refresh');
   }
 };
 
