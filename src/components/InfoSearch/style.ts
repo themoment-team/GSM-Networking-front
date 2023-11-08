@@ -56,10 +56,16 @@ export const SearchButton = styled.button`
   border-radius: 0.625rem;
 `;
 
-export const SkipButton = styled.button`
+export const Button = styled.button<{ isSelect: boolean }>`
   ${({ theme }) => theme.typo.button};
-  background-color: ${({ theme }) => theme.color.grey[200]};
-  color: ${({ theme }) => theme.color.grey[500]};
+
+  background-color: ${({ isSelect, theme }) =>
+    isSelect ? theme.color.skyBlue[400] : theme.color.grey[200]};
+
+  color: ${({ isSelect, theme }) =>
+    isSelect ? theme.color.white : theme.color.grey[500]};
+
+  cursor: ${({ isSelect }) => (isSelect ? 'pointer' : 'default')};
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -67,4 +73,8 @@ export const SkipButton = styled.button`
   border-radius: 0.625rem;
   width: 27.5rem;
   height: 2.75rem;
+`;
+
+export const TempMentorCardBox = styled.div`
+  width: 100%;
 `;
