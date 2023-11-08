@@ -13,7 +13,6 @@ export const WorkerInfoHead = styled.div`
 `;
 
 export const WorkerNameBox = styled.div`
-  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -100,6 +99,7 @@ export const WorkerImgBox = styled.div`
 export const BlueCheckIconWrapper = styled.div`
   cursor: pointer;
   display: flex;
+  position: relative;
 
   :hover {
     .tool-tip {
@@ -111,7 +111,7 @@ export const BlueCheckIconWrapper = styled.div`
 export const ToolTipWrapper = styled.div`
   position: absolute;
   padding-top: 0.375rem;
-  top: 1.125rem;
-  left: 3.25rem;
+  top: 0.8125rem;
+  left: -1.3125rem;
   display: none;
 `;
