@@ -110,7 +110,7 @@ export const BlueCheckIconWrapper = styled.div`
 
 export const ToolTipWrapper = styled.div`
   position: absolute;
-  padding-top: 0.75rem;
+  padding-top: 0.375rem;
   top: 1.125rem;
   left: 3.25rem;
   display: none;
