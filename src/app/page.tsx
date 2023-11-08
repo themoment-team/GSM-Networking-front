@@ -1,7 +1,8 @@
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
-import { mentorUrl } from '@/libs';
+import { authUrl, mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
@@ -31,8 +32,7 @@ export const metadata: Metadata = {
 const getMentorList = async (): Promise<WorkerType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  // TODO refresh
-  // if(!accessToken)
+  if (!accessToken) return patchRefresh();
 
   try {
     const response = await fetch(
@@ -53,9 +53,31 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
     return addTemporaryImgNumber(mentorList);
   } catch (error) {
-    // TODO refresh
-    return [];
-    // return redirect('/auth/signin');
+    return patchRefresh();
+  }
+};
+
+const patchRefresh = async (): Promise<WorkerType[]> => {
+  const refreshToken = cookies().get('refreshToken')?.value;
+
+  if (!refreshToken) return redirect('/auth/signin');
+
+  try {
+    const response = await fetch(
+      new URL(`/api/v1${authUrl.patchRefresh()}`, process.env.BASE_URL),
+      {
+        method: 'PATCH',
+        headers: {
+          Cookie: `refreshToken=${refreshToken}`,
+        },
+      }
+    );
+
+    if (!response.ok) throw new Error('refreshToken이 만료되었습니다.');
+
+    return getMentorList();
+  } catch (e) {
+    return redirect('/auth/signin');
   }
 };
 
