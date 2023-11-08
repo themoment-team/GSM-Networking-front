@@ -1,4 +1,4 @@
-import WorkerListItem from './';
+import WorkerListItem from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
@@ -26,5 +26,6 @@ export const Primary: Story = {
       },
       temporaryImgNumber: 0,
     },
+    selectUser: '',
   },
 };
