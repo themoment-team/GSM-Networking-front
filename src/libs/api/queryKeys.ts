@@ -10,3 +10,7 @@ export const mentorQueryKeys = {
   postCreateMentor: () => ['mentor'],
   getMentorList: () => ['mentor', 'list'],
 } as const;
+
+export const tempMentorQueryKeys = {
+  getTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
+};
