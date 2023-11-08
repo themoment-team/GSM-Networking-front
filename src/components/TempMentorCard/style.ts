@@ -28,14 +28,12 @@ export const Company = styled.p``;
 
 export const SelectButton = styled.button<{ isSelect: boolean }>`
   ${({ theme }) => theme.typo.body2};
-  background-color: ${({ isSelect }) =>
-    isSelect
-      ? ({ theme }) => theme.color.skyBlue[400]
-      : ({ theme }) => theme.color.grey[50]};
-  color: ${({ isSelect }) =>
-    isSelect
-      ? ({ theme }) => theme.color.grey[50]
-      : ({ theme }) => theme.color.grey[500]};
+
+  background-color: ${({ isSelect, theme }) =>
+    isSelect ? theme.color.skyBlue[400] : theme.color.grey[50]};
+
+  color: ${({ isSelect, theme }) =>
+    isSelect ? theme.color.grey[50] : theme.color.grey[500]};
   padding: 0.5rem 1rem;
   border-radius: 1.25rem;
 `;
