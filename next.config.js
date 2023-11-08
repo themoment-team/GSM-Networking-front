@@ -1,10 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  compiler: {
-    styledComponents: {
-      ssr: true,
-    },
-  },
   rewrites: async () => [
     {
       source: '/api/v1/:path*',

@@ -4,6 +4,9 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof FilterButton> = {
   component: FilterButton,
+  parameters: {
+    layout: 'centered',
+  },
 };
 
 export default meta;
