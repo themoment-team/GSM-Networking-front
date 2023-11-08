@@ -8,14 +8,14 @@ import type { WorkerType } from '@/types/worker';
 
 interface Props {
   worker: WorkerType;
-  selectUser: string | null;
-  setSelectUser: React.Dispatch<React.SetStateAction<string | null>>;
+  selectMentorId: string | null;
+  setSelectMentorId: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
 const TempMentorCard: React.FC<Props> = ({
   worker,
-  selectUser,
-  setSelectUser,
+  selectMentorId,
+  setSelectMentorId,
 }) => (
   <S.WorkerListItem>
     <S.Generation>{worker.generation}기</S.Generation>
@@ -23,8 +23,8 @@ const TempMentorCard: React.FC<Props> = ({
     <S.Position>🧰️ {worker.position}</S.Position>
     <S.Company>🏢 {worker.company.name}</S.Company>
     <S.SelectButton
-      onClick={() => setSelectUser(worker.id)}
-      isSelect={selectUser === worker.id}
+      onClick={() => setSelectMentorId(worker.id)}
+      isSelect={selectMentorId === worker.id}
     >
       선택
     </S.SelectButton>
