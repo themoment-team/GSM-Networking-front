@@ -58,16 +58,10 @@ export const SearchButton = styled.button`
   border-radius: 0.625rem;
 `;
 
-export const Button = styled.button<{ isSelect: boolean }>`
+export const Button = styled.button`
   ${({ theme }) => theme.typo.button};
-
-  background-color: ${({ isSelect, theme }) =>
-    isSelect ? theme.color.skyBlue[400] : theme.color.grey[200]};
-
-  color: ${({ isSelect, theme }) =>
-    isSelect ? theme.color.white : theme.color.grey[500]};
-
-  cursor: ${({ isSelect }) => (isSelect ? 'pointer' : 'default')};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  color: ${({ theme }) => theme.color.white};
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -75,6 +69,12 @@ export const Button = styled.button<{ isSelect: boolean }>`
   border-radius: 0.625rem;
   width: 27.5rem;
   height: 2.75rem;
+
+  :disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.color.grey[200]};
+    color: ${({ theme }) => theme.color.grey[500]};
+  }
 `;
 
 export const TempMentorCardBox = styled.div`
