@@ -20,8 +20,10 @@ const InfoSearch: React.FC = () => {
 
   // console.log(data);
 
-  const handleSearchClick = () =>
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     inputRef.current && setInputValue(inputRef.current.value);
+  };
 
   const handleButtonClick = () =>
     isUserSelect && push(`/register/mentor?id=${selectMentorId}`);
@@ -30,11 +32,14 @@ const InfoSearch: React.FC = () => {
     <S.Container>
       <S.TitleBox>
         <S.Title>내 정보 연동</S.Title>
-        <S.SkipLink>건너뛰기</S.SkipLink>
+        <S.SkipLink href={'/register/mentor'}>건너뛰기</S.SkipLink>
       </S.TitleBox>
-      <S.SearchContainer>
-        <S.SearchInput placeholder='이름을 입력해주세요.' ref={inputRef} />
-        <S.SearchButton onClick={handleSearchClick}>검색</S.SearchButton>
+      <S.SearchContainer onSubmit={handleFormSubmit}>
+        <S.SearchInput
+          placeholder='정확한 성함을 입력해주세요'
+          ref={inputRef}
+        />
+        <S.SearchButton>검색</S.SearchButton>
       </S.SearchContainer>
       <S.TempMentorCardBox>
         {data?.map((user) => (
