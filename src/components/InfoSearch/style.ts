@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const Container = styled.div`
   height: 100vh;
@@ -21,12 +22,12 @@ export const Title = styled.h1`
   ${({ theme }) => theme.typo.h3};
 `;
 
-export const SkipLink = styled.button`
+export const SkipLink = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
 
-export const SearchContainer = styled.div`
+export const SearchContainer = styled.form`
   margin-top: 2.5rem;
   position: relative;
   width: 100%;
