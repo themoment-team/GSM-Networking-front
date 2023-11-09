@@ -8,7 +8,6 @@ import * as S from './style';
 
 import { TempMentorCard } from '@/components';
 import { useGetTempMentor } from '@/hooks/api/mentor/useGetTempMentor';
-// import type { WorkerType } from '@/types';
 
 const InfoSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -17,8 +16,6 @@ const InfoSearch: React.FC = () => {
   const [selectMentorId, setSelectMentorId] = useState<string | null>(null);
   const isUserSelect = !!selectMentorId;
   const { push } = useRouter();
-
-  // console.log(data);
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -51,7 +48,7 @@ const InfoSearch: React.FC = () => {
           />
         ))}
       </S.TempMentorCardBox>
-      <S.Button onClick={handleButtonClick} isSelect={isUserSelect}>
+      <S.Button onClick={handleButtonClick} disabled={!isUserSelect}>
         다음
       </S.Button>
     </S.Container>
