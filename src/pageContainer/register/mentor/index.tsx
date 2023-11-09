@@ -19,7 +19,7 @@ import {
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY, defaultCareer } from '@/constants';
-import { usePostMentorCreate } from '@/hooks';
+import { usePostMentorRegister } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
   CareerFormType,
@@ -27,7 +27,7 @@ import type {
   MentorInfoFormType,
   MentorType,
 } from '@/types';
-import { careerValidation } from '@/utils';
+import { careerValidation, UTCDate } from '@/utils';
 
 const hasErrorInCareerArray = (careerArray: CareerFormType[]) =>
   careerArray.some(
@@ -48,7 +48,7 @@ const MentorRegister = () => {
 
   const { push } = useRouter();
 
-  const { mutate } = usePostMentorCreate({
+  const { mutate } = usePostMentorRegister({
     onError: () => toast.error('멘토 등록에 실패하였습니다.'),
     onSuccess: () => handleMutateSuccess(),
   });
@@ -99,10 +99,10 @@ const MentorRegister = () => {
       const endMonth =
         career.endMonth.value !== '월' ? career.endMonth.value - 1 : 0;
 
-      const startDate = new Date(startYear, startMonth);
+      const startDate = UTCDate(startYear, startMonth);
       const endDate = career.isWorking.value
         ? null
-        : new Date(endYear, endMonth);
+        : UTCDate(endYear, endMonth);
 
       const careerData: CareerType = {
         companyName: career.companyName.value,
