@@ -4,6 +4,9 @@ import { NextResponse } from 'next/server';
 import { authUrl } from '@/libs';
 import { extractSubstring } from '@/utils';
 
+const cookieDomain =
+  process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
+
 export async function GET(request: Request) {
   const cookieStore = cookies();
 
@@ -31,12 +34,14 @@ export async function GET(request: Request) {
       maxAge: 10800,
       httpOnly: true,
       secure: true,
+      domain: cookieDomain,
     });
 
     cookieStore.set('refreshToken', newRefreshToken, {
       maxAge: 2592000,
       httpOnly: true,
       secure: true,
+      domain: cookieDomain,
     });
 
     return NextResponse.redirect(new URL('/', request.url));
