@@ -7,6 +7,15 @@ import { extractSubstring } from '@/utils';
 const cookieDomain =
   process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
 
+const setCookie = (name: string, value: string, maxAge: number) => {
+  cookies().set(name, value, {
+    maxAge,
+    httpOnly: true,
+    secure: true,
+    domain: cookieDomain,
+  });
+};
+
 export async function GET(request: Request) {
   const cookieStore = cookies();
 
@@ -30,19 +39,8 @@ export async function GET(request: Request) {
     const newAccessToken = extractSubstring(resCookie, 'accessToken=', ';');
     const newRefreshToken = extractSubstring(resCookie, 'refreshToken=', ';');
 
-    cookieStore.set('accessToken', newAccessToken, {
-      maxAge: 10800,
-      httpOnly: true,
-      secure: true,
-      domain: cookieDomain,
-    });
-
-    cookieStore.set('refreshToken', newRefreshToken, {
-      maxAge: 2592000,
-      httpOnly: true,
-      secure: true,
-      domain: cookieDomain,
-    });
+    setCookie('accessToken', newAccessToken, 10800);
+    setCookie('refreshToken', newRefreshToken, 2592000);
 
     return NextResponse.redirect(new URL('/', request.url));
   } catch (e) {
