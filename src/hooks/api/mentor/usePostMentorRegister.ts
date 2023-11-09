@@ -6,12 +6,12 @@ import type { MentorType } from '@/types';
 import type { UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 
-export const usePostMentorCreate = (
+export const usePostMentorRegister = (
   options?: UseMutationOptions<unknown, AxiosError, MentorType, unknown>
 ) =>
   useMutation({
-    mutationKey: mentorQueryKeys.postCreateMentor(),
+    mutationKey: mentorQueryKeys.postMentorRegister(),
     mutationFn: (mentorInfo: MentorType) =>
-      post(mentorUrl.postCreateMentor(), mentorInfo),
+      post(mentorUrl.postMentorRegister(), mentorInfo),
     ...options,
   });
