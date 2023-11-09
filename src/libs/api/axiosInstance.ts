@@ -21,7 +21,6 @@ const waitRefreshEnd = () =>
     }
   });
 
-// TODO : Add interceptor for refresh token
 axiosInstance.interceptors.response.use(
   (response) => {
     /** success refresh */
