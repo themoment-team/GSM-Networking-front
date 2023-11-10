@@ -26,6 +26,5 @@ export const Primary: Story = {
       },
       temporaryImgNumber: 0,
     },
-    selectUser: '',
   },
 };
