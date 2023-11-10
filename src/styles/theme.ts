@@ -76,6 +76,7 @@ const color = {
   },
   white: '#FFFFFF',
   black: '#111112',
+  error: '#FE1430',
 };
 
 const theme = {
