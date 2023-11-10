@@ -1,29 +1,46 @@
 'use client';
 
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
+
+import type { SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
+
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import * as S from './style';
 
 import { TempMentorCard } from '@/components';
 import { useGetTempMentor } from '@/hooks/api/mentor/useGetTempMentor';
+import { tempMentorSearchFormSchema } from '@/schemas';
+import type { TempMentorSearchFormType } from '@/types/form/tempMentorSearchForm';
 
 const InfoSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
-  const inputRef = useRef<HTMLInputElement>(null);
-  const { data } = useGetTempMentor(inputValue);
   const [selectMentorId, setSelectMentorId] = useState<string | null>(null);
   const isUserSelect = !!selectMentorId;
+
   const { push } = useRouter();
 
-  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    inputRef.current && setInputValue(inputRef.current.value);
-  };
+  const { data } = useGetTempMentor(inputValue);
 
-  const handleButtonClick = () =>
-    isUserSelect && push(`/register/mentor?id=${selectMentorId}`);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<TempMentorSearchFormType>({
+    resolver: zodResolver(tempMentorSearchFormSchema),
+    defaultValues: {
+      name: '',
+    },
+  });
+
+  const handleButtonClick = () => push(`/register/mentor?id=${selectMentorId}`);
+
+  const onSubmit: SubmitHandler<TempMentorSearchFormType> = (data) => {
+    setInputValue(data.name);
+  };
 
   return (
     <S.Container>
@@ -31,13 +48,14 @@ const InfoSearch: React.FC = () => {
         <S.Title>내 정보 연동</S.Title>
         <S.SkipLink href={'/register/mentor'}>건너뛰기</S.SkipLink>
       </S.TitleBox>
-      <S.SearchContainer onSubmit={handleFormSubmit}>
+      <S.SearchForm onSubmit={handleSubmit(onSubmit)}>
         <S.SearchInput
+          {...register('name')}
           placeholder='정확한 성함을 입력해주세요'
-          ref={inputRef}
         />
-        <S.SearchButton>검색</S.SearchButton>
-      </S.SearchContainer>
+        <S.SearchButton type='submit'>검색</S.SearchButton>
+      </S.SearchForm>
+      <S.ErrorMessage>{errors.name?.message}</S.ErrorMessage>
       <S.TempMentorCardBox>
         {data?.map((user) => (
           <TempMentorCard

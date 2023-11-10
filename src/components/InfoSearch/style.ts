@@ -28,10 +28,16 @@ export const SkipLink = styled(Link)`
   color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
 
-export const SearchContainer = styled.form`
+export const SearchForm = styled.form`
   margin-top: 2.5rem;
   position: relative;
   width: 100%;
+`;
+
+export const ErrorMessage = styled.p`
+  ${({ theme }) => theme.typo.caption}
+  color: ${({ theme }) => theme.color.error};
+  margin-top: 0.5rem;
 `;
 
 export const SearchInput = styled.input`
