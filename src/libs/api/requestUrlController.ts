@@ -16,3 +16,7 @@ export const mentorUrl = {
   postMentorRegister: () => '/mentor',
   getMentorList: () => '/mentor',
 };
+
+export const tempMentorUrl = {
+  getTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,
+};
