@@ -11,3 +11,7 @@ export const mentorQueryKeys = {
   getMentorList: () => ['mentor', 'list'],
   deleteMyMentorData: () => ['mentor', 'my'],
 } as const;
+
+export const tempMentorQueryKeys = {
+  getTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
+};

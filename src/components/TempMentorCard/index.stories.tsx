@@ -1,4 +1,4 @@
-import WorkerListItem from './';
+import WorkerListItem from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

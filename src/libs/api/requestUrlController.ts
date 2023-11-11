@@ -17,3 +17,7 @@ export const mentorUrl = {
   getMentorList: () => '/mentor',
   deleteMyMentorData: () => '/mentor/my',
 };
+
+export const tempMentorUrl = {
+  getTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,
+};

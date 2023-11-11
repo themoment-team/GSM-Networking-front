@@ -10,11 +10,7 @@ import type { Metadata } from 'next';
 export default async function Home() {
   const workerList = await getMentorList();
 
-  const sortedWorkerList = [...workerList].sort((a, b) =>
-    a.position.localeCompare(b.position)
-  );
-
-  return <MainPage initWorkerList={sortedWorkerList} />;
+  return <MainPage initWorkerList={[...workerList]} />;
 }
 
 export const metadata: Metadata = {
@@ -32,8 +28,7 @@ export const metadata: Metadata = {
 const getMentorList = async (): Promise<WorkerType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  // TODO refresh
-  // if(!accessToken)
+  if (!accessToken) return redirect('/auth/refresh');
 
   try {
     const response = await fetch(
@@ -54,8 +49,7 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
     return addTemporaryImgNumber(mentorList);
   } catch (error) {
-    // TODO refresh
-    return redirect('/auth/signin');
+    return redirect('/auth/refresh');
   }
 };
 

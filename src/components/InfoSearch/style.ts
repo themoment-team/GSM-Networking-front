@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const Container = styled.div`
   height: 100vh;
@@ -14,6 +15,7 @@ export const Container = styled.div`
 export const TitleBox = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
   width: 100%;
 `;
 
@@ -21,15 +23,21 @@ export const Title = styled.h1`
   ${({ theme }) => theme.typo.h3};
 `;
 
-export const SkipLink = styled.button`
+export const SkipLink = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
 
-export const SearchContainer = styled.div`
+export const SearchForm = styled.form`
   margin-top: 2.5rem;
   position: relative;
   width: 100%;
+`;
+
+export const ErrorMessage = styled.p`
+  ${({ theme }) => theme.typo.caption}
+  color: ${({ theme }) => theme.color.error};
+  margin-top: 0.5rem;
 `;
 
 export const SearchInput = styled.input`
@@ -56,10 +64,10 @@ export const SearchButton = styled.button`
   border-radius: 0.625rem;
 `;
 
-export const SkipButton = styled.button`
+export const Button = styled.button`
   ${({ theme }) => theme.typo.button};
-  background-color: ${({ theme }) => theme.color.grey[200]};
-  color: ${({ theme }) => theme.color.grey[500]};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  color: ${({ theme }) => theme.color.white};
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -67,4 +75,14 @@ export const SkipButton = styled.button`
   border-radius: 0.625rem;
   width: 27.5rem;
   height: 2.75rem;
+
+  :disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.color.grey[200]};
+    color: ${({ theme }) => theme.color.grey[500]};
+  }
+`;
+
+export const TempMentorCardBox = styled.div`
+  width: 100%;
 `;

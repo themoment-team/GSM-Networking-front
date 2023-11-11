@@ -95,3 +95,23 @@ export const WorkerImgBox = styled.div`
   width: 100%;
   height: 6.8125rem;
 `;
+
+export const BlueCheckIconWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+  position: relative;
+
+  :hover {
+    .tool-tip {
+      display: block;
+    }
+  }
+`;
+
+export const ToolTipWrapper = styled.div`
+  position: absolute;
+  padding-top: 0.375rem;
+  top: 0.8125rem;
+  left: -1.3125rem;
+  display: none;
+`;
