@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CustomSelect = styled.select<{
-  isError?: boolean;
+  isError: boolean;
   isDefault: boolean;
 }>`
   ${({ theme }) => theme.typo.body1}
