@@ -11,6 +11,7 @@ const meta: Meta<typeof Select> = {
   },
   args: {
     options: options,
+    errorMessage: '',
   },
 };
 
