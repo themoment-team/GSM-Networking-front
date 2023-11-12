@@ -2,6 +2,7 @@ export * from './Buttons';
 export * from './Modal';
 export { default as DropDown } from './DropDown';
 export { default as FilterButton } from './Buttons/Filter';
+export { default as FormItemWrapper } from './FormItemWrapper';
 export { default as Header } from './Header';
 export { default as InfoSearch } from './InfoSearch';
 export { default as Layout } from './Layout';
