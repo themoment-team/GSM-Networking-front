@@ -11,6 +11,7 @@ export { default as MentorCard } from './MentorCard';
 export { default as MentorList } from './MentorList';
 export { default as NavigationEvents } from './NavigationEvents';
 export { default as SearchBar } from './SearchBar';
+export { default as Select } from './Select';
 export { default as TempMentorCard } from './TempMentorCard';
 export { default as ToolTip } from './ToolTip';
 export { default as UserStatusSelect } from './UserStatusSelect';
