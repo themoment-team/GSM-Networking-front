@@ -9,6 +9,8 @@ const meta: Meta<typeof FormItemWrapper> = {
   },
   args: {
     title: 'Title',
+    required: false,
+    errorMessage: '',
   },
 };
 
