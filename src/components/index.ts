@@ -1,4 +1,5 @@
 export * from './Buttons';
+export * from './FormItem';
 export * from './Modal';
 export { default as DropDown } from './DropDown';
 export { default as FilterButton } from './Buttons/Filter';
