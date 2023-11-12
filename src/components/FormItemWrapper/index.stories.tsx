@@ -18,13 +18,13 @@ type Story = StoryObj<typeof FormItemWrapper>;
 
 export const Primary: Story = {};
 
-export const IsError: Story = {
+export const Errored: Story = {
   args: {
     errorMessage: 'Error Message',
   },
 };
 
-export const IsRequired: Story = {
+export const Required: Story = {
   args: {
     required: true,
   },
