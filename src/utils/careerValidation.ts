@@ -6,82 +6,96 @@ import { deepCopy } from '.';
 
 type SetCareerArrayType = Dispatch<SetStateAction<CareerFormType[]>>;
 
-const careerValidation = (setCareerArray: SetCareerArrayType) => {
-  setCareerArray((prev) =>
-    [...prev].map((career) => {
-      const newCareer = deepCopy(career);
+/**
+ * careerArray 유효성 검사를 진행하여,
+ * careerArray state를 업데이트 하며,
+ * 검사된 CareerArray를 반환합니다.
+ *
+ * @param careerArray
+ * @param setCareerArray
+ * @returns 검사된 careerArray
+ */
+const careerValidation = (
+  careerArray: CareerFormType[],
+  setCareerArray: SetCareerArrayType
+): CareerFormType[] => {
+  const copiedCareerArray = deepCopy<CareerFormType[]>(careerArray);
 
-      const {
-        companyName,
-        companyUrl,
-        position,
-        startYear,
-        startMonth,
-        endYear,
-        endMonth,
-        isWorking,
-      } = newCareer;
+  const validatedCareerArray = copiedCareerArray.map((career) => {
+    const newCareer = deepCopy<CareerFormType>(career);
 
-      // companyName
-      if (companyName.value.length < 1) {
-        companyName.errorMessage = '회사 명을 입력해주세요.';
-      } else if (companyName.value.length > 20) {
-        companyName.errorMessage = '20글자 이내로 입력 부탁드립니다.';
-      } else {
-        companyName.errorMessage = null;
-      }
+    const {
+      companyName,
+      companyUrl,
+      position,
+      startYear,
+      startMonth,
+      endYear,
+      endMonth,
+      isWorking,
+    } = newCareer;
 
-      // companyURL
-      if (companyUrl.value.length > 1 && !companyUrl.value.startsWith('http')) {
-        companyUrl.errorMessage = 'URL 형식으로 입력해주세요.';
-      } else {
-        companyUrl.errorMessage = null;
-      }
+    // companyName
+    if (companyName.value.length < 1) {
+      companyName.errorMessage = '회사 명을 입력해주세요.';
+    } else if (companyName.value.length > 20) {
+      companyName.errorMessage = '20글자 이내로 입력 부탁드립니다.';
+    } else {
+      companyName.errorMessage = null;
+    }
 
-      // position
-      if (position.value === '포지션 선택') {
-        position.errorMessage = '포지션을 선택해주세요.';
-      } else {
-        position.errorMessage = null;
-      }
+    // companyURL
+    if (companyUrl.value.length > 1 && !companyUrl.value.startsWith('http')) {
+      companyUrl.errorMessage = 'URL 형식으로 입력해주세요.';
+    } else {
+      companyUrl.errorMessage = null;
+    }
 
-      // startYear
-      if (startYear.value === '년') {
-        startYear.errorMessage = '재직 시작 연도를 선택해주세요.';
-      } else {
-        startYear.errorMessage = null;
-      }
+    // position
+    if (position.value === '포지션 선택') {
+      position.errorMessage = '포지션을 선택해주세요.';
+    } else {
+      position.errorMessage = null;
+    }
 
-      // startMonth
-      if (startMonth.value === '월') {
-        startMonth.errorMessage = '재직 시작 월을 선택해주세요.';
-      } else {
-        startMonth.errorMessage = null;
-      }
+    // startYear
+    if (startYear.value === '년') {
+      startYear.errorMessage = '재직 시작 연도를 선택해주세요.';
+    } else {
+      startYear.errorMessage = null;
+    }
 
-      // endYear
-      if (isWorking.value === true) {
-        endYear.errorMessage = null;
-      } else if (endYear.value === '년') {
-        endYear.errorMessage = '재직 종료 연도를 선택해주세요.';
-      } else {
-        endYear.errorMessage = null;
-      }
+    // startMonth
+    if (startMonth.value === '월') {
+      startMonth.errorMessage = '재직 시작 월을 선택해주세요.';
+    } else {
+      startMonth.errorMessage = null;
+    }
 
-      // endMonth
-      if (isWorking.value === true) {
-        endMonth.errorMessage = null;
-      } else if (endMonth.value === '월') {
-        endMonth.errorMessage = '재직 종료 월을 선택해주세요.';
-      } else {
-        endMonth.errorMessage = null;
-      }
+    // endYear
+    if (isWorking.value === true) {
+      endYear.errorMessage = null;
+    } else if (endYear.value === '년') {
+      endYear.errorMessage = '재직 종료 연도를 선택해주세요.';
+    } else {
+      endYear.errorMessage = null;
+    }
 
-      return newCareer;
-    })
-  );
+    // endMonth
+    if (isWorking.value === true) {
+      endMonth.errorMessage = null;
+    } else if (endMonth.value === '월') {
+      endMonth.errorMessage = '재직 종료 월을 선택해주세요.';
+    } else {
+      endMonth.errorMessage = null;
+    }
 
-  return false;
+    return newCareer;
+  });
+
+  setCareerArray(validatedCareerArray);
+
+  return validatedCareerArray;
 };
 
 export default careerValidation;
