@@ -15,7 +15,6 @@ const meta: Meta<typeof FormItemWrapper> = {
 };
 
 export default meta;
-
 type Story = StoryObj<typeof FormItemWrapper>;
 
 export const Primary: Story = {};
