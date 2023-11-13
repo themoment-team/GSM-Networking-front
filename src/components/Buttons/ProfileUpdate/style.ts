@@ -7,7 +7,7 @@ export const Button = styled.button`
   gap: 0.25rem;
   align-items: center;
   color: ${({ theme }) => theme.color.skyBlue[400]};
-  background: ${({ theme }) => theme.color.skyBlue[50]};
+  background: ${({ theme }) => theme.color.grey[50]};
   border-radius: 1.25rem;
 
   &:hover {
