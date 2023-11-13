@@ -12,7 +12,7 @@ interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   required?: boolean;
 }
 
-const Input = forwardRef<HTMLInputElement, Props>(
+const InputFormItem = forwardRef<HTMLInputElement, Props>(
   ({ inputTitle, errorMessage, required, ...attributes }, ref) => (
     <FormItemWrapper
       title={inputTitle}
@@ -24,6 +24,6 @@ const Input = forwardRef<HTMLInputElement, Props>(
   )
 );
 
-Input.displayName = 'Input';
+InputFormItem.displayName = 'Input';
 
-export default Input;
+export default InputFormItem;
