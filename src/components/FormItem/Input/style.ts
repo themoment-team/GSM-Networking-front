@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const CustomInput = styled.input<{ isError?: boolean }>`
+export const CustomInput = styled.input<{ isError: boolean }>`
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.black};
   padding: 0.75rem 1rem;
