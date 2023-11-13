@@ -5,7 +5,12 @@ import React, { useRef } from 'react';
 import * as S from './style';
 
 import { CheckBoxIcon, DeleteIcon, PlusIcon } from '@/assets';
-import { FormItemWrapper, Input, Select, SelectFormItem } from '@/components';
+import {
+  FormItemWrapper,
+  InputFormItem,
+  Select,
+  SelectFormItem,
+} from '@/components';
 import {
   MONTH_ARRAY,
   POSITION_ARRAY,
@@ -110,14 +115,14 @@ const CareerRegistrationBox: React.FC<Props> = ({
         </S.ButtonWrapper>
       </S.TitleBox>
       <S.InputWrapper>
-        <Input
+        <InputFormItem
           value={companyName.value}
           inputTitle='회사명'
           required
           onChange={(e) => handleInputChange(e, 'companyName')}
           errorMessage={companyName.errorMessage}
         />
-        <Input
+        <InputFormItem
           value={companyUrl.value}
           inputTitle='회사 URL'
           onChange={(e) => handleInputChange(e, 'companyUrl')}

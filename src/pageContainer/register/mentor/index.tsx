@@ -15,7 +15,7 @@ import * as S from './style';
 import {
   CareerRegistrationBox,
   Header,
-  Input,
+  InputFormItem,
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY, defaultCareer } from '@/constants';
@@ -118,25 +118,25 @@ const MentorRegister = () => {
         <S.PrivacyBox>
           <S.Title>개인정보</S.Title>
           <S.InputWrapper>
-            <Input
+            <InputFormItem
               {...register('name')}
               inputTitle='이름'
               errorMessage={errors.name?.message}
               required={true}
             />
-            <Input
+            <InputFormItem
               {...register('phoneNumber')}
               inputTitle='전화번호'
               errorMessage={errors.phoneNumber?.message}
               required={true}
             />
-            <Input
+            <InputFormItem
               {...register('email')}
               inputTitle='이메일'
               errorMessage={errors.email?.message}
               required={true}
             />
-            <Input
+            <InputFormItem
               {...register('snsUrl')}
               inputTitle='SNS'
               errorMessage={errors.snsUrl?.message}
