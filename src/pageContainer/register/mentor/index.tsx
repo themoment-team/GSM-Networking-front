@@ -60,9 +60,9 @@ const MentorRegister = () => {
   });
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
-    careerValidation(setCareerArray);
+    const validatedArray = careerValidation(careerArray, setCareerArray);
 
-    if (hasErrorInCareerArray(careerArray)) {
+    if (hasErrorInCareerArray(validatedArray)) {
       return;
     }
 
@@ -108,7 +108,7 @@ const MentorRegister = () => {
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
-    careerValidation(setCareerArray);
+    careerValidation(careerArray, setCareerArray);
   };
 
   return (
