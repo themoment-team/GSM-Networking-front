@@ -11,6 +11,7 @@ const meta: Meta<typeof Select> = {
   },
   args: {
     options: options,
+    errorMessage: '',
   },
 };
 
@@ -20,7 +21,7 @@ type Story = StoryObj<typeof Select>;
 
 export const Primary: Story = {};
 
-export const isError: Story = {
+export const Errored: Story = {
   args: {
     errorMessage: 'error message',
   },
