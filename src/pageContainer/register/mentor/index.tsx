@@ -104,12 +104,12 @@ const MentorRegister = () => {
       body.career.push(careerData);
     });
 
-    return mutate(body);
+    mutate(body);
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
     careerValidation(careerArray, setCareerArray);
-    return toast.error('입력 정보를 다시 확인해주세요.');
+    toast.error('입력 정보를 다시 확인해주세요.');
   };
 
   return (

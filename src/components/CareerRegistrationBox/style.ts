@@ -1,4 +1,3 @@
-import { Button } from './../Buttons/Filter/style';
 import styled from '@emotion/styled';
 
 export const Title = styled.p`
