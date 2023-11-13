@@ -24,10 +24,10 @@ const Header: React.FC<Props> = ({ clearList }) => {
   return (
     <S.Header>
       <S.Inner>
-        <S.Logo type='button' onClick={clearList}>
+        <S.LogoLink href='/' onClick={clearList}>
           <I.GsmNetworkingIcon />
           GSM Networking
-        </S.Logo>
+        </S.LogoLink>
         <S.GapBox />
         <S.RedirectBox>
           {/* for test */}
