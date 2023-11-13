@@ -13,4 +13,8 @@ export default meta;
 
 type Story = StoryObj<typeof ProfileUpdateButton>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    onClick: () => {},
+  },
+};
