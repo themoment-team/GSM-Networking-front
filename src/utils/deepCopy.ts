@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-const deepCopy = (object: any) => {
+const deepCopy = <T>(object: any): T => {
   if (object === null || typeof object !== 'object') {
     return object;
   }
