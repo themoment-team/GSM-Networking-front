@@ -1,15 +1,34 @@
 import styled from '@emotion/styled';
 
-export const ProfileBox = styled.div`
+export const ProfileWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+`;
+
+export const ProfileImageBox = styled.div`
   background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 50%;
   overflow: hidden;
   width: 6rem;
   height: 6rem;
-  padding: 1.25rem 0.3125rem 0 0.6875rem;
+  padding: 0.8rem 0 0 0.3rem;
 
   & > svg {
-    width: 5rem;
-    height: 4.9375rem;
+    width: 5.8rem;
+    height: 5.8rem;
   }
+`;
+
+export const UserName = styled.span`
+  color: #000;
+  ${({ theme }) => theme.typo.body1}
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 150%;
+`;
+
+export const ProfileInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 `;
