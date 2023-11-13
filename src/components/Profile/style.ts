@@ -13,15 +13,15 @@ export const ProfileImageBox = styled.div`
   height: 6rem;
   padding: 0.8rem 0 0 0.3rem;
 
-  & > svg {
+  svg {
     width: 5.8rem;
     height: 5.8rem;
   }
 `;
 
 export const UserName = styled.span`
-  color: #000;
   ${({ theme }) => theme.typo.body1}
+  color: #000;
   font-size: 1.125rem;
   font-weight: 600;
   line-height: 150%;
