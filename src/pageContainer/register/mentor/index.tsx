@@ -27,19 +27,7 @@ import type {
   MentorInfoFormType,
   MentorType,
 } from '@/types';
-import { careerValidation, UTCDate } from '@/utils';
-
-const hasErrorInCareerArray = (careerArray: CareerFormType[]) =>
-  careerArray.some(
-    (career) =>
-      career.companyName.errorMessage ||
-      career.companyUrl.errorMessage ||
-      career.endMonth.errorMessage ||
-      career.endYear.errorMessage ||
-      career.position.errorMessage ||
-      career.startMonth.errorMessage ||
-      career.startYear.errorMessage
-  );
+import { careerValidation, hasErrorInCareerArray, UTCDate } from '@/utils';
 
 const MentorRegister = () => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
