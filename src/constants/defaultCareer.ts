@@ -1,6 +1,7 @@
 import type { CareerFormType } from '@/types';
 
 const defaultCareer: CareerFormType = {
+  id: 0,
   companyName: { value: '', errorMessage: null },
   companyUrl: { value: '', errorMessage: null },
   position: { value: '포지션 선택', errorMessage: null },
