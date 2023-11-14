@@ -6,6 +6,7 @@ interface CareerFormFieldType<T> {
 }
 
 export interface CareerFormType {
+  id: number;
   companyName: CareerFormFieldType<string>;
   companyUrl: CareerFormFieldType<string>;
   position: CareerFormFieldType<PositionType | '포지션 선택'>;
