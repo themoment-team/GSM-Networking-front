@@ -19,5 +19,5 @@ export const mentorUrl = {
 };
 
 export const tempMentorUrl = {
-  getTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,
+  getSearchTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,
 };
