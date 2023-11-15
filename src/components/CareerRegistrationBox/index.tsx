@@ -18,16 +18,15 @@ import {
   defaultCareer,
 } from '@/constants';
 import type { CareerFormType, PositionType } from '@/types';
-import { deepCopy } from '@/utils';
 
 interface Props {
   career: CareerFormType;
   setCareerArray: React.Dispatch<React.SetStateAction<CareerFormType[]>>;
-  index: number;
 }
 
 const CareerRegistrationBox: React.FC<Props> = ({
   career: {
+    id,
     companyName,
     companyUrl,
     position,
@@ -38,34 +37,48 @@ const CareerRegistrationBox: React.FC<Props> = ({
     isWorking,
   },
   setCareerArray,
-  index,
 }) => {
   const endYearRef = useRef<HTMLSelectElement>(null);
   const endMonthRef = useRef<HTMLSelectElement>(null);
 
   const handleRemoveClick = () =>
-    setCareerArray((prev) => prev.filter((_, i) => i !== index));
+    setCareerArray((prev) => prev.filter((career) => career.id !== id));
 
   const handleAddClick = () =>
-    setCareerArray((prev) => [...prev, defaultCareer]);
+    setCareerArray((prev) => [
+      ...prev,
+      { ...defaultCareer, id: prev[prev.length - 1].id + 1 },
+    ]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    value: string,
     key: keyof Pick<CareerFormType, 'companyName' | 'companyUrl'>
   ) => {
-    setCareerArray((prev) => {
-      const newCareerArray: CareerFormType[] = deepCopy(prev);
-      newCareerArray[index][key].value = e.target.value;
-      return newCareerArray;
-    });
+    setCareerArray((prev) =>
+      prev.map((career) => {
+        if (career.id === id) {
+          return { ...career, [key]: { ...career[key], value } };
+        }
+        return career;
+      })
+    );
   };
 
   const handlePositionChange = (e: React.ChangeEvent<HTMLSelectElement>) =>
-    setCareerArray((prev) => {
-      const newCareerArray = [...prev];
-      newCareerArray[index].position.value = e.target.value as PositionType;
-      return newCareerArray;
-    });
+    setCareerArray((prev) =>
+      prev.map((career) => {
+        if (career.id === id) {
+          return {
+            ...career,
+            position: {
+              ...career.position,
+              value: e.target.value as PositionType,
+            },
+          };
+        }
+        return career;
+      })
+    );
 
   const handlePeriodChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
@@ -74,37 +87,54 @@ const CareerRegistrationBox: React.FC<Props> = ({
       'startYear' | 'startMonth' | 'endYear' | 'endMonth'
     >
   ) =>
-    setCareerArray((prev) => {
-      const newCareerArray = [...prev];
-      newCareerArray[index][periodType].value = Number(e.target.value);
-      return newCareerArray;
-    });
+    setCareerArray((prev) =>
+      prev.map((career) => {
+        if (career.id === id) {
+          return {
+            ...career,
+            [periodType]: {
+              ...career[periodType],
+              value: Number(e.target.value),
+            },
+          };
+        }
+
+        return career;
+      })
+    );
 
   const handleTenureCheck = (e: React.ChangeEvent<HTMLInputElement>) =>
-    setCareerArray((prev) => {
-      const newCareerArray = [...prev];
-      const isChecked = e.target.checked;
+    setCareerArray((prev) =>
+      prev.map((career) => {
+        if (career.id === id) {
+          const newCareer = { ...career };
 
-      newCareerArray[index].isWorking.value = isChecked;
+          const isChecked = e.target.checked;
 
-      if (isChecked) {
-        if (endYearRef.current) endYearRef.current.value = '';
-        if (endMonthRef.current) endMonthRef.current.value = '';
-        newCareerArray[index].endYear.value = '년';
-        newCareerArray[index].endYear.errorMessage = null;
-        newCareerArray[index].endMonth.value = '월';
-        newCareerArray[index].endMonth.errorMessage = null;
-      }
+          newCareer.isWorking.value = isChecked;
 
-      return newCareerArray;
-    });
+          if (isChecked) {
+            if (endYearRef.current) endYearRef.current.value = '';
+            if (endMonthRef.current) endMonthRef.current.value = '';
+            newCareer.endYear.value = '년';
+            newCareer.endYear.errorMessage = null;
+            newCareer.endMonth.value = '월';
+            newCareer.endMonth.errorMessage = null;
+          }
+
+          return newCareer;
+        }
+
+        return career;
+      })
+    );
 
   return (
     <S.CompanyBox>
       <S.TitleBox>
         <S.Title>재직 회사 정보</S.Title>
         <S.ButtonWrapper>
-          {index !== 0 && (
+          {id !== 0 && (
             <S.IconButton type='button' onClick={handleRemoveClick}>
               <DeleteIcon />
             </S.IconButton>
@@ -119,13 +149,13 @@ const CareerRegistrationBox: React.FC<Props> = ({
           value={companyName.value}
           inputTitle='회사명'
           required
-          onChange={(e) => handleInputChange(e, 'companyName')}
+          onChange={(e) => handleInputChange(e.target.value, 'companyName')}
           errorMessage={companyName.errorMessage}
         />
         <InputFormItem
           value={companyUrl.value}
           inputTitle='회사 URL'
-          onChange={(e) => handleInputChange(e, 'companyUrl')}
+          onChange={(e) => handleInputChange(e.target.value, 'companyUrl')}
           errorMessage={companyUrl.errorMessage}
         />
         <SelectFormItem
@@ -181,10 +211,10 @@ const CareerRegistrationBox: React.FC<Props> = ({
           </FormItemWrapper>
           <S.TenureCheckInput
             type='checkbox'
-            id={`checkbox-${index}`}
+            id={`checkbox-${id}`}
             onChange={handleTenureCheck}
           />
-          <S.TenureCheckLabel htmlFor={`checkbox-${index}`}>
+          <S.TenureCheckLabel htmlFor={`checkbox-${id}`}>
             <S.CheckBox isChecked={isWorking.value}>
               {isWorking && <CheckBoxIcon />}
             </S.CheckBox>

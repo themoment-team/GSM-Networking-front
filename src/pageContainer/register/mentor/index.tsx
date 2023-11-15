@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -45,6 +45,8 @@ const MentorRegister = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     push('/');
   };
+
+  useEffect(() => console.log(careerArray), [careerArray]);
 
   const {
     register,
@@ -152,12 +154,11 @@ const MentorRegister = () => {
             />
           </S.InputWrapper>
         </S.PrivacyBox>
-        {careerArray.map((career, index) => (
+        {careerArray.map((career) => (
           <CareerRegistrationBox
             career={career}
             setCareerArray={setCareerArray}
-            index={index}
-            key={index}
+            key={career.id}
           />
         ))}
         <S.SubmitButton type='submit'>등록</S.SubmitButton>
