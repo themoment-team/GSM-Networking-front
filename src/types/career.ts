@@ -20,7 +20,7 @@ export interface CareerFormType {
 export interface CareerType {
   companyName: string;
   companyUrl?: string | null;
-  position: string;
+  position: PositionType | '포지션 선택';
   startDate: Date;
   endDate: Date | null;
   isWorking: boolean;
