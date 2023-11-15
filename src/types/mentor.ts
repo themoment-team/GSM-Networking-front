@@ -9,3 +9,7 @@ export interface MentorType {
   profileUrl?: string | null;
   career: CareerType[];
 }
+
+export interface TempMentorType extends Omit<MentorType, 'career'> {
+  career: CareerType;
+}
