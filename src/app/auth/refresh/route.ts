@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
 import { authUrl } from '@/libs';
@@ -16,7 +17,11 @@ const setCookie = (name: string, value: string, maxAge: number) => {
   });
 };
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+
+  const redirectPath = searchParams.get('redirect') || '/';
+
   const cookieStore = cookies();
 
   const refreshToken = cookieStore.get('refreshToken')?.value;
@@ -42,7 +47,7 @@ export async function GET(request: Request) {
     setCookie('accessToken', newAccessToken, 10800);
     setCookie('refreshToken', newRefreshToken, 2592000);
 
-    return NextResponse.redirect(new URL('/', request.url));
+    return NextResponse.redirect(new URL(redirectPath, request.url));
   } catch (e) {
     return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
