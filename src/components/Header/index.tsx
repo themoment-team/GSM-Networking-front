@@ -35,7 +35,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
             멘토 데이터 삭제
           </S.DeleteButton>
           <S.RedirectLink href='/'>멘토 컨택</S.RedirectLink>
-          <S.RedirectLink href='/register/mentor'>멘토 등록</S.RedirectLink>
+          <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
         </S.RedirectBox>
         <S.ProfileBox>
           <I.PersonImg4 />
