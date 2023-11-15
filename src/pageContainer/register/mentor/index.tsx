@@ -19,30 +19,56 @@ import {
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY, defaultCareer } from '@/constants';
-import { usePostMentorRegister } from '@/hooks';
+import { useDeleteTempMentor, usePostMentorRegister } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
   CareerFormType,
   CareerType,
   MentorInfoFormType,
   MentorType,
+  TempMentorType,
 } from '@/types';
 import { careerValidation, hasErrorInCareerArray, UTCDate } from '@/utils';
 
-const MentorRegister = () => {
+interface Props {
+  tempMentorId: number;
+  mentorInfo: TempMentorType | null;
+}
+
+const extractCareer = (career: CareerType | null): CareerFormType => {
+  if (!career) {
+    return defaultCareer;
+  }
+
+  return {
+    ...defaultCareer,
+    companyName: { value: career.companyName, errorMessage: '' },
+    companyUrl: { value: career.companyUrl ?? '', errorMessage: '' },
+  };
+};
+
+const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
-    defaultCareer,
+    extractCareer(mentorInfo?.career ?? null),
   ]);
 
   const { push } = useRouter();
 
-  const { mutate } = usePostMentorRegister({
-    onError: () => toast.error('멘토 등록에 실패하였습니다.'),
-    onSuccess: () => handleMutateSuccess(),
+  const { mutate: deleteTempMentorMutate } = useDeleteTempMentor({
+    onSuccess: () => handleTempMentorDeleteSuccess(),
   });
 
-  const handleMutateSuccess = () => {
+  const { mutate: postMentorRegisterMutate } = usePostMentorRegister({
+    onError: () => toast.error('멘토 등록에 실패하였습니다.'),
+    onSuccess: () => handleMentorRegisterSuccess(),
+  });
+
+  const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
+    deleteTempMentorMutate(tempMentorId);
+  };
+
+  const handleTempMentorDeleteSuccess = () => {
     push('/');
   };
 
@@ -53,9 +79,11 @@ const MentorRegister = () => {
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
-      name: '',
+      name: mentorInfo?.name ?? '',
       phoneNumber: '',
-      email: '',
+      email: mentorInfo?.email ?? '',
+      generation: mentorInfo?.generation.toString() ?? undefined,
+      snsUrl: mentorInfo?.snsUrl ?? '',
     },
   });
 
@@ -104,7 +132,7 @@ const MentorRegister = () => {
       body.career.push(careerData);
     });
 
-    mutate(body);
+    postMentorRegisterMutate(body);
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
