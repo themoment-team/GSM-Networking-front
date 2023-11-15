@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -45,8 +45,6 @@ const MentorRegister = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     push('/');
   };
-
-  useEffect(() => console.log(careerArray), [careerArray]);
 
   const {
     register,
