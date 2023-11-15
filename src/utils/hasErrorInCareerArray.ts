@@ -1,6 +1,6 @@
 import type { CareerFormType } from '@/types';
 
-const hasErrorInCareerArray = (careerArray: CareerFormType[]) =>
+const hasErrorInCareerArray = (careerArray: CareerFormType[]): boolean =>
   careerArray.some(
     (career) =>
       career.companyName.errorMessage ||
