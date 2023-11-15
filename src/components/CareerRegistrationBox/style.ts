@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Title = styled.p`
-  ${({ theme }) => theme.typo.h4}
+  ${({ theme }) => theme.typo.h4};
   color: ${({ theme }) => theme.color.grey[400]};
 `;
 

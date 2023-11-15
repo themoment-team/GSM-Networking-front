@@ -15,7 +15,7 @@ export const InputWrapper = styled.div`
 `;
 
 export const Title = styled.p`
-  ${({ theme }) => theme.typo.h4}
+  ${({ theme }) => theme.typo.h4};
   color: ${({ theme }) => theme.color.grey[400]};
 `;
 
@@ -38,7 +38,7 @@ export const CompanyBox = styled.div`
 `;
 
 export const SubmitButton = styled.button`
-  ${({ theme }) => theme.typo.button}
+  ${({ theme }) => theme.typo.button};
   width: 100%;
   height: 2.75rem;
   border-radius: 0.625rem;
@@ -51,7 +51,7 @@ export const SubmitButton = styled.button`
 `;
 
 export const PeriodTitle = styled.p`
-  ${({ theme }) => theme.typo.body2}
+  ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.grey[600]};
 `;
 
