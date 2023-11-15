@@ -51,12 +51,13 @@ const CareerRegistrationBox: React.FC<Props> = ({
     ]);
 
   const handleInputChange = (
-    value: string,
+    e: React.ChangeEvent<HTMLInputElement>,
     key: keyof Pick<CareerFormType, 'companyName' | 'companyUrl'>
   ) => {
     setCareerArray((prev) =>
       prev.map((career) => {
         if (career.id === id) {
+          const value = e.target.value;
           return { ...career, [key]: { ...career[key], value } };
         }
         return career;
@@ -149,13 +150,13 @@ const CareerRegistrationBox: React.FC<Props> = ({
           value={companyName.value}
           inputTitle='회사명'
           required
-          onChange={(e) => handleInputChange(e.target.value, 'companyName')}
+          onChange={(e) => handleInputChange(e, 'companyName')}
           errorMessage={companyName.errorMessage}
         />
         <InputFormItem
           value={companyUrl.value}
           inputTitle='회사 URL'
-          onChange={(e) => handleInputChange(e.target.value, 'companyUrl')}
+          onChange={(e) => handleInputChange(e, 'companyUrl')}
           errorMessage={companyUrl.errorMessage}
         />
         <SelectFormItem
