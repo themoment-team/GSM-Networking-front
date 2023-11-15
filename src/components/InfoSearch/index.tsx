@@ -12,7 +12,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as S from './style';
 
 import { TempMentorCard } from '@/components';
-import { useGetTempMentor } from '@/hooks/api/mentor/useGetTempMentor';
+import { useGetSearchTempMentor } from '@/hooks';
 import { tempMentorSearchFormSchema } from '@/schemas';
 import type { TempMentorSearchFormType } from '@/types/form/tempMentorSearchForm';
 
@@ -23,7 +23,7 @@ const InfoSearch: React.FC = () => {
 
   const { push } = useRouter();
 
-  const { data } = useGetTempMentor(inputValue);
+  const { data } = useGetSearchTempMentor(inputValue);
 
   const {
     register,
