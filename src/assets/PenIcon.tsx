@@ -1,7 +1,7 @@
 const PenIcon = () => (
   <svg
-    width='16'
-    height='17'
+    width='1rem'
+    height='1.0625rem'
     viewBox='0 0 16 17'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
