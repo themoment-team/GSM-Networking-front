@@ -74,14 +74,3 @@ export const ProfileBox = styled.div`
     left: 0.13rem;
   }
 `;
-
-export const Logo = styled.button`
-  display: flex;
-  align-items: center;
-  color: #000;
-  font-size: 1.3125rem;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  column-gap: 0.38rem;
-`;
