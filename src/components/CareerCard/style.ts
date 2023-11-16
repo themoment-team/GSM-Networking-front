@@ -14,17 +14,17 @@ export const CareerInfoBox = styled.div`
 `;
 
 export const CompanyName = styled.p`
-  ${({ theme }) => theme.typo.caption}
+  ${({ theme }) => theme.typo.caption};
   color: ${({ theme }) => theme.color.grey[900]};
 `;
 
 export const position = styled.p`
-  ${({ theme }) => theme.typo.body1}
+  ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
 `;
 
 export const CareerPeriod = styled.p<{ isWorking: boolean }>`
-  ${({ theme }) => theme.typo.body2}
+  ${({ theme }) => theme.typo.body2};
   color: ${({ theme, isWorking }) =>
-    isWorking ? theme.color.skyBlue[400] : theme.color.grey[500]}
+    isWorking ? theme.color.skyBlue[400] : theme.color.grey[500]};
 `;
