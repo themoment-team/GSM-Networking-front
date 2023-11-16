@@ -85,4 +85,6 @@ export const Button = styled.button`
 
 export const TempMentorCardBox = styled.div`
   width: 100%;
+  display: flex;
+  justify-content: center;
 `;

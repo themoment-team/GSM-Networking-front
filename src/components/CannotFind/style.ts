@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const CannotFindText = styled.p`
+export const CannotFindText = styled.span`
   color: ${({ theme }) => theme.color.grey[500]};
   text-align: center;
   font-size: 1.125rem;
