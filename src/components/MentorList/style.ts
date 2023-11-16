@@ -27,16 +27,6 @@ export const WorkerList = styled.div`
 
 export const NotFoundContainer = styled.div`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  margin-top: 7rem;
-`;
-
-export const NotFoundTextBox = styled.div`
-  text-align: center;
-  margin-top: 2rem;
-  color: #8f9094;
-  font-weight: 500;
-  line-height: 23px;
+  margin-top: 13rem;
 `;

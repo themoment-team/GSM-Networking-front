@@ -88,3 +88,9 @@ export const Button = styled.button`
 export const TempMentorCardBox = styled.div`
   width: 100%;
 `;
+
+export const NotFoundContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+`;
