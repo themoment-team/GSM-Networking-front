@@ -1,5 +1,10 @@
 import type { GenerationType, PositionType } from '.';
 
+export interface CompanyType {
+  URL?: string;
+  name: string;
+}
+
 export interface WorkerType {
   id: string;
   name: string;
@@ -10,9 +15,4 @@ export interface WorkerType {
   SNS: string;
   temporaryImgNumber: number;
   registered: boolean;
-}
-
-interface CompanyType {
-  URL?: string;
-  name: string;
 }
