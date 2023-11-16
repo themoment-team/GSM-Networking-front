@@ -149,6 +149,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
         <InputFormItem
           value={companyName.value}
           inputTitle='회사명'
+          placeholder='회사명을 입력해주세요.'
           required
           onChange={(e) => handleInputChange(e, 'companyName')}
           errorMessage={companyName.errorMessage}
@@ -156,6 +157,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
         <InputFormItem
           value={companyUrl.value}
           inputTitle='회사 URL'
+          placeholder='회사 URL을 입력해주세요.'
           onChange={(e) => handleInputChange(e, 'companyUrl')}
           errorMessage={companyUrl.errorMessage}
         />

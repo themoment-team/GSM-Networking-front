@@ -6,6 +6,7 @@ export const CustomSelect = styled.select<{
 }>`
   ${({ theme }) => theme.typo.body1}
   width: 100%;
+  height: 3rem;
   color: ${({ theme, isDefault }) =>
     isDefault ? theme.color.grey[400] : theme.color.black};
   padding: 0.75rem 1rem;
@@ -13,6 +14,7 @@ export const CustomSelect = styled.select<{
     ${({ theme, isError }) =>
       isError ? theme.color.error : theme.color.grey[100]};
   border-radius: 0.625rem;
+  background: ${({ theme }) => theme.color.white};
   cursor: pointer;
 
   :disabled {

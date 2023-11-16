@@ -49,6 +49,7 @@ export const SearchInput = styled.input`
   padding: 0.75rem 1rem;
   background-color: ${({ theme }) => theme.color.white};
   &::placeholder {
+    ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]};
   }
 `;
