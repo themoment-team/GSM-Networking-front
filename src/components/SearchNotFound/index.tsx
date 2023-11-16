@@ -12,8 +12,8 @@ const SearchNotFound: React.FC<Props> = ({ textArr }) => (
   <S.SearchNotFoundWrapper>
     <SearchNotFoundIcon />
     <S.TextWrapper>
-      {textArr.map((text, i) => (
-        <S.SearchNotFoundText key={text + i}>{text}</S.SearchNotFoundText>
+      {textArr.map((text) => (
+        <S.SearchNotFoundText key={text}>{text}</S.SearchNotFoundText>
       ))}
     </S.TextWrapper>
   </S.SearchNotFoundWrapper>
