@@ -1,3 +1,5 @@
+'use client';
+
 import * as S from './style';
 
 import { CannotFindIcon } from '@/assets';
@@ -6,7 +8,7 @@ interface Props {
   textArr: string[];
 }
 
-const CannotFound: React.FC<Props> = ({ textArr }) => (
+const CannotFind: React.FC<Props> = ({ textArr }) => (
   <S.CannotFindWrapper>
     <CannotFindIcon />
     <S.CannotFindText>
@@ -17,4 +19,4 @@ const CannotFound: React.FC<Props> = ({ textArr }) => (
   </S.CannotFindWrapper>
 );
 
-export default CannotFound;
+export default CannotFind;
