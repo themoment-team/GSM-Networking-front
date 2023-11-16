@@ -17,7 +17,7 @@ const CareerCard: React.FC<Props> = ({ career }) => {
     tempStartMonth < 10 ? `0${tempStartMonth}` : tempStartMonth;
 
   const careerEndYear = career.endDate?.getFullYear();
-  const tempEndMonth = career.endDate?.getMonth() ?? 0 + 1;
+  const tempEndMonth = (career.endDate?.getMonth() ?? 0) + 1;
   const careerEndMonth =
     tempEndMonth < 10 ? `0${tempStartMonth}` : tempStartMonth;
 
