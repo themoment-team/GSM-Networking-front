@@ -1,4 +1,5 @@
 import { cookies } from 'next/headers';
+import { redirect } from 'next/navigation';
 
 import { tempMentorUrl } from '@/libs';
 import { MentorRegister } from '@/pageContainer';
@@ -16,19 +17,23 @@ interface Props {
 }
 
 const MentorRegisterPage: NextPage<Props> = async ({ searchParams }) => {
-  const id = Number(searchParams?.id);
+  const id = Number(searchParams?.id) || null;
 
-  const mentorInfo = await getTempMentorInfo(Number(id));
+  const mentorInfo = await getTempMentorInfo(id);
 
-  console.log(data);
-
-  return <MentorRegister tempMentorId={} mentorInfo={mentorInfo} />;
+  return <MentorRegister tempMentorId={id} mentorInfo={mentorInfo} />;
 };
 
 const getTempMentorInfo = async (
-  id: number
+  id: number | null
 ): Promise<TempMentorType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
+
+  if (!accessToken) {
+    return redirect('/auth/refresh?redirect=/register/mentor');
+  }
+
+  if (!id) return null;
 
   try {
     const response = await fetch(
@@ -44,8 +49,6 @@ const getTempMentorInfo = async (
       }
     );
 
-    console.log(response);
-
     if (response.status === 401) {
       throw new Error('accessToken이 만료되었습니다.');
     }
@@ -58,7 +61,7 @@ const getTempMentorInfo = async (
 
     return tempMentorInfo;
   } catch (error) {
-    // return redirect('/auth/refresh?redirect=/register/mentor');
+    return redirect('/auth/refresh?redirect=/register/mentor');
   }
 };
 
