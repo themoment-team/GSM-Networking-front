@@ -11,7 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 
 import * as S from './style';
 
-import { TempMentorCard, CannotFind } from '@/components';
+import { TempMentorCard, SearchNotFound } from '@/components';
 import { useGetSearchTempMentor } from '@/hooks';
 import { tempMentorSearchFormSchema } from '@/schemas';
 import type { TempMentorSearchFormType } from '@/types/form/tempMentorSearchForm';
@@ -69,7 +69,7 @@ const InfoSearch: React.FC = () => {
             ))
           ) : (
             <S.CannotFindWrapper>
-              <CannotFind
+              <SearchNotFound
                 textArr={[
                   '이름을 찾을 수 없어요.',
                   '오타, 띄어쓰기 등을 확인 해주세요.',

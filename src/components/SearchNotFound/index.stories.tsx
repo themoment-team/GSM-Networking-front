@@ -1,9 +1,9 @@
-import CannotFind from './';
+import SearchNotFound from './';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof CannotFind> = {
-  component: CannotFind,
+const meta: Meta<typeof SearchNotFound> = {
+  component: SearchNotFound,
   parameters: {
     layout: 'centered',
   },
@@ -11,7 +11,7 @@ const meta: Meta<typeof CannotFind> = {
 
 export default meta;
 
-type Story = StoryObj<typeof CannotFind>;
+type Story = StoryObj<typeof SearchNotFound>;
 
 export const SearchMentor: Story = {
   args: {

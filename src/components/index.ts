@@ -1,7 +1,6 @@
 export * from './Buttons';
 export * from './FormItem';
 export * from './Modal';
-export { default as CannotFind } from './CannotFind';
 export { default as CareerRegistrationBox } from './CareerRegistrationBox';
 export { default as DropDown } from './DropDown';
 export { default as FilterButton } from './Buttons/Filter';
@@ -15,6 +14,7 @@ export { default as NavigationEvents } from './NavigationEvents';
 export { default as Profile } from './Profile';
 export { default as RandomMentorImg } from './MentorCard/RandomMentorImg';
 export { default as SearchBar } from './SearchBar';
+export { default as SearchNotFound } from './SearchNotFound';
 export { default as Select } from './Select';
 export { default as TempMentorCard } from './TempMentorCard';
 export { default as ToolTip } from './ToolTip';

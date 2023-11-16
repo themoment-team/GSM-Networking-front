@@ -1,14 +1,6 @@
 import styled from '@emotion/styled';
 
-export const CannotFindText = styled.span`
-  color: ${({ theme }) => theme.color.grey[500]};
-  text-align: center;
-  font-size: 1.125rem;
-  font-weight: 600;
-  line-height: 150%;
-`;
-
-export const CannotFindWrapper = styled.div`
+export const SearchNotFoundWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -20,4 +12,12 @@ export const TextWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const SearchNotFoundText = styled.span`
+  color: ${({ theme }) => theme.color.grey[500]};
+  text-align: center;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 150%;
 `;
