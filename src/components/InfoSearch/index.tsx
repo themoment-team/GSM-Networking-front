@@ -68,14 +68,14 @@ const InfoSearch: React.FC = () => {
               />
             ))
           ) : (
-            <S.CannotFindWrapper>
+            <S.NotFoundContainer>
               <SearchNotFound
                 textArr={[
                   '이름을 찾을 수 없어요.',
                   '오타, 띄어쓰기 등을 확인 해주세요.',
                 ]}
               />
-            </S.CannotFindWrapper>
+            </S.NotFoundContainer>
           ))}
       </S.TempMentorCardBox>
       <S.Button onClick={handleButtonClick} disabled={!isUserSelect}>

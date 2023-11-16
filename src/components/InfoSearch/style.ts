@@ -87,7 +87,7 @@ export const TempMentorCardBox = styled.div`
   width: 100%;
 `;
 
-export const CannotFindWrapper = styled.div`
+export const NotFoundContainer = styled.div`
   display: flex;
   justify-content: center;
   margin-top: 10rem;
