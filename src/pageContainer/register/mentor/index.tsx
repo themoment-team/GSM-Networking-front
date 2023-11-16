@@ -47,11 +47,11 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { mutate: deleteTempMentorMutate } = useDeleteTempMentor({
+  const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
   });
 
-  const { mutate: postMentorRegisterMutate } = usePostMentorRegister({
+  const { mutate: mutateMentorRegister } = usePostMentorRegister({
     onError: () => toast.error('멘토 등록에 실패하였습니다.'),
     onSuccess: () => handleMentorRegisterSuccess(),
   });
@@ -59,7 +59,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
-      deleteTempMentorMutate(tempMentorId);
+      mutateDeleteTempMentor(tempMentorId);
     }
   };
 
@@ -123,7 +123,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       body.career.push(careerData);
     });
 
-    postMentorRegisterMutate(body);
+    mutateMentorRegister(body);
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
