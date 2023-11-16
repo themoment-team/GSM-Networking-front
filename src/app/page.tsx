@@ -2,20 +2,15 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { MainPage } from '@/components';
+import { mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
 
-const BASE_URL = process.env.BASE_URL;
-
 export default async function Home() {
-  const workerList = await getWorkerList();
+  const workerList = await getMentorList();
 
-  const sortedWorkerList = [...workerList].sort((a, b) =>
-    a.position.localeCompare(b.position)
-  );
-
-  return <MainPage initWorkerList={sortedWorkerList} />;
+  return <MainPage initWorkerList={[...workerList]} />;
 }
 
 export const metadata: Metadata = {
@@ -30,18 +25,18 @@ export const metadata: Metadata = {
   },
 };
 
-const getWorkerList = async (): Promise<WorkerType[]> => {
-  const cookieStore = cookies();
+const getMentorList = async (): Promise<WorkerType[]> => {
+  const accessToken = cookies().get('accessToken')?.value;
 
-  const accessToken = cookieStore.get('accessToken')?.value;
+  if (!accessToken) return redirect('/auth/refresh');
 
   try {
     const response = await fetch(
-      new URL('/api/worker/list', process.env.API_BASE_URL),
+      new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
       {
         method: 'GET',
         headers: {
-          Authorization: `Bearer ${accessToken}`,
+          Cookie: `accessToken=${accessToken}`,
         },
       }
     );
@@ -50,16 +45,16 @@ const getWorkerList = async (): Promise<WorkerType[]> => {
       throw new Error('accessToken이 만료되었습니다.');
     }
 
-    const workerList = await response.json();
+    const mentorList = await response.json();
 
-    return addTemporaryImgNumber(workerList);
+    return addTemporaryImgNumber(mentorList);
   } catch (error) {
-    return redirect(`${BASE_URL}/auth/refresh`);
+    return redirect('/auth/refresh');
   }
 };
 
-const addTemporaryImgNumber = (workerList: WorkerType[]) =>
-  workerList.map((worker) => ({
+const addTemporaryImgNumber = (mentorList: WorkerType[]) =>
+  mentorList.map((worker) => ({
     ...worker,
     temporaryImgNumber: Math.floor(Math.random() * 5),
   }));

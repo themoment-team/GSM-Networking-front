@@ -76,6 +76,12 @@ export function GlobalStyle() {
           background: inherit;
           cursor: pointer;
         }
+
+        input {
+          @media (max-width: 600px) {
+            font-size: 16px !important;
+          }
+        }
       `}
     />
   );

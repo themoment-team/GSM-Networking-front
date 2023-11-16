@@ -8,6 +8,7 @@ import RandomWorkerImg from './RandomMentorImg';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { ToolTip } from '@/components';
 import type { WorkerType } from '@/types/worker';
 
 interface Props {
@@ -18,6 +19,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
+  const isRegistered = worker.registered;
 
   const handleSNSClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -38,7 +40,19 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
           <S.WorkerName>{worker.name}</S.WorkerName>
-          {/* <I.BlueCheckIcon /> */}
+          {isRegistered && (
+            <S.BlueCheckIconWrapper>
+              <I.BlueCheckIcon />
+              <S.ToolTipWrapper className='tool-tip'>
+                <ToolTip
+                  textArr={[
+                    '등록된 멘토임을 의미합니다.',
+                    '차후 등록을 진행해 보세요.',
+                  ]}
+                />
+              </S.ToolTipWrapper>
+            </S.BlueCheckIconWrapper>
+          )}
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (

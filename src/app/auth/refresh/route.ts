@@ -2,42 +2,53 @@ import { cookies } from 'next/headers';
 import type { NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
 
-import type { AuthType } from '@/types';
+import { authUrl } from '@/libs';
+import { extractSubstring } from '@/utils';
+
+const cookieDomain =
+  process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
+
+const setCookie = (name: string, value: string, maxAge: number) => {
+  cookies().set(name, value, {
+    maxAge,
+    httpOnly: true,
+    secure: true,
+    domain: cookieDomain,
+  });
+};
 
 export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+
+  const redirectPath = searchParams.get('redirect') || '/';
+
   const cookieStore = cookies();
 
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
   try {
-    const response = await fetch(
-      new URL('/api/auth/reissue', process.env.API_BASE_URL),
+    const res = await fetch(
+      new URL(`/api/v1${authUrl.patchRefresh()}`, process.env.BASE_URL),
       {
         method: 'PATCH',
         headers: {
-          refreshToken: `Bearer ${refreshToken ?? ''}`,
+          Cookie: `refreshToken=${refreshToken}`,
         },
       }
     );
 
-    const data: AuthType = await response.json();
+    if (!res.ok) throw new Error('refreshToken이 만료되었습니다.');
 
-    if (!response.ok) {
-      throw new Error('Failed to get refresh token');
-    }
+    const resCookie = res.headers.get('set-cookie') || '';
 
-    cookieStore.set('accessToken', data.accessToken, {
-      httpOnly: true,
-      expires: new Date(data.accessTokenExp),
-    });
+    const newAccessToken = extractSubstring(resCookie, 'accessToken=', ';');
+    const newRefreshToken = extractSubstring(resCookie, 'refreshToken=', ';');
 
-    cookieStore.set('refreshToken', data.refreshToken, {
-      httpOnly: true,
-      expires: new Date(data.refreshTokenExp),
-    });
+    setCookie('accessToken', newAccessToken, 10800);
+    setCookie('refreshToken', newRefreshToken, 2592000);
 
-    return NextResponse.redirect(new URL('/', request.url));
-  } catch (error) {
+    return NextResponse.redirect(new URL(redirectPath, request.url));
+  } catch (e) {
     return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
 }
