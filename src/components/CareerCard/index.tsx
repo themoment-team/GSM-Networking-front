@@ -10,7 +10,7 @@ interface Props {
   career: CareerType;
 }
 
-const index: React.FC<Props> = ({ career }) => {
+const CareerCard: React.FC<Props> = ({ career }) => {
   const careerStartYear = career.startDate.getFullYear();
   const tempStartMonth = career.startDate.getMonth() + 1;
   const careerStartMonth =
@@ -21,18 +21,19 @@ const index: React.FC<Props> = ({ career }) => {
   const careerEndMonth =
     tempEndMonth < 10 ? `0${tempStartMonth}` : tempStartMonth;
 
+  const careerPeriod = `${careerStartYear}.${careerStartMonth} ~ ${careerEndYear}.${careerEndMonth}`;
+
   return (
     <S.CareerCardContainer>
       <S.CareerInfoBox>
         <S.CompanyName>{career.companyName}</S.CompanyName>
         <S.position>{career.position} 🖥️</S.position>
         <S.CareerPeriod isWorking={career.isWorking}>
-          {career.isWorking
-            ? '재직중'
-            : `${careerStartYear}.${careerStartMonth} ~ ${careerEndYear}.${careerEndMonth}`}
+          {career.isWorking ? '재직중' : careerPeriod}
         </S.CareerPeriod>
       </S.CareerInfoBox>
     </S.CareerCardContainer>
   );
 };
-export default index;
+
+export default CareerCard;
