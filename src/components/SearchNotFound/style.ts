@@ -14,7 +14,7 @@ export const TextWrapper = styled.div`
   align-items: center;
 `;
 
-export const SearchNotFoundText = styled.span`
+export const SearchNotFoundText = styled.p`
   color: ${({ theme }) => theme.color.grey[500]};
   text-align: center;
   font-size: 1.125rem;

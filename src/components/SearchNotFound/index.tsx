@@ -11,11 +11,11 @@ interface Props {
 const SearchNotFound: React.FC<Props> = ({ textArr }) => (
   <S.SearchNotFoundWrapper>
     <SearchNotFoundIcon />
-    <S.SearchNotFoundText>
+    <S.TextWrapper>
       {textArr.map((text, i) => (
         <S.SearchNotFoundText key={text + i}>{text}</S.SearchNotFoundText>
       ))}
-    </S.SearchNotFoundText>
+    </S.TextWrapper>
   </S.SearchNotFoundWrapper>
 );
 
