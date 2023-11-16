@@ -37,8 +37,7 @@ export const LogoLink = styled(Link)`
   column-gap: 0.38rem;
 `;
 
-// for test
-export const DeleteButton = styled.button`
+export const MentorContact = styled.button`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
   border: none;
@@ -50,9 +49,15 @@ export const RedirectLink = styled(Link)`
   border: none;
 `;
 
+export const RightBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+`;
+
 export const RedirectBox = styled.div`
   display: flex;
-  column-gap: 1.5rem;
+  gap: 1.5rem;
 `;
 
 export const GapBox = styled.div`

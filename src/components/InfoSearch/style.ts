@@ -52,6 +52,9 @@ export const SearchInput = styled.input`
     ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]};
   }
+  :focus {
+    outline: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
+  }
 `;
 
 export const SearchButton = styled.button`
