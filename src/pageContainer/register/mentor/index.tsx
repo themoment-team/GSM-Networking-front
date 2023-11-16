@@ -141,33 +141,37 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             <InputFormItem
               {...register('name')}
               inputTitle='이름'
+              placeholder='이름을 입력해주세요.'
               errorMessage={errors.name?.message}
               required={true}
             />
             <InputFormItem
               {...register('phoneNumber')}
               inputTitle='전화번호'
+              placeholder='전화번호를 입력해주세요.'
               errorMessage={errors.phoneNumber?.message}
               required={true}
             />
             <InputFormItem
               {...register('email')}
               inputTitle='이메일'
+              placeholder='이메일을 입력해주세요.'
               errorMessage={errors.email?.message}
               required={true}
             />
             <InputFormItem
               {...register('snsUrl')}
               inputTitle='SNS'
+              placeholder='SNS 주소를 입력해주세요.'
               errorMessage={errors.snsUrl?.message}
             />
             <SelectFormItem
               {...register('generation')}
-              required={true}
               selectTitle='기수'
               options={[...GENERATION_ARRAY]}
               defaultValue='기수를 선택해주세요.'
               errorMessage={errors.generation?.message}
+              required={true}
             />
           </S.InputWrapper>
         </S.PrivacyBox>
