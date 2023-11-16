@@ -36,6 +36,7 @@ export const SearchForm = styled.form`
 
 export const ErrorMessage = styled.p`
   ${({ theme }) => theme.typo.caption}
+  height: calc(0.75rem * 1.5); // font size * line height
   color: ${({ theme }) => theme.color.error};
   margin-top: 0.5rem;
 `;

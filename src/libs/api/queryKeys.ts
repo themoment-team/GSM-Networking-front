@@ -14,4 +14,5 @@ export const mentorQueryKeys = {
 
 export const tempMentorQueryKeys = {
   getSearchTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
+  deleteTempMentor: () => ['temp', 'mentor', 'delete'],
 };
