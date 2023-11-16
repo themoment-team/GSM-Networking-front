@@ -26,7 +26,7 @@ export const Primary: Story = {
         {
           companyName: '더모먼트',
           companyUrl: null,
-          position: '프론트엔드 리더',
+          position: '프론트엔드',
           startDate: new Date(),
           endDate: null,
           isWorking: false,
