@@ -10,6 +10,10 @@ export interface MentorType {
   career: CareerType[];
 }
 
-export interface TempMentorType extends Omit<MentorType, 'career'> {
-  career: CareerType;
+export interface TempMentorType extends Omit<MentorType, 'career' | 'snsUrl'> {
+  company: {
+    name: string;
+    URL: string;
+  };
+  SNS: string | null;
 }
