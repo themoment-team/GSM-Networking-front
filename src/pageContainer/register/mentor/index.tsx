@@ -31,31 +31,33 @@ import type {
 import { careerValidation, hasErrorInCareerArray, UTCDate } from '@/utils';
 
 interface Props {
-  tempMentorId: number;
+  tempMentorId: number | null;
   mentorInfo: TempMentorType | null;
 }
 
-const extractCareer = (career: CareerType | null): CareerFormType => {
-  if (!career) {
+const extractCareer = (
+  company: { name: string; URL: string } | null
+): CareerFormType => {
+  if (!company) {
     return defaultCareer;
   }
 
   return {
     ...defaultCareer,
-    companyName: { value: career.companyName, errorMessage: '' },
-    companyUrl: { value: career.companyUrl ?? '', errorMessage: '' },
+    companyName: { value: company.name, errorMessage: '' },
+    companyUrl: { value: company.URL ?? '', errorMessage: '' },
   };
 };
 
 const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
-    extractCareer(mentorInfo?.career ?? null),
+    extractCareer(mentorInfo?.company ?? null),
   ]);
 
   const { push } = useRouter();
 
   const { mutate: deleteTempMentorMutate } = useDeleteTempMentor({
-    onSuccess: () => handleTempMentorDeleteSuccess(),
+    onSettled: () => push('/'),
   });
 
   const { mutate: postMentorRegisterMutate } = usePostMentorRegister({
@@ -65,11 +67,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
-    deleteTempMentorMutate(tempMentorId);
-  };
-
-  const handleTempMentorDeleteSuccess = () => {
-    push('/');
+    if (tempMentorId) {
+      deleteTempMentorMutate(tempMentorId);
+    }
   };
 
   const {
@@ -83,7 +83,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       phoneNumber: '',
       email: mentorInfo?.email ?? '',
       generation: mentorInfo?.generation.toString() ?? undefined,
-      snsUrl: mentorInfo?.snsUrl ?? '',
+      snsUrl: mentorInfo?.SNS ?? '',
     },
   });
 
