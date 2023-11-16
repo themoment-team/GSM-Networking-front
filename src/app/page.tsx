@@ -30,27 +30,31 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
   if (!accessToken) return redirect('/auth/refresh');
 
-  try {
-    const response = await fetch(
-      new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
-      {
-        method: 'GET',
-        headers: {
-          Cookie: `accessToken=${accessToken}`,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('accessToken이 만료되었습니다.');
+  const response = await fetch(
+    new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
+    {
+      method: 'GET',
+      headers: {
+        Cookie: `accessToken=${accessToken}`,
+      },
     }
+  );
 
-    const mentorList = await response.json();
+  if (response.status === 403) {
+    return redirect('/auth/signup');
+  }
 
-    return addTemporaryImgNumber(mentorList);
-  } catch (error) {
+  if (response.status === 401) {
     return redirect('/auth/refresh');
   }
+
+  if (!response.ok) {
+    return redirect('/auth/signin');
+  }
+
+  const mentorList = await response.json();
+
+  return addTemporaryImgNumber(mentorList);
 };
 
 const addTemporaryImgNumber = (mentorList: WorkerType[]) =>
