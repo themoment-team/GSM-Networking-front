@@ -13,6 +13,7 @@ export { default as MentorSelectIcon } from './MentorSelectIcon';
 export { default as MoreIcon } from './MoreIcon';
 export { default as NotExistEmailIcon } from './NotExistEmailIcon';
 export { default as NotExistSNSIcon } from './NotExistSNSIcon';
+export { default as PenIcon } from './PenIcon';
 export { default as PersonImg0 } from './PersonImg0';
 export { default as PersonImg1 } from './PersonImg1';
 export { default as PersonImg2 } from './PersonImg2';
