@@ -64,7 +64,7 @@ export const GapBox = styled.div`
   width: 4rem;
 `;
 
-export const ProfileBox = styled.div`
+export const ProfileBox = styled.button`
   background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 3.125rem;
   overflow: hidden;
