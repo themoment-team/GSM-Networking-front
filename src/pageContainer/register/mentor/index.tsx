@@ -18,7 +18,7 @@ import {
   InputFormItem,
   SelectFormItem,
 } from '@/components';
-import { GENERATION_ARRAY, defaultCareer } from '@/constants';
+import { GENERATION_ARRAY } from '@/constants';
 import { useDeleteTempMentor, usePostMentorRegister } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -28,26 +28,17 @@ import type {
   MentorType,
   TempMentorType,
 } from '@/types';
-import { careerValidation, hasErrorInCareerArray, UTCDate } from '@/utils';
+import {
+  careerValidation,
+  extractCareer,
+  hasErrorInCareerArray,
+  UTCDate,
+} from '@/utils';
 
 interface Props {
   tempMentorId: number | null;
   mentorInfo: TempMentorType | null;
 }
-
-const extractCareer = (
-  company: { name: string; URL: string } | null
-): CareerFormType => {
-  if (!company) {
-    return defaultCareer;
-  }
-
-  return {
-    ...defaultCareer,
-    companyName: { value: company.name, errorMessage: '' },
-    companyUrl: { value: company.URL ?? '', errorMessage: '' },
-  };
-};
 
 const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
