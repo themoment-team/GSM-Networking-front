@@ -35,7 +35,7 @@ const SignUp = () => {
 
     if (role === 'mentee') return menteeRoleMutate();
 
-    if (role === 'mentor') return push('/register/mentor');
+    if (role === 'mentor') return push('/register/search');
   };
 
   return (
