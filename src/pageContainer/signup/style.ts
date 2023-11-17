@@ -57,9 +57,14 @@ export const AgreementButton = styled.button<{ checkPolicy: boolean }>`
   }
 `;
 
-export const AgreementButtonLink = styled.a`
+export const AgreementTextButton = styled.button`
   ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.grey[500]};
+`;
+
+export const AgreementLink = styled.a`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.skyBlue[300]};
 `;
 
 export const SubmitButton = styled.button`

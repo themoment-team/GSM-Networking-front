@@ -55,13 +55,18 @@ const SignUp = () => {
           >
             {checkPolicy && <CheckBoxIcon />}
           </S.AgreementButton>
-          <S.AgreementButtonLink
+          <S.AgreementTextButton
+            onClick={() => setCheckPolicy((prev) => !prev)}
+          >
+            개인정보 처리방침
+          </S.AgreementTextButton>
+          <S.AgreementLink
             href={PRIVACY_POLICY_URL}
             target='_blank'
             rel='noopener noreferrer'
           >
-            개인정보 처리방침
-          </S.AgreementButtonLink>
+            본문 확인
+          </S.AgreementLink>
         </S.AgreementButtonBox>
       </S.AgreementBox>
       <S.SubmitButton disabled={role === null} onClick={handleNextButtonClick}>
