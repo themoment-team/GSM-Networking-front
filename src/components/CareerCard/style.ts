@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const CareerCardContainer = styled.div`
   max-width: 18.25rem;
   padding: 1rem;
-  border: 1px solid ${({ theme }) => theme.color.grey[100]};
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   border-radius: 0.625rem;
 `;
 
