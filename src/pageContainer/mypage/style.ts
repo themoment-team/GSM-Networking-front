@@ -4,28 +4,28 @@ export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 56px 0;
-  margin-top: 70px;
+  padding: 3.5rem 0;
+  margin-top: 4.375rem;
 `;
 
 export const Line = styled.div`
-  width: 601px;
-  height: 12px;
-  border-radius: 1px;
+  width: 37.5625rem;
+  height: 0.75rem;
+  border-radius: 0.0625rem;
   background: ${({ theme }) => theme.color.grey[50]};
 `;
 
 export const CareerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 16px;
-  margin: 56px 0 40px;
+  gap: 1rem;
+  margin: 3.5rem 0 2.5rem;
 `;
 
 export const CareerInfoText = styled.span`
   color: ${({ theme }) => theme.color.grey[900]};
 
-  font-size: 18px;
+  font-size: 1.125rem;
   font-weight: 600;
   line-height: 150%;
 `;
@@ -33,18 +33,18 @@ export const CareerInfoText = styled.span`
 export const CareerBox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 16px 16px;
+  gap: 1rem 1rem;
 `;
 
 export const WithdrawContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 `;
 
 export const WithdrawBox = styled.div<{ hoverColor: 'red' | 'blue' }>`
   display: flex;
-  gap: 6px;
+  gap: 0.375rem;
   cursor: pointer;
   width: fit-content;
 
