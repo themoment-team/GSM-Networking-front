@@ -5,6 +5,7 @@ export const ProfileContainer = styled.div`
   align-items: center;
   justify-content: center;
   padding: 56px 0;
+  margin-top: 70px;
 `;
 
 export const Line = styled.div`
@@ -18,6 +19,7 @@ export const CareerContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  margin: 56px 0 40px;
 `;
 
 export const CareerInfoText = styled.span`

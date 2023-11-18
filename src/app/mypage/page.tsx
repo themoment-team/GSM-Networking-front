@@ -24,7 +24,7 @@ const mockupData = {
   SNS: 'https://finda.co.kr/',
   profileUrl: 'https://finda.co.kr/',
   registerd: true,
-  career: [career, career, career],
+  career: [career, career],
 };
 
 const MyPage = () => <MyInfoPage myInfo={mockupData} />;
