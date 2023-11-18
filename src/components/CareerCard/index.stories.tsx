@@ -1,8 +1,10 @@
+import type { CareerType } from '@/types';
+
 import CareerCard from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const career = {
+const career: CareerType = {
   companyName: '더모먼트',
   companyUrl: '',
   position: '프론트엔드',
