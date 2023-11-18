@@ -35,3 +35,33 @@ export const CareerBox = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 16px 16px;
 `;
+
+export const WithdrawContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+`;
+
+export const WithdrawBox = styled.div<{ hoverColor: 'red' | 'blue' }>`
+  display: flex;
+  gap: 6px;
+  cursor: pointer;
+  width: fit-content;
+
+  &:hover {
+    path {
+      fill: ${({ hoverColor, theme: { color } }) =>
+        hoverColor === 'blue' ? color.skyBlue[400] : color.error};
+    }
+
+    span {
+      color: ${({ hoverColor, theme: { color } }) =>
+        hoverColor === 'blue' ? color.skyBlue[400] : color.error};
+    }
+  }
+`;
+
+export const WithdrawText = styled.span`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[500]};
+`;

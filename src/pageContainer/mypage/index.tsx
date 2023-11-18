@@ -2,6 +2,7 @@
 
 import * as S from './style';
 
+import { ExitIcon, PersonIcon } from '@/assets';
 import { Profile, CareerCard, Header } from '@/components';
 import type { CareerType } from '@/types';
 
@@ -23,7 +24,7 @@ interface Props {
 const MyPage: React.FC<Props> = ({
   myInfo: { name, generation, career: careerList },
 }) => (
-  <div>
+  <>
     <Header />
     <S.ProfileContainer>
       <Profile name={name} generation={generation} />
@@ -37,7 +38,17 @@ const MyPage: React.FC<Props> = ({
         ))}
       </S.CareerBox>
     </S.CareerContainer>
-  </div>
+    <S.WithdrawContainer>
+      <S.WithdrawBox hoverColor='blue'>
+        <ExitIcon />
+        <S.WithdrawText>로그아웃</S.WithdrawText>
+      </S.WithdrawBox>
+      <S.WithdrawBox hoverColor='red'>
+        <PersonIcon />
+        <S.WithdrawText>회원탈퇴</S.WithdrawText>
+      </S.WithdrawBox>
+    </S.WithdrawContainer>
+  </>
 );
 
 export default MyPage;
