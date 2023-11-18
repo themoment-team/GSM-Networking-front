@@ -17,11 +17,11 @@ interface MentorInfoType {
 }
 
 interface Props {
-  mentorInfo: MentorInfoType;
+  myInfo: MentorInfoType;
 }
 
 const MyPage: React.FC<Props> = ({
-  mentorInfo: { name, generation, career: careerList },
+  myInfo: { name, generation, career: careerList },
 }) => {
   const a = 0;
 
