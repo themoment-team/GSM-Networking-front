@@ -10,11 +10,11 @@ import { Profile, CareerCard, Header } from '@/components';
 import { useGetMyInfo } from '@/hooks';
 
 const MyPage = () => {
-  const { data } = useGetMyInfo();
+  const { data, isLoading } = useGetMyInfo();
 
   const { push } = useRouter();
 
-  if (!data) {
+  if (!isLoading && !data) {
     toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
     push('/');
   }
