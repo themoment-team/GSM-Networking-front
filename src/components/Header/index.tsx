@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import { useRouter } from 'next/navigation';
+
 import { toast } from 'react-toastify';
 
 import * as S from './style';
@@ -16,7 +18,13 @@ interface Props {
 const Header: React.FC<Props> = ({ clearList }) => {
   const { data } = useGetMyInfo();
 
+  const { push } = useRouter();
+
   const comingSoonToast = () => toast.info('곧 출시 예정입니다. 감사합니다.');
+
+  const handleProfileClick = () => {
+    if (data) push('/mypage');
+  };
 
   return (
     <S.Header>
@@ -34,7 +42,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
           </S.RedirectBox>
-          <S.ProfileBox type='button' onClick={comingSoonToast}>
+          <S.ProfileBox type='button' onClick={handleProfileClick}>
             <I.PersonImg4 />
           </S.ProfileBox>
         </S.RightBox>
