@@ -13,7 +13,7 @@ interface MentorInfoType {
   generation: number;
   SNS?: string;
   profileUrl?: string;
-  registerd: boolean;
+  registered: boolean;
   career: CareerType[];
 }
 
@@ -24,7 +24,7 @@ interface Props {
 const MyPage: React.FC<Props> = ({
   myInfo: { name, generation, career: careerList },
 }) => (
-  <>
+  <S.Container>
     <Header />
     <S.ProfileContainer>
       <Profile name={name} generation={generation} />
@@ -48,7 +48,7 @@ const MyPage: React.FC<Props> = ({
         <S.WithdrawText>회원탈퇴</S.WithdrawText>
       </S.WithdrawBox>
     </S.WithdrawContainer>
-  </>
+  </S.Container>
 );
 
 export default MyPage;

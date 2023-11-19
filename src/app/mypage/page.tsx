@@ -23,7 +23,7 @@ const mockupData = {
   generation: 1,
   SNS: 'https://finda.co.kr/',
   profileUrl: 'https://finda.co.kr/',
-  registerd: true,
+  registered: true,
   career: [career, career],
 };
 

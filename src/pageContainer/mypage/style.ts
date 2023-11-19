@@ -1,5 +1,11 @@
 import styled from '@emotion/styled';
 
+export const Container = styled.div`
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
+`;
+
 export const ProfileContainer = styled.div`
   display: flex;
   align-items: center;
@@ -9,7 +15,6 @@ export const ProfileContainer = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 37.5625rem;
   height: 0.75rem;
   border-radius: 0.0625rem;
   background: ${({ theme }) => theme.color.grey[50]};
