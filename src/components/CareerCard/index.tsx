@@ -14,10 +14,10 @@ const CareerCard: React.FC<Props> = ({ career }) => {
   const convertDate = (date: string | null) => {
     const newDate = new Date(String(date).split('-').join('/'));
 
-    return `${newDate.getFullYear()}.${String(newDate.getMonth() + 1).padStart(
-      2,
-      '0'
-    )}`;
+    const year = newDate.getFullYear();
+    const month = String(newDate.getMonth() + 1).padStart(2, '0');
+
+    return `${year}.${month}`;
   };
 
   const startDate = convertDate(career.startDate);
