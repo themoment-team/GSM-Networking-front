@@ -49,6 +49,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.redirect(new URL(redirectPath, request.url));
   } catch (e) {
-    return NextResponse.redirect(new URL('/mypage', request.url));
+    return NextResponse.redirect(new URL('/auth/signin', request.url));
   }
 }
