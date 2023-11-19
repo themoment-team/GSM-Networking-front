@@ -17,20 +17,19 @@ export interface CareerFormType {
   isWorking: CareerFormFieldType<boolean>;
 }
 
-export interface CareerType {
+interface CommonCareerType {
   companyName: string;
   companyUrl?: string | null;
   position: PositionType | '포지션 선택';
-  startDate: string;
-  endDate: string | null;
   isWorking: boolean;
 }
 
-export interface RequestCareerType {
-  companyName: string;
-  companyUrl?: string | null;
-  position: PositionType | '포지션 선택';
+export interface CareerType extends CommonCareerType {
+  startDate: string;
+  endDate: string | null;
+}
+
+export interface RequestCareerType extends CommonCareerType {
   startDate: Date;
   endDate: Date | null;
-  isWorking: boolean;
 }
