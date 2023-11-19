@@ -2,7 +2,6 @@
 
 import * as S from './style';
 
-import { ExitIcon, PersonIcon } from '@/assets';
 import { Profile, CareerCard, Header } from '@/components';
 import type { CareerType } from '@/types';
 
@@ -38,7 +37,7 @@ const MyPage: React.FC<Props> = ({
         ))}
       </S.CareerBox>
     </S.CareerContainer>
-    <S.WithdrawContainer>
+    {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
       <S.WithdrawBox hoverColor='blue'>
         <ExitIcon />
         <S.WithdrawText>로그아웃</S.WithdrawText>
@@ -47,7 +46,7 @@ const MyPage: React.FC<Props> = ({
         <PersonIcon />
         <S.WithdrawText>회원탈퇴</S.WithdrawText>
       </S.WithdrawBox>
-    </S.WithdrawContainer>
+    </S.WithdrawContainer> */}
   </S.Container>
 );
 
