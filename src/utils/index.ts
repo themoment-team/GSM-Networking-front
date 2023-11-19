@@ -5,4 +5,5 @@ export { default as extractCareer } from './extractCareer';
 export { default as extractSubstring } from './extractSubstring';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isNumeric } from './isNumeric';
+export { default as minutesToMs } from './minutesToMs';
 export { default as minutesToSeconds } from './minutesToSeconds';

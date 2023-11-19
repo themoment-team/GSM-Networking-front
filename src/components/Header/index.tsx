@@ -7,12 +7,15 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { useGetMyInfo } from '@/hooks';
 
 interface Props {
   clearList?: () => void;
 }
 
 const Header: React.FC<Props> = ({ clearList }) => {
+  const { data } = useGetMyInfo();
+
   const comingSoonToast = () => toast.info('곧 출시 예정입니다. 감사합니다.');
 
   return (
@@ -27,7 +30,9 @@ const Header: React.FC<Props> = ({ clearList }) => {
             <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact>
-            <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
+            {!data && (
+              <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
+            )}
           </S.RedirectBox>
           <S.ProfileBox type='button' onClick={comingSoonToast}>
             <I.PersonImg4 />
