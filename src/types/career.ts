@@ -25,3 +25,12 @@ export interface CareerType {
   endDate: string | null;
   isWorking: boolean;
 }
+
+export interface RequestCareerType {
+  companyName: string;
+  companyUrl?: string | null;
+  position: PositionType | '포지션 선택';
+  startDate: Date;
+  endDate: Date | null;
+  isWorking: boolean;
+}

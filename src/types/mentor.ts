@@ -1,4 +1,4 @@
-import type { CareerType } from '@/types';
+import type { RequestCareerType } from '@/types';
 
 export interface MentorType {
   name: string;
@@ -7,7 +7,7 @@ export interface MentorType {
   phoneNumber: string;
   snsUrl?: string | null;
   profileUrl?: string | null;
-  career: CareerType[];
+  career: RequestCareerType[];
 }
 
 export interface TempMentorType extends Omit<MentorType, 'career' | 'snsUrl'> {
