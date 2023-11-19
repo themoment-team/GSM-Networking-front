@@ -1,5 +1,6 @@
+import { useGetMyInfo } from '@/hooks';
 import { MyInfoPage } from '@/pageContainer';
-import type { CareerType } from '@/types';
+import type { MentorInfoType } from '@/types';
 
 import type { Metadata } from 'next';
 
@@ -7,26 +8,11 @@ export const metadata: Metadata = {
   title: '마이페이지',
 };
 
-const career: CareerType = {
-  companyName: '더모먼트',
-  companyUrl: '',
-  position: '프론트엔드',
-  startDate: new Date(),
-  endDate: new Date(),
-  isWorking: false,
-};
+const MyPage = () => {
+  const { data } = useGetMyInfo();
 
-const mockupData = {
-  id: 1,
-  name: '이승제',
-  email: 'frorong0727@gmail.com',
-  generation: 1,
-  SNS: 'https://finda.co.kr/',
-  profileUrl: 'https://finda.co.kr/',
-  registered: true,
-  career: [career, career],
+  if (data) return <MyInfoPage myInfo={data as MentorInfoType} />;
+  else <></>;
 };
-
-const MyPage = () => <MyInfoPage myInfo={mockupData} />;
 
 export default MyPage;

@@ -3,18 +3,7 @@
 import * as S from './style';
 
 import { Profile, CareerCard, Header } from '@/components';
-import type { CareerType } from '@/types';
-
-interface MentorInfoType {
-  id: number;
-  name: string;
-  email: string;
-  generation: number;
-  SNS?: string;
-  profileUrl?: string;
-  registered: boolean;
-  career: CareerType[];
-}
+import type { MentorInfoType } from '@/types';
 
 interface Props {
   myInfo: MentorInfoType;
