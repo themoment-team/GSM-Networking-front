@@ -1,5 +1,9 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import { Profile, CareerCard, Header } from '@/components';
@@ -7,6 +11,13 @@ import { useGetMyInfo } from '@/hooks';
 
 const MyPage = () => {
   const { data } = useGetMyInfo();
+
+  const { push } = useRouter();
+
+  if (!data) {
+    toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
+    push('/');
+  }
 
   return (
     <S.Container>

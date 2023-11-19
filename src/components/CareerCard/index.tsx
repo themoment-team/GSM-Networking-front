@@ -10,16 +10,16 @@ interface Props {
   career: CareerType;
 }
 
+const convertDate = (date: string | null) => {
+  const newDate = new Date(String(date).split('-').join('/'));
+
+  const year = newDate.getFullYear();
+  const month = String(newDate.getMonth() + 1).padStart(2, '0');
+
+  return `${year}.${month}`;
+};
+
 const CareerCard: React.FC<Props> = ({ career }) => {
-  const convertDate = (date: string | null) => {
-    const newDate = new Date(String(date).split('-').join('/'));
-
-    const year = newDate.getFullYear();
-    const month = String(newDate.getMonth() + 1).padStart(2, '0');
-
-    return `${year}.${month}`;
-  };
-
   const startDate = convertDate(career.startDate);
   const endDate = convertDate(career.endDate);
 
