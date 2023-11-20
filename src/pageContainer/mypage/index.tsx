@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
@@ -10,14 +12,17 @@ import { Profile, CareerCard, Header } from '@/components';
 import { useGetMyInfo } from '@/hooks';
 
 const MyPage = () => {
-  const { data, isLoading } = useGetMyInfo();
+  const { data, isError } = useGetMyInfo();
 
   const { push } = useRouter();
 
-  if (!isLoading && !data) {
-    toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
-    push('/');
-  }
+  useEffect(() => {
+    if (isError) {
+      toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
+      push('/');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isError]);
 
   return (
     <S.Container>
