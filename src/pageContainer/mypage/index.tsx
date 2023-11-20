@@ -36,8 +36,8 @@ const MyPage = () => {
           <S.CareerContainer>
             <S.CareerInfoText>재직 정보</S.CareerInfoText>
             <S.CareerBox>
-              {data.career.map((career, i) => (
-                <CareerCard career={career} key={i /*career.id 수정 */} />
+              {data.career.map((career) => (
+                <CareerCard career={career} key={career.id} />
               ))}
             </S.CareerBox>
           </S.CareerContainer>

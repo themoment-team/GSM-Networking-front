@@ -18,6 +18,7 @@ export interface CareerFormType {
 }
 
 export interface CareerType {
+  id: number;
   companyName: string;
   companyUrl?: string | null;
   position: PositionType | '포지션 선택';
@@ -27,7 +28,7 @@ export interface CareerType {
 }
 
 export interface RequestCareerType
-  extends Omit<CareerType, 'startDate' | 'endDate'> {
+  extends Omit<CareerType, 'startDate' | 'endDate' | 'id'> {
   startDate: Date;
   endDate: Date | null;
 }
