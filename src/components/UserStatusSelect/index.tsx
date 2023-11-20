@@ -20,7 +20,7 @@ const UserStatusSelect: React.FC<Props> = ({ role, setRole }) => (
     >
       <MenteeSelectIcon />
       <S.ButtonTitle>멘티</S.ButtonTitle>
-      <S.ButtonContent>재학생 / 구직자</S.ButtonContent>
+      <S.ButtonContent>재학생 / 구직자 / 선생님</S.ButtonContent>
     </S.SelectButton>
     <S.SelectButton
       isActive={role === 'mentor'}
