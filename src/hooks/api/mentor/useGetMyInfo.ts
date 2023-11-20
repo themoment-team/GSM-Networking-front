@@ -6,7 +6,9 @@ import { minutesToMs } from '@/utils';
 
 import type { UseQueryOptions } from '@tanstack/react-query';
 
-export const useGetMyInfo = (options?: Omit<UseQueryOptions, 'queryKey'>) =>
+export const useGetMyInfo = (
+  options?: Omit<UseQueryOptions<MentorInfoType | null>, 'queryKey'>
+) =>
   useQuery({
     queryKey: mentorQueryKeys.getMyInfo(),
     queryFn: () => get<MentorInfoType>(mentorUrl.getMyInfo()),

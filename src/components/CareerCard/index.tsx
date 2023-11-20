@@ -10,18 +10,20 @@ interface Props {
   career: CareerType;
 }
 
+const convertDate = (date: string | null) => {
+  const newDate = new Date(String(date).split('-').join('/'));
+
+  const year = newDate.getFullYear();
+  const month = String(newDate.getMonth() + 1).padStart(2, '0');
+
+  return `${year}.${month}`;
+};
+
 const CareerCard: React.FC<Props> = ({ career }) => {
-  const careerStartYear = career.startDate.getFullYear();
-  const tempStartMonth = career.startDate.getMonth() + 1;
-  const careerStartMonth =
-    tempStartMonth < 10 ? `0${tempStartMonth}` : tempStartMonth;
+  const startDate = convertDate(career.startDate);
+  const endDate = convertDate(career.endDate);
 
-  const careerEndYear = career.endDate?.getFullYear();
-  const tempEndMonth = (career.endDate?.getMonth() ?? 0) + 1;
-  const careerEndMonth =
-    tempEndMonth < 10 ? `0${tempStartMonth}` : tempStartMonth;
-
-  const careerPeriod = `${careerStartYear}.${careerStartMonth} ~ ${careerEndYear}.${careerEndMonth}`;
+  const careerPeriod = `${startDate} ~ ${endDate}`;
 
   return (
     <S.CareerCardContainer>
