@@ -1,5 +1,7 @@
 /**@jsxImportSource @emotion/react */
 
+'use client';
+
 import React from 'react';
 
 import type { Interpolation, Theme } from '@emotion/react';
