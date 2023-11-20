@@ -1,5 +1,5 @@
 export const fileQueryKeys = {
-  postUploadImage: () => ['file'],
+  postUploadFile: () => ['file'],
 } as const;
 
 export const menteeQueryKeys = {
@@ -16,4 +16,8 @@ export const mentorQueryKeys = {
 export const tempMentorQueryKeys = {
   getSearchTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
   deleteTempMentor: () => ['temp', 'mentor', 'delete'],
+};
+
+export const userQueryKeys = {
+  postProfileImgUrl: () => ['user', 'profile'],
 };
