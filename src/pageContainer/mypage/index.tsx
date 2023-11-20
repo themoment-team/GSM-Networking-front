@@ -25,25 +25,26 @@ const MyPage = () => {
   }, [isError]);
 
   return (
-    <S.Container>
+    <>
       <Header />
-      {data && (
-        <>
-          <S.ProfileContainer>
-            <Profile name={data.name} generation={data.generation} />
-          </S.ProfileContainer>
-          <S.Line />
-          <S.CareerContainer>
-            <S.CareerInfoText>재직 정보</S.CareerInfoText>
-            <S.CareerBox>
-              {data.career.map((career) => (
-                <CareerCard career={career} key={career.id} />
-              ))}
-            </S.CareerBox>
-          </S.CareerContainer>
-        </>
-      )}
-      {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
+      <S.Container>
+        {data && (
+          <>
+            <S.ProfileContainer>
+              <Profile name={data.name} generation={data.generation} />
+            </S.ProfileContainer>
+            <S.Line />
+            <S.CareerContainer>
+              <S.CareerInfoText>재직 정보</S.CareerInfoText>
+              <S.CareerBox>
+                {data.career.map((career) => (
+                  <CareerCard career={career} key={career.id} />
+                ))}
+              </S.CareerBox>
+            </S.CareerContainer>
+          </>
+        )}
+        {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
         <S.WithdrawBox hoverColor='blue'>
           <ExitIcon />
           <S.WithdrawText>로그아웃</S.WithdrawText>
@@ -53,7 +54,8 @@ const MyPage = () => {
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
         </S.WithdrawBox>
       </S.WithdrawContainer> */}
-    </S.Container>
+      </S.Container>
+    </>
   );
 };
 
