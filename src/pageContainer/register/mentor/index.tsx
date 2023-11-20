@@ -59,8 +59,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
-      mutateDeleteTempMentor(tempMentorId);
+      return mutateDeleteTempMentor(tempMentorId);
     }
+    return push('/');
   };
 
   const {
