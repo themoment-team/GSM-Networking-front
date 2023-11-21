@@ -1,8 +1,15 @@
 'use client';
 
+import { useState } from 'react';
+
 import * as S from './style';
 
-import { Profile, CareerCard, Header } from '@/components';
+import {
+  Profile,
+  CareerCard,
+  Header,
+  ProfileImgRegisterModal,
+} from '@/components';
 import type { CareerType } from '@/types';
 
 interface MentorInfoType {
@@ -22,22 +29,31 @@ interface Props {
 
 const MyPage: React.FC<Props> = ({
   myInfo: { name, generation, career: careerList },
-}) => (
-  <S.Container>
-    <Header />
-    <S.ProfileContainer>
-      <Profile name={name} generation={generation} />
-    </S.ProfileContainer>
-    <S.Line />
-    <S.CareerContainer>
-      <S.CareerInfoText>재직 정보</S.CareerInfoText>
-      <S.CareerBox>
-        {careerList.map((career, i) => (
-          <CareerCard career={career} key={i /*career.id 수정 */} />
-        ))}
-      </S.CareerBox>
-    </S.CareerContainer>
-    {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
+}) => {
+  const [openModalCase, setOpenModalCase] = useState<
+    'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
+  >('close');
+
+  return (
+    <>
+      {openModalCase === 'profileImgRegister' && (
+        <ProfileImgRegisterModal closeModal={() => setOpenModalCase('close')} />
+      )}
+      <S.Container>
+        <Header />
+        <S.ProfileContainer>
+          <Profile name={name} generation={generation} />
+        </S.ProfileContainer>
+        <S.Line />
+        <S.CareerContainer>
+          <S.CareerInfoText>재직 정보</S.CareerInfoText>
+          <S.CareerBox>
+            {careerList.map((career, i) => (
+              <CareerCard career={career} key={i /*career.id 수정 */} />
+            ))}
+          </S.CareerBox>
+        </S.CareerContainer>
+        {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
       <S.WithdrawBox hoverColor='blue'>
         <ExitIcon />
         <S.WithdrawText>로그아웃</S.WithdrawText>
@@ -47,7 +63,9 @@ const MyPage: React.FC<Props> = ({
         <S.WithdrawText>회원탈퇴</S.WithdrawText>
       </S.WithdrawBox>
     </S.WithdrawContainer> */}
-  </S.Container>
-);
+      </S.Container>
+    </>
+  );
+};
 
 export default MyPage;
