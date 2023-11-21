@@ -2,6 +2,7 @@
 
 import React from 'react';
 
+import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
@@ -44,7 +45,11 @@ const Header: React.FC<Props> = ({ clearList }) => {
             )}
           </S.RedirectBox>
           <S.ProfileBox type='button' onClick={handleProfileClick}>
-            <I.PersonImg4 />
+            {data?.profileUrl ? (
+              <Image src={data.profileUrl} alt='profile img' fill />
+            ) : (
+              <I.PersonImg4 />
+            )}
           </S.ProfileBox>
         </S.RightBox>
       </S.Inner>

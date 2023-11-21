@@ -5,4 +5,5 @@ export * from './mentor';
 export * from './mentorInfo';
 export * from './mentorInfoForm';
 export * from './position';
+export * from './profile';
 export * from './worker';
