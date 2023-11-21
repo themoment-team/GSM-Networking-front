@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 
-import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
@@ -44,11 +43,14 @@ const MyPage: React.FC = () => {
         {data && (
           <>
             <S.ProfileContainer>
-              {data.profileUrl ? (
-                <Image src={data.profileUrl} fill alt='profile img' />
-              ) : (
-                <Profile name={data.name} generation={data.generation} />
-              )}
+              <Profile
+                name={data.name}
+                generation={data.generation}
+                profileUrl={data.profileUrl}
+                profileRegisterModalOpen={() =>
+                  setOpenModalCase('profileImgRegister')
+                }
+              />
             </S.ProfileContainer>
             <S.Line />
             <S.CareerContainer>
