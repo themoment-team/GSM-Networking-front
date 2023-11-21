@@ -26,5 +26,5 @@ export const tempMentorUrl = {
 };
 
 export const userUrl = {
-  postProfileImgUrl: (url: string) => `/profile/${url}`,
+  postProfileImgUrl: () => `/user/profile-url`,
 };
