@@ -24,5 +24,19 @@ const config: StorybookConfig = {
       config.resolve.alias['@'] = path?.resolve(__dirname, '../src/');
     return config;
   },
+  babel: async (config) => ({
+    ...config,
+    presets: [
+      [
+        'next/babel',
+        {
+          'preset-react': {
+            runtime: 'automatic',
+            importSource: '@emotion/react',
+          },
+        },
+      ],
+    ],
+  }),
 };
 export default config;
