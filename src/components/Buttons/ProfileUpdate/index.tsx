@@ -5,7 +5,7 @@ import * as S from './style';
 import { PenIcon } from '@/assets';
 
 interface Props {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const ProfileUpdateButton: React.FC<Props> = ({ onClick }) => (
