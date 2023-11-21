@@ -2,6 +2,8 @@
 
 import { useState } from 'react';
 
+import Image from 'next/image';
+
 import * as S from './style';
 
 import {
@@ -28,7 +30,7 @@ interface Props {
 }
 
 const MyPage: React.FC<Props> = ({
-  myInfo: { name, generation, career: careerList },
+  myInfo: { name, generation, career: careerList, profileUrl },
 }) => {
   const [openModalCase, setOpenModalCase] = useState<
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
@@ -42,7 +44,11 @@ const MyPage: React.FC<Props> = ({
       <S.Container>
         <Header />
         <S.ProfileContainer>
-          <Profile name={name} generation={generation} />
+          {profileUrl ? (
+            <Image src={profileUrl} fill alt='profile image' />
+          ) : (
+            <Profile name={name} generation={generation} />
+          )}
         </S.ProfileContainer>
         <S.Line />
         <S.CareerContainer>
