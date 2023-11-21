@@ -3,8 +3,8 @@ import React from 'react';
 const BlueCircleIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='8'
-    height='8'
+    width='0.5rem'
+    height='0.5rem'
     viewBox='0 0 8 8'
     fill='none'
   >
