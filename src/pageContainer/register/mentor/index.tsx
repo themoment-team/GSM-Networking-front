@@ -21,9 +21,9 @@ import {
 import { GENERATION_ARRAY } from '@/constants';
 import { useDeleteTempMentor, usePostMentorRegister } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
+import type { RequestCareerType } from '@/types';
 import type {
   CareerFormType,
-  CareerType,
   MentorInfoFormType,
   MentorType,
   TempMentorType,
@@ -112,7 +112,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
         ? null
         : UTCDate(endYear, endMonth);
 
-      const careerData: CareerType = {
+      const careerData: RequestCareerType = {
         companyName: career.companyName.value,
         companyUrl: career.companyUrl.value || null,
         position: career.position.value,

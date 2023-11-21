@@ -5,11 +5,12 @@ import CareerCard from '.';
 import type { Meta, StoryObj } from '@storybook/react';
 
 const career: CareerType = {
+  id: 1,
   companyName: '더모먼트',
   companyUrl: '',
   position: '프론트엔드',
-  startDate: new Date(),
-  endDate: new Date(),
+  startDate: '2022-02-02',
+  endDate: '2022-02-02',
   isWorking: false,
 };
 
