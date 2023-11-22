@@ -1,10 +1,10 @@
-import type { Opponent } from '@/types/opponent';
+import type { OpponentInfo } from '@/types/opponentInfo';
 
 import ChattingListCard from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const opponent: Opponent = {
+const opponent: OpponentInfo = {
   id: 1,
   name: '방가온',
   generation: 7,
@@ -12,9 +12,6 @@ const opponent: Opponent = {
 
 const meta: Meta<typeof ChattingListCard> = {
   component: ChattingListCard,
-  parameters: {
-    layout: 'padded',
-  },
   args: {
     opponent,
   },
@@ -27,13 +24,13 @@ type Story = StoryObj<typeof ChattingListCard>;
 export const Primary: Story = {
   args: {
     opponent: { ...opponent },
-    isCheck: true,
+    isNewMessage: false,
   },
 };
 
-export const isCheck: Story = {
+export const isNewMessage: Story = {
   args: {
     opponent: { ...opponent },
-    isCheck: false,
+    isNewMessage: true,
   },
 };
