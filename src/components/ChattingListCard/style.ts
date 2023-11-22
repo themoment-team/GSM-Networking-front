@@ -38,7 +38,7 @@ export const ProfileBox = styled.div`
 
 export const ProfileInfo = styled.p`
   ${({ theme }) => theme.typo.body1}
-  color: ${({ theme }) => theme.color.grey[900]}
+  color: ${({ theme }) => theme.color.grey[900]};
 `;
 
 export const ChattingTime = styled.p`
@@ -48,4 +48,11 @@ export const ChattingTime = styled.p`
 
 export const SpaceBlock = styled.div`
   width: 0.5rem;
+`;
+
+export const BlueCircleIcon = styled.div`
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
