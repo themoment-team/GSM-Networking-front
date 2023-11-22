@@ -12,6 +12,11 @@ export const ProfileImageBox = styled.div`
   width: 6rem;
   height: 6rem;
   padding: 0.8rem 0 0 0.3rem;
+  position: relative;
+
+  & > img {
+    object-fit: cover;
+  }
 
   svg {
     width: 5.8rem;

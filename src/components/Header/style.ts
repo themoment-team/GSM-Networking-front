@@ -70,6 +70,11 @@ export const ProfileBox = styled.button`
   overflow: hidden;
   width: 2.25rem;
   height: 2.25rem;
+  position: relative;
+
+  & > img {
+    object-fit: cover;
+  }
 
   & > svg {
     width: 2.1875rem;

@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -8,13 +8,22 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { Profile, CareerCard, Header } from '@/components';
+import {
+  Profile,
+  CareerCard,
+  Header,
+  ProfileImgRegisterModal,
+} from '@/components';
 import { useGetMyInfo } from '@/hooks';
 
-const MyPage = () => {
-  const { data, isError } = useGetMyInfo();
+const MyPage: React.FC = () => {
+  const [openModalCase, setOpenModalCase] = useState<
+    'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
+  >('close');
 
   const { push } = useRouter();
+
+  const { data, isError } = useGetMyInfo();
 
   useEffect(() => {
     if (isError) {
@@ -26,12 +35,22 @@ const MyPage = () => {
 
   return (
     <>
+      {openModalCase === 'profileImgRegister' && (
+        <ProfileImgRegisterModal closeModal={() => setOpenModalCase('close')} />
+      )}
       <Header />
       <S.Container>
         {data && (
           <>
             <S.ProfileContainer>
-              <Profile name={data.name} generation={data.generation} />
+              <Profile
+                name={data.name}
+                generation={data.generation}
+                profileUrl={data.profileUrl}
+                profileRegisterModalOpen={() =>
+                  setOpenModalCase('profileImgRegister')
+                }
+              />
             </S.ProfileContainer>
             <S.Line />
             <S.CareerContainer>

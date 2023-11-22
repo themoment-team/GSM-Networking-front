@@ -94,6 +94,13 @@ export const WorkerImgBox = styled.div`
   align-items: end;
   width: 100%;
   height: 6.8125rem;
+  position: relative;
+  overflow: hidden;
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[50]};
+
+  & > img {
+    object-fit: contain;
+  }
 `;
 
 export const BlueCheckIconWrapper = styled.div`
