@@ -2,15 +2,15 @@ import React from 'react';
 
 import * as S from './style';
 
-import { PersonImg4, BlueCircleIcon } from '@/assets';
-import type { Opponent } from '@/types/opponent';
+import { PersonImg4 } from '@/assets';
+import type { OpponentInfo } from '@/types/opponentInfo';
 
 interface Props {
-  opponent: Opponent;
-  isCheck: boolean;
+  opponent: OpponentInfo;
+  isNewMessage: boolean;
 }
 
-const ChattingListCard: React.FC<Props> = ({ opponent, isCheck }) => (
+const ChattingListCard: React.FC<Props> = ({ opponent, isNewMessage }) => (
   <S.Container>
     <S.OpponentProfile>
       <S.ProfileImg>
@@ -24,8 +24,7 @@ const ChattingListCard: React.FC<Props> = ({ opponent, isCheck }) => (
         <S.ChattingTime>1시간 전 채팅</S.ChattingTime>
       </S.ProfileBox>
     </S.OpponentProfile>
-    <S.SpaceBlock />
-    {!isCheck && <BlueCircleIcon />}
+    {isNewMessage && <S.BlueCircleIcon />}
   </S.Container>
 );
 
