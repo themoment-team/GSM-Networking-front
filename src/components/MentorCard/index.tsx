@@ -37,7 +37,12 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
         {worker.profileUrl ? (
-          <Image src={worker.profileUrl} alt={worker.name} fill />
+          <Image
+            src={worker.profileUrl}
+            alt={worker.name}
+            fill
+            sizes='(max-width: 600px) 33vw, 200px'
+          />
         ) : (
           <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
         )}

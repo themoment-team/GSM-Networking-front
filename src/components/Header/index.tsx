@@ -48,7 +48,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
             {data?.profileUrl ? (
               <Image src={data.profileUrl} alt='profile img' fill />
             ) : (
-              <I.PersonImg4 />
+              <I.MyPageIcon />
             )}
           </S.ProfileBox>
         </S.RightBox>
