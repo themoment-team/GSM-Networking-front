@@ -4,22 +4,11 @@ export const WriteForm = styled.form`
   padding-top: 6.875rem;
 `;
 
-export const PageTitle = styled.h4`
-  ${({ theme }) => theme.typo.h4};
-  color: ${({ theme }) => theme.color.black};
-  margin-bottom: 1.5rem;
-`;
-
 export const TextAreaContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   padding-left: 1rem;
-`;
-
-export const SmallNoticeText = styled.p`
-  ${({ theme }) => theme.typo.body2};
-  color: ${({ theme }) => theme.color.grey[600]};
 `;
 
 export const TextField = styled.textarea`
@@ -41,22 +30,4 @@ export const TextField = styled.textarea`
     outline: none;
     border: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
-`;
-
-export const ButtonContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  bottom: 5rem;
-  width: 37.5rem;
-`;
-
-export const Button = styled.button`
-  ${({ theme }) => theme.typo.button};
-  background-color: ${({ theme }) => theme.color.skyBlue[400]};
-  color: ${({ theme }) => theme.color.white};
-  border-radius: 0.625rem;
-  width: 27.5rem;
-  height: 2.75rem;
 `;
