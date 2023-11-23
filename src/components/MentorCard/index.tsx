@@ -35,7 +35,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
 
   return (
     <S.WorkerCardContainer>
-      <S.WorkerImgBox>
+      <S.WorkerImgBox imageUrl={worker.profileUrl}>
         {worker.profileUrl ? (
           <Image src={worker.profileUrl} alt={worker.name} fill />
         ) : (
