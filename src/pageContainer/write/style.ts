@@ -46,3 +46,21 @@ export const CustomTextArea = styled.textarea<{ isError: boolean }>`
         isError ? theme.color.error : theme.color.skyBlue[400]};
   }
 `;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  bottom: 5rem;
+  width: 37.5rem;
+`;
+
+export const Button = styled.button`
+  ${({ theme }) => theme.typo.button};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  color: ${({ theme }) => theme.color.white};
+  border-radius: 0.625rem;
+  width: 27.5rem;
+  height: 2.75rem;
+`;

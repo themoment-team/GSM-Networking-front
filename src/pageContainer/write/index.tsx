@@ -18,6 +18,9 @@ const Write = () => (
         />
       </S.TextAreaContainer>
     </S.WriteContainer>
+    <S.ButtonContainer>
+      <S.Button>등록</S.Button>
+    </S.ButtonContainer>
   </>
 );
 
