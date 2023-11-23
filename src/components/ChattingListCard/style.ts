@@ -37,12 +37,12 @@ export const ProfileBox = styled.div`
 `;
 
 export const ProfileInfo = styled.p`
-  ${({ theme }) => theme.typo.body1}
+  ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[900]};
 `;
 
 export const ChattingTime = styled.p`
-  ${({ theme }) => theme.typo.caption}
+  ${({ theme }) => theme.typo.caption};
   color: ${({ theme }) => theme.color.grey[500]};
 `;
 
