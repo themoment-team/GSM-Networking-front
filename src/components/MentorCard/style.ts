@@ -86,7 +86,7 @@ export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
     isCompanyURLExist ? 'pointer' : 'default'};
 `;
 
-export const WorkerImgBox = styled.div<{ imageUrl: string | null }>`
+export const WorkerImgBox = styled.div`
   background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 10px;
   display: flex;
@@ -97,13 +97,9 @@ export const WorkerImgBox = styled.div<{ imageUrl: string | null }>`
   position: relative;
   overflow: hidden;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[50]};
-  background-image: url(${({ imageUrl }) => imageUrl});
-  background-position: center;
-  background-size: cover;
 
   & > img {
-    object-fit: contain;
-    backdrop-filter: blur(15px);
+    object-fit: cover;
   }
 `;
 
