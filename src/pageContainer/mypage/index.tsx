@@ -8,8 +8,10 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
+import { ExitIcon } from '@/assets';
 import { Profile, CareerCard, Header } from '@/components';
 import { useGetMyInfo } from '@/hooks';
+import { authUrl, get } from '@/libs';
 
 const MyPage = () => {
   const { data, isError } = useGetMyInfo();
@@ -23,6 +25,10 @@ const MyPage = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
+
+  const getLogout = () => {
+    get(authUrl.getLogout());
+  };
 
   return (
     <>
@@ -44,16 +50,16 @@ const MyPage = () => {
             </S.CareerContainer>
           </>
         )}
-        {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
-        <S.WithdrawBox hoverColor='blue'>
-          <ExitIcon />
-          <S.WithdrawText>로그아웃</S.WithdrawText>
-        </S.WithdrawBox>
-        <S.WithdrawBox hoverColor='red'>
+        <S.WithdrawContainer>
+          <S.WithdrawBox onClick={getLogout} hoverColor='blue'>
+            <ExitIcon />
+            <S.WithdrawText>로그아웃</S.WithdrawText>
+          </S.WithdrawBox>
+          {/* <S.WithdrawBox hoverColor='red'>
           <PersonIcon />
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
-        </S.WithdrawBox>
-      </S.WithdrawContainer> */}
+        </S.WithdrawBox> */}
+        </S.WithdrawContainer>
       </S.Container>
     </>
   );
