@@ -30,7 +30,7 @@ export const TextField = styled.textarea`
   word-break: keep-all;
   padding: 1rem;
   border-radius: 0.625rem;
-  border: 1px solid ${({ theme }) => theme.color.grey[150]};
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[150]};
 
   ::placeholder {
     ${({ theme }) => theme.typo.body1};
@@ -39,6 +39,7 @@ export const TextField = styled.textarea`
 
   :focus {
     outline: none;
+    border: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
 `;
 
