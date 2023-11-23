@@ -1,13 +1,15 @@
 import styled from '@emotion/styled';
 
-export const TextAreaContainer = styled.div`
+export const TextAreaContainer = styled.div<{ isFocused: boolean }>`
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  padding: 0.75rem 0 0.75rem 1.25rem;
+  padding: 0.75rem 1.25rem 0.75rem 1.25rem;
   width: 37.5rem;
   height: auto;
-  border: 0.0625rem solid ${({ theme }) => theme.color.grey[150]};
+  border: 0.0625rem solid
+    ${({ theme, isFocused }) =>
+      isFocused ? theme.color.skyBlue[400] : theme.color.grey[150]};
   border-radius: 0.625rem;
 `;
 
@@ -21,15 +23,11 @@ export const TextField = styled.textarea`
   padding: 0;
   overflow: visible;
   height: 0;
+  outline: none;
 
   ::placeholder {
     ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]};
-  }
-
-  :focus {
-    outline: none;
-    border: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
 `;
 
