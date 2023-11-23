@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const WriteContainer = styled.div`
+export const WriteForm = styled.form`
   padding-top: 6.875rem;
 `;
 
@@ -22,17 +22,15 @@ export const SmallNoticeText = styled.p`
   color: ${({ theme }) => theme.color.grey[600]};
 `;
 
-export const CustomTextArea = styled.textarea<{ isError: boolean }>`
+export const TextField = styled.textarea`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
   height: 11rem;
   resize: none;
   word-break: keep-all;
   padding: 1rem;
-  border: 0.0625rem solid
-    ${({ theme, isError }) =>
-      isError ? theme.color.error : theme.color.grey[100]};
   border-radius: 0.625rem;
+  border: 1px solid ${({ theme }) => theme.color.grey[150]};
 
   ::placeholder {
     ${({ theme }) => theme.typo.body1};
@@ -41,9 +39,6 @@ export const CustomTextArea = styled.textarea<{ isError: boolean }>`
 
   :focus {
     outline: none;
-    border: 0.0625rem solid
-      ${({ theme, isError }) =>
-        isError ? theme.color.error : theme.color.skyBlue[400]};
   }
 `;
 
