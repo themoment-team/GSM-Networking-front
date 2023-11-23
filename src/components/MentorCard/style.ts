@@ -93,13 +93,13 @@ export const WorkerImgBox = styled.div`
   justify-content: center;
   align-items: end;
   width: 100%;
-  height: 6.8125rem;
+  height: 10rem;
   position: relative;
   overflow: hidden;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[50]};
 
   & > img {
-    object-fit: contain;
+    object-fit: cover;
   }
 `;
 
