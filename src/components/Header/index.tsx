@@ -21,8 +21,6 @@ const Header: React.FC<Props> = ({ clearList }) => {
 
   const { push } = useRouter();
 
-  const comingSoonToast = () => toast.info('곧 출시 예정입니다. 감사합니다.');
-
   const handleProfileClick = () => {
     if (data) push('/mypage');
     else toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
