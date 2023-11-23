@@ -21,8 +21,6 @@ const Header: React.FC<Props> = ({ clearList }) => {
 
   const { push } = useRouter();
 
-  const comingSoonToast = () => toast.info('곧 출시 예정입니다. 감사합니다.');
-
   const handleProfileClick = () => {
     if (data) push('/mypage');
     else toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
@@ -37,9 +35,12 @@ const Header: React.FC<Props> = ({ clearList }) => {
         </S.LogoLink>
         <S.RightBox>
           <S.RedirectBox>
-            <S.MentorContact type='button' onClick={comingSoonToast}>
+            <S.CommunityLink href='/community/gwangya'>
+              커뮤니티
+            </S.CommunityLink>
+            {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
-            </S.MentorContact>
+            </S.MentorContact> */}
             {!data && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
