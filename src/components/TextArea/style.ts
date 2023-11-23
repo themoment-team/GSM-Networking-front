@@ -1,25 +1,26 @@
 import styled from '@emotion/styled';
 
-export const WriteForm = styled.form`
-  padding-top: 6.875rem;
-`;
-
 export const TextAreaContainer = styled.div`
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  padding-left: 1rem;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 0 0.75rem 1.25rem;
+  width: 37.5rem;
+  height: auto;
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[150]};
+  border-radius: 0.625rem;
 `;
 
 export const TextField = styled.textarea`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
-  height: 11rem;
+  width: 100%;
+  min-height: 1.5rem;
   resize: none;
-  word-break: keep-all;
-  padding: 1rem;
-  border-radius: 0.625rem;
-  border: 0.0625rem solid ${({ theme }) => theme.color.grey[150]};
+  border: 0;
+  padding: 0;
+  overflow: visible;
+  height: 0;
 
   ::placeholder {
     ${({ theme }) => theme.typo.body1};
@@ -30,4 +31,17 @@ export const TextField = styled.textarea`
     outline: none;
     border: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   }
+`;
+
+export const UploadWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const MaxLengthNotice = styled.span`
+  ${({ theme }) => theme.typo.caption};
+  color: ${({ theme }) => theme.color.grey[400]};
 `;
