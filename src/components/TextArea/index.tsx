@@ -7,7 +7,7 @@ import * as S from './style';
 import { UploadIcon } from '@/assets';
 import { useAutosizeTextArea } from '@/hooks';
 
-const Write = () => {
+const TextArea = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
@@ -55,4 +55,4 @@ const Write = () => {
   );
 };
 
-export default Write;
+export default TextArea;
