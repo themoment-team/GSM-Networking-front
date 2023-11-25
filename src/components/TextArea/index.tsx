@@ -45,7 +45,7 @@ const TextArea = () => {
       />
       {inputValue.length > 0 && (
         <S.UploadWrapper>
-          <S.MaxLengthNotice>{inputValue.length}/200</S.MaxLengthNotice>
+          <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
           <button>
             <UploadIcon />
           </button>
