@@ -25,3 +25,8 @@ export const Description = styled.p`
   ${({ theme }) => theme.typo.caption};
   color: ${({ theme }) => theme.color.grey[500]};
 `;
+
+export const TextAreaWrapper = styled.div`
+  position: absolute;
+  bottom: 1.75rem;
+`;
