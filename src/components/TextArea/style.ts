@@ -43,3 +43,7 @@ export const MaxLengthNotice = styled.span`
   ${({ theme }) => theme.typo.caption};
   color: ${({ theme }) => theme.color.grey[400]};
 `;
+
+export const UploadButton = styled.button`
+  display: flex;
+`;

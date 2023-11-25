@@ -11,10 +11,11 @@ const TextArea = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
+  const [isMultiLine, setIsMultiLine] = useState(false);
 
-  useAutosizeTextArea(textAreaRef.current, inputValue);
+  useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
-  // textArea의 focus를 컨트롤합니다. -> focus시 border 변경.
+  // textArea의 focus를 컨트롤합니다. -> focus 시 border 변경.
   useEffect(() => {
     const currentTextAreaRef = textAreaRef.current;
 
@@ -37,7 +38,7 @@ const TextArea = () => {
   return (
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
-        placeholder='비방 및 성적 발언, 욕설 등은 삭제 및  커뮤니티 이용 금지 조치를 받을 수 있습니다.'
+        placeholder='비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.'
         maxLength={200}
         value={inputValue}
         onChange={(e) => setInputValue(e.target.value)}
@@ -45,10 +46,12 @@ const TextArea = () => {
       />
       {inputValue.length > 0 && (
         <S.UploadWrapper>
-          <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
-          <button>
+          {isMultiLine && (
+            <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
+          )}
+          <S.UploadButton>
             <UploadIcon />
-          </button>
+          </S.UploadButton>
         </S.UploadWrapper>
       )}
     </S.TextAreaContainer>

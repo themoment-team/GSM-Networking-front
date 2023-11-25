@@ -1,14 +1,17 @@
+import type { Dispatch, SetStateAction } from 'react';
 import { useEffect } from 'react';
 
 export const useAutosizeTextArea = (
   textAreaRef: HTMLTextAreaElement | null,
-  value: string
+  value: string,
+  setIsMultiLine: Dispatch<SetStateAction<boolean>>
 ) => {
   useEffect(() => {
     if (textAreaRef) {
       textAreaRef.style.height = '0px';
       const scrollHeight = textAreaRef.scrollHeight;
+      setIsMultiLine(scrollHeight > 24);
       textAreaRef.style.height = scrollHeight + 'px';
     }
-  }, [textAreaRef, value]);
+  }, [textAreaRef, value, setIsMultiLine]);
 };
