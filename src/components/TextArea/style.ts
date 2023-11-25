@@ -9,7 +9,7 @@ export const TextAreaContainer = styled.div<{ isFocused: boolean }>`
   height: auto;
   border: 0.0625rem solid
     ${({ theme, isFocused }) =>
-      isFocused ? theme.color.skyBlue[400] : theme.color.grey[150]};
+      isFocused ? theme.color.skyBlue[400] : theme.color.grey[200]};
   border-radius: 0.625rem;
 `;
 
