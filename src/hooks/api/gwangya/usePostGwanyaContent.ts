@@ -1,6 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
+import axios from 'axios';
 
-import { gwangyaKeys, gwangyaUrl, post } from '@/libs';
+import { gwangyaKeys, gwangyaUrl } from '@/libs';
 
 import type { UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
@@ -11,10 +12,14 @@ export const usePostGwangyaContent = (
   useMutation({
     mutationKey: gwangyaKeys.postGwangyaContent(),
     mutationFn: (content: string) =>
-      post(gwangyaUrl.postGwangyaContent(), content, {
-        headers: {
-          gwangyaToken: '',
-        },
-      }),
+      axios.post(
+        gwangyaUrl.postGwangyaContent(),
+        { content },
+        {
+          headers: {
+            gwangyaToken: 'bfgaeT692RmMe9iSH2i7',
+          },
+        }
+      ),
     ...options,
   });
