@@ -18,6 +18,7 @@ export { default as SearchBar } from './SearchBar';
 export { default as SearchNotFound } from './SearchNotFound';
 export { default as Select } from './Select';
 export { default as TempMentorCard } from './TempMentorCard';
+export { default as TextArea } from './TextArea';
 export { default as ToolTip } from './ToolTip';
 export { default as UserStatusSelect } from './UserStatusSelect';
 // export { default as RegisterForm } from './RegisterForm';
