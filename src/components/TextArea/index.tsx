@@ -35,6 +35,8 @@ const TextArea = () => {
     };
   }, []);
 
+  const handleSubmit = () => {};
+
   return (
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
@@ -49,7 +51,7 @@ const TextArea = () => {
           {isMultiLine && (
             <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
           )}
-          <S.UploadButton>
+          <S.UploadButton onClick={handleSubmit}>
             <UploadIcon />
           </S.UploadButton>
         </S.UploadWrapper>

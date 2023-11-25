@@ -8,6 +8,13 @@ export const fileUrl = {
   postUploadFile: () => '/file',
 };
 
+export const gwangyaUrl = {
+  postGwangyaContent: () => `${process.env.NEXT_PUBLIC_API_BASE_URL}/gwangya`,
+  getGwangyaPost: () => `${process.env.NEXT_PUBLIC_API_BASE_URL}/gwangya`,
+  getGwangyaToken: () =>
+    `${process.env.NEXT_PUBLIC_API_BASE_URL}/gwangya/token`,
+};
+
 export const menteeUrl = {
   postMenteeRole: () => '/mentee',
 };

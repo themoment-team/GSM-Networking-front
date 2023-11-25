@@ -2,6 +2,10 @@ export const fileQueryKeys = {
   postUploadFile: () => ['file'],
 } as const;
 
+export const gwangyaKeys = {
+  postGwangyaContent: () => ['gwangya'],
+};
+
 export const menteeQueryKeys = {
   postMenteeRole: () => ['mentee'],
 } as const;

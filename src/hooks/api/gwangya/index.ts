@@ -1,1 +1,1 @@
-export * from './usePostGwanyaPost';
+export * from './usePostGwanyaContent';
