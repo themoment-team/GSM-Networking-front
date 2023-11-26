@@ -8,6 +8,9 @@ export const axiosInstance = axios.create({
   withCredentials: true,
 });
 
+const cookieDomain =
+  process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
+
 let isRefreshing = false;
 
 /**
@@ -40,7 +43,7 @@ axiosInstance.interceptors.request.use(
 
       const cookieExpiredTime = new Date(expiredTime);
 
-      document.cookie = `gwangyaToken=${gwangyaToken}; expires=${cookieExpiredTime.toString()}`;
+      document.cookie = `gwangyaToken=${gwangyaToken}; Domain=${cookieDomain}; expires=${cookieExpiredTime.toString()}`;
     }
 
     return config;
