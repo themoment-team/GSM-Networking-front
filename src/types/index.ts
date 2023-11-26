@@ -1,6 +1,7 @@
 export * from './auth';
 export * from './career';
 export * from './generation';
+export * from './gwangya';
 export * from './mentor';
 export * from './mentorInfo';
 export * from './mentorInfoForm';

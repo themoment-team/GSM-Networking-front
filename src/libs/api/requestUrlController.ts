@@ -11,8 +11,7 @@ export const fileUrl = {
 export const gwangyaUrl = {
   postGwangyaContent: () =>
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya`,
-  getGwangyaPost: () =>
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya`,
+  getGwangyaToken: () => `/gwangya/token`,
 };
 
 export const menteeUrl = {
