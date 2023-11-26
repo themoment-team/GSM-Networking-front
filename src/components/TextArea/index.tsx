@@ -39,8 +39,8 @@ const TextArea = () => {
   }, []);
 
   const handleSubmit = () => {
-    getGwangyaTokenCookie();
-    // mutateUploadContent(inputValue);
+    const gwangyaToken = getGwangyaTokenCookie();
+    mutateUploadContent({ content: inputValue, gwangyaToken: gwangyaToken });
   };
 
   return (
