@@ -6,6 +6,7 @@ import * as S from './style';
 
 import { UploadIcon } from '@/assets';
 import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
+import { getGwangyaTokenCookie } from '@/utils';
 
 const TextArea = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -38,7 +39,8 @@ const TextArea = () => {
   }, []);
 
   const handleSubmit = () => {
-    mutateUploadContent(inputValue);
+    getGwangyaTokenCookie();
+    // mutateUploadContent(inputValue);
   };
 
   return (

@@ -17,7 +17,7 @@ export const usePostGwangyaContent = (
         { content },
         {
           headers: {
-            gwangyaToken: 'bfgaeT692RmMe9iSH2i7',
+            gwangyaToken: 'lnWIybV1jCshfK243UOr',
           },
         }
       ),
