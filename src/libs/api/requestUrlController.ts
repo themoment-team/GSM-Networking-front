@@ -8,6 +8,10 @@ export const fileUrl = {
   postUploadFile: () => '/file',
 };
 
+export const gwangyaUrl = {
+  getGwangyaToken: () => `/gwangya/token`,
+};
+
 export const menteeUrl = {
   postMenteeRole: () => '/mentee',
 };
