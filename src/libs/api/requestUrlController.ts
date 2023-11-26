@@ -13,8 +13,6 @@ export const gwangyaUrl = {
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya`,
   getGwangyaPost: () =>
     `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya`,
-  getGwangyaToken: () =>
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya/token`,
 };
 
 export const menteeUrl = {
