@@ -3,7 +3,7 @@ export const fileQueryKeys = {
 } as const;
 
 export const gwangyaKeys = {
-  postGwangyaContent: () => ['gwangya'],
+  postGwangyaContent: () => ['gwangya', 'post', 'content'],
 };
 
 export const menteeQueryKeys = {
