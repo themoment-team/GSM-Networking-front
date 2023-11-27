@@ -25,3 +25,13 @@ export const Description = styled.p`
   ${({ theme }) => theme.typo.caption};
   color: ${({ theme }) => theme.color.grey[500]};
 `;
+
+export const PostList = styled.div`
+  height: calc(100vh - 10.44rem);
+  height: calc(100dvh - 10.44rem);
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  margin-top: 1.75rem;
+`;
