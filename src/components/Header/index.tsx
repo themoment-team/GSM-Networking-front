@@ -47,7 +47,12 @@ const Header: React.FC<Props> = ({ clearList }) => {
           </S.RedirectBox>
           <S.ProfileBox type='button' onClick={handleProfileClick}>
             {data?.profileUrl ? (
-              <Image src={data.profileUrl} alt='profile img' fill />
+              <Image
+                src={data.profileUrl}
+                alt='profile img'
+                fill
+                sizes='36px'
+              />
             ) : (
               <I.MyPageIcon />
             )}
