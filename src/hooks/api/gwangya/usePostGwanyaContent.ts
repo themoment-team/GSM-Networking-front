@@ -17,13 +17,14 @@ export const usePostGwangyaContent = (
     mutationKey: gwangyaKeys.postGwangyaContent(),
     mutationFn: (parameter: ParameterType) =>
       post(
-        gwangyaUrl.postGwangyaContent(),
+        `api/v1${gwangyaUrl.postGwangyaContent()}`,
         { content: parameter.content },
         {
+          baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
           headers: {
-            withCredential: false,
-            gwangyaToken: parameter.gwangyaToken,
+            GwangyaToken: parameter.gwangyaToken,
           },
+          withCredentials: false,
         }
       ),
     ...options,
