@@ -1,8 +1,8 @@
 import React from 'react';
-import { GlobalStyle, theme } from '../src/styles';
+import { GlobalStyle } from '../src/styles';
 import type { Preview } from '@storybook/react';
-import { ThemeProvider } from '@emotion/react';
 import { INITIAL_VIEWPORTS } from '@storybook/addon-viewport';
+import Providers from '../src/app/providers';
 
 const customViewports = {
   width600: {
@@ -52,10 +52,10 @@ const preview: Preview = {
   },
   decorators: [
     (Story) => (
-      <ThemeProvider theme={theme}>
+      <Providers>
         <GlobalStyle />
         <Story />
-      </ThemeProvider>
+      </Providers>
     ),
   ],
 };
