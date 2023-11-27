@@ -5,31 +5,33 @@ import { useState, useRef, useEffect } from 'react';
 import * as S from './style';
 
 import { SendIcon, UploadIcon } from '@/assets';
-import { useAutosizeTextArea } from '@/hooks';
+import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
 
 interface Props {
   textAreaType: 'gwangya' | 'chatting';
 }
 
-const textAreaElements = {
-  gwangya: {
-    placeholder:
-      '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
-    icon: <UploadIcon />,
-    onClick: () => {},
-  },
-  chatting: {
-    placeholder: '메시지 보내기',
-    icon: <SendIcon />,
-    onClick: () => {},
-  },
-} as const;
-
 const TextArea: React.FC<Props> = ({ textAreaType }) => {
+  const textAreaElements = {
+    gwangya: {
+      placeholder:
+        '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
+      icon: <UploadIcon />,
+      onClick: () => handleSubmit(),
+    },
+    chatting: {
+      placeholder: '메시지 보내기',
+      icon: <SendIcon />,
+      onClick: () => {},
+    },
+  } as const;
+
   const [inputValue, setInputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
+
+  const { mutate: mutateUploadContent } = usePostGwangyaContent();
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
@@ -52,6 +54,10 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
       }
     };
   }, []);
+
+  const handleSubmit = () => {
+    mutateUploadContent(inputValue);
+  };
 
   return (
     <S.TextAreaContainer isFocused={isFocused}>

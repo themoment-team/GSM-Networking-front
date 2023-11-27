@@ -2,7 +2,7 @@
 
 import * as S from './style';
 
-import { Header } from '@/components';
+import { Header, TextArea } from '@/components';
 
 const Gwangya = () => (
   <>
@@ -15,6 +15,9 @@ const Gwangya = () => (
         </S.Description>
       </S.TitleBox>
     </S.Container>
+    <S.TextAreaWrapper>
+      <TextArea />
+    </S.TextAreaWrapper>
   </>
 );
 
