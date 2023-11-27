@@ -9,6 +9,7 @@ export const fileUrl = {
 };
 
 export const gwangyaUrl = {
+  postGwangyaContent: () => `/gwangya`,
   getGwangyaToken: () => `/gwangya/token`,
 };
 

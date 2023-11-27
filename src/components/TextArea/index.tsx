@@ -5,13 +5,15 @@ import { useState, useRef, useEffect } from 'react';
 import * as S from './style';
 
 import { UploadIcon } from '@/assets';
-import { useAutosizeTextArea } from '@/hooks';
+import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
 
 const TextArea = () => {
   const [inputValue, setInputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
+
+  const { mutate: mutateUploadContent } = usePostGwangyaContent();
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
@@ -35,6 +37,10 @@ const TextArea = () => {
     };
   }, []);
 
+  const handleSubmit = () => {
+    mutateUploadContent(inputValue);
+  };
+
   return (
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
@@ -49,7 +55,7 @@ const TextArea = () => {
           {isMultiLine && (
             <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
           )}
-          <S.UploadButton>
+          <S.UploadButton onClick={handleSubmit}>
             <UploadIcon />
           </S.UploadButton>
         </S.UploadWrapper>
