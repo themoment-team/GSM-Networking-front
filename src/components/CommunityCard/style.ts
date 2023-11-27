@@ -18,7 +18,7 @@ export const Index = styled.p`
   color: ${({ theme }) => theme.color.black};
 `;
 
-export const DateBox = styled.p`
+export const DateBox = styled.div`
   ${({ theme }) => theme.typo.caption}
   color: ${({ theme }) => theme.color.grey[500]};
   display: flex;
