@@ -28,5 +28,6 @@ export { default as RemovePositionIcon } from './RemovePositionIcon';
 export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SearchNotFoundIcon } from './SearchNotFoundIcon';
+export { default as SendIcon } from './SendIcon';
 export { default as TriangleIcon } from './TriangleIcon';
 export { default as UploadIcon } from './UploadIcon';
