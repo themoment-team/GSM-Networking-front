@@ -10,4 +10,14 @@ export default meta;
 
 type Story = StoryObj<typeof TextArea>;
 
-export const Primary: Story = {};
+export const Gwangya: Story = {
+  args: {
+    textAreaType: 'gwangya',
+  },
+};
+
+export const Chatting: Story = {
+  args: {
+    textAreaType: 'chatting',
+  },
+};
