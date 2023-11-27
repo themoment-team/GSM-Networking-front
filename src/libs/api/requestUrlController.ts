@@ -9,8 +9,7 @@ export const fileUrl = {
 };
 
 export const gwangyaUrl = {
-  postGwangyaContent: () =>
-    `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/gwangya`,
+  postGwangyaContent: () => `/gwangya`,
   getGwangyaToken: () => `/gwangya/token`,
 };
 
