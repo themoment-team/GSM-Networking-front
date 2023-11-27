@@ -16,7 +16,7 @@ const Gwangya = () => (
       </S.TitleBox>
     </S.Container>
     <S.TextAreaWrapper>
-      <TextArea />
+      <TextArea textAreaType={'gwangya'} />
     </S.TextAreaWrapper>
   </>
 );

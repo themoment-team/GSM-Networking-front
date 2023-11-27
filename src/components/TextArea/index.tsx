@@ -17,12 +17,12 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
       placeholder:
         '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
       icon: <UploadIcon />,
-      onClick: () => handleSubmit(),
+      onClick: () => uploadContent(),
     },
     chatting: {
       placeholder: '메시지 보내기',
       icon: <SendIcon />,
-      onClick: () => {},
+      onClick: () => sendMessage(),
     },
   } as const;
 
@@ -55,9 +55,11 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
     };
   }, []);
 
-  const handleSubmit = () => {
+  const uploadContent = () => {
     mutateUploadContent(inputValue);
   };
+
+  const sendMessage = () => {};
 
   return (
     <S.TextAreaContainer isFocused={isFocused}>
