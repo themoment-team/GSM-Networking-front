@@ -29,19 +29,15 @@ export const Description = styled.p`
 export const PostWrapper = styled.div`
   height: calc(100vh - 12.94rem); // 100vh - (header + title + bottom margin)
   height: calc(100dvh - 12.94rem); // 100vh - (header + title + bottom margin)
-  overflow-y: scroll;
   margin-top: 1.75rem;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
 `;
 
 export const PostList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
-`;
-
-export const TextAreaWrapper = styled.div`
-  position: sticky;
-  margin-top: 1.25rem;
-  bottom: 0;
+  overflow-y: scroll;
 `;
