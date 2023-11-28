@@ -27,8 +27,8 @@ export const Description = styled.p`
 `;
 
 export const PostWrapper = styled.div`
-  height: calc(100vh - 12.94rem); // 100vh - (header + title + bottom margin)
-  height: calc(100dvh - 12.94rem); // 100vh - (header + title + bottom margin)
+  height: calc(100vh - 11.94rem); // 100vh - (header + title + bottom margin)
+  height: calc(100dvh - 11.94rem); // 100vh - (header + title + bottom margin)
   margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
