@@ -1,6 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
-import { gwangyaKeys, gwangyaUrl, post } from '@/libs';
+import { gwangyaQueryKeys, gwangyaUrl, post } from '@/libs';
 import { getGwangyaTokenCookie } from '@/utils';
 
 import type { UseMutationOptions } from '@tanstack/react-query';
@@ -12,7 +12,7 @@ export const usePostGwangyaContent = (
   const gwangyaToken = getGwangyaTokenCookie();
 
   return useMutation({
-    mutationKey: gwangyaKeys.postGwangyaContent(),
+    mutationKey: gwangyaQueryKeys.postGwangyaContent(),
     mutationFn: (content: string) =>
       post(
         `api/v1${gwangyaUrl.postGwangyaContent()}`,

@@ -5,7 +5,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof CommunityCard> = {
   component: CommunityCard,
   args: {
-    index: 1,
+    id: 1,
+    createdAt: '2023-11-27T09:10:00.000',
   },
 };
 

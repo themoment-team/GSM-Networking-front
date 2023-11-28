@@ -1,5 +1,6 @@
 const getGwangyaTokenCookie = () => {
   if (typeof document === 'undefined') return '';
+
   const cookies = document.cookie;
 
   if (cookies.split('gwangyaToken=')[1]) {

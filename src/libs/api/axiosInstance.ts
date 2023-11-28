@@ -44,6 +44,10 @@ axiosInstance.interceptors.request.use(
       const cookieExpiredTime = new Date(expiredTime);
 
       document.cookie = `gwangyaToken=${gwangyaToken}; Domain=${cookieDomain}; expires=${cookieExpiredTime.toString()}`;
+
+      if (config.url?.includes('/api/v1/gwangya')) {
+        config.headers.gwangyatoken = gwangyaToken;
+      }
     }
 
     return config;

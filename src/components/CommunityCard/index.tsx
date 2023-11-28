@@ -1,24 +1,39 @@
+'use client';
+
 import React from 'react';
 
 import * as S from './style';
 
-interface Props {
-  index: number;
-  content: string;
-}
+import type { GwangyaPostType } from '@/types';
 
-const CommunityCard: React.FC<Props> = ({ index, content }) => (
-  <S.CardWrapper>
-    <S.Header>
-      <S.Index>#{index}</S.Index>
-      <S.DateBox>
-        {/* TODO: 추후에 api 연동 시, Date 핸들링 구체화 하겠습니다. */}
-        <S.Date>2020.01.01</S.Date>
-        <S.Time>12:12</S.Time>
-      </S.DateBox>
-    </S.Header>
-    <S.Content>{content}</S.Content>
-  </S.CardWrapper>
-);
+const CommunityCard: React.FC<GwangyaPostType> = ({
+  id,
+  content,
+  createdAt,
+}) => {
+  const createdDate = new Date(createdAt);
+
+  const createdMonth = createdDate.getMonth() + 1;
+  const createdDay = createdDate.getDate();
+  const createdTime = createdDate.getHours();
+  const createdMinute = createdDate.getMinutes();
+
+  return (
+    <S.CardWrapper>
+      <S.Header>
+        <S.Index>#{id}</S.Index>
+        <S.DateBox>
+          <S.Date>
+            {createdMonth}.{createdDay}
+          </S.Date>
+          <S.Time>
+            {createdTime}:{createdMinute}
+          </S.Time>
+        </S.DateBox>
+      </S.Header>
+      <S.Content>{content}</S.Content>
+    </S.CardWrapper>
+  );
+};
 
 export default CommunityCard;
