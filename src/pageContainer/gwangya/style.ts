@@ -26,7 +26,18 @@ export const Description = styled.p`
   color: ${({ theme }) => theme.color.grey[500]};
 `;
 
-export const TextAreaWrapper = styled.div`
-  position: absolute;
-  bottom: 1.75rem;
+export const PostWrapper = styled.div`
+  height: calc(100vh - 11.94rem); // 100vh - (header + title + bottom margin)
+  height: calc(100dvh - 11.94rem); // 100vh - (header + title + bottom margin)
+  margin-top: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+`;
+
+export const PostList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  overflow-y: scroll;
 `;

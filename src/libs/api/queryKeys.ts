@@ -2,7 +2,8 @@ export const fileQueryKeys = {
   postUploadFile: () => ['file'],
 } as const;
 
-export const gwangyaKeys = {
+export const gwangyaQueryKeys = {
+  getGwangyaPostList: () => ['gwangya', 'post', 'list'],
   postGwangyaContent: () => ['gwangya', 'post', 'content'],
 };
 

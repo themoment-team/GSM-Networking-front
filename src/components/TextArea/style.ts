@@ -11,6 +11,7 @@ export const TextAreaContainer = styled.div<{ isFocused: boolean }>`
     ${({ theme, isFocused }) =>
       isFocused ? theme.color.skyBlue[400] : theme.color.grey[200]};
   border-radius: 0.625rem;
+  background-color: ${({ theme }) => theme.color.white};
 `;
 
 export const TextField = styled.textarea`
