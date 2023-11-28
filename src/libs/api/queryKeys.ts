@@ -4,6 +4,7 @@ export const fileQueryKeys = {
 
 export const gwangyaQueryKeys = {
   getGwangyaPostList: () => ['gwangya', 'post', 'list'],
+  postGwangyaContent: () => ['gwangya', 'post', 'content'],
 };
 
 export const menteeQueryKeys = {

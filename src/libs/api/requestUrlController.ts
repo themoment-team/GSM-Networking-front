@@ -11,6 +11,7 @@ export const fileUrl = {
 export const gwangyaUrl = {
   getGwangyaPostList: (gwangyaId: number) =>
     `/gwangya?pageSize=20&gwangyaId=${gwangyaId}`,
+  postGwangyaContent: () => `/gwangya`,
   getGwangyaToken: () => `/gwangya/token`,
 };
 

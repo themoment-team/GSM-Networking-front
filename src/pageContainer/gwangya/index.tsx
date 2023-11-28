@@ -2,8 +2,7 @@
 
 import * as S from './style';
 
-import { Header } from '@/components';
-import { CommunityCard } from '@/components';
+import { Header, CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList } from '@/hooks';
 
 const Gwangya = () => {
@@ -19,9 +18,14 @@ const Gwangya = () => {
             익명으로 자유롭게 소통할 수 있는 광소마의 넓은 들판입니다.
           </S.Description>
         </S.TitleBox>
-        <S.PostList>
-          {data?.map((post) => <CommunityCard key={post.id} {...post} />)}
-        </S.PostList>
+        <S.PostWrapper>
+          <S.PostList>
+            {data?.map((post) => <CommunityCard key={post.id} {...post} />)}
+          </S.PostList>
+          <S.TextAreaWrapper>
+            <TextArea />
+          </S.TextAreaWrapper>
+        </S.PostWrapper>
       </S.Container>
     </>
   );
