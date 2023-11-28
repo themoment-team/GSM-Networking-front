@@ -72,7 +72,7 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
       />
       {inputValue.length > 0 && (
         <S.UploadWrapper>
-          {isMultiLine && (
+          {isMultiLine && textAreaType === 'gwangya' && (
             <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
           )}
           <S.UploadButton onClick={textAreaElements[textAreaType].onClick}>
