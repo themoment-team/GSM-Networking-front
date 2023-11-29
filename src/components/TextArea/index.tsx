@@ -13,7 +13,11 @@ const TextArea = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
 
-  const { mutate: mutateUploadContent } = usePostGwangyaContent();
+  const { mutate: mutateUploadContent } = usePostGwangyaContent({
+    onSuccess: () => {
+      window.location.reload();
+    },
+  });
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
