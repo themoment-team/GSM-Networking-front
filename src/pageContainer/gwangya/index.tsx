@@ -3,6 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 import * as S from './style';
+
 import { Header, CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList } from '@/hooks';
 
@@ -31,7 +32,7 @@ const Gwangya = () => {
           <S.PostList ref={postListRef}>
             {data?.map((post) => <CommunityCard key={post.id} {...post} />)}
           </S.PostList>
-          <TextArea />
+          <TextArea textAreaType='gwangya' />
         </S.PostWrapper>
       </S.Container>
     </>
