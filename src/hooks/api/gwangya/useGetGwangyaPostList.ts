@@ -22,7 +22,7 @@ export const useGetGwangyaPostList = (initialData?: GwangyaPostType[]) =>
         }
       ),
     initialPageParam: 0,
-    getPreviousPageParam: (firstPage) => firstPage[0]?.id ?? undefined,
+    getPreviousPageParam: (firstPage) => firstPage[0]?.id,
     getNextPageParam: (lastPage) => lastPage[lastPage.length - 1].id,
     initialData: initialData && { pages: [initialData], pageParams: [0] },
   });
