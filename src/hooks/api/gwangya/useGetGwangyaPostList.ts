@@ -2,12 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 
 import { get, gwangyaQueryKeys, gwangyaUrl } from '@/libs';
 import type { GwangyaPostType } from '@/types';
-import { getGwangyaTokenCookie } from '@/utils';
+import { getCookie } from '@/utils';
 
 import type { UseQueryOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 
-const gwangyaToken = getGwangyaTokenCookie();
+const gwangyaToken = getCookie('gwangyaToken');
 
 // TODO: useInfiniteQuery로 전환
 export const useGetGwangyaPostList = (
