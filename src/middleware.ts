@@ -10,7 +10,7 @@ export function middleware(request: NextRequest) {
 
   if (request.nextUrl.hostname === 'gsm.moip.shop') {
     return NextResponse.redirect(
-      new URL(pathname, 'https://gsm-networking.com')
+      new URL(pathname, 'https://www.gsm-networking.com')
     );
   }
 }
