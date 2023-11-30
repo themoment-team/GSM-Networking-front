@@ -15,6 +15,7 @@ const TextArea = () => {
 
   const { mutate: mutateUploadContent } = usePostGwangyaContent({
     onSuccess: () => {
+      document.cookie = 'isSuccess=true; max-age=5';
       window.location.reload();
     },
   });

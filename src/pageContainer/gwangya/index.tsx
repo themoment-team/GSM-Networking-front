@@ -2,10 +2,13 @@
 
 import { useEffect, useRef } from 'react';
 
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import { Header, CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList } from '@/hooks';
+import { getCookie } from '@/utils';
 
 const Gwangya = () => {
   const postListRef = useRef<HTMLDivElement>(null);
@@ -17,6 +20,12 @@ const Gwangya = () => {
       postListRef.current?.scrollTo(0, 99999);
     }
   }, [data]);
+
+  useEffect(() => {
+    const isSuccess = !!getCookie('isSuccess');
+
+    if (isSuccess) toast.success('게시글이 정상적으로 등록되었습니다.');
+  }, []);
 
   return (
     <>
