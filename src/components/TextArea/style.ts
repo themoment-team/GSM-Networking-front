@@ -5,7 +5,7 @@ export const TextAreaContainer = styled.div<{ isFocused: boolean }>`
   align-items: center;
   gap: 0.75rem;
   padding: 0.75rem 1.25rem 0.75rem 1.25rem;
-  width: 37.5rem;
+  max-width: 37.5rem;
   height: auto;
   border: 0.0625rem solid
     ${({ theme, isFocused }) =>

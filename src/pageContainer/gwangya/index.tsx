@@ -7,19 +7,63 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import { Header, CommunityCard, TextArea } from '@/components';
-import { useGetGwangyaPostList } from '@/hooks';
+import { useGetGwangyaPostList, useGetRem } from '@/hooks';
+import type { GwangyaPostType } from '@/types';
 import { getCookie } from '@/utils';
 
-const Gwangya = () => {
-  const postListRef = useRef<HTMLDivElement>(null);
+interface Props {
+  initialData: GwangyaPostType[];
+}
 
-  const { data } = useGetGwangyaPostList(0);
+const Gwangya: React.FC<Props> = ({ initialData }) => {
+  const rem = useGetRem();
+
+  const postListRef = useRef<HTMLDivElement>(null);
+  const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
+
+  const { data, fetchPreviousPage, isFetchingPreviousPage, hasPreviousPage } =
+    useGetGwangyaPostList(initialData);
+
+  // 이전 데이터를 가져올 시, 스크롤이 최상단에 멈무는 현상 해결
+  useEffect(() => {
+    const cardHeight = 4.6819 * rem;
+    const gap = 2.25 * rem;
+
+    // gap은 카드 개수 - 1 만큼 존재하여 마지막에는 빼줘야함
+    const scrollHeight =
+      (data && data?.pages[0].length * (cardHeight + gap) - gap) || 0;
+    postListRef.current?.scrollTo(0, scrollHeight);
+  }, [data, rem]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const handleObserver = (
+    [entry]: IntersectionObserverEntry[],
+    observer: IntersectionObserver
+  ) => {
+    if (entry.isIntersecting) {
+      observer.unobserve(entry.target);
+
+      fetchPreviousPage();
+
+      observer.observe(entry.target);
+    }
+  };
 
   useEffect(() => {
-    if ((data?.length ?? 0) <= 20) {
-      postListRef.current?.scrollTo(0, 99999);
-    }
-  }, [data]);
+    if (!loadMoreTriggerRef.current) return;
+
+    const option = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+
+    observer.observe(loadMoreTriggerRef.current);
+
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   useEffect(() => {
     const isSuccess = !!getCookie('isSuccess');
@@ -39,7 +83,12 @@ const Gwangya = () => {
         </S.TitleBox>
         <S.PostWrapper>
           <S.PostList ref={postListRef}>
-            {data?.map((post) => <CommunityCard key={post.id} {...post} />)}
+            {!isFetchingPreviousPage && hasPreviousPage && (
+              <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
+            )}
+            {data?.pages.map((page) =>
+              page.map((post) => <CommunityCard key={post.id} {...post} />)
+            )}
           </S.PostList>
           <TextArea />
         </S.PostWrapper>
