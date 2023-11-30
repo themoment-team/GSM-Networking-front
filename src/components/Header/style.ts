@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
 export const Header = styled.header`
   width: 100%;
@@ -16,8 +17,8 @@ export const Header = styled.header`
 export const Inner = styled.div`
   width: 600px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   @media (max-width: 600px) {
     width: 100%;
@@ -25,7 +26,7 @@ export const Inner = styled.div`
   }
 `;
 
-export const Logo = styled.button`
+export const LogoLink = styled(Link)`
   display: flex;
   align-items: center;
   color: #000;
@@ -36,17 +37,50 @@ export const Logo = styled.button`
   column-gap: 0.38rem;
 `;
 
-export const IconContainer = styled.button`
-  & > svg {
-    display: block;
-  }
-`;
-
-export const PageName = styled.p`
+export const MentorContact = styled.button`
   ${({ theme }) => theme.typo.body1};
-  color: ${({ theme }) => theme.color.black};
+  color: ${({ theme }) => theme.color.grey[400]};
+  border: none;
 `;
 
-export const LogoButton = styled.button`
-  cursor: pointer;
+export const RedirectLink = styled(Link)`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[400]};
+  border: none;
+`;
+
+export const RightBox = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+`;
+
+export const RedirectBox = styled.div`
+  display: flex;
+  gap: 1.5rem;
+`;
+
+export const GapBox = styled.div`
+  width: 4rem;
+`;
+
+export const ProfileBox = styled.button`
+  background-color: ${({ theme }) => theme.color.grey[50]};
+  border-radius: 3.125rem;
+  overflow: hidden;
+  width: 2.25rem;
+  height: 2.25rem;
+  position: relative;
+
+  & > img {
+    object-fit: cover;
+  }
+
+  & > svg {
+    width: 2.1875rem;
+    height: 2rem;
+    position: relative;
+    top: 0.44rem;
+    left: 0.13rem;
+  }
 `;

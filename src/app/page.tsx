@@ -1,25 +1,23 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import { getMyInfo } from '@/apis';
 import { MainPage } from '@/components';
+import { mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';
 
-const BASE_URL = process.env.BASE_URL;
-
 export default async function Home() {
-  const workerList = await getWorkerList();
+  // TODO: resolve request waterfalls (e.g. Promise.allSettled)
+  const mentorList = await getMentorList();
+  const myInfo = await getMyInfo('/');
 
-  const sortedWorkerList = [...workerList].sort((a, b) =>
-    a.position.localeCompare(b.position)
-  );
-
-  return <MainPage initWorkerList={sortedWorkerList} />;
+  return <MainPage initMentorList={[...mentorList]} defaultMyInfo={myInfo} />;
 }
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://gsm.moip.shop'),
+  metadataBase: new URL('https://www.gsm-networking.com'),
   title: '취업자 리스트 조회',
   description:
     '광주소프트웨어마이스터고등학교 학생들의 취업 정보를 확인 할 수 있어요.',
@@ -30,36 +28,40 @@ export const metadata: Metadata = {
   },
 };
 
-const getWorkerList = async (): Promise<WorkerType[]> => {
-  const cookieStore = cookies();
+const getMentorList = async (): Promise<WorkerType[]> => {
+  const accessToken = cookies().get('accessToken')?.value;
 
-  const accessToken = cookieStore.get('accessToken')?.value;
+  if (!accessToken) return redirect('/auth/refresh');
 
-  try {
-    const response = await fetch(
-      new URL('/api/worker/list', process.env.API_BASE_URL),
-      {
-        method: 'GET',
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-
-    if (!response.ok) {
-      throw new Error('accessToken이 만료되었습니다.');
+  const response = await fetch(
+    new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
+    {
+      method: 'GET',
+      headers: {
+        Cookie: `accessToken=${accessToken}`,
+      },
     }
+  );
 
-    const workerList = await response.json();
-
-    return addTemporaryImgNumber(workerList);
-  } catch (error) {
-    return redirect(`${BASE_URL}/auth/refresh`);
+  if (response.status === 403) {
+    return redirect('/auth/signup');
   }
+
+  if (response.status === 401) {
+    return redirect('/auth/refresh');
+  }
+
+  if (!response.ok) {
+    return redirect('/auth/signin');
+  }
+
+  const mentorList = await response.json();
+
+  return addTemporaryImgNumber(mentorList);
 };
 
-const addTemporaryImgNumber = (workerList: WorkerType[]) =>
-  workerList.map((worker) => ({
+const addTemporaryImgNumber = (mentorList: WorkerType[]) =>
+  mentorList.map((worker) => ({
     ...worker,
     temporaryImgNumber: Math.floor(Math.random() * 5),
   }));

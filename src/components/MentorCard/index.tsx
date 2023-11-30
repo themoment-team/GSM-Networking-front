@@ -2,12 +2,15 @@
 
 import React from 'react';
 
+import Image from 'next/image';
+
 import { toast } from 'react-toastify';
 
 import RandomWorkerImg from './RandomMentorImg';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { ToolTip } from '@/components';
 import type { WorkerType } from '@/types/worker';
 
 interface Props {
@@ -18,6 +21,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
+  const isRegistered = worker.registered;
 
   const handleSNSClick = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -32,13 +36,34 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
-        <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+        {worker.profileUrl ? (
+          <Image
+            src={worker.profileUrl}
+            alt={worker.name}
+            fill
+            sizes='(max-width: 600px) 33vw, 200px'
+          />
+        ) : (
+          <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+        )}
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>
           <S.WorkerGeneration>{worker.generation}기</S.WorkerGeneration>
           <S.WorkerName>{worker.name}</S.WorkerName>
-          {/* <I.BlueCheckIcon /> */}
+          {isRegistered && (
+            <S.BlueCheckIconWrapper>
+              <I.BlueCheckIcon />
+              <S.ToolTipWrapper className='tool-tip'>
+                <ToolTip
+                  textArr={[
+                    '등록된 멘토임을 의미합니다.',
+                    '차후 등록을 진행해 보세요.',
+                  ]}
+                />
+              </S.ToolTipWrapper>
+            </S.BlueCheckIconWrapper>
+          )}
         </S.WorkerNameBox>
         <S.ButtonBox>
           {isEmailExist ? (

@@ -1,4 +1,4 @@
-import Header from './';
+import Header from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 

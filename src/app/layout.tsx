@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import Script from 'next/script';
 
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ToastContainer } from 'react-toastify';
 
 import Providers from './providers';
@@ -36,18 +37,19 @@ export default function RootLayout({
           strategy='afterInteractive'
           dangerouslySetInnerHTML={{
             __html: `
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', '${GA_TRACKING_ID}', {
-            page_path: window.location.pathname,
-          });
-        `,
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', '${GA_TRACKING_ID}', {
+                page_path: window.location.pathname,
+              });
+            `,
           }}
         />
       </head>
       <body>
         <Providers>
+          <ReactQueryDevtools />
           <ToastContainer />
           <GlobalStyle />
           <Layout>{children}</Layout>
