@@ -6,7 +6,11 @@ export const config = {
 };
 
 export function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
   if (request.nextUrl.hostname === 'gsm.moip.shop') {
-    return NextResponse.redirect(new URL('/', 'https://gsm-networking.com'));
+    return NextResponse.redirect(
+      new URL(pathname, 'https://gsm-networking.com')
+    );
   }
 }
