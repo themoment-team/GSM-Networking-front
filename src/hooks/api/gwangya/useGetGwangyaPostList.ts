@@ -1,24 +1,18 @@
-import { useQuery } from '@tanstack/react-query';
+import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { get, gwangyaQueryKeys, gwangyaUrl } from '@/libs';
 import type { GwangyaPostType } from '@/types';
 import { getGwangyaTokenCookie } from '@/utils';
 
-import type { UseQueryOptions } from '@tanstack/react-query';
-import type { AxiosError } from 'axios';
-
 const gwangyaToken = getGwangyaTokenCookie();
 
 // TODO: useInfiniteQuery로 전환
-export const useGetGwangyaPostList = (
-  gwangyaId: number,
-  options?: UseQueryOptions<GwangyaPostType[], AxiosError>
-) =>
-  useQuery({
+export const useGetGwangyaPostList = (initialData?: GwangyaPostType[]) =>
+  useInfiniteQuery({
     queryKey: gwangyaQueryKeys.getGwangyaPostList(),
-    queryFn: () =>
+    queryFn: ({ pageParam }) =>
       get<GwangyaPostType[]>(
-        `/api/v1${gwangyaUrl.getGwangyaPostList(gwangyaId)}`,
+        `/api/v1${gwangyaUrl.getGwangyaPostList(pageParam)}`,
         {
           baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
           headers: {
@@ -27,5 +21,8 @@ export const useGetGwangyaPostList = (
           withCredentials: false,
         }
       ),
-    ...options,
+    initialPageParam: 0,
+    getPreviousPageParam: (firstPage) => firstPage[0]?.id,
+    getNextPageParam: (lastPage) => lastPage[lastPage.length - 1].id,
+    initialData: initialData && { pages: [initialData], pageParams: [0] },
   });

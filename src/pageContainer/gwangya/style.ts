@@ -5,7 +5,7 @@ export const Container = styled.div`
   position: relative;
 
   @media (max-width: 600px) {
-    padding: 7.5rem 1rem 0 1rem;
+    padding: 4.375rem 1rem 0 1rem;
   }
 `;
 
@@ -35,9 +35,15 @@ export const PostWrapper = styled.div`
   gap: 1.25rem;
 `;
 
+export const LoadMoreTrigger = styled.div`
+  position: absolute;
+  top: 0px;
+`;
+
 export const PostList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
   overflow-y: scroll;
+  position: relative;
 `;
