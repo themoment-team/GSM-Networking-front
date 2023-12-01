@@ -9,7 +9,7 @@ import * as S from './style';
 import { Header, CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList, useGetRem } from '@/hooks';
 import type { GwangyaPostType } from '@/types';
-import { getCookie } from '@/utils';
+import { isExistCookie } from '@/utils';
 
 interface Props {
   initialData: GwangyaPostType[];
@@ -66,7 +66,7 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
   }, [handleObserver]);
 
   useEffect(() => {
-    const isSuccess = !!getCookie('isSuccess');
+    const isSuccess = !!isExistCookie('isSuccess');
 
     if (isSuccess) toast.success('게시글이 정상적으로 등록되었습니다.');
   }, []);
