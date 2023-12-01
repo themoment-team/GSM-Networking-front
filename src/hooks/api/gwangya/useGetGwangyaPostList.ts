@@ -2,9 +2,9 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { get, gwangyaQueryKeys, gwangyaUrl } from '@/libs';
 import type { GwangyaPostType } from '@/types';
-import { getCookie } from '@/utils';
+import { getGwangyaToken } from '@/utils';
 
-const gwangyaToken = getCookie('gwangyaToken');
+const gwangyaToken = getGwangyaToken();
 
 // TODO: useInfiniteQuery로 전환
 export const useGetGwangyaPostList = (initialData?: GwangyaPostType[]) =>
