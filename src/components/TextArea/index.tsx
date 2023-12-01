@@ -13,7 +13,16 @@ const TextArea = () => {
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
 
-  const { mutate: mutateUploadContent } = usePostGwangyaContent();
+  const {
+    mutate: mutateUploadContent,
+    isPending,
+    isSuccess,
+  } = usePostGwangyaContent({
+    onSuccess: () => {
+      document.cookie = 'isSuccess=true; max-age=5';
+      window.location.reload();
+    },
+  });
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
@@ -55,7 +64,10 @@ const TextArea = () => {
           {isMultiLine && (
             <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
           )}
-          <S.UploadButton onClick={handleSubmit}>
+          <S.UploadButton
+            onClick={handleSubmit}
+            disabled={isPending || isSuccess}
+          >
             <UploadIcon />
           </S.UploadButton>
         </S.UploadWrapper>

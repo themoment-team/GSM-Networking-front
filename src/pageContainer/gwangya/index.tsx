@@ -2,11 +2,14 @@
 
 import { useEffect, useRef } from 'react';
 
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import { Header, CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList, useGetRem } from '@/hooks';
 import type { GwangyaPostType } from '@/types';
+import { isExistCookie } from '@/utils';
 
 interface Props {
   initialData: GwangyaPostType[];
@@ -61,6 +64,12 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
 
     return () => observer.disconnect();
   }, [handleObserver]);
+
+  useEffect(() => {
+    const isSuccess = isExistCookie('isSuccess');
+
+    if (isSuccess) toast.success('게시글이 정상적으로 등록되었습니다.');
+  }, []);
 
   return (
     <>

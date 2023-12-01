@@ -1,7 +1,7 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { gwangyaQueryKeys, gwangyaUrl, post } from '@/libs';
-import { getGwangyaTokenCookie } from '@/utils';
+import { getGwangyaToken } from '@/utils';
 
 import type { UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
@@ -9,7 +9,7 @@ import type { AxiosError } from 'axios';
 export const usePostGwangyaContent = (
   options?: UseMutationOptions<unknown, AxiosError, string>
 ) => {
-  const gwangyaToken = getGwangyaTokenCookie();
+  const gwangyaToken = getGwangyaToken();
 
   return useMutation({
     mutationKey: gwangyaQueryKeys.postGwangyaContent(),
