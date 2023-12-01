@@ -21,10 +21,6 @@ export default function RootLayout({
   return (
     <html>
       <head>
-        <meta
-          name='viewport'
-          content='initial-scale=1.0,user-scalable=no,maximum-scale=1,width=device-width'
-        />
         <link
           rel='stylesheet'
           as='style'
