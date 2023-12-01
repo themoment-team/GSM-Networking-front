@@ -1,5 +1,5 @@
 const isExistCookie = (cookieKey: string) => {
-  if (typeof document === 'undefined') return '';
+  if (typeof document === 'undefined') return false;
 
   const cookie = document.cookie.split(`${cookieKey}=`)[1];
 
