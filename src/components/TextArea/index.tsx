@@ -50,7 +50,7 @@ const TextArea = () => {
   }, []);
 
   const handleSubmit = () => {
-    if (inputValue.replaceAll('\n', '').length !== 0)
+    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
       mutateUploadContent(inputValue);
   };
 
