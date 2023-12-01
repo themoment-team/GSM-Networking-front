@@ -66,7 +66,7 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
   }, [handleObserver]);
 
   useEffect(() => {
-    const isSuccess = !!isExistCookie('isSuccess');
+    const isSuccess = isExistCookie('isSuccess');
 
     if (isSuccess) toast.success('게시글이 정상적으로 등록되었습니다.');
   }, []);
