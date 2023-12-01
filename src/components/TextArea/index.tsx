@@ -50,7 +50,8 @@ const TextArea = () => {
   }, []);
 
   const handleSubmit = () => {
-    mutateUploadContent(inputValue);
+    if (inputValue.replaceAll('\n', '').length !== 0)
+      mutateUploadContent(inputValue);
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
