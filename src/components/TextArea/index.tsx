@@ -54,9 +54,9 @@ const TextArea = () => {
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = e.target.value;
+    const inputValue = e.target.value.slice(0, MAX_LENGTH);
 
-    setInputValue(inputValue.slice(0, MAX_LENGTH));
+    setInputValue(inputValue);
   };
 
   return (
