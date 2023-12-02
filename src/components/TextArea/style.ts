@@ -26,8 +26,6 @@ export const TextField = styled.textarea`
   height: 0;
   outline: none;
 
-  touch-action: manipulation;
-
   ::placeholder {
     ${({ theme }) => theme.typo.body1};
     color: ${({ theme }) => theme.color.grey[400]};
