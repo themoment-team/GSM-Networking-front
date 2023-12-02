@@ -66,6 +66,10 @@ const TextArea = () => {
 
   return (
     <S.TextAreaContainer isFocused={isFocused}>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1, maximum-scale=1'
+      />
       <S.TextField
         placeholder='비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.'
         maxLength={MAX_LENGTH}
