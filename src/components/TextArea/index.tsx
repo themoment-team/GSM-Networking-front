@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
-import type { ChangeEvent, TouchEvent } from 'react';
+import type { ChangeEvent } from 'react';
 
 import * as S from './style';
 
@@ -60,10 +60,6 @@ const TextArea = () => {
     setInputValue(inputValue);
   };
 
-  const handleTouchStart = (event: TouchEvent<HTMLButtonElement>) => {
-    if (event.touches.length === 1) event.preventDefault();
-  };
-
   return (
     <S.TextAreaContainer isFocused={isFocused}>
       <meta
@@ -86,7 +82,6 @@ const TextArea = () => {
           )}
           <S.UploadButton
             onClick={handleSubmit}
-            onTouchStart={handleTouchStart}
             disabled={isPending || isSuccess}
           >
             <UploadIcon />
