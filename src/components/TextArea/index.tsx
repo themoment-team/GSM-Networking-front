@@ -1,11 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import type { ChangeEvent } from 'react';
+
+import { toast } from 'react-toastify';
 
 import * as S from './style';
 
 import { UploadIcon } from '@/assets';
 import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
+
+const MAX_LENGTH = 200;
 
 const TextArea = () => {
   const [inputValue, setInputValue] = useState<string>('');
@@ -47,22 +52,32 @@ const TextArea = () => {
   }, []);
 
   const handleSubmit = () => {
-    mutateUploadContent(inputValue);
+    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
+      mutateUploadContent(inputValue);
+    else toast.error('게시물 내용을 입력해주세요.');
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = e.target.value.slice(0, MAX_LENGTH);
+
+    setInputValue(inputValue);
   };
 
   return (
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
         placeholder='비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.'
-        maxLength={200}
+        maxLength={MAX_LENGTH}
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={handleInputChange}
         ref={textAreaRef}
       />
       {inputValue.length > 0 && (
         <S.UploadWrapper>
           {isMultiLine && (
-            <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
+            <S.MaxLengthNotice>
+              {MAX_LENGTH - inputValue.length}
+            </S.MaxLengthNotice>
           )}
           <S.UploadButton
             onClick={handleSubmit}
