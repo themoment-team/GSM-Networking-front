@@ -18,7 +18,7 @@ const setCookie = (name: string, value: string, expires: Date) => {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
 
-  const redirectPath = searchParams.get('redirect') || '/';
+  const redirectPath = searchParams.get('redirect') || '/community/gwangya';
 
   const cookieStore = cookies();
 
