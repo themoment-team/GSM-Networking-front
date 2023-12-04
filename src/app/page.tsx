@@ -34,7 +34,7 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
   if (!accessToken) return redirect('/auth/refresh');
 
-  if (!gwangyaToken) return redirect('/auth/refresh/gwangya');
+  if (!gwangyaToken) return redirect('/auth/refresh/gwangya?redirect=/');
 
   const response = await fetch(
     new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
