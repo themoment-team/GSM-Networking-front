@@ -3,6 +3,8 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
 
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import { UploadIcon } from '@/assets';
@@ -52,6 +54,7 @@ const TextArea = () => {
   const handleSubmit = () => {
     if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
       mutateUploadContent(inputValue);
+    else toast.error('게시물 내용을 입력해주세요.');
   };
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
