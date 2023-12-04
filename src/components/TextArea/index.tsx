@@ -1,11 +1,16 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import type { ChangeEvent } from 'react';
+
+import { toast } from 'react-toastify';
 
 import * as S from './style';
 
 import { SendIcon, UploadIcon } from '@/assets';
 import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
+
+const MAX_LENGTH = 200;
 
 interface Props {
   textAreaType: 'gwangya' | 'chatting';
@@ -31,7 +36,16 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
 
-  const { mutate: mutateUploadContent } = usePostGwangyaContent();
+  const {
+    mutate: mutateUploadContent,
+    isPending,
+    isSuccess,
+  } = usePostGwangyaContent({
+    onSuccess: () => {
+      document.cookie = 'isSuccess=true; max-age=5';
+      window.location.reload();
+    },
+  });
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
@@ -56,7 +70,15 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
   }, []);
 
   const uploadContent = () => {
-    mutateUploadContent(inputValue);
+    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
+      mutateUploadContent(inputValue);
+    else toast.error('게시물 내용을 입력해주세요.');
+  };
+
+  const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+    const inputValue = e.target.value.slice(0, MAX_LENGTH);
+
+    setInputValue(inputValue);
   };
 
   const sendMessage = () => {};
@@ -65,17 +87,22 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
         placeholder={textAreaElements[textAreaType].placeholder}
-        maxLength={200}
+        maxLength={MAX_LENGTH}
         value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        onChange={handleInputChange}
         ref={textAreaRef}
       />
       {inputValue.length > 0 && (
         <S.UploadWrapper>
           {isMultiLine && textAreaType === 'gwangya' && (
-            <S.MaxLengthNotice>{200 - inputValue.length}</S.MaxLengthNotice>
+            <S.MaxLengthNotice>
+              {MAX_LENGTH - inputValue.length}
+            </S.MaxLengthNotice>
           )}
-          <S.UploadButton onClick={textAreaElements[textAreaType].onClick}>
+          <S.UploadButton
+            onClick={textAreaElements[textAreaType].onClick}
+            disabled={isPending || isSuccess}
+          >
             {textAreaElements[textAreaType].icon}
           </S.UploadButton>
         </S.UploadWrapper>

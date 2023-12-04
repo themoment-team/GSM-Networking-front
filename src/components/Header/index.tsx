@@ -28,6 +28,10 @@ const Header: React.FC<Props> = ({ clearList }) => {
 
   return (
     <S.Header>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1, maximum-scale=1'
+      />
       <S.Inner>
         <S.LogoLink href='/' onClick={clearList}>
           <I.GsmNetworkingIcon />
