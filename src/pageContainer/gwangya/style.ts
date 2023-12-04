@@ -40,10 +40,10 @@ export const LoadMoreTrigger = styled.div`
   top: 0px;
 `;
 
-export const PostList = styled.div`
+export const PostList = styled.div<{ isFetching: boolean }>`
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
-  overflow-y: scroll;
+  overflow-y: ${({ isFetching }) => (isFetching ? 'hidden' : 'scroll')};
   position: relative;
 `;
