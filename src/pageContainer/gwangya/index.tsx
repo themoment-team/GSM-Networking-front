@@ -27,7 +27,7 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
 
   useEffect(() => {
     // 초기 데이터를 가져올 시, 스크롤을 최하단으로 이동
-    postListRef.current?.scrollTo(0, 10000);
+    postListRef.current?.scrollTo(0, 99999);
 
     const isSuccess = isExistCookie('isSuccess');
 
