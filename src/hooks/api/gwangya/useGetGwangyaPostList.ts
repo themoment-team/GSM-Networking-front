@@ -2,7 +2,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 
 import { get, gwangyaQueryKeys, gwangyaUrl } from '@/libs';
 import type { GwangyaPostType } from '@/types';
-import { getGwangyaToken } from '@/utils';
+import { getGwangyaToken, minutesToMs } from '@/utils';
 
 const gwangyaToken = getGwangyaToken();
 
@@ -25,4 +25,6 @@ export const useGetGwangyaPostList = (initialData?: GwangyaPostType[]) =>
     getPreviousPageParam: (firstPage) => firstPage[0]?.id,
     getNextPageParam: (lastPage) => lastPage[lastPage.length - 1]?.id,
     initialData: initialData && { pages: [initialData], pageParams: [0] },
+    staleTime: minutesToMs(5),
+    gcTime: minutesToMs(5),
   });

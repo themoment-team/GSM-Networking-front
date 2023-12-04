@@ -41,6 +41,7 @@ export const LoadMoreTrigger = styled.div`
 `;
 
 export const PostList = styled.div<{ isFetching: boolean }>`
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
