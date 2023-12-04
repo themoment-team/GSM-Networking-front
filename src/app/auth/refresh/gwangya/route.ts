@@ -36,7 +36,7 @@ export async function GET(request: NextRequest) {
 
   if (!res.ok) {
     return NextResponse.redirect(
-      new URL(`/auth/refresh?redirect=/auth/refresh}`, request.url)
+      new URL(`/auth/refresh?redirect=/auth/refresh/gwangya`, request.url)
     );
   }
 
