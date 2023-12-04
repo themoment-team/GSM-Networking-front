@@ -46,4 +46,14 @@ export const PostList = styled.div<{ isFetching: boolean }>`
   gap: 2.25rem;
   overflow-y: ${({ isFetching }) => (isFetching ? 'hidden' : 'scroll')};
   position: relative;
+
+  ::-webkit-scrollbar {
+    background: none;
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 0.625rem;
+  }
 `;
