@@ -18,7 +18,7 @@ export const Index = styled.p`
   color: ${({ theme }) => theme.color.black};
 `;
 
-export const DateBox = styled.p`
+export const DateBox = styled.div`
   ${({ theme }) => theme.typo.caption}
   color: ${({ theme }) => theme.color.grey[500]};
   display: flex;
@@ -30,7 +30,9 @@ export const Date = styled.p``;
 
 export const Time = styled.time``;
 
-export const Content = styled.p`
+export const Content = styled.pre`
+  width: 100%;
+  white-space: break-spaces;
   ${({ theme }) => theme.typo.body1}
   color: #000000;
 `;

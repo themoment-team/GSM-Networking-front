@@ -1,24 +1,47 @@
-import React from 'react';
+'use client';
+
+import React, { forwardRef } from 'react';
 
 import * as S from './style';
 
-interface Props {
-  index: number;
-  content: string;
-}
+import type { GwangyaPostType } from '@/types';
 
-const CommunityCard: React.FC<Props> = ({ index, content }) => (
-  <S.CardWrapper>
-    <S.Header>
-      <S.Index>#{index}</S.Index>
-      <S.DateBox>
-        {/* TODO: 추후에 api 연동 시, Date 핸들링 구체화 하겠습니다. */}
-        <S.Date>2020.01.01</S.Date>
-        <S.Time>12:12</S.Time>
-      </S.DateBox>
-    </S.Header>
-    <S.Content>{content}</S.Content>
-  </S.CardWrapper>
+const addZero = (num: number): string => (num < 10 ? `0${num}` : `${num}`);
+
+const removeDuplicateEnter = (str: string) => str.replaceAll(/\n+/g, '\n');
+
+const CommunityCard = forwardRef<HTMLDivElement, GwangyaPostType>(
+  ({ id, content, createdAt }, ref) => {
+    const createdDate = new Date(createdAt + 'Z');
+
+    const createdMonth = createdDate.getMonth() + 1;
+    const createdDay = createdDate.getDate();
+    const createdTime = createdDate.getHours();
+    const createdMinute = createdDate.getMinutes();
+    const morningOrAfternoon = createdTime < 12 ? '오전' : '오후';
+    const convertCreatedTime =
+      createdTime > 12 ? createdTime - 12 : createdTime;
+
+    return (
+      <S.CardWrapper ref={ref}>
+        <S.Header>
+          <S.Index>#{id}</S.Index>
+          <S.DateBox>
+            <S.Date>
+              {createdMonth}월 {createdDay}일
+            </S.Date>
+            <S.Time>
+              {morningOrAfternoon} {addZero(convertCreatedTime)}:
+              {addZero(createdMinute)}
+            </S.Time>
+          </S.DateBox>
+        </S.Header>
+        <S.Content>{removeDuplicateEnter(content)}</S.Content>
+      </S.CardWrapper>
+    );
+  }
 );
+
+CommunityCard.displayName = 'CommunityCard';
 
 export default CommunityCard;

@@ -37,6 +37,11 @@ export const LogoLink = styled(Link)`
   column-gap: 0.38rem;
 `;
 
+export const CommunityLink = styled(Link)`
+  ${({ theme }) => theme.typo.body1};
+  color: ${({ theme }) => theme.color.grey[400]};
+`;
+
 export const MentorContact = styled.button`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
