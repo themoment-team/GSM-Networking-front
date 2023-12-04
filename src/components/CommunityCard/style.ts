@@ -31,6 +31,8 @@ export const Date = styled.p``;
 export const Time = styled.time``;
 
 export const Content = styled.pre`
+  width: 100%;
+  white-space: break-spaces;
   ${({ theme }) => theme.typo.body1}
   color: #000000;
 `;
