@@ -10,7 +10,7 @@ const addZero = (num: number): string => (num < 10 ? `0${num}` : `${num}`);
 
 const CommunityCard = forwardRef<HTMLDivElement, GwangyaPostType>(
   ({ id, content, createdAt }, ref) => {
-    const createdDate = new Date(createdAt);
+    const createdDate = new Date(createdAt + 'Z');
 
     const createdMonth = createdDate.getMonth() + 1;
     const createdDay = createdDate.getDate();
