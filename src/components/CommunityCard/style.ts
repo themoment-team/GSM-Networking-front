@@ -30,7 +30,7 @@ export const Date = styled.p``;
 
 export const Time = styled.time``;
 
-export const Content = styled.p`
+export const Content = styled.pre`
   ${({ theme }) => theme.typo.body1}
   color: #000000;
 `;
