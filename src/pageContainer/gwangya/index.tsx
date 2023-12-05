@@ -22,8 +22,13 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
 
   const [topCardId, setTopCardId] = useState<number | null>(null);
 
-  const { data, fetchPreviousPage, isFetchingPreviousPage, hasPreviousPage } =
-    useGetGwangyaPostList(initialData);
+  const {
+    data,
+    fetchPreviousPage,
+    isFetchingPreviousPage,
+    hasPreviousPage,
+    isError,
+  } = useGetGwangyaPostList(initialData);
 
   useEffect(() => {
     // 초기 데이터를 가져올 시, 스크롤을 최하단으로 이동
@@ -83,7 +88,7 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
         </S.TitleBox>
         <S.PostWrapper>
           <S.PostList ref={postListRef} isFetching={isFetchingPreviousPage}>
-            {!isFetchingPreviousPage && hasPreviousPage && (
+            {!isFetchingPreviousPage && hasPreviousPage && !isError && (
               <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
             )}
             {data?.pages.map((page) =>
