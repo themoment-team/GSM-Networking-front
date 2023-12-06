@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import { Header, CommunityCard, TextArea } from '@/components';
-import { useGetGwangyaPostList } from '@/hooks';
+import { useGetGwangyaPostList, usePostGwangyaContent } from '@/hooks';
 import type { GwangyaPostType } from '@/types';
 import { isExistCookie } from '@/utils';
 
@@ -71,6 +71,23 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
     return () => observer.disconnect();
   }, [handleObserver]);
 
+  const {
+    mutate: mutateUploadContent,
+    isPending,
+    isSuccess,
+  } = usePostGwangyaContent({
+    onSuccess: () => {
+      document.cookie = 'isSuccess=true; max-age=5';
+      window.location.reload();
+    },
+  });
+
+  const uploadContent = (inputValue: string) => {
+    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
+      mutateUploadContent(inputValue);
+    else toast.error('게시물 내용을 입력해주세요.');
+  };
+
   return (
     <>
       <Header />
@@ -96,7 +113,11 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
               ))
             )}
           </S.PostList>
-          <TextArea textAreaType='gwangya' />
+          <TextArea
+            disabled={isPending || isSuccess}
+            onClick={uploadContent}
+            textAreaType='gwangya'
+          />
         </S.PostWrapper>
       </S.Container>
     </>

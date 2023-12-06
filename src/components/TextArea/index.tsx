@@ -3,31 +3,29 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ChangeEvent } from 'react';
 
-import { toast } from 'react-toastify';
-
 import * as S from './style';
 
 import { SendIcon, UploadIcon } from '@/assets';
-import { useAutosizeTextArea, usePostGwangyaContent } from '@/hooks';
+import { useAutosizeTextArea } from '@/hooks';
 
 const MAX_LENGTH = 200;
 
 interface Props {
   textAreaType: 'gwangya' | 'chatting';
+  onClick: (content: string) => void;
+  disabled: boolean;
 }
 
-const TextArea: React.FC<Props> = ({ textAreaType }) => {
+const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
   const textAreaElements = {
     gwangya: {
       placeholder:
         '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
       icon: <UploadIcon />,
-      onClick: () => uploadContent(),
     },
     chatting: {
       placeholder: '메시지 보내기',
       icon: <SendIcon />,
-      onClick: () => sendMessage(),
     },
   } as const;
 
@@ -35,17 +33,6 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
-
-  const {
-    mutate: mutateUploadContent,
-    isPending,
-    isSuccess,
-  } = usePostGwangyaContent({
-    onSuccess: () => {
-      document.cookie = 'isSuccess=true; max-age=5';
-      window.location.reload();
-    },
-  });
 
   useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
@@ -69,19 +56,11 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
     };
   }, []);
 
-  const uploadContent = () => {
-    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
-      mutateUploadContent(inputValue);
-    else toast.error('게시물 내용을 입력해주세요.');
-  };
-
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const inputValue = e.target.value.slice(0, MAX_LENGTH);
 
     setInputValue(inputValue);
   };
-
-  const sendMessage = () => {};
 
   return (
     <S.TextAreaContainer isFocused={isFocused}>
@@ -100,8 +79,8 @@ const TextArea: React.FC<Props> = ({ textAreaType }) => {
             </S.MaxLengthNotice>
           )}
           <S.UploadButton
-            onClick={textAreaElements[textAreaType].onClick}
-            disabled={isPending || isSuccess}
+            onClick={() => onClick(inputValue)}
+            disabled={disabled}
           >
             {textAreaElements[textAreaType].icon}
           </S.UploadButton>
