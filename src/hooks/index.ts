@@ -1,4 +1,4 @@
 export * from './api';
-export * from './useAutoReSizeTextArea';
+export * from './useAutoResizeTextArea';
 export * from './useForwardRef';
 export * from './useGetRem';
