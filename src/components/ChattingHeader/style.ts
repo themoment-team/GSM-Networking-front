@@ -15,14 +15,10 @@ export const IconBox = styled.div`
   cursor: pointer;
 `;
 
-export const OpponentInfo = styled.div``;
-
-export const Generation = styled.span`
+export const OpponentInfo = styled.div`
   ${({ theme }) => theme.typo.subtitle};
   color: ${({ theme }) => theme.color.grey[500]};
 `;
-
-export const Name = styled(Generation)``;
 
 export const SpaceBox = styled.div`
   width: 1.5rem;
