@@ -41,9 +41,20 @@ export const LoadMoreTrigger = styled.div`
 `;
 
 export const PostList = styled.div<{ isFetching: boolean }>`
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 2.25rem;
   overflow-y: ${({ isFetching }) => (isFetching ? 'hidden' : 'scroll')};
   position: relative;
+
+  ::-webkit-scrollbar {
+    background: none;
+    width: 0.5rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d9d9d9;
+    border-radius: 0.625rem;
+  }
 `;
