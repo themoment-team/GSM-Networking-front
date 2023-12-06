@@ -1,8 +1,8 @@
 const GoBackIcon = () => (
   <svg
     xmlns='http://www.w3.org/2000/svg'
-    width='10'
-    height='17'
+    width='0.625rem'
+    height='1.0625rem'
     viewBox='0 0 10 17'
     fill='none'
   >
