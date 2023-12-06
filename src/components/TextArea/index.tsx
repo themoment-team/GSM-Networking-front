@@ -6,7 +6,7 @@ import type { ChangeEvent } from 'react';
 import * as S from './style';
 
 import { SendIcon, UploadIcon } from '@/assets';
-import { useAutosizeTextArea } from '@/hooks';
+import { useAutoResizeTextArea } from '@/hooks';
 
 const MAX_LENGTH = 200;
 
@@ -34,7 +34,7 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
   const [isFocused, setIsFocused] = useState(false);
   const [isMultiLine, setIsMultiLine] = useState(false);
 
-  useAutosizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
+  useAutoResizeTextArea(textAreaRef.current, inputValue, setIsMultiLine);
 
   // textArea의 focus를 컨트롤합니다. -> focus 시 border 변경.
   useEffect(() => {

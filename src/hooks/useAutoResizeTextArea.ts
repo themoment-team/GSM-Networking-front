@@ -1,7 +1,7 @@
 import type { Dispatch, SetStateAction } from 'react';
 import { useEffect } from 'react';
 
-export const useAutosizeTextArea = (
+export const useAutoResizeTextArea = (
   textAreaRef: HTMLTextAreaElement | null,
   value: string,
   setIsMultiLine: Dispatch<SetStateAction<boolean>>
