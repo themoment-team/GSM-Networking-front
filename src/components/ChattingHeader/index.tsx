@@ -1,7 +1,5 @@
 'use client';
 
-import React from 'react';
-
 import { useRouter } from 'next/navigation';
 
 import * as S from './style';
@@ -25,8 +23,7 @@ const ChattingHeader: React.FC<Props> = ({ name, generation }) => {
         <GoBackIcon />
       </S.IconBox>
       <S.OpponentInfo>
-        <S.Generation>{generation}기 </S.Generation>
-        <S.Name>{name}</S.Name>
+        {generation}기 {name}
       </S.OpponentInfo>
       <S.SpaceBox />
     </S.Container>
