@@ -24,7 +24,7 @@ const InfoSearch: React.FC = () => {
 
   const { push } = useRouter();
 
-  const { data, refetch } = useGetSearchTempMentor(inputValue, {
+  const { data, refetch, isFetching } = useGetSearchTempMentor(inputValue, {
     enabled: false,
   });
 
@@ -82,7 +82,8 @@ const InfoSearch: React.FC = () => {
                 setSelectMentorId={setSelectMentorId}
               />
             ))
-          : inputValue && (
+          : !isFetching &&
+            inputValue && (
               <S.NotFoundContainer>
                 <SearchNotFound
                   textArr={[
