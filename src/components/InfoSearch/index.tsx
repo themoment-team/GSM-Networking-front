@@ -8,7 +8,6 @@ import type { SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { toast } from 'react-toastify';
 
 import * as S from './style';
 
@@ -50,13 +49,6 @@ const InfoSearch: React.FC = () => {
       refetch();
     }
   }, [inputValue, refetch]);
-
-  useEffect(() => {
-    if (inputValue && !data) {
-      toast.error('성함을 다시 확인해주세요.');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data]);
 
   return (
     <S.Container>
