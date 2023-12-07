@@ -55,7 +55,8 @@ const InfoSearch: React.FC = () => {
     if (inputValue && !data) {
       toast.error('성함을 다시 확인해주세요.');
     }
-  }, [inputValue, data]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
 
   return (
     <S.Container>
