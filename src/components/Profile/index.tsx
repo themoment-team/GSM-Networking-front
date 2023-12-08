@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { usePathname, useRouter } from 'next/navigation';
 
 import * as S from './style';
 
@@ -25,7 +26,15 @@ const Profile: React.FC<Props> = ({
   // TODO : server side 와 마크업을 일치시키기 위한 로직 변경 필요.
   const randomValue = Math.floor(Math.random() * 5); //0부터 4까지 중의 랜덤값 생성
 
-  // const handleClick = () => {};
+  const pathName = usePathname();
+
+  const { push } = useRouter();
+
+  const handleClick = () => {
+    if (pathName === '/mypage') push('/mypage/update');
+    else if (pathName === '/mypage/update' && profileRegisterModalOpen)
+      profileRegisterModalOpen();
+  };
 
   return (
     <S.ProfileWrapper>
@@ -40,7 +49,7 @@ const Profile: React.FC<Props> = ({
         <S.UserName>
           {generation}기 {name}
         </S.UserName>
-        <ProfileUpdateButton onClick={profileRegisterModalOpen} />
+        <ProfileUpdateButton onClick={handleClick} />
       </S.ProfileInfo>
     </S.ProfileWrapper>
   );
