@@ -23,6 +23,10 @@ const MyPage: React.FC = () => {
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
   >('close');
 
+  const [careerArray, setCareerArray] = useState<CareerFormType[]>([
+    extractCareer(null),
+  ]);
+
   const { push } = useRouter();
 
   const { data, isError } = useGetMyInfo();
@@ -35,9 +39,37 @@ const MyPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
-  const [careerArray, setCareerArray] = useState<CareerFormType[]>([
-    extractCareer(null),
-  ]);
+  useEffect(() => {
+    if (data?.career) {
+      const career = data.career;
+      const newCareerList: CareerFormType[] = career.map((career) => {
+        const startDate = new Date(career.startDate);
+        const endDate = career.endDate ? new Date(career.endDate) : null;
+
+        const newCareer: CareerFormType = {
+          id: career.id,
+          companyName: { value: career.companyName, errorMessage: null },
+          companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
+          position: { value: career.position, errorMessage: null },
+          startYear: { value: startDate.getFullYear(), errorMessage: null },
+          startMonth: { value: startDate.getMonth(), errorMessage: null },
+          endYear: {
+            value: endDate ? endDate.getFullYear() : '년',
+            errorMessage: null,
+          },
+          endMonth: {
+            value: endDate ? endDate.getMonth() : '월',
+            errorMessage: null,
+          },
+          isWorking: { value: career.isWorking, errorMessage: null },
+        };
+
+        return newCareer;
+      });
+
+      setCareerArray(newCareerList);
+    }
+  }, [data?.career]);
 
   return (
     <>
