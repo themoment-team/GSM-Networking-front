@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -23,7 +23,9 @@ const InfoSearch: React.FC = () => {
 
   const { push } = useRouter();
 
-  const { data } = useGetSearchTempMentor(inputValue);
+  const { data, refetch, isFetching } = useGetSearchTempMentor(inputValue, {
+    enabled: false,
+  });
 
   const {
     register,
@@ -42,6 +44,12 @@ const InfoSearch: React.FC = () => {
     setInputValue(data.name);
   };
 
+  useEffect(() => {
+    if (inputValue) {
+      refetch();
+    }
+  }, [inputValue, refetch]);
+
   return (
     <S.Container>
       <S.TitleBox>
@@ -57,9 +65,8 @@ const InfoSearch: React.FC = () => {
       </S.SearchForm>
       <S.ErrorMessage>{errors.name?.message}</S.ErrorMessage>
       <S.TempMentorCardBox>
-        {data &&
-          (data.length > 0 ? (
-            data.map((user) => (
+        {(data?.length ?? 0) > 0
+          ? data?.map((user) => (
               <TempMentorCard
                 key={user.id}
                 worker={user}
@@ -67,16 +74,17 @@ const InfoSearch: React.FC = () => {
                 setSelectMentorId={setSelectMentorId}
               />
             ))
-          ) : (
-            <S.NotFoundContainer>
-              <SearchNotFound
-                textArr={[
-                  '이름을 찾을 수 없어요.',
-                  '오타, 띄어쓰기 등을 확인 해주세요.',
-                ]}
-              />
-            </S.NotFoundContainer>
-          ))}
+          : !isFetching &&
+            inputValue && (
+              <S.NotFoundContainer>
+                <SearchNotFound
+                  textArr={[
+                    '이름을 찾을 수 없어요.',
+                    '오타, 띄어쓰기 등을 확인 해주세요.',
+                  ]}
+                />
+              </S.NotFoundContainer>
+            )}
       </S.TempMentorCardBox>
       <S.Button onClick={handleButtonClick} disabled={!isUserSelect}>
         다음
