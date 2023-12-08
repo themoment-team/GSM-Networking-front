@@ -36,6 +36,8 @@ const getGwangyaPostList = async (): Promise<GwangyaPostType[]> => {
   );
 
   if (response.status === 401) {
+    // eslint-disable-next-line no-console
+    console.log(response.body);
     return redirect('/auth/refresh/gwangya?redirect=/community/gwangya');
   }
 
