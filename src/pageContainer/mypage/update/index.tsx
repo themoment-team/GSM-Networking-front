@@ -16,16 +16,13 @@ import {
 } from '@/components';
 import { useGetMyInfo } from '@/hooks';
 import type { CareerFormType } from '@/types';
-import { extractCareer } from '@/utils';
 
 const MyInfoUpdatePage: React.FC = () => {
   const [openModalCase, setOpenModalCase] = useState<
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
   >('close');
 
-  const [careerArray, setCareerArray] = useState<CareerFormType[]>([
-    extractCareer(null),
-  ]);
+  const [careerArray, setCareerArray] = useState<CareerFormType[]>([]);
 
   const { push } = useRouter();
 
