@@ -3,9 +3,10 @@ import styled from '@emotion/styled';
 export const Container = styled.div`
   padding-top: 4.375rem;
   position: relative;
+  padding-bottom: 3.75rem;
 
   @media (max-width: 600px) {
-    padding: 7.5rem 1rem 0 1rem;
+    padding: 7.5rem 1rem 3.75rem 1rem;
   }
 `;
 

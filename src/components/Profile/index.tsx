@@ -17,6 +17,9 @@ interface Props {
   profileRegisterModalOpen?: () => void;
 }
 
+const MY_PAGE_PATh = '/mypage' as const;
+const MY_INFO_UPDATE_PAGE_PATh = '/mypage/update' as const;
+
 const Profile: React.FC<Props> = ({
   name,
   generation,
@@ -31,8 +34,8 @@ const Profile: React.FC<Props> = ({
   const { push } = useRouter();
 
   const handleClick = () => {
-    if (pathName === '/mypage') push('/mypage/update');
-    else if (pathName === '/mypage/update' && profileRegisterModalOpen)
+    if (pathName === MY_PAGE_PATh) push(MY_INFO_UPDATE_PAGE_PATh);
+    else if (pathName === MY_INFO_UPDATE_PAGE_PATh && profileRegisterModalOpen)
       profileRegisterModalOpen();
   };
 

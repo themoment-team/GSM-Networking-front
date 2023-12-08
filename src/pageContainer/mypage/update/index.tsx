@@ -8,8 +8,15 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { Profile, Header, ProfileImgRegisterModal } from '@/components';
+import {
+  Profile,
+  Header,
+  ProfileImgRegisterModal,
+  CareerRegistrationBox,
+} from '@/components';
 import { useGetMyInfo } from '@/hooks';
+import type { CareerFormType } from '@/types';
+import { extractCareer } from '@/utils';
 
 const MyPage: React.FC = () => {
   const [openModalCase, setOpenModalCase] = useState<
@@ -27,6 +34,10 @@ const MyPage: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
+
+  const [careerArray, setCareerArray] = useState<CareerFormType[]>([
+    extractCareer(null),
+  ]);
 
   return (
     <>
@@ -48,6 +59,13 @@ const MyPage: React.FC = () => {
               />
             </S.ProfileContainer>
             <S.Line />
+            {careerArray.map((career) => (
+              <CareerRegistrationBox
+                career={career}
+                setCareerArray={setCareerArray}
+                key={career.id}
+              />
+            ))}
           </>
         )}
       </S.Container>
