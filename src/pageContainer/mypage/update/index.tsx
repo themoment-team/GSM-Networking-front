@@ -18,7 +18,7 @@ import { useGetMyInfo } from '@/hooks';
 import type { CareerFormType } from '@/types';
 import { extractCareer } from '@/utils';
 
-const MyPage: React.FC = () => {
+const MyInfoUpdatePage: React.FC = () => {
   const [openModalCase, setOpenModalCase] = useState<
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
   >('close');
@@ -105,4 +105,4 @@ const MyPage: React.FC = () => {
   );
 };
 
-export default MyPage;
+export default MyInfoUpdatePage;
