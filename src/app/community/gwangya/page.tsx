@@ -21,6 +21,9 @@ const GwangyaPage = async () => {
 const getGwangyaPostList = async (): Promise<GwangyaPostType[]> => {
   const gwangyaToken = cookies().get('gwangyaToken')?.value;
 
+  // eslint-disable-next-line no-console
+  console.log(gwangyaToken);
+
   if (!gwangyaToken)
     return redirect('/auth/refresh/gwangya?redirect=/community/gwangya');
 
