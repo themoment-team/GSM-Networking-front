@@ -22,14 +22,20 @@ export const Line = styled.div`
   background: ${({ theme }) => theme.color.grey[50]};
 `;
 
-export const CareerContainer = styled.div`
+export const InfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 3.5rem;
+`;
+
+export const InfoWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  margin: 3.5rem 0 2.5rem;
 `;
 
-export const CareerInfoText = styled.span`
+export const InfoText = styled.span`
   color: ${({ theme }) => theme.color.grey[900]};
 
   font-size: 1.125rem;
@@ -37,7 +43,7 @@ export const CareerInfoText = styled.span`
   line-height: 150%;
 `;
 
-export const CareerBox = styled.div`
+export const InfoBox = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem 1rem;

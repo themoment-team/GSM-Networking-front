@@ -13,6 +13,7 @@ import {
   CareerCard,
   Header,
   ProfileImgRegisterModal,
+  PrivacyCard,
 } from '@/components';
 import { useGetMyInfo } from '@/hooks';
 
@@ -53,14 +54,35 @@ const MyPage: React.FC = () => {
               />
             </S.ProfileContainer>
             <S.Line />
-            <S.CareerContainer>
-              <S.CareerInfoText>재직 정보</S.CareerInfoText>
-              <S.CareerBox>
-                {data.career.map((career) => (
-                  <CareerCard career={career} key={career.id} />
-                ))}
-              </S.CareerBox>
-            </S.CareerContainer>
+            <S.InfoContainer>
+              <S.CareerContainer>
+                <S.InfoText>개인정보</S.InfoText>
+                <S.InfoBox>
+                  <PrivacyCard
+                    privacy={{
+                      privacyKey: '전화번호',
+                      privacyValue: data.phoneNumber,
+                    }}
+                  />
+                  {data.SNS && (
+                    <PrivacyCard
+                      privacy={{
+                        privacyKey: 'SNS',
+                        privacyValue: data.SNS,
+                      }}
+                    />
+                  )}
+                </S.InfoBox>
+              </S.CareerContainer>
+              <S.CareerContainer>
+                <S.InfoText>재직 정보</S.InfoText>
+                <S.InfoBox>
+                  {data.career.map((career) => (
+                    <CareerCard career={career} key={career.id} />
+                  ))}
+                </S.InfoBox>
+              </S.CareerContainer>
+            </S.InfoContainer>
           </>
         )}
         {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
