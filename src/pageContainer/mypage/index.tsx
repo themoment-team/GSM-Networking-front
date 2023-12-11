@@ -34,7 +34,7 @@ const MyPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
-  const onUpdateButtonClick = () => push('/mypage/update');
+  const onUpdateButtonClick = () => push('/register/mentor');
 
   return (
     <>
