@@ -63,11 +63,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     onSuccess: () => handleMentorRegisterSuccess(),
   });
 
-  useEffect(() => {
-    if (!data || isError) setIsUpdate(false);
-    else setIsUpdate(true);
-  }, [data, isError]);
-
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
@@ -80,6 +75,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
@@ -90,6 +86,47 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
+
+  useEffect(() => {
+    if (!data || isError) setIsUpdate(false);
+    else {
+      const career = data.career;
+      const newCareerList: CareerFormType[] = career.map((career) => {
+        const startDate = new Date(career.startDate);
+        const endDate = career.endDate ? new Date(career.endDate) : null;
+
+        const newCareer: CareerFormType = {
+          id: career.id,
+          companyName: { value: career.companyName, errorMessage: null },
+          companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
+          position: { value: career.position, errorMessage: null },
+          startYear: { value: startDate.getFullYear(), errorMessage: null },
+          startMonth: { value: startDate.getMonth(), errorMessage: null },
+          endYear: {
+            value: endDate ? endDate.getFullYear() : '년',
+            errorMessage: null,
+          },
+          endMonth: {
+            value: endDate ? endDate.getMonth() : '월',
+            errorMessage: null,
+          },
+          isWorking: { value: career.isWorking, errorMessage: null },
+        };
+
+        return newCareer;
+      });
+
+      setCareerArray(newCareerList);
+
+      setValue('name', data.name);
+      setValue('phoneNumber', data.phoneNumber);
+      setValue('email', data.email);
+      setValue('snsUrl', data.SNS);
+      setValue('generation', data.generation.toString());
+
+      setIsUpdate(true);
+    }
+  }, [data, isError, setValue]);
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
     const validatedArray = careerValidation(careerArray, setCareerArray);
@@ -143,38 +180,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     careerValidation(careerArray, setCareerArray);
     toast.error('입력 정보를 다시 확인해주세요.');
   };
-
-  useEffect(() => {
-    if (data?.career) {
-      const career = data.career;
-      const newCareerList: CareerFormType[] = career.map((career) => {
-        const startDate = new Date(career.startDate);
-        const endDate = career.endDate ? new Date(career.endDate) : null;
-
-        const newCareer: CareerFormType = {
-          id: career.id,
-          companyName: { value: career.companyName, errorMessage: null },
-          companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
-          position: { value: career.position, errorMessage: null },
-          startYear: { value: startDate.getFullYear(), errorMessage: null },
-          startMonth: { value: startDate.getMonth(), errorMessage: null },
-          endYear: {
-            value: endDate ? endDate.getFullYear() : '년',
-            errorMessage: null,
-          },
-          endMonth: {
-            value: endDate ? endDate.getMonth() : '월',
-            errorMessage: null,
-          },
-          isWorking: { value: career.isWorking, errorMessage: null },
-        };
-
-        return newCareer;
-      });
-
-      setCareerArray(newCareerList);
-    }
-  }, [data?.career]);
 
   return (
     <>
