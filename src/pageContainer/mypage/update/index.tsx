@@ -9,7 +9,6 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import {
-  Profile,
   Header,
   ProfileImgRegisterModal,
   CareerRegistrationBox,
@@ -77,17 +76,6 @@ const MyInfoUpdatePage: React.FC = () => {
       <S.Container>
         {data && (
           <>
-            <S.ProfileContainer>
-              <Profile
-                name={data.name}
-                generation={data.generation}
-                profileUrl={data.profileUrl}
-                profileRegisterModalOpen={() =>
-                  setOpenModalCase('profileImgRegister')
-                }
-              />
-            </S.ProfileContainer>
-            <S.Line />
             {careerArray.map((career) => (
               <CareerRegistrationBox
                 career={career}

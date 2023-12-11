@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -19,7 +19,11 @@ import {
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY } from '@/constants';
-import { useDeleteTempMentor, usePostMentorRegister } from '@/hooks';
+import {
+  useDeleteTempMentor,
+  useGetMyInfo,
+  usePostMentorRegister,
+} from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type { RequestCareerType } from '@/types';
 import type {
@@ -44,8 +48,11 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
+  const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
   const { push } = useRouter();
+
+  const { data, isError } = useGetMyInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -55,6 +62,11 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     onError: () => toast.error('멘토 등록에 실패하였습니다.'),
     onSuccess: () => handleMentorRegisterSuccess(),
   });
+
+  useEffect(() => {
+    if (!data || isError) setIsUpdate(false);
+    else setIsUpdate(true);
+  }, [data, isError]);
 
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
@@ -132,6 +144,38 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     toast.error('입력 정보를 다시 확인해주세요.');
   };
 
+  useEffect(() => {
+    if (data?.career) {
+      const career = data.career;
+      const newCareerList: CareerFormType[] = career.map((career) => {
+        const startDate = new Date(career.startDate);
+        const endDate = career.endDate ? new Date(career.endDate) : null;
+
+        const newCareer: CareerFormType = {
+          id: career.id,
+          companyName: { value: career.companyName, errorMessage: null },
+          companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
+          position: { value: career.position, errorMessage: null },
+          startYear: { value: startDate.getFullYear(), errorMessage: null },
+          startMonth: { value: startDate.getMonth(), errorMessage: null },
+          endYear: {
+            value: endDate ? endDate.getFullYear() : '년',
+            errorMessage: null,
+          },
+          endMonth: {
+            value: endDate ? endDate.getMonth() : '월',
+            errorMessage: null,
+          },
+          isWorking: { value: career.isWorking, errorMessage: null },
+        };
+
+        return newCareer;
+      });
+
+      setCareerArray(newCareerList);
+    }
+  }, [data?.career]);
+
   return (
     <>
       <Header />
@@ -183,7 +227,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             key={career.id}
           />
         ))}
-        <S.SubmitButton type='submit'>등록</S.SubmitButton>
+        <S.SubmitButton type='submit'>
+          {isUpdate ? '수정완료' : '등록'}
+        </S.SubmitButton>
       </S.Form>
     </>
   );
