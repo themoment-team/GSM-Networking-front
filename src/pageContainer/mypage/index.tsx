@@ -34,6 +34,8 @@ const MyPage: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
 
+  const onUpdateButtonClick = () => push('/mypage/update');
+
   return (
     <>
       {openModalCase === 'profileImgRegister' && (
@@ -55,7 +57,7 @@ const MyPage: React.FC = () => {
             </S.ProfileContainer>
             <S.Line />
             <S.InfoContainer>
-              <S.CareerContainer>
+              <S.InfoWrapper>
                 <S.InfoText>개인정보</S.InfoText>
                 <S.InfoBox>
                   <PrivacyCard
@@ -73,15 +75,15 @@ const MyPage: React.FC = () => {
                     />
                   )}
                 </S.InfoBox>
-              </S.CareerContainer>
-              <S.CareerContainer>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
                 <S.InfoText>재직 정보</S.InfoText>
                 <S.InfoBox>
                   {data.career.map((career) => (
                     <CareerCard career={career} key={career.id} />
                   ))}
                 </S.InfoBox>
-              </S.CareerContainer>
+              </S.InfoWrapper>
             </S.InfoContainer>
           </>
         )}
@@ -95,6 +97,9 @@ const MyPage: React.FC = () => {
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
         </S.WithdrawBox>
       </S.WithdrawContainer> */}
+        <S.UpdateButton onClick={onUpdateButtonClick}>
+          개인정보 및 재직정보 수정
+        </S.UpdateButton>
       </S.Container>
     </>
   );

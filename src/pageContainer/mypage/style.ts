@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const Container = styled.div`
-  padding-top: 4.375rem;
+  padding: 4.375rem 0 2.5rem;
   position: relative;
 
   @media (max-width: 600px) {
@@ -77,4 +77,17 @@ export const WithdrawBox = styled.div<{ hoverColor: 'red' | 'blue' }>`
 export const WithdrawText = styled.span`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[500]};
+`;
+
+export const UpdateButton = styled.button`
+  ${({ theme }) => theme.typo.button};
+  width: 100%;
+  height: 2.75rem;
+  border-radius: 0.625rem;
+  background: ${({ theme }) => theme.color.skyBlue[400]};
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: ${({ theme }) => theme.color.white};
+  margin-top: 5.75rem;
 `;
