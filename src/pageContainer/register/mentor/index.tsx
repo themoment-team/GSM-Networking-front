@@ -173,7 +173,8 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       body.career.push(careerData);
     });
 
-    mutateMentorRegister(body);
+    if (!isUpdate) mutateMentorRegister(body);
+    // else 내 정보 수정 hook
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
