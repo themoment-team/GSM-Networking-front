@@ -1,6 +1,11 @@
 export const fileQueryKeys = {
-  postUploadImage: () => ['file'],
+  postUploadFile: () => ['file'],
 } as const;
+
+export const gwangyaQueryKeys = {
+  getGwangyaPostList: () => ['gwangya', 'post', 'list'],
+  postGwangyaContent: () => ['gwangya', 'post', 'content'],
+};
 
 export const menteeQueryKeys = {
   postMenteeRole: () => ['mentee'],
@@ -16,4 +21,8 @@ export const mentorQueryKeys = {
 export const tempMentorQueryKeys = {
   getSearchTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
   deleteTempMentor: () => ['temp', 'mentor', 'delete'],
+};
+
+export const userQueryKeys = {
+  postProfileImgUrl: () => ['user', 'profile'],
 };
