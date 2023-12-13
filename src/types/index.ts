@@ -4,5 +4,6 @@ export * from './generation';
 export * from './mentor';
 export * from './mentorInfo';
 export * from './mentorInfoForm';
+export * from './opponentInfo';
 export * from './position';
 export * from './worker';
