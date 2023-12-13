@@ -18,6 +18,7 @@ import {
   defaultCareer,
 } from '@/constants';
 import type { CareerFormType, PositionType } from '@/types';
+import { deepCopy } from '@/utils';
 
 interface Props {
   career: CareerFormType;
@@ -108,7 +109,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
     setCareerArray((prev) =>
       prev.map((career) => {
         if (career.id === id) {
-          const newCareer = { ...career };
+          const newCareer = deepCopy<CareerFormType>(career);
 
           const isChecked = e.target.checked;
 
