@@ -15,4 +15,5 @@ export interface WorkerType {
   SNS: string;
   temporaryImgNumber: number;
   registered: boolean;
+  profileUrl: string | null;
 }

@@ -18,19 +18,12 @@ const MyPageModalWrapper: React.FC<Props> = ({
   children,
   closeModal,
   innerCss,
-}) => {
-  const handleModalWrapperClick = (
-    e: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    closeModal();
-    e.stopPropagation();
-  };
-
-  return (
-    <S.ModalWrapper onClick={handleModalWrapperClick}>
-      <S.ModalInner css={innerCss}>{children}</S.ModalInner>
-    </S.ModalWrapper>
-  );
-};
+}) => (
+  <S.ModalWrapper onClick={closeModal}>
+    <S.ModalInner onClick={(e) => e.stopPropagation()} css={innerCss}>
+      {children}
+    </S.ModalInner>
+  </S.ModalWrapper>
+);
 
 export default MyPageModalWrapper;

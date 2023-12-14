@@ -40,6 +40,10 @@ const SignUp = () => {
 
   return (
     <S.Container>
+      <meta
+        name='viewport'
+        content='width=device-width, initial-scale=1, maximum-scale=1'
+      />
       <S.HeaderTitle>
         저희 서비스가 처음이시군요,
         <br />
