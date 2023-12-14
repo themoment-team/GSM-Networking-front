@@ -2,6 +2,8 @@
 
 import React from 'react';
 
+import Image from 'next/image';
+
 import { toast } from 'react-toastify';
 
 import RandomWorkerImg from './RandomMentorImg';
@@ -34,7 +36,16 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox>
-        <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+        {worker.profileUrl ? (
+          <Image
+            src={worker.profileUrl}
+            alt={worker.name}
+            fill
+            sizes='(max-width: 600px) 33vw, 200px'
+          />
+        ) : (
+          <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+        )}
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>

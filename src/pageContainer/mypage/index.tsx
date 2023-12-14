@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -8,13 +8,22 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { Profile, CareerCard, Header } from '@/components';
+import {
+  Profile,
+  CareerCard,
+  Header,
+  ProfileImgRegisterModal,
+} from '@/components';
 import { useGetMyInfo } from '@/hooks';
 
-const MyPage = () => {
-  const { data, isError } = useGetMyInfo();
+const MyPage: React.FC = () => {
+  const [openModalCase, setOpenModalCase] = useState<
+    'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
+  >('close');
 
   const { push } = useRouter();
+
+  const { data, isError } = useGetMyInfo();
 
   useEffect(() => {
     if (isError) {
@@ -25,25 +34,36 @@ const MyPage = () => {
   }, [isError]);
 
   return (
-    <S.Container>
-      <Header />
-      {data && (
-        <>
-          <S.ProfileContainer>
-            <Profile name={data.name} generation={data.generation} />
-          </S.ProfileContainer>
-          <S.Line />
-          <S.CareerContainer>
-            <S.CareerInfoText>재직 정보</S.CareerInfoText>
-            <S.CareerBox>
-              {data.career.map((career) => (
-                <CareerCard career={career} key={career.id} />
-              ))}
-            </S.CareerBox>
-          </S.CareerContainer>
-        </>
+    <>
+      {openModalCase === 'profileImgRegister' && (
+        <ProfileImgRegisterModal closeModal={() => setOpenModalCase('close')} />
       )}
-      {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
+      <Header />
+      <S.Container>
+        {data && (
+          <>
+            <S.ProfileContainer>
+              <Profile
+                name={data.name}
+                generation={data.generation}
+                profileUrl={data.profileUrl}
+                profileRegisterModalOpen={() =>
+                  setOpenModalCase('profileImgRegister')
+                }
+              />
+            </S.ProfileContainer>
+            <S.Line />
+            <S.CareerContainer>
+              <S.CareerInfoText>재직 정보</S.CareerInfoText>
+              <S.CareerBox>
+                {data.career.map((career) => (
+                  <CareerCard career={career} key={career.id} />
+                ))}
+              </S.CareerBox>
+            </S.CareerContainer>
+          </>
+        )}
+        {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
         <S.WithdrawBox hoverColor='blue'>
           <ExitIcon />
           <S.WithdrawText>로그아웃</S.WithdrawText>
@@ -53,7 +73,8 @@ const MyPage = () => {
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
         </S.WithdrawBox>
       </S.WithdrawContainer> */}
-    </S.Container>
+      </S.Container>
+    </>
   );
 };
 

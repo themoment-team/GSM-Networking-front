@@ -5,7 +5,14 @@ export const authUrl = {
 };
 
 export const fileUrl = {
-  postUploadImage: () => '/file',
+  postUploadFile: () => '/file',
+};
+
+export const gwangyaUrl = {
+  getGwangyaPostList: (gwangyaId: number) =>
+    `/gwangya?pageSize=20&gwangyaId=${gwangyaId}`,
+  postGwangyaContent: () => `/gwangya`,
+  getGwangyaToken: () => `/gwangya/token`,
 };
 
 export const menteeUrl = {
@@ -23,4 +30,8 @@ export const tempMentorUrl = {
   getSearchTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,
   getTempMentorInfo: (id: number) => `/temp-mentor/${id}`,
   deleteTempMentor: (id: number) => `/temp-mentor/${id}`,
+};
+
+export const userUrl = {
+  postProfileImgUrl: () => `/user/profile-url`,
 };
