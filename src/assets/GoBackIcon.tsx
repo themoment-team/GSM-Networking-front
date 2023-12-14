@@ -10,8 +10,8 @@ const GoBackIcon = () => (
       <path
         d='M9 1.5L1.86009 7.74742C1.40476 8.14584 1.40476 8.85417 1.86009 9.25258L9 15.5'
         stroke='#8F9094'
-        stroke-width='2'
-        stroke-linecap='round'
+        strokeWidth='2'
+        strokeLinecap='round'
       />
     </g>
     <defs>
