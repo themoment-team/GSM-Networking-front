@@ -23,14 +23,12 @@ type Story = StoryObj<typeof ChattingListCard>;
 
 export const Primary: Story = {
   args: {
-    opponent: { ...opponent },
     isNewMessage: false,
   },
 };
 
 export const isNewMessage: Story = {
   args: {
-    opponent: { ...opponent },
     isNewMessage: true,
   },
 };
