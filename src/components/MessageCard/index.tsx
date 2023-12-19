@@ -10,9 +10,17 @@ interface Props {
 }
 
 const MessageCard: React.FC<Props> = ({ children, isMine }) => (
-  <S.Container isMine={isMine}>
-    <S.Content>{children}</S.Content>
-  </S.Container>
+  <>
+    {isMine ? (
+      <S.MineContainer>
+        <S.Container>{children}</S.Container>
+      </S.MineContainer>
+    ) : (
+      <S.OpponentContainer>
+        <S.Container>{children}</S.Container>
+      </S.OpponentContainer>
+    )}
+  </>
 );
 
 export default MessageCard;
