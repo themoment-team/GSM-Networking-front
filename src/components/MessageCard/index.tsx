@@ -13,11 +13,11 @@ const MessageCard: React.FC<Props> = ({ children, isMine }) => (
   <>
     {isMine ? (
       <S.MineContainer>
-        <S.Container>{children}</S.Container>
+        <S.Content>{children}</S.Content>
       </S.MineContainer>
     ) : (
       <S.OpponentContainer>
-        <S.Container>{children}</S.Container>
+        <S.Content>{children}</S.Content>
       </S.OpponentContainer>
     )}
   </>
