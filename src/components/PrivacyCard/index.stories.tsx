@@ -22,7 +22,7 @@ export const PhoneNumber: Story = {
   },
 };
 
-export const Secondary: Story = {
+export const SNS: Story = {
   args: {
     privacy: {
       privacyKey: 'SNS',
