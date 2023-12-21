@@ -13,7 +13,7 @@ export default meta;
 
 type Story = StoryObj<typeof PrivacyCard>;
 
-export const Primary: Story = {
+export const PhoneNumber: Story = {
   args: {
     privacy: {
       privacyKey: '전화번호',
