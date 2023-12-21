@@ -83,11 +83,13 @@ const MentorList: React.FC<Props> = ({
         setKeyword={setKeyword}
       />
       {workerList.length ? (
-        <S.WorkerList>
-          {workerList.map((worker) => (
-            <MentorCard key={worker.id} worker={worker} />
-          ))}
-        </S.WorkerList>
+        <S.MentorListWrapper>
+          <S.MentorList>
+            {workerList.map((worker) => (
+              <MentorCard key={worker.id} worker={worker} />
+            ))}
+          </S.MentorList>
+        </S.MentorListWrapper>
       ) : (
         <S.NotFoundContainer>
           <SearchNotFound
