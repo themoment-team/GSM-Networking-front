@@ -5,7 +5,7 @@ import React from 'react';
 import * as S from './style';
 
 import { PersonImg4 } from '@/assets';
-import type { OpponentInfo } from '@/types/opponentInfo';
+import type { OpponentInfo } from '@/types';
 
 interface Props {
   opponent: OpponentInfo;
