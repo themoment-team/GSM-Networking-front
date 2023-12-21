@@ -25,6 +25,18 @@ const waitRefreshEnd = () =>
     }
   });
 
+const refreshGwangyaToken = async () => {
+  const { gwangyaToken, expiredTime } = await get<GetGwangyaTokenType>(
+    gwangyaUrl.getGwangyaToken()
+  );
+
+  const cookieExpiredTime = new Date(expiredTime);
+
+  document.cookie = `gwangyaToken=${gwangyaToken}; Domain=${cookieDomain}; expires=${cookieExpiredTime.toString()}; path=/;`;
+
+  return gwangyaToken;
+};
+
 axiosInstance.interceptors.request.use(
   async (config) => {
     const existGwangyaToken = document.cookie.includes('gwangyaToken');
@@ -37,13 +49,7 @@ axiosInstance.interceptors.request.use(
     }
 
     if (!existGwangyaToken) {
-      const { gwangyaToken, expiredTime } = await get<GetGwangyaTokenType>(
-        gwangyaUrl.getGwangyaToken()
-      );
-
-      const cookieExpiredTime = new Date(expiredTime);
-
-      document.cookie = `gwangyaToken=${gwangyaToken}; Domain=${cookieDomain}; expires=${cookieExpiredTime.toString()}; path=/;`;
+      const gwangyaToken = await refreshGwangyaToken();
 
       if (config.url?.includes('api/v1/gwangya')) {
         config.headers.gwangyatoken = gwangyaToken;
@@ -79,8 +85,15 @@ axiosInstance.interceptors.response.use(
       return Promise.reject(error);
     }
 
-    /** not exist accessToken */
     if (error.response.status === 401) {
+      /** fail gwangya logic */
+      if (error.config.url.includes('/api/v1/gwangya')) {
+        await refreshGwangyaToken();
+
+        return axiosInstance(error.config);
+      }
+
+      /** not exist accessToken */
       if (isRefreshing) {
         await waitRefreshEnd();
 
