@@ -88,7 +88,9 @@ axiosInstance.interceptors.response.use(
     if (error.response.status === 401) {
       /** fail gwangya logic */
       if (error.config.url.includes('/api/v1/gwangya')) {
-        await refreshGwangyaToken();
+        const gwangyaToken = await refreshGwangyaToken();
+
+        error.config.headers.gwangyatoken = gwangyaToken;
 
         return axiosInstance(error.config);
       }
