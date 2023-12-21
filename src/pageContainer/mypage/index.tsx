@@ -16,6 +16,7 @@ import {
   PrivacyCard,
 } from '@/components';
 import { useGetMyInfo } from '@/hooks';
+import { formatTelNum } from '@/utils';
 
 const MyPage: React.FC = () => {
   const [openModalCase, setOpenModalCase] = useState<
@@ -63,7 +64,7 @@ const MyPage: React.FC = () => {
                   <PrivacyCard
                     privacy={{
                       privacyKey: '전화번호',
-                      privacyValue: data.phoneNumber,
+                      privacyValue: formatTelNum(data.phoneNumber),
                     }}
                   />
                   {data.SNS && (
