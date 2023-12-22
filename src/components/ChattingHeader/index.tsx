@@ -25,7 +25,6 @@ const ChattingHeader: React.FC<Props> = ({ name, generation }) => {
       <S.OpponentInfo>
         {generation}기 {name}
       </S.OpponentInfo>
-      <S.SpaceBox />
     </S.Container>
   );
 };
