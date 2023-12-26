@@ -169,7 +169,10 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       career: [],
     };
 
-    if (isUpdate && myInfo) body.id = myInfo.id;
+    if (isUpdate && myInfo) {
+      body.profileUrl = myInfo.profileUrl;
+      body.id = myInfo.id;
+    }
 
     careerArray.forEach((career) => {
       const startYear =
