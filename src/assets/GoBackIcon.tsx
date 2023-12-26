@@ -6,7 +6,7 @@ const GoBackIcon = () => (
     viewBox='0 0 10 17'
     fill='none'
   >
-    <g clip-path='url(#clip0_3083_5664)'>
+    <g clipPath='url(#clip0_3083_5664)'>
       <path
         d='M9 1.5L1.86009 7.74742C1.40476 8.14584 1.40476 8.85417 1.86009 9.25258L9 15.5'
         stroke='#8F9094'
