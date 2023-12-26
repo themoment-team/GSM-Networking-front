@@ -6,6 +6,7 @@ export { default as EmailIcon } from './EmailIcon';
 export { default as ExitIcon } from './ExitIcon';
 export { default as FilterIcon } from './FilterIcon';
 export { default as FoldIcon } from './FoldIcon';
+export { default as GoBackIcon } from './GoBackIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as GsmNetworkingIcon } from './GsmNetworkingIcon';
 export { default as ImageRegisterIcon } from './ImageRegisterIcon';
