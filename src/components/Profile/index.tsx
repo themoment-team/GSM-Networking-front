@@ -25,8 +25,6 @@ const Profile: React.FC<Props> = ({
   // TODO : server side 와 마크업을 일치시키기 위한 로직 변경 필요.
   const randomValue = Math.floor(Math.random() * 5); //0부터 4까지 중의 랜덤값 생성
 
-  // const handleClick = () => {};
-
   return (
     <S.ProfileWrapper>
       <S.ProfileImageBox>

@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -19,7 +19,11 @@ import {
   SelectFormItem,
 } from '@/components';
 import { GENERATION_ARRAY } from '@/constants';
-import { useDeleteTempMentor, usePostMentorRegister } from '@/hooks';
+import {
+  useDeleteTempMentor,
+  useGetMyInfo,
+  usePostMentorRegister,
+} from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type { RequestCareerType } from '@/types';
 import type {
@@ -44,8 +48,11 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
+  const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
   const { push } = useRouter();
+
+  const { data, isError } = useGetMyInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -68,6 +75,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     register,
     handleSubmit,
     formState: { errors },
+    setValue,
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
@@ -78,6 +86,47 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
+
+  useEffect(() => {
+    if (!data || isError) setIsUpdate(false);
+    else {
+      const career = data.career;
+      const newCareerList: CareerFormType[] = career.map((career) => {
+        const startDate = new Date(career.startDate);
+        const endDate = career.endDate ? new Date(career.endDate) : null;
+
+        const newCareer: CareerFormType = {
+          id: career.id,
+          companyName: { value: career.companyName, errorMessage: null },
+          companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
+          position: { value: career.position, errorMessage: null },
+          startYear: { value: startDate.getFullYear(), errorMessage: null },
+          startMonth: { value: startDate.getMonth(), errorMessage: null },
+          endYear: {
+            value: endDate ? endDate.getFullYear() : '년',
+            errorMessage: null,
+          },
+          endMonth: {
+            value: endDate ? endDate.getMonth() : '월',
+            errorMessage: null,
+          },
+          isWorking: { value: career.isWorking, errorMessage: null },
+        };
+
+        return newCareer;
+      });
+
+      setCareerArray(newCareerList);
+
+      setValue('name', data.name);
+      setValue('phoneNumber', data.phoneNumber);
+      setValue('email', data.email);
+      setValue('snsUrl', data.SNS);
+      setValue('generation', data.generation.toString());
+
+      setIsUpdate(true);
+    }
+  }, [data, isError, setValue]);
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
     const validatedArray = careerValidation(careerArray, setCareerArray);
@@ -124,7 +173,8 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       body.career.push(careerData);
     });
 
-    mutateMentorRegister(body);
+    if (!isUpdate) mutateMentorRegister(body);
+    // else 내 정보 수정 hook
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
@@ -183,7 +233,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             key={career.id}
           />
         ))}
-        <S.SubmitButton type='submit'>등록</S.SubmitButton>
+        <S.SubmitButton type='submit'>
+          {isUpdate ? '수정완료' : '등록'}
+        </S.SubmitButton>
       </S.Form>
     </>
   );

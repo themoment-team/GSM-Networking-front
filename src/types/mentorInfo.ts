@@ -6,6 +6,7 @@ export interface MentorInfoType {
   email: string;
   generation: number;
   SNS?: string;
+  phoneNumber: string;
   profileUrl?: string;
   registered: boolean;
   career: CareerType[];
