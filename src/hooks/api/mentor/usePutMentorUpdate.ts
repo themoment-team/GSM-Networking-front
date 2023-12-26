@@ -7,11 +7,11 @@ import type { UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
 
 interface CareerType extends RequestCareerType {
-  id: string;
+  id?: number;
 }
 
 interface RequestType extends MentorType {
-  id?: string;
+  id?: number;
   career: CareerType[];
 }
 

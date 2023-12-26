@@ -21,8 +21,8 @@ export const menteeUrl = {
 
 export const mentorUrl = {
   postMentorRegister: () => '/mentor',
-  putMentorRegister: () => '/mentor',
   getMentorList: () => '/mentor',
+  putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
   getMyInfo: () => '/mentor/my',
 };

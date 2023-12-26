@@ -23,6 +23,7 @@ import {
   useDeleteTempMentor,
   useGetMyInfo,
   usePostMentorRegister,
+  usePutMentorUpdate,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type { RequestCareerType } from '@/types';
@@ -44,15 +45,25 @@ interface Props {
   mentorInfo: TempMentorType | null;
 }
 
+interface CareerType extends RequestCareerType {
+  id?: number;
+}
+
+interface RequestType extends MentorType {
+  id?: number;
+  career: CareerType[];
+}
+
 const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
+  const [careerId, setCareerId] = useState<number[]>([]);
   const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
   const { push } = useRouter();
 
-  const { data, isError } = useGetMyInfo();
+  const { data: myInfo, isError } = useGetMyInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -63,12 +74,25 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     onSuccess: () => handleMentorRegisterSuccess(),
   });
 
+  const { mutate: mutateMentorUpdate } = usePutMentorUpdate({
+    onError: () => toast.error('멘토 수정에 실패하였습니다.'),
+    onSuccess: () => handleMentorUpdateSuccess(),
+  });
+
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
       return mutateDeleteTempMentor(tempMentorId);
     }
     return push('/');
+  };
+
+  const handleMentorUpdateSuccess = () => {
+    toast.success('멘토 등록에 성공하였습니다.');
+    if (tempMentorId) {
+      return mutateDeleteTempMentor(tempMentorId);
+    }
+    return push('/mypage');
   };
 
   const {
@@ -88,9 +112,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   });
 
   useEffect(() => {
-    if (!data || isError) setIsUpdate(false);
+    if (!myInfo || isError) setIsUpdate(false);
     else {
-      const career = data.career;
+      const career = myInfo.career;
       const newCareerList: CareerFormType[] = career.map((career) => {
         const startDate = new Date(career.startDate);
         const endDate = career.endDate ? new Date(career.endDate) : null;
@@ -117,16 +141,17 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       });
 
       setCareerArray(newCareerList);
+      setCareerId(newCareerList.map((career) => career.id));
 
-      setValue('name', data.name);
-      setValue('phoneNumber', data.phoneNumber);
-      setValue('email', data.email);
-      setValue('snsUrl', data.SNS);
-      setValue('generation', data.generation.toString());
+      setValue('name', myInfo.name);
+      setValue('phoneNumber', myInfo.phoneNumber);
+      setValue('email', myInfo.email);
+      setValue('snsUrl', myInfo.SNS);
+      setValue('generation', myInfo.generation.toString());
 
       setIsUpdate(true);
     }
-  }, [data, isError, setValue]);
+  }, [myInfo, isError, setValue]);
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
     const validatedArray = careerValidation(careerArray, setCareerArray);
@@ -135,7 +160,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       return toast.error('재직 회사 정보를 다시 확인해주세요.');
     }
 
-    const body: MentorType = {
+    const body: RequestType = {
       name: data.name,
       email: data.email,
       generation: Number(data.generation),
@@ -143,6 +168,8 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       snsUrl: data.snsUrl || null,
       career: [],
     };
+
+    if (isUpdate && myInfo) body.id = myInfo.id;
 
     careerArray.forEach((career) => {
       const startYear =
@@ -161,7 +188,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
         ? null
         : UTCDate(endYear, endMonth);
 
-      const careerData: RequestCareerType = {
+      const careerData: CareerType = {
         companyName: career.companyName.value,
         companyUrl: career.companyUrl.value || null,
         position: career.position.value,
@@ -170,11 +197,13 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
         isWorking: career.isWorking.value,
       };
 
+      if (careerId.includes(career.id)) careerData.id = career.id;
+
       body.career.push(careerData);
     });
 
     if (!isUpdate) mutateMentorRegister(body);
-    // else 내 정보 수정 hook
+    else mutateMentorUpdate(body);
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
