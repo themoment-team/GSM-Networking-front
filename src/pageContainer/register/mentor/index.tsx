@@ -121,7 +121,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       setValue('name', myInfoData.name);
       setValue('phoneNumber', myInfoData.phoneNumber);
       setValue('email', myInfoData.email);
-      setValue('snsUrl', myInfoData.SNS);
+      setValue('snsUrl', myInfoData.SNS ?? '');
       setValue('generation', myInfoData.generation.toString());
 
       setIsUpdate(true);
