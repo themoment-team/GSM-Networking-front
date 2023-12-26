@@ -15,12 +15,12 @@ interface RequestType extends MentorType {
   career: CareerType[];
 }
 
-export const usePutMentorRegister = (
+export const usePutMentorUpdate = (
   options?: UseMutationOptions<unknown, AxiosError, RequestType, unknown>
 ) =>
   useMutation({
-    mutationKey: mentorQueryKeys.putMentorRegister(),
+    mutationKey: mentorQueryKeys.putMentorUpdate(),
     mutationFn: (mentorInfo: RequestType) =>
-      put(mentorUrl.putMentorRegister(), mentorInfo),
+      put(mentorUrl.putMentorUpdate(), mentorInfo),
     ...options,
   });
