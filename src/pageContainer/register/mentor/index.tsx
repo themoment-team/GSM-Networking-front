@@ -25,12 +25,12 @@ import {
   usePostMentorRegister,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
-import type { RequestCareerType } from '@/types';
 import type {
   CareerFormType,
   MentorInfoFormType,
   MentorType,
   TempMentorType,
+  RequestCareerType,
 } from '@/types';
 import {
   careerValidation,
@@ -52,7 +52,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { data, isError } = useGetMyInfo();
+  const { data: myInfoData, isError } = useGetMyInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -76,21 +76,22 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
       name: mentorInfo?.name ?? '',
       phoneNumber: '',
       email: mentorInfo?.email ?? '',
-      generation: mentorInfo?.generation.toString() ?? undefined,
+      generation: mentorInfo?.generation.toString() ?? '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
 
   useEffect(() => {
-    if (!data || isError) setIsUpdate(false);
+    if (!myInfoData || isError) setIsUpdate(false);
     else {
-      const career = data.career;
+      const career = myInfoData.career;
       const newCareerList: CareerFormType[] = career.map((career) => {
         const startDate = new Date(career.startDate);
         const endDate = career.endDate ? new Date(career.endDate) : null;
@@ -118,15 +119,15 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
       setCareerArray(newCareerList);
 
-      setValue('name', data.name);
-      setValue('phoneNumber', data.phoneNumber);
-      setValue('email', data.email);
-      setValue('snsUrl', data.SNS);
-      setValue('generation', data.generation.toString());
+      setValue('name', myInfoData.name);
+      setValue('phoneNumber', myInfoData.phoneNumber);
+      setValue('email', myInfoData.email);
+      setValue('snsUrl', myInfoData.SNS ?? '');
+      setValue('generation', myInfoData.generation.toString());
 
       setIsUpdate(true);
     }
-  }, [data, isError, setValue]);
+  }, [myInfoData, isError, setValue]);
 
   const onSubmit: SubmitHandler<MentorInfoFormType> = (data) => {
     const validatedArray = careerValidation(careerArray, setCareerArray);
@@ -220,6 +221,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
               {...register('generation')}
               selectTitle='기수'
               options={[...GENERATION_ARRAY]}
+              value={watch('generation')}
               defaultValue='기수를 선택해주세요.'
               errorMessage={errors.generation?.message}
               required={true}
