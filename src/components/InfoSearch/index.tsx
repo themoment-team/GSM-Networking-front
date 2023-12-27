@@ -14,7 +14,7 @@ import * as S from './style';
 import { TempMentorCard, SearchNotFound } from '@/components';
 import { useGetSearchTempMentor } from '@/hooks';
 import { tempMentorSearchFormSchema } from '@/schemas';
-import type { TempMentorSearchFormType } from '@/types/form/tempMentorSearchForm';
+import type { TempMentorSearchFormType } from '@/types';
 
 const InfoSearch: React.FC = () => {
   const [inputValue, setInputValue] = useState<string>('');
