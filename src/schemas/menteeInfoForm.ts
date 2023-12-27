@@ -18,9 +18,4 @@ export const menteeInfoFormSchema = z.object({
       required_error: '기수를 선택해주세요.',
     })
     .regex(/^[0-9]+$/, { message: '기수를 선택해주세요.' }),
-  snsUrl: z
-    .string()
-    .url({ message: 'URL 형식으로 입력해주세요.' })
-    .optional()
-    .or(z.literal('')),
 });
