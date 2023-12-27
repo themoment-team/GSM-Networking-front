@@ -76,13 +76,14 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     handleSubmit,
     formState: { errors },
     setValue,
+    watch,
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
       name: mentorInfo?.name ?? '',
       phoneNumber: '',
       email: mentorInfo?.email ?? '',
-      generation: mentorInfo?.generation.toString() ?? undefined,
+      generation: mentorInfo?.generation.toString() ?? '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
@@ -220,6 +221,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
               {...register('generation')}
               selectTitle='기수'
               options={[...GENERATION_ARRAY]}
+              value={watch('generation')}
               defaultValue='기수를 선택해주세요.'
               errorMessage={errors.generation?.message}
               required={true}
