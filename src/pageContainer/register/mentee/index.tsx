@@ -3,6 +3,7 @@
 import * as S from './style';
 
 import { Header, InputFormItem, SelectFormItem } from '@/components';
+import { MENTEE_GENERATION_ARRAY } from '@/constants';
 
 const Mentee = () => (
   <S.Container>
@@ -29,7 +30,7 @@ const Mentee = () => (
       <SelectFormItem
         selectTitle='기수'
         defaultValue='기수를 선택해주세요.'
-        options={[1, 2, 3, 4]}
+        options={[...MENTEE_GENERATION_ARRAY]}
         required={true}
       />
       <S.RegisterButton>등록</S.RegisterButton>
