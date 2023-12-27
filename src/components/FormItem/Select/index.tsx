@@ -3,7 +3,6 @@
 import { forwardRef } from 'react';
 
 import { FormItemWrapper, Select } from '@/components';
-import { useForwardRef } from '@/hooks';
 
 interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
   selectTitle: string;
@@ -14,24 +13,20 @@ interface Props extends React.SelectHTMLAttributes<HTMLSelectElement> {
 }
 
 const SelectFormItem = forwardRef<HTMLSelectElement, Props>(
-  ({ selectTitle, errorMessage, options, required, ...attributes }, ref) => {
-    const selectRef = useForwardRef<HTMLSelectElement>(ref);
-
-    return (
-      <FormItemWrapper
-        title={selectTitle}
+  ({ selectTitle, errorMessage, options, required, ...attributes }, ref) => (
+    <FormItemWrapper
+      title={selectTitle}
+      errorMessage={errorMessage}
+      required={required}
+    >
+      <Select
+        options={[...options]}
         errorMessage={errorMessage}
-        required={required}
-      >
-        <Select
-          options={[...options]}
-          errorMessage={errorMessage}
-          ref={selectRef}
-          {...attributes}
-        />
-      </FormItemWrapper>
-    );
-  }
+        ref={ref}
+        {...attributes}
+      />
+    </FormItemWrapper>
+  )
 );
 
 SelectFormItem.displayName = 'Input';
