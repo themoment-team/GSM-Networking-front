@@ -18,7 +18,7 @@ import {
   InputFormItem,
   SelectFormItem,
 } from '@/components';
-import { GENERATION_ARRAY } from '@/constants';
+import { MENTOR_GENERATION_ARRAY } from '@/constants';
 import {
   useDeleteTempMentor,
   useGetMyInfo,
@@ -220,7 +220,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             <SelectFormItem
               {...register('generation')}
               selectTitle='기수'
-              options={[...GENERATION_ARRAY]}
+              options={[...MENTOR_GENERATION_ARRAY]}
               value={watch('generation')}
               defaultValue='기수를 선택해주세요.'
               errorMessage={errors.generation?.message}
