@@ -116,8 +116,6 @@ const CareerRegistrationBox: React.FC<Props> = ({
           newCareer.isWorking.value = isChecked;
 
           if (isChecked) {
-            if (endYearRef.current) endYearRef.current.value = '';
-            if (endMonthRef.current) endMonthRef.current.value = '';
             newCareer.endYear.value = '년';
             newCareer.endYear.errorMessage = null;
             newCareer.endMonth.value = '월';
@@ -163,11 +161,12 @@ const CareerRegistrationBox: React.FC<Props> = ({
           errorMessage={companyUrl.errorMessage}
         />
         <SelectFormItem
+          value={position.value}
           required
           selectTitle='포지션(직책, 직무)'
           options={[...POSITION_ARRAY]}
-          errorMessage={position.errorMessage}
           defaultValue='포지션 선택'
+          errorMessage={position.errorMessage}
           onChange={handlePositionChange}
         />
         <S.EmploymentDurationBox>
@@ -183,31 +182,35 @@ const CareerRegistrationBox: React.FC<Props> = ({
           >
             <S.PeriodSelectWrapper>
               <Select
-                defaultValue={startYear.value}
+                value={startYear.value}
                 options={[...YEAR_ARRAY]}
+                defaultValue='년'
                 onChange={(e) => handlePeriodChange(e, 'startYear')}
                 errorMessage={startYear.errorMessage}
               />
               <Select
-                defaultValue={startMonth.value}
+                value={startMonth.value}
                 options={[...MONTH_ARRAY]}
+                defaultValue='월'
                 onChange={(e) => handlePeriodChange(e, 'startMonth')}
                 errorMessage={startMonth.errorMessage}
               />
               <S.Tilde>~</S.Tilde>
               <Select
                 ref={endYearRef}
-                defaultValue={endYear.value}
+                value={endYear.value}
                 options={[...YEAR_ARRAY]}
                 disabled={isWorking.value}
+                defaultValue='년'
                 onChange={(e) => handlePeriodChange(e, 'endYear')}
                 errorMessage={endYear.errorMessage}
               />
               <Select
                 ref={endMonthRef}
-                defaultValue={endMonth.value}
+                value={endMonth.value}
                 options={[...MONTH_ARRAY]}
                 disabled={isWorking.value}
+                defaultValue='월'
                 onChange={(e) => handlePeriodChange(e, 'endMonth')}
                 errorMessage={endMonth.errorMessage}
               />
@@ -217,6 +220,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
             type='checkbox'
             id={`checkbox-${id}`}
             onChange={handleTenureCheck}
+            checked={isWorking.value}
           />
           <S.TenureCheckLabel htmlFor={`checkbox-${id}`}>
             <S.CheckBox isChecked={isWorking.value}>

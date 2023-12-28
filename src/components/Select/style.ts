@@ -19,11 +19,8 @@ export const CustomSelect = styled.select<{
 
   :disabled {
     background-color: ${({ theme }) => theme.color.grey[50]};
+    color: ${({ theme }) => theme.color.grey[200]};
     cursor: default;
-  }
-
-  ::placeholder {
-    color: ${({ theme }) => theme.color.grey[400]};
   }
 
   :focus {
