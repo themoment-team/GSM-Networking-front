@@ -10,7 +10,7 @@ export const gwangyaQueryKeys = {
 export const menteeQueryKeys = {
   postMenteeRole: () => ['mentee'],
   postMenteeRegister: () => ['mentee'],
-  postMenteeAuthorityShift: () => ['mentee', 'shift'],
+  postMenteeAuthority: () => ['mentee', 'shift'],
 } as const;
 
 export const mentorQueryKeys = {

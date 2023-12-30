@@ -18,7 +18,7 @@ export const gwangyaUrl = {
 export const menteeUrl = {
   postMenteeRole: () => '/mentee',
   postMenteeRegister: () => '/mentee',
-  postMenteeAuthorityShift: () => '/mentee/update',
+  postMenteeAuthority: () => '/mentee/update',
 };
 
 export const mentorUrl = {

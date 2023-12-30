@@ -1,3 +1,3 @@
-export * from './usePostMenteeAuthorityShift';
+export * from './usePostMenteeAuthority';
 export * from './usePostMenteeRegister';
 export * from './usePostMenteeRole';
