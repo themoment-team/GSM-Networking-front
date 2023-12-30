@@ -22,17 +22,10 @@ const Mentee = () => {
   const { mutate: mutateMenteeRegister } = usePostMenteeRegister({
     onError: () => toast.error('멘티 등록에 실패하였습니다.'),
     onSuccess: () => {
-      toast.success('멘토 등록에 성공하였습니다.');
+      toast.success('멘티 등록에 성공하였습니다.');
       return push('/');
     },
   });
-
-  // const { mutate: mutateMenteeAuthorityShift } = usePostMenteeAuthorityShift({
-  //   onError: () => toast.error('멘티 전환에 실패하였습니다.'),
-  //   onSuccess: () => toast.success('멘티 전환에 성공하였습니다'),
-  // });
-
-  // const { data: myInfoData, isError } = useGetMyInfo();
 
   const {
     register,
@@ -47,16 +40,12 @@ const Mentee = () => {
       generation: '기수를 선택해주세요.',
     },
   });
-  const onSubmit: SubmitHandler<MenteeInfoFormType> = (data) => {
+  const onSubmit: SubmitHandler<MenteeInfoFormType> = async (data) => {
     const body = {
       ...data,
       profileUrl: undefined,
       generation: Number(data.generation),
     };
-
-    // console.log(myInfoData);
-
-    // if (myInfoData || !isError) mutateMenteeAuthorityShift();
 
     mutateMenteeRegister(body);
   };
