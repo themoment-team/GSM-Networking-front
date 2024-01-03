@@ -22,6 +22,7 @@ import { deepCopy } from '@/utils';
 
 interface Props {
   career: CareerFormType;
+  index: number;
   setCareerArray: React.Dispatch<React.SetStateAction<CareerFormType[]>>;
 }
 
@@ -38,6 +39,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
     isWorking,
   },
   setCareerArray,
+  index,
 }) => {
   const endYearRef = useRef<HTMLSelectElement>(null);
   const endMonthRef = useRef<HTMLSelectElement>(null);
@@ -134,7 +136,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
       <S.TitleBox>
         <S.Title>재직 회사 정보</S.Title>
         <S.ButtonWrapper>
-          {id !== 0 && (
+          {index !== 0 && (
             <S.IconButton type='button' onClick={handleRemoveClick}>
               <DeleteIcon />
             </S.IconButton>

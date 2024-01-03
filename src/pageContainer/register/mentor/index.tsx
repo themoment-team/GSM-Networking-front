@@ -23,6 +23,7 @@ import {
   useDeleteTempMentor,
   useGetMyInfo,
   usePostMentorRegister,
+  usePutMentorUpdate,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -63,12 +64,25 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     onSuccess: () => handleMentorRegisterSuccess(),
   });
 
+  const { mutate: mutateMentorUpdate } = usePutMentorUpdate({
+    onError: () => toast.error('멘토 수정에 실패하였습니다.'),
+    onSuccess: () => handleMentorUpdateSuccess(),
+  });
+
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
       return mutateDeleteTempMentor(tempMentorId);
     }
     return push('/');
+  };
+
+  const handleMentorUpdateSuccess = () => {
+    toast.success('멘토 수정에 성공하였습니다.');
+    if (tempMentorId) {
+      return mutateDeleteTempMentor(tempMentorId);
+    }
+    return push('/mypage');
   };
 
   const {
@@ -145,6 +159,10 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       career: [],
     };
 
+    if (isUpdate && myInfoData) {
+      body.profileUrl = myInfoData.profileUrl;
+    }
+
     careerArray.forEach((career) => {
       const startYear =
         career.startYear.value !== '년' ? career.startYear.value : 0;
@@ -175,7 +193,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
     });
 
     if (!isUpdate) mutateMentorRegister(body);
-    // else 내 정보 수정 hook
+    else mutateMentorUpdate(body);
   };
 
   const onError: SubmitErrorHandler<MentorInfoFormType> = () => {
@@ -228,11 +246,12 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             />
           </S.InputWrapper>
         </S.PrivacyBox>
-        {careerArray.map((career) => (
+        {careerArray.map((career, index) => (
           <CareerRegistrationBox
             career={career}
             setCareerArray={setCareerArray}
             key={career.id}
+            index={index}
           />
         ))}
         <S.SubmitButton type='submit'>
