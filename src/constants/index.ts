@@ -1,4 +1,5 @@
-export { default as GENERATION_ARRAY } from './generation';
+export { default as MENTEE_GENERATION_ARRAY } from './menteeGeneration';
+export { default as MENTOR_GENERATION_ARRAY } from './mentorGeneration';
 export { default as MONTH_ARRAY } from './month';
 export { default as POSITION_ARRAY } from './position';
 export { default as PRIVACY_POLICY_URL } from './privacyPolicyURL';
