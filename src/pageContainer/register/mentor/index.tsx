@@ -45,15 +45,6 @@ interface Props {
   mentorInfo: TempMentorType | null;
 }
 
-interface CareerType extends RequestCareerType {
-  id?: number;
-}
-
-interface RequestType extends MentorType {
-  id?: number;
-  career: CareerType[];
-}
-
 const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
@@ -159,7 +150,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       return toast.error('재직 회사 정보를 다시 확인해주세요.');
     }
 
-    const body: RequestType = {
+    const body: MentorType = {
       name: data.name,
       email: data.email,
       generation: Number(data.generation),
@@ -189,7 +180,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
         ? null
         : UTCDate(endYear, endMonth);
 
-      const careerData: CareerType = {
+      const careerData: RequestCareerType = {
         companyName: career.companyName.value,
         companyUrl: career.companyUrl.value || null,
         position: career.position.value,
