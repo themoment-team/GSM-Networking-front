@@ -255,11 +255,12 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
             />
           </S.InputWrapper>
         </S.PrivacyBox>
-        {careerArray.map((career) => (
+        {careerArray.map((career, index) => (
           <CareerRegistrationBox
             career={career}
             setCareerArray={setCareerArray}
             key={career.id}
+            index={index}
           />
         ))}
         <S.SubmitButton type='submit'>
