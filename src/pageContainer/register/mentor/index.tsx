@@ -58,7 +58,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
-  const [careerId, setCareerId] = useState<number[]>([]);
   const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
   const { push } = useRouter();
@@ -141,7 +140,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       });
 
       setCareerArray(newCareerList);
-      setCareerId(newCareerList.map((career) => career.id));
 
       setValue('name', myInfo.name);
       setValue('phoneNumber', myInfo.phoneNumber);
@@ -171,7 +169,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
     if (isUpdate && myInfo) {
       body.profileUrl = myInfo.profileUrl;
-      body.id = myInfo.id;
     }
 
     careerArray.forEach((career) => {
@@ -199,8 +196,6 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
         endDate: endDate,
         isWorking: career.isWorking.value,
       };
-
-      if (careerId.includes(career.id)) careerData.id = career.id;
 
       body.career.push(careerData);
     });
