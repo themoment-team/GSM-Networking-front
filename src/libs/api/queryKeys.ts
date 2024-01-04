@@ -8,7 +8,6 @@ export const gwangyaQueryKeys = {
 };
 
 export const menteeQueryKeys = {
-  postMenteeRole: () => ['mentee'],
   postMenteeRegister: () => ['mentee', 'register'],
   postMenteeAuthority: () => ['mentee', 'shift'],
 } as const;
