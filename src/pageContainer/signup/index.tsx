@@ -19,15 +19,15 @@ const SignUp = () => {
 
   const { push } = useRouter();
 
-  const { mutate: mutateMenteeAuthority } = usePostMenteeAuthority({
-    onError: () => toast.error('멘티 등록에 실패했습니다.'),
-    onSuccess: () => handleMutateSuccess(),
-  });
-
   const handleMutateSuccess = () => {
     toast.success('멘티 등록에 성공했습니다.');
     push('/register/mentee');
   };
+
+  const { mutate: mutateMenteeAuthority } = usePostMenteeAuthority({
+    onError: () => toast.error('멘티 등록에 실패했습니다.'),
+    onSuccess: handleMutateSuccess,
+  });
 
   const handleNextButtonClick = () => {
     if (checkPolicy === false)
