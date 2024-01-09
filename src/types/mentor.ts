@@ -1,12 +1,8 @@
+import type { MenteeType } from '@/types';
 import type { RequestCareerType } from '@/types';
 
-export interface MentorType {
-  name: string;
-  email: string;
-  generation: number;
-  phoneNumber: string;
+export interface MentorType extends MenteeType {
   snsUrl?: string | null;
-  profileUrl?: string | null;
   career: RequestCareerType[];
 }
 
