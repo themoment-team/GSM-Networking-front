@@ -33,7 +33,7 @@ const SignUp = () => {
     if (checkPolicy === false)
       return toast.error('개인정보 처리방침에 동의해주세요.');
 
-    if (role === 'mentee') mutateMenteeAuthority();
+    if (role === 'mentee') return mutateMenteeAuthority();
 
     if (role === 'mentor') return push('/register/search');
   };
