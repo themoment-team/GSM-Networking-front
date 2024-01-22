@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { Header, CommunityCard, TextArea } from '@/components';
+import { CommunityCard, TextArea } from '@/components';
 import { useGetGwangyaPostList, usePostGwangyaContent } from '@/hooks';
 import type { GwangyaPostType } from '@/types';
 import { isExistCookie } from '@/utils';
@@ -89,38 +89,35 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
   };
 
   return (
-    <>
-      <Header />
-      <S.Container>
-        <S.TitleBox>
-          <S.Title>광야</S.Title>
-          <S.Description>
-            익명으로 자유롭게 소통할 수 있는 광소마의 넓은 들판입니다.
-          </S.Description>
-        </S.TitleBox>
-        <S.PostWrapper>
-          <S.PostList ref={postListRef} isFetching={isFetchingPreviousPage}>
-            {!isFetchingPreviousPage && hasPreviousPage && (
-              <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
-            )}
-            {data?.pages.map((page) =>
-              page.map((post) => (
-                <CommunityCard
-                  key={post.id}
-                  ref={topCardId === post.id ? topCardRef : null}
-                  {...post}
-                />
-              ))
-            )}
-          </S.PostList>
-          <TextArea
-            disabled={isPending || isSuccess}
-            onClick={uploadContent}
-            textAreaType='gwangya'
-          />
-        </S.PostWrapper>
-      </S.Container>
-    </>
+    <S.Container>
+      <S.TitleBox>
+        <S.Title>광야</S.Title>
+        <S.Description>
+          익명으로 자유롭게 소통할 수 있는 광소마의 넓은 들판입니다.
+        </S.Description>
+      </S.TitleBox>
+      <S.PostWrapper>
+        <S.PostList ref={postListRef} isFetching={isFetchingPreviousPage}>
+          {!isFetchingPreviousPage && hasPreviousPage && (
+            <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
+          )}
+          {data?.pages.map((page) =>
+            page.map((post) => (
+              <CommunityCard
+                key={post.id}
+                ref={topCardId === post.id ? topCardRef : null}
+                {...post}
+              />
+            ))
+          )}
+        </S.PostList>
+        <TextArea
+          disabled={isPending || isSuccess}
+          onClick={uploadContent}
+          textAreaType='gwangya'
+        />
+      </S.PostWrapper>
+    </S.Container>
   );
 };
 

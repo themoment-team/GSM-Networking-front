@@ -11,7 +11,6 @@ import * as S from './style';
 import {
   Profile,
   CareerCard,
-  Header,
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
@@ -42,7 +41,6 @@ const MyPage: React.FC = () => {
       {openModalCase === 'profileImgRegister' && (
         <ProfileImgRegisterModal closeModal={() => setOpenModalCase('close')} />
       )}
-      <Header />
       <S.Container>
         {data && (
           <>

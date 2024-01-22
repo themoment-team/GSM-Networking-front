@@ -2,12 +2,11 @@
 
 import * as S from './style';
 
-import { Header, InputFormItem, SelectFormItem } from '@/components';
+import { InputFormItem, SelectFormItem } from '@/components';
 import { MENTEE_GENERATION_ARRAY } from '@/constants';
 
 const Mentee = () => (
   <S.Container>
-    <Header />
     <S.InfoBox>
       <S.InfoTitle>개인정보</S.InfoTitle>
     </S.InfoBox>

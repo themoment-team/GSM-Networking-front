@@ -14,7 +14,6 @@ import * as S from './style';
 
 import {
   CareerRegistrationBox,
-  Header,
   InputFormItem,
   SelectFormItem,
 } from '@/components';
@@ -184,62 +183,59 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   };
 
   return (
-    <>
-      <Header />
-      <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
-        <S.PrivacyBox>
-          <S.Title>개인정보</S.Title>
-          <S.InputWrapper>
-            <InputFormItem
-              {...register('name')}
-              inputTitle='이름'
-              placeholder='이름을 입력해주세요.'
-              errorMessage={errors.name?.message}
-              required={true}
-            />
-            <InputFormItem
-              {...register('phoneNumber')}
-              inputTitle='전화번호'
-              placeholder='전화번호를 입력해주세요.'
-              errorMessage={errors.phoneNumber?.message}
-              required={true}
-            />
-            <InputFormItem
-              {...register('email')}
-              inputTitle='이메일'
-              placeholder='이메일을 입력해주세요.'
-              errorMessage={errors.email?.message}
-              required={true}
-            />
-            <InputFormItem
-              {...register('snsUrl')}
-              inputTitle='SNS'
-              placeholder='SNS 주소를 입력해주세요.'
-              errorMessage={errors.snsUrl?.message}
-            />
-            <SelectFormItem
-              {...register('generation')}
-              selectTitle='기수'
-              options={[...MENTOR_GENERATION_ARRAY]}
-              value={watch('generation')}
-              defaultValue='기수를 선택해주세요.'
-              errorMessage={errors.generation?.message}
-              required={true}
-            />
-          </S.InputWrapper>
-        </S.PrivacyBox>
-        {careerArray.map((career) => (
-          <CareerRegistrationBox
-            career={career}
-            setCareerArray={setCareerArray}
-            key={career.id}
+    <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
+      <S.PrivacyBox>
+        <S.Title>개인정보</S.Title>
+        <S.InputWrapper>
+          <InputFormItem
+            {...register('name')}
+            inputTitle='이름'
+            placeholder='이름을 입력해주세요.'
+            errorMessage={errors.name?.message}
+            required={true}
           />
-        ))}
-        <S.SubmitButton type='submit'>
-          {isUpdate ? '수정완료' : '등록'}
-        </S.SubmitButton>
-      </S.Form>
-    </>
+          <InputFormItem
+            {...register('phoneNumber')}
+            inputTitle='전화번호'
+            placeholder='전화번호를 입력해주세요.'
+            errorMessage={errors.phoneNumber?.message}
+            required={true}
+          />
+          <InputFormItem
+            {...register('email')}
+            inputTitle='이메일'
+            placeholder='이메일을 입력해주세요.'
+            errorMessage={errors.email?.message}
+            required={true}
+          />
+          <InputFormItem
+            {...register('snsUrl')}
+            inputTitle='SNS'
+            placeholder='SNS 주소를 입력해주세요.'
+            errorMessage={errors.snsUrl?.message}
+          />
+          <SelectFormItem
+            {...register('generation')}
+            selectTitle='기수'
+            options={[...MENTOR_GENERATION_ARRAY]}
+            value={watch('generation')}
+            defaultValue='기수를 선택해주세요.'
+            errorMessage={errors.generation?.message}
+            required={true}
+          />
+        </S.InputWrapper>
+      </S.PrivacyBox>
+      {careerArray.map((career) => (
+        <CareerRegistrationBox
+          career={career}
+          setCareerArray={setCareerArray}
+          key={career.id}
+        />
+      ))}
+      <S.SubmitButton type='submit'>
+        {isUpdate ? '수정완료' : '등록'}
+      </S.SubmitButton>
+    </S.Form>
   );
 };
 
