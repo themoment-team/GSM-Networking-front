@@ -8,6 +8,7 @@ import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useQueryClient } from '@tanstack/react-query';
 import { toast } from 'react-toastify';
 
 import * as S from './style';
@@ -51,6 +52,8 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   ]);
   const [isUpdate, setIsUpdate] = useState<boolean>(false);
 
+  const queryClient = useQueryClient();
+
   const { push } = useRouter();
 
   const { data: myInfoData, isError } = useGetMyInfo();
@@ -79,6 +82,9 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const handleMentorUpdateSuccess = () => {
     toast.success('멘토 수정에 성공하였습니다.');
+    queryClient.invalidateQueries({
+      queryKey: ['mentor', 'my', 'info'],
+    });
     return push('/mypage');
   };
 
