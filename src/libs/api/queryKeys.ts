@@ -14,6 +14,7 @@ export const menteeQueryKeys = {
 
 export const mentorQueryKeys = {
   postMentorRegister: () => ['mentor'],
+  putMentorUpdate: () => ['mentor', 'update'],
   getMentorList: () => ['mentor', 'list'],
   deleteMyMentorData: () => ['mentor', 'my'],
   getMyInfo: () => ['mentor', 'my', 'info'],
