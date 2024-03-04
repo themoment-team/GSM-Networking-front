@@ -11,7 +11,7 @@ import * as S from './style';
 import { CheckBoxIcon } from '@/assets';
 import { UserStatusSelect } from '@/components';
 import { PRIVACY_POLICY_URL } from '@/constants';
-import { usePostMenteeAuthority } from '@/hooks';
+import { usePatchMenteeAuthority } from '@/hooks';
 
 const SignUp = () => {
   const [role, setRole] = useState<'mentee' | 'mentor' | null>(null);
@@ -24,7 +24,7 @@ const SignUp = () => {
     push('/register/mentee');
   };
 
-  const { mutate: mutateMenteeAuthority } = usePostMenteeAuthority({
+  const { mutate: mutateMenteeAuthority } = usePatchMenteeAuthority({
     onError: () => toast.error('멘티 등록에 실패했습니다.'),
     onSuccess: handleMutateSuccess,
   });
