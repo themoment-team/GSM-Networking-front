@@ -11,7 +11,7 @@ import * as S from './style';
 import { CheckBoxIcon } from '@/assets';
 import { UserStatusSelect } from '@/components';
 import { PRIVACY_POLICY_URL } from '@/constants';
-import { usePostMenteeRole } from '@/hooks';
+import { usePatchMenteeAuthority } from '@/hooks';
 
 const SignUp = () => {
   const [role, setRole] = useState<'mentee' | 'mentor' | null>(null);
@@ -19,21 +19,21 @@ const SignUp = () => {
 
   const { push } = useRouter();
 
-  const { mutate: menteeRoleMutate } = usePostMenteeRole({
-    onError: () => toast.error('멘티 등록에 실패했습니다.'),
-    onSuccess: () => handleMutateSuccess(),
-  });
-
   const handleMutateSuccess = () => {
     toast.success('멘티 등록에 성공했습니다.');
-    push('/');
+    push('/register/mentee');
   };
+
+  const { mutate: mutateMenteeAuthority } = usePatchMenteeAuthority({
+    onError: () => toast.error('멘티 등록에 실패했습니다.'),
+    onSuccess: handleMutateSuccess,
+  });
 
   const handleNextButtonClick = () => {
     if (checkPolicy === false)
       return toast.error('개인정보 처리방침에 동의해주세요.');
 
-    if (role === 'mentee') return menteeRoleMutate();
+    if (role === 'mentee') return mutateMenteeAuthority();
 
     if (role === 'mentor') return push('/register/search');
   };

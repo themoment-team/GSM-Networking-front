@@ -13,8 +13,10 @@ import {
   CareerCard,
   Header,
   ProfileImgRegisterModal,
+  PrivacyCard,
 } from '@/components';
 import { useGetMyInfo } from '@/hooks';
+import { formatTelNum } from '@/utils';
 
 const MyPage: React.FC = () => {
   const [openModalCase, setOpenModalCase] = useState<
@@ -32,6 +34,8 @@ const MyPage: React.FC = () => {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isError]);
+
+  const onUpdateButtonClick = () => push('/register/mentor');
 
   return (
     <>
@@ -53,14 +57,35 @@ const MyPage: React.FC = () => {
               />
             </S.ProfileContainer>
             <S.Line />
-            <S.CareerContainer>
-              <S.CareerInfoText>재직 정보</S.CareerInfoText>
-              <S.CareerBox>
-                {data.career.map((career) => (
-                  <CareerCard career={career} key={career.id} />
-                ))}
-              </S.CareerBox>
-            </S.CareerContainer>
+            <S.InfoContainer>
+              <S.InfoWrapper>
+                <S.InfoText>개인정보</S.InfoText>
+                <S.InfoBox>
+                  <PrivacyCard
+                    privacy={{
+                      privacyKey: '전화번호',
+                      privacyValue: formatTelNum(data.phoneNumber),
+                    }}
+                  />
+                  {data.SNS && (
+                    <PrivacyCard
+                      privacy={{
+                        privacyKey: 'SNS',
+                        privacyValue: data.SNS,
+                      }}
+                    />
+                  )}
+                </S.InfoBox>
+              </S.InfoWrapper>
+              <S.InfoWrapper>
+                <S.InfoText>재직 정보</S.InfoText>
+                <S.InfoBox>
+                  {data.career.map((career) => (
+                    <CareerCard career={career} key={career.id} />
+                  ))}
+                </S.InfoBox>
+              </S.InfoWrapper>
+            </S.InfoContainer>
           </>
         )}
         {/* <S.WithdrawContainer> 추후 기능 구현 시 사용
@@ -73,6 +98,9 @@ const MyPage: React.FC = () => {
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
         </S.WithdrawBox>
       </S.WithdrawContainer> */}
+        <S.UpdateButton onClick={onUpdateButtonClick}>
+          개인정보 및 재직정보 수정
+        </S.UpdateButton>
       </S.Container>
     </>
   );

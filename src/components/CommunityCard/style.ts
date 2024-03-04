@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
-  padding: 0.75rem 1rem;
+  padding: 0 1rem;
   display: flex;
   flex-direction: column;
   gap: 0.37rem;

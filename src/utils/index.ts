@@ -3,6 +3,7 @@ export { default as careerValidation } from './careerValidation';
 export { default as deepCopy } from './deepCopy';
 export { default as extractCareer } from './extractCareer';
 export { default as extractSubstring } from './extractSubstring';
+export { default as formatTelNum } from './formatTelNum';
 export { default as getGwangyaToken } from './getGwangyaToken';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isExistCookie } from './isExistCookie';

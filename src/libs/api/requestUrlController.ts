@@ -16,12 +16,14 @@ export const gwangyaUrl = {
 };
 
 export const menteeUrl = {
-  postMenteeRole: () => '/mentee',
+  postMenteeRegister: () => '/mentee',
+  patchMenteeAuthority: () => '/mentee/update',
 };
 
 export const mentorUrl = {
   postMentorRegister: () => '/mentor',
   getMentorList: () => '/mentor',
+  putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
   getMyInfo: () => '/mentor/my',
 };
