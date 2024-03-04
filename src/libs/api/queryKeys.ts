@@ -9,7 +9,7 @@ export const gwangyaQueryKeys = {
 
 export const menteeQueryKeys = {
   postMenteeRegister: () => ['mentee', 'register'],
-  postMenteeAuthority: () => ['mentee', 'authority'],
+  patchMenteeAuthority: () => ['mentee', 'authority'],
 } as const;
 
 export const mentorQueryKeys = {

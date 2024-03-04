@@ -1,2 +1,2 @@
-export * from './usePostMenteeAuthority';
+export * from './usePatchMenteeAuthority';
 export * from './usePostMenteeRegister';
