@@ -7,7 +7,7 @@ import type { MenteeType } from '@/types';
 /**
  * 자신의 멘티 정보를 반환합니다.
  *
- * @returns 멘티 정보 반환 시 멘티, null 반환 시 멘토입니다.
+ * @returns 멘티 정보 반환 시 멘티, 멘티 정보가 없다면 register/mentee로 이동됩니다.
  */
 export const getMyMenteeInfo = async (
   redirectUrl: string
@@ -26,8 +26,8 @@ export const getMyMenteeInfo = async (
     }
   );
 
-  if (response.status === 403) {
-    return null;
+  if (response.status === 404) {
+    return redirect('/register/mentee');
   }
 
   if (response.status === 401) {
