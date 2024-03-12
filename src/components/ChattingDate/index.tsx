@@ -2,20 +2,23 @@
 
 import * as S from './style';
 
-import type { ChattingPostType } from '@/types/chatting';
+interface ChattingDateType {
+    createdAt: string;
+}
 
-const addZero = (num: number): string => (num < 10 ? `0${num}` : `${num}`);
-
-const ChattingDate: React.FC<ChattingPostType> = ({ createdAt }) => {
+const ChattingDate: React.FC<ChattingDateType> = ({ createdAt }) => {
     const createdDate = new Date(createdAt + 'Z');
-    const createdTime = createdDate.getHours();
+    let createdTime = createdDate.getHours();
     const createdMinute = createdDate.getMinutes();
-    const morningOrAfternoon = createdTime < 12 ? '오전' : '오후';
-    const convertCreatedTime = createdTime > 12 ? createdTime - 12 : createdTime;
+    const isMorning = createdTime < 12;
+    createdTime = createdTime % 12 || 12;
+
+    const formattedTime = createdTime.toString().padStart(2, '0');
+    const formattedMinute = createdMinute.toString().padStart(2, '0');
+
     return (
         <S.DateText>
-            {morningOrAfternoon} {addZero(convertCreatedTime)}:
-            {addZero(createdMinute)}
+            {isMorning ? '오전' : '오후'} {formattedTime}:{formattedMinute}
         </S.DateText>
     )
 }
