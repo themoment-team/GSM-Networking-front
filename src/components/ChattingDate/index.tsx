@@ -8,17 +8,17 @@ interface ChattingDateType {
 
 const ChattingDate: React.FC<ChattingDateType> = ({ createdAt }) => {
     const createdDate = new Date(createdAt + 'Z');
-    let createdTime = createdDate.getHours();
+    let createdHour = createdDate.getHours();
     const createdMinute = createdDate.getMinutes();
-    const isMorning = createdTime < 12;
-    createdTime = createdTime % 12 || 12;
+    const period = createdHour < 12 ? '오전' : '오후';
+    createdHour = createdHour % 12 || 12;
 
-    const formattedTime = createdTime.toString().padStart(2, '0');
+    const formattedTime = createdHour.toString().padStart(2, '0');
     const formattedMinute = createdMinute.toString().padStart(2, '0');
 
     return (
         <S.DateText>
-            {isMorning ? '오전' : '오후'} {formattedTime}:{formattedMinute}
+            {period} {formattedTime}:{formattedMinute}
         </S.DateText>
     )
 }
