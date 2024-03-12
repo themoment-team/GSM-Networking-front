@@ -4,8 +4,8 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ChattingDate> = {
     component: ChattingDate,
-    parameters: {
-        layout: 'padded',
+    args: {
+        createdAt: '2023-11-27T14:10:00.000',
     },
 };
 
@@ -13,8 +13,4 @@ export default meta;
 
 type Story = StoryObj<typeof ChattingDate>;
 
-export const Primary: Story = {
-    args: {
-        time: '오후 11:10'
-    },
-};
+export const Primary: Story = {};
