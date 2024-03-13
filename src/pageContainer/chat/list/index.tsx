@@ -15,7 +15,9 @@ const ChatList = () => {
   const client = useRef<Client | CompatClient | null>(null);
 
   useEffect(() => {
-    const sock = new SockJS('https://server.gsm-networking.com:8080/ws');
+    const sock = new SockJS('https://server.gsm-networking.com:8080/ws', {
+      withCredentials: true,
+    });
     client.current = Stomp.over(() => sock);
 
     client.current.connectHeaders = {};
