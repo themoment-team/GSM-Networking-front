@@ -32,6 +32,9 @@ dependencies:
   '@types/react-dom':
     specifier: 18.2.7
     version: 18.2.7
+  '@types/sockjs-client':
+    specifier: ^1.5.4
+    version: 1.5.4
   axios:
     specifier: ^1.5.1
     version: 1.5.1
@@ -5347,6 +5350,10 @@ packages:
       '@types/mime': 3.0.1
       '@types/node': 20.5.7
     dev: true
+
+  /@types/sockjs-client@1.5.4:
+    resolution: {integrity: sha512-zk+uFZeWyvJ5ZFkLIwoGA/DfJ+pYzcZ8eH4H/EILCm2OBZyHH6Hkdna1/UWL/CFruh5wj6ES7g75SvUB0VsH5w==}
+    dev: false
 
   /@types/stack-utils@2.0.2:
     resolution: {integrity: sha512-g7CK9nHdwjK2n0ymT2CW698FuWJRIx+RP6embAzZ2Qi8/ilIrA1Imt2LVSeHUzKvpoi7BhmmQcXz95eS0f2JXw==}
