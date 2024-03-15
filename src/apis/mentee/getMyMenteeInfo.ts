@@ -31,11 +31,11 @@ export const getMyMenteeInfo = async (
   }
 
   if (response.status === 401) {
-    return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+    // return redirect(`/auth/refresh?redirect=${redirectUrl}`);
   }
 
   if (!response.ok) {
-    return redirect('/auth/signin');
+    // return redirect('/auth/signin');
   }
 
   const menteeInfo = await response.json();
