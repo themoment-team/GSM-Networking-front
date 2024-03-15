@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
@@ -53,6 +55,10 @@ const Mentee = () => {
   const onError: SubmitErrorHandler<MenteeInfoFormType> = () => {
     toast.error('입력 정보를 다시 확인해주세요.');
   };
+
+  useEffect(() => {
+    toast.info('멘티 정보 등록 후에 서비스 이용이 가능합니다.');
+  }, []);
 
   return (
     <S.Container>
