@@ -27,7 +27,7 @@ export const getMyMenteeInfo = async (
   );
 
   if (response.status === 404) {
-    return redirect('/register/mentee');
+    // return redirect('/register/mentee');
   }
 
   if (response.status === 401) {
