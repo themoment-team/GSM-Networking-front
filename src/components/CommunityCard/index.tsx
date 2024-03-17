@@ -12,15 +12,14 @@ const removeDuplicateEnter = (str: string) => str.replaceAll(/\n+/g, '\n');
 
 const CommunityCard = forwardRef<HTMLDivElement, GwangyaPostType>(
   ({ id, content, createdAt }, ref) => {
-    const createdDate = new Date(createdAt + 'Z');
+    const createdDate = new Date(createdAt);
 
     const createdMonth = createdDate.getMonth() + 1;
     const createdDay = createdDate.getDate();
     const createdTime = createdDate.getHours();
     const createdMinute = createdDate.getMinutes();
     const morningOrAfternoon = createdTime < 12 ? '오전' : '오후';
-    const convertCreatedTime =
-      createdTime > 12 ? createdTime - 12 : createdTime;
+    const convertCreatedTime = createdTime % 12 || 12;
 
     return (
       <S.CardWrapper ref={ref}>
