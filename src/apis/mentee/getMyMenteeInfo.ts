@@ -35,7 +35,7 @@ export const getMyMenteeInfo = async (
   }
 
   if (!response.ok) {
-    return redirect('/auth/signin');
+    // return redirect('/auth/signin');
   }
 
   const menteeInfo = await response.json();
