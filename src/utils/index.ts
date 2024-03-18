@@ -5,6 +5,7 @@ export { default as extractCareer } from './extractCareer';
 export { default as extractSubstring } from './extractSubstring';
 export { default as formatTelNum } from './formatTelNum';
 export { default as getGwangyaToken } from './getGwangyaToken';
+export { default as getSessionId } from './getSessionId';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isExistCookie } from './isExistCookie';
 export { default as isNumeric } from './isNumeric';
