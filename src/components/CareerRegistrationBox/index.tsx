@@ -26,6 +26,8 @@ interface Props {
   setCareerArray: React.Dispatch<React.SetStateAction<CareerFormType[]>>;
 }
 
+type MonthArray = Array<1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12>;
+
 const CareerRegistrationBox: React.FC<Props> = ({
   career: {
     id,
@@ -131,6 +133,19 @@ const CareerRegistrationBox: React.FC<Props> = ({
       })
     );
 
+  // 현재 연도와 월을 비교해서 선택 가능한 월 배열을 리턴합니다.
+  const getMonthArray = (selectedYear: string): MonthArray => {
+    const date = new Date();
+    const currentYear = date.getFullYear();
+
+    if (selectedYear === String(currentYear)) {
+      const currentMonth = date.getMonth() + 1;
+      return MONTH_ARRAY.slice(0, currentMonth);
+    }
+
+    return [...MONTH_ARRAY];
+  };
+
   return (
     <S.CompanyBox>
       <S.TitleBox>
@@ -192,10 +207,11 @@ const CareerRegistrationBox: React.FC<Props> = ({
               />
               <Select
                 value={startMonth.value}
-                options={[...MONTH_ARRAY]}
+                options={getMonthArray(String(startYear.value))}
                 defaultValue='월'
                 onChange={(e) => handlePeriodChange(e, 'startMonth')}
                 errorMessage={startMonth.errorMessage}
+                disabled={String(startYear.value).length < 2}
               />
               <S.Tilde>~</S.Tilde>
               <Select
@@ -210,8 +226,8 @@ const CareerRegistrationBox: React.FC<Props> = ({
               <Select
                 ref={endMonthRef}
                 value={endMonth.value}
-                options={[...MONTH_ARRAY]}
-                disabled={isWorking.value}
+                options={getMonthArray(String(endYear.value))}
+                disabled={isWorking.value || String(endYear.value).length < 2}
                 defaultValue='월'
                 onChange={(e) => handlePeriodChange(e, 'endMonth')}
                 errorMessage={endMonth.errorMessage}
