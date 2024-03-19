@@ -27,4 +27,5 @@ export const tempMentorQueryKeys = {
 
 export const userQueryKeys = {
   postProfileImgUrl: () => ['user', 'profile'],
+  getMyToken: () => ['my', 'token'],
 };

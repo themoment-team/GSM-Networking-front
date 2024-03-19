@@ -36,4 +36,5 @@ export const tempMentorUrl = {
 
 export const userUrl = {
   postProfileImgUrl: () => `/user/profile-url`,
+  getMyToken: () => '/auth/my-token',
 };
