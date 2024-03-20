@@ -109,6 +109,7 @@ export const WorkerImgBox = styled.div`
 `;
 
 export const HoverButton = styled.button`
+  color: ${({ theme }) => theme.color.white};
   background: rgba(0, 0, 0, 0.50);
   border-radius: 0.75rem;
   position: absolute;
@@ -117,11 +118,10 @@ export const HoverButton = styled.button`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0.25rem 0.75rem;
-  color: #fff;
   cursor: pointer;
 `;
 
-export const HoverText = styled.p`
+export const HoverText = styled.span`
   ${({ theme }) => theme.typo.caption};
 `
 
