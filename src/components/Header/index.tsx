@@ -10,14 +10,14 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useGetMyInfo } from '@/hooks';
+import { useGetMentorInfo } from '@/hooks';
 
 interface Props {
   clearList?: () => void;
 }
 
 const Header: React.FC<Props> = ({ clearList }) => {
-  const { data } = useGetMyInfo();
+  const { data } = useGetMentorInfo();
 
   const { push } = useRouter();
 

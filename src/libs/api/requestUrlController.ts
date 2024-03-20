@@ -2,6 +2,7 @@ export const authUrl = {
   loginLink: () => '/auth/oauth2/authorization/google',
   patchRefresh: () => '/auth/reissue',
   getLogout: () => '/auth/logout',
+  getMyToken: () => '/auth/my-token',
 };
 
 export const fileUrl = {
@@ -25,7 +26,7 @@ export const mentorUrl = {
   getMentorList: () => '/mentor',
   putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
-  getMyInfo: () => '/mentor/my',
+  getMentorInfo: () => '/mentor/my',
 };
 
 export const tempMentorUrl = {

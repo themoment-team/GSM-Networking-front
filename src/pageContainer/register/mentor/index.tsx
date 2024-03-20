@@ -22,9 +22,9 @@ import {
 import { MENTOR_GENERATION_ARRAY } from '@/constants';
 import {
   useDeleteTempMentor,
-  useGetMyInfo,
   usePostMentorRegister,
   usePutMentorUpdate,
+  useGetMentorInfo,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -56,7 +56,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { data: myInfoData, isError } = useGetMyInfo();
+  const { data: myInfoData, isError } = useGetMentorInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
