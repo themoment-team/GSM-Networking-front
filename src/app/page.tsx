@@ -1,7 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
-import { getMyInfo } from '@/apis';
+import { getMyInfo, getMyMenteeInfo } from '@/apis';
 import { MainPage } from '@/components';
 import { mentorUrl } from '@/libs';
 import type { WorkerType } from '@/types';
@@ -12,8 +12,15 @@ export default async function Home() {
   // TODO: resolve request waterfalls (e.g. Promise.allSettled)
   const mentorList = await getMentorList();
   const myInfo = await getMyInfo('/');
+  const myMenteeInfo = await getMyMenteeInfo('/');
 
-  return <MainPage initMentorList={[...mentorList]} defaultMyInfo={myInfo} />;
+  return (
+    <MainPage
+      initMentorList={[...mentorList]}
+      defaultMyInfo={myInfo}
+      defaultMyMenteeInfo={myMenteeInfo}
+    />
+  );
 }
 
 export const metadata: Metadata = {
