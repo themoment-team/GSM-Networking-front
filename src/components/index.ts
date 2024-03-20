@@ -13,6 +13,7 @@ export { default as Layout } from './Layout';
 export { default as MainPage } from './MainPage';
 export { default as MentorCard } from './MentorCard';
 export { default as MentorList } from './MentorList';
+export { default as MiniProfile } from './MiniProfile';
 export { default as NavigationEvents } from './NavigationEvents';
 export { default as PrivacyCard } from './PrivacyCard';
 export { default as Profile } from './Profile';
