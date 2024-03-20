@@ -9,13 +9,15 @@ import type { CommentType } from '@/types';
 
 interface Props {
   comment: CommentType;
+  isReply?: boolean;
 }
 
 const CommentCard: React.FC<Props> = ({
   comment: { profile, content, mention },
+  isReply,
 }) => (
   <S.Container>
-    <MiniProfile profile={profile} />
+    <MiniProfile profile={profile} isSmallSize={!!isReply} />
     <S.TextWrapper>
       <S.Content>
         {mention && <S.Mention>@{mention}</S.Mention>}
