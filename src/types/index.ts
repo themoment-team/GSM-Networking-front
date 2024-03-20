@@ -4,6 +4,7 @@ export * from './form';
 export * from './generation';
 export * from './gwangya';
 export * from './mentee';
+export * from './menteeInfo';
 export * from './mentor';
 export * from './mentorInfo';
 export * from './opponentInfo';
