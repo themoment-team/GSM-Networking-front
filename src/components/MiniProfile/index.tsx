@@ -5,13 +5,10 @@ import Image from 'next/image';
 import * as S from './style';
 
 import { RandomMentorImg } from '@/components';
+import type { ProfileType } from '@/types';
 
 interface Props {
-  profile: {
-    name: string;
-    generation: number;
-    profileUrl?: string;
-  };
+  profile: ProfileType;
 }
 
 const MiniProfile: React.FC<Props> = ({
