@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -18,6 +19,7 @@ interface Props {
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {
+  const { push } = useRouter();
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -34,6 +36,10 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
       navigator.clipboard.writeText(worker.SNS);
       return toast.success('연락망이 클립보드에 복사되었습니다.');
     }
+  };
+
+  const handleButtonClick = (userId) => {
+    push(`/chat/${userId}`)
   };
 
   return (
@@ -53,7 +59,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
           <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
         )}
         {isHovered && (
-          <S.HoverButton>
+          <S.HoverButton onClick={() => handleButtonClick(worker.id)}>
             <S.HoverText>
               채팅하기
             </S.HoverText>
