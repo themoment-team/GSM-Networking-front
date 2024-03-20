@@ -9,3 +9,17 @@ export const Container = styled.div`
 export const TextWrapper = styled(Container)`
   margin-left: 2.75rem;
 `;
+
+export const Content = styled.pre`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.black};
+`;
+
+export const AddComment = styled.span`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.grey[500]};
+`;
+
+export const Mention = styled(AddComment)`
+  color: ${({ theme }) => theme.color.skyBlue[400]};
+`;
