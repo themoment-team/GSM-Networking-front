@@ -63,12 +63,3 @@ export const Content = styled.textarea`
   margin-top: 0.4688rem;
   cursor: pointer;
 `;
-
-export const LikeButton = styled.div`
-  ${({ theme }) => theme.typo.body1}
-  color: ${({ theme }) => theme.color.grey['300']};
-  display: flex;
-  align-items: flex-end;
-  gap: 0.25rem;
-  justify-content: flex-end;
-`;
