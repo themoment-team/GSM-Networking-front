@@ -13,13 +13,16 @@ export const TextWrapper = styled(Container)`
 export const Content = styled.pre`
   ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.black};
+  white-space: pre-wrap;
 `;
 
 export const AddComment = styled.span`
   ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.grey[500]};
+  cursor: pointer;
 `;
 
-export const Mention = styled(AddComment)`
+export const Mention = styled.span`
+  ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.skyBlue[400]};
 `;
