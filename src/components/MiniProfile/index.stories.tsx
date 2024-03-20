@@ -29,3 +29,15 @@ export const HavedImage: Story = {
     },
   },
 };
+
+export const Small: Story = {
+  args: {
+    isSmallSize: true,
+    profile: {
+      name: '김형록',
+      generation: 5,
+      profileUrl:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSAmut5h67L7lxQoTWdCnEQtWxh1LNN-sWgQw&usqp=CAU',
+    },
+  },
+};
