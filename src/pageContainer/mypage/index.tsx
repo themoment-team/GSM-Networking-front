@@ -15,7 +15,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyInfo } from '@/hooks';
+import { useGetMentorInfo } from '@/hooks';
 import { formatTelNum } from '@/utils';
 
 const MyPage: React.FC = () => {
@@ -25,7 +25,7 @@ const MyPage: React.FC = () => {
 
   const { push } = useRouter();
 
-  const { data, isError } = useGetMyInfo();
+  const { data, isError } = useGetMentorInfo();
 
   useEffect(() => {
     if (isError) {

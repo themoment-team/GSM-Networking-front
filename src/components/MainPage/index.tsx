@@ -8,7 +8,7 @@ import * as S from './style';
 
 import { ChatListShiftIcon } from '@/assets';
 import { Header, MentorList } from '@/components';
-import { useGetMyInfo } from '@/hooks';
+import { useGetMentorInfo } from '@/hooks';
 import type {
   WorkerType,
   GenerationType,
@@ -30,7 +30,7 @@ const MainPage: React.FC<Props> = ({ initMentorList, defaultMyInfo }) => {
   const [keyword, setKeyword] = useState<string>('');
   const { push } = useRouter();
 
-  useGetMyInfo({
+  useGetMentorInfo({
     initialData: defaultMyInfo,
   });
 
