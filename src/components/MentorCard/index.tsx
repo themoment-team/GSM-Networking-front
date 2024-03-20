@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
+//import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -19,7 +19,7 @@ interface Props {
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {
-  const { push } = useRouter();
+  //const { push } = useRouter();
 
   const [isHovered, setIsHovered] = useState(false);
 
@@ -38,9 +38,9 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
     }
   };
 
-  const handleButtonClick = (userId) => {
-    push(`/chat/${userId}`)
-  };
+  // const handleButtonClick = (userId) => {
+  //   push(`/chat/${userId}`)
+  // };
 
   return (
     <S.WorkerCardContainer>
@@ -59,7 +59,9 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
           <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
         )}
         {isHovered && (
-          <S.HoverButton onClick={() => handleButtonClick(worker.id)}>
+          <S.HoverButton 
+            // onClick={() => handleButtonClick(worker.id)}
+          >
             <S.HoverText>
               채팅하기
             </S.HoverText>
