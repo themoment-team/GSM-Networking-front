@@ -34,8 +34,10 @@ export const getMyMenteeInfo = async (
     return redirect(`/auth/refresh?redirect=${redirectUrl}`);
   }
 
-  if (!response.ok) {
-    // return redirect('/auth/signin');
+
+  // 403의 경우 멘토일 수 있습니다.
+  if (!response.ok && response.status !== 403) {
+    return redirect('/auth/signin');
   }
 
   const menteeInfo = await response.json();
