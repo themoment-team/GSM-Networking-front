@@ -7,18 +7,10 @@ interface Props {
   date: string;
   time: string;
   content: string;
-  like: string;
   tag: string;
 }
 
-const NoticeCard: React.FC<Props> = ({
-  name,
-  date,
-  time,
-  content,
-  like,
-  tag,
-}) => {
+const NoticeCard: React.FC<Props> = ({ name, date, time, content, tag }) => {
   return (
     <S.NoticeCard>
       <S.ContentBox>
