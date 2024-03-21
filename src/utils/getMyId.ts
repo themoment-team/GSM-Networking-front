@@ -16,7 +16,7 @@ const getMyId = async () => {
   }
 
   try {
-    menteeInfo = await get(menteeUrl.getMenteeInfo());
+    menteeInfo = await get(menteeUrl.getMyMenteeInfo());
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response!.status === 403) menteeInfo = null;
