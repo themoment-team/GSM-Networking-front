@@ -1,16 +1,14 @@
 'use client';
 
-// import { useEffect, useState } from 'react';
-
-// import { toast } from 'react-toastify';
-
-// import * as S from './style';
+import * as S from './style';
 
 import {
   Header,
   SubFunctionHeader,
   PostContent,
   CommentCard,
+  MiniProfile,
+  ChattingButton,
 } from '@/components';
 import type { PostType, CommentType } from '@/types';
 
@@ -84,15 +82,21 @@ const Mock: PostType = {
 const Gwangya: React.FC<Props> = () => (
   <>
     <Header />
-    <SubFunctionHeader prevPath={PREV_PATH} title='글' />
-    <PostContent
-      title={Mock.title}
-      description={Mock.description}
-      category={Mock.category}
-    />
-    {Mock.comments.map((comment) => (
-      <CommentCard key={comment.id} comment={comment} />
-    ))}
+    <S.Container>
+      <SubFunctionHeader prevPath={PREV_PATH} title='글' />
+      <S.WriterProfileWrapper>
+        <MiniProfile profile={Mock.user} />
+        <ChattingButton onClick={() => {}} />
+      </S.WriterProfileWrapper>
+      <PostContent
+        title={Mock.title}
+        description={Mock.description}
+        category={Mock.category}
+      />
+      {Mock.comments.map((comment) => (
+        <CommentCard key={comment.id} comment={comment} />
+      ))}
+    </S.Container>
   </>
 );
 
