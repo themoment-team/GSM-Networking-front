@@ -1,4 +1,4 @@
-import type { CategoryType, CommentType, GenerationType } from '@/types';
+import type { CategoryType, CommentType } from '@/types';
 
 export interface PostType {
   id: string;
@@ -9,7 +9,8 @@ export interface PostType {
   comments: CommentType[];
   user: {
     id: number;
-    generation: GenerationType;
+    generation: number;
     profileImage?: string;
+    name: string;
   };
 }
