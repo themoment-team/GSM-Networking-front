@@ -8,7 +8,9 @@ import SockJS from 'sockjs-client';
 import * as S from './style';
 
 import { Header } from '@/components';
-import { getSessionId } from '@/utils';
+import { authUrl, get } from '@/libs';
+import type { TokenType } from '@/types';
+import { getSessionId, getMyId } from '@/utils';
 
 import type { Client } from '@stomp/stompjs';
 
@@ -16,31 +18,60 @@ const ChatList = () => {
   const client = useRef<Client | null>(null);
 
   useEffect(() => {
-    const sock = new SockJS('https://server.gsm-networking.com:8080/ws');
-    client.current = Stomp.over(() => sock);
+    const connect = async () => {
+      const sock = new SockJS('https://server.gsm-networking.com:8080/ws');
+      client.current = Stomp.over(() => sock);
+      const { accessToken } = await get<TokenType>(authUrl.getMyToken());
 
-    client.current.connectHeaders = {
-      access_token:
-        'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMyIsInRva2VuVHlwZSI6ImFjY2Vzc1Rva2VuIiwiaWF0IjoxNzEwNTk5NjQwLCJleHAiOjE3MTA2MTA0NDB9.iqmkFjdPkTpPLE4UCfhmFfwqYQw0wXoDJUNtL7kU0UM',
-    };
-    client.current.onConnect = () => {
-      console.log(getSessionId(sock));
-      client.current?.subscribe(
-        `/queue/user/${getSessionId(sock)}`,
-        (message) => {
-          console.log(message);
-        }
-      );
-      // client.current.subscribe('/query/header', (message) => {
-      // });
+      client.current.connectHeaders = {
+        access_token: accessToken,
+      };
+      client.current.heartbeatOutgoing = 2000;
+
+      client.current.onConnect = async (frame) => {
+        const userId = await getMyId();
+
+        // console.log(userId);
+        // const encoder = new TextEncoder();
+        // const binaryData = encoder.encode(
+        //   JSON.stringify({
+        //     userId: userId,
+        //     epochMilli: Date.now(),
+        //     limit: 5,
+        //   })
+        // );
+
+        client.current?.subscribe(
+          `/queue/user/${getSessionId(sock)}`,
+          (message) => {
+            setInterval(() => console.log(message), 3000);
+          }
+        );
+
+        client.current?.publish({
+          destination: '/header/query',
+          // binaryBody: binaryData,
+          body: JSON.stringify({
+            userId: userId,
+            epochMilli: Date.now(),
+            limit: 5,
+          }),
+          headers: {
+            'content-type': 'application/json',
+          },
+        });
+      };
+
+      client.current.activate();
     };
 
-    client.current.activate();
+    connect();
 
     return () => {
-      client.current?.deactivate();
+      client.current!.deactivate();
     };
   }, []);
+
   return (
     <>
       <Header />
