@@ -1,9 +1,9 @@
 'use client';
 
 import * as S from './style';
-import { parseDateString } from '@/utils';
 
 import type { CardInfo } from '@/types';
+import { parseDateString } from '@/utils';
 
 const NoticeCard: React.FC<CardInfo> = ({ name, date, content, tag }) => {
   const { monthDay, time } = parseDateString(date);
