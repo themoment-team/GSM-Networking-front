@@ -9,6 +9,7 @@ interface Props {
   tag: string;
 }
 
+
 const NoticeCard: React.FC<Props> = ({ name, date, content, tag }) => {
   const parseDateString = (
     dateString: string
@@ -53,5 +54,6 @@ const NoticeCard: React.FC<Props> = ({ name, date, content, tag }) => {
     </S.NoticeCard>
   );
 };
+
 
 export default NoticeCard;
