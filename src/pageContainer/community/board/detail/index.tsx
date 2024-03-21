@@ -79,7 +79,7 @@ const Mock: PostType = {
   },
 };
 
-const Gwangya: React.FC<Props> = () => (
+const PostDetail: React.FC<Props> = () => (
   <>
     <Header />
     <S.Container>
@@ -100,4 +100,4 @@ const Gwangya: React.FC<Props> = () => (
   </>
 );
 
-export default Gwangya;
+export default PostDetail;
