@@ -17,7 +17,7 @@ export const getMyInfo = async (
   if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
 
   const response = await fetch(
-    new URL(`/api/v1${mentorUrl.getMyInfo()}`, process.env.BASE_URL),
+    new URL(`/api/v1${mentorUrl.getMentorInfo()}`, process.env.BASE_URL),
     {
       method: 'GET',
       headers: {
