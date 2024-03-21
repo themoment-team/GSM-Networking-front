@@ -2,15 +2,9 @@
 
 import * as S from './style';
 
-interface Props {
-  name: string;
-  date: string;
-  content: string;
-  tag: string;
-}
+import type { CardInfo } from '@/types';
 
-
-const NoticeCard: React.FC<Props> = ({ name, date, content, tag }) => {
+const NoticeCard: React.FC<CardInfo> = ({ name, date, content, tag }) => {
   const parseDateString = (
     dateString: string
   ): { monthDay: string; time: string } => {
@@ -54,6 +48,5 @@ const NoticeCard: React.FC<Props> = ({ name, date, content, tag }) => {
     </S.NoticeCard>
   );
 };
-
 
 export default NoticeCard;

@@ -10,3 +10,4 @@ export * from './opponentInfo';
 export * from './position';
 export * from './profile';
 export * from './worker';
+export * from './cardInfo';
