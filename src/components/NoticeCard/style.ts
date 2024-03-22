@@ -40,6 +40,7 @@ export const DateAndTime = styled.div`
   color: ${({ theme }) => theme.color.grey['500']};
   display: flex;
   gap: 0.25rem;
+  justify-content: center;
 `;
 
 export const Date = styled.div``;
