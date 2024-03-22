@@ -80,9 +80,9 @@ const Mock: PostType = {
 };
 
 const PostDetail: React.FC<Props> = () => (
-  <>
+  <S.Container>
     <Header />
-    <S.Container>
+    <S.PostContainer>
       <SubFunctionHeader prevPath={PREV_PATH} title='글' />
       <S.WriterProfileWrapper>
         <MiniProfile profile={Mock.user} />
@@ -93,11 +93,14 @@ const PostDetail: React.FC<Props> = () => (
         description={Mock.description}
         category={Mock.category}
       />
-      {Mock.comments.map((comment) => (
-        <CommentCard key={comment.id} comment={comment} />
-      ))}
-    </S.Container>
-  </>
+      <S.Line />
+      <S.CommentContainer>
+        {Mock.comments.map((comment) => (
+          <CommentCard key={comment.id} comment={comment} />
+        ))}
+      </S.CommentContainer>
+    </S.PostContainer>
+  </S.Container>
 );
 
 export default PostDetail;
