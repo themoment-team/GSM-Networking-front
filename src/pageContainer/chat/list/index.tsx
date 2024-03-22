@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { Client as StompClient } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
@@ -14,18 +14,12 @@ import { getMyId, getSessionId } from '@/utils';
 
 import type { Client } from '@stomp/stompjs';
 
-interface Content {
-  content: string;
-  sender?: string;
-}
-
 interface SocketType extends WebSocket {
   _transport: { url: string };
 }
 
 const ChatList = () => {
   const client = useRef<Client | null>(null);
-  const [messages, setMessages] = useState<Content[]>([]);
 
   const getAccessToken = async () => {
     const { accessToken } = await get<TokenType>(authUrl.getMyToken());
@@ -49,33 +43,42 @@ const ChatList = () => {
       heartbeatIncoming: 4000,
       heartbeatOutgoing: 4000,
 
-      onConnect: () => {
+      onConnect: async () => {
         console.log('WebSocket 연결이 열렸습니다.');
         const subscriptionDestination = `/queue/user/${getSessionId(
           socket as unknown as SocketType
         )}`;
+        const userId = await getMyId();
 
         if (client.current) {
-          client.current.subscribe(subscriptionDestination, (frame) => {
+          client.current.subscribe(subscriptionDestination, (message) => {
             try {
-              const parsedMessage = JSON.parse(frame.body);
-
-              console.log(parsedMessage);
-              setMessages((prevMessages) => [...prevMessages, parsedMessage]);
+              console.log(message);
             } catch (error) {
               console.error('오류가 발생했습니다:', error);
             }
           });
 
-          client.current.subscribe(`/topic/messaging/13-14`, (frame) => {
-            try {
-              const parsedMessage = JSON.parse(frame.body);
+          const encoder = new TextEncoder();
+          const binaryData = encoder.encode(
+            JSON.stringify({
+              userId: userId,
+              epochMilli: Date.now(),
+              limit: 5,
+            })
+          );
 
-              console.log(parsedMessage);
-              setMessages((prevMessages) => [...prevMessages, parsedMessage]);
-            } catch (error) {
-              console.error('오류가 발생했습니다:', error);
-            }
+          const body = JSON.stringify({
+            userId: userId,
+            epochMilli: Date.now(),
+            limit: 5,
+          });
+
+          client.current.publish({
+            destination: '/queue/header',
+            headers: { 'content-type': 'application/json' },
+            binaryBody: binaryData,
+            body: body,
           });
         }
       },
@@ -92,28 +95,11 @@ const ChatList = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const sendMessage = async () => {
-    // 메시지 전송
-    const id = Number(await getMyId());
-    if (client.current) {
-      const publishDestination = `/message`;
-
-      client.current.publish({
-        destination: publishDestination,
-        body: JSON.stringify({
-          to: id,
-          message: '안녕하세요',
-        }),
-      });
-    }
-  };
-
   return (
     <>
       <Header />
       <S.Conatiner>
         <S.Text>채팅 목록</S.Text>
-        <button onClick={sendMessage}>테스트</button>
       </S.Conatiner>
     </>
   );
