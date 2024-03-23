@@ -45,7 +45,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox
-        onMouseEnter={() => setIsHovered(true)}s
+        onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
         {worker.profileUrl ? (
