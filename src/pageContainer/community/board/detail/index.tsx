@@ -9,6 +9,7 @@ import {
   CommentCard,
   MiniProfile,
   ChattingButton,
+  TextArea,
 } from '@/components';
 import type { PostType, CommentType } from '@/types';
 
@@ -79,28 +80,39 @@ const Mock: PostType = {
   },
 };
 
-const PostDetail: React.FC<Props> = () => (
-  <S.Container>
-    <Header />
-    <S.PostContainer>
-      <SubFunctionHeader prevPath={PREV_PATH} title='글' />
-      <S.WriterProfileWrapper>
-        <MiniProfile profile={Mock.user} />
-        <ChattingButton onClick={() => {}} />
-      </S.WriterProfileWrapper>
-      <PostContent
-        title={Mock.title}
-        description={Mock.description}
-        category={Mock.category}
-      />
-      <S.Line />
-      <S.CommentContainer>
-        {Mock.comments.map((comment) => (
-          <CommentCard key={comment.id} comment={comment} />
-        ))}
-      </S.CommentContainer>
-    </S.PostContainer>
-  </S.Container>
-);
+const PostDetail: React.FC<Props> = () => {
+  const uploadComment = () => {};
+
+  return (
+    <S.Container>
+      <Header />
+      <S.PostContainer>
+        <SubFunctionHeader prevPath={PREV_PATH} title='글' />
+        <S.WriterProfileWrapper>
+          <MiniProfile profile={Mock.user} />
+          <ChattingButton onClick={() => {}} />
+        </S.WriterProfileWrapper>
+        <PostContent
+          title={Mock.title}
+          description={Mock.description}
+          category={Mock.category}
+        />
+        <S.Line />
+        <S.CommentContainer>
+          {Mock.comments.map((comment) => (
+            <CommentCard key={comment.id} comment={comment} />
+          ))}
+        </S.CommentContainer>
+      </S.PostContainer>
+      <S.TextAreaWrapper>
+        <TextArea
+          disabled={false}
+          onClick={uploadComment}
+          textAreaType='comment'
+        />
+      </S.TextAreaWrapper>
+    </S.Container>
+  );
+};
 
 export default PostDetail;

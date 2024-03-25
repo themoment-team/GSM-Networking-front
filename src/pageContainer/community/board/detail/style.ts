@@ -31,3 +31,9 @@ export const Line = styled.div`
 export const CommentContainer = styled(FlexBox)`
   gap: 2.5rem;
 `;
+
+export const TextAreaWrapper = styled.div`
+  position: fixed;
+  bottom: 2.5rem;
+  width: 100%;
+`;
