@@ -6,7 +6,7 @@ const FlexBox = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 4.375rem 0;
+  padding: 4.375rem 0 6.75rem;
 `;
 
 export const PostContainer = styled(FlexBox)`
