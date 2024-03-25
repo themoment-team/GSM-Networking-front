@@ -36,4 +36,5 @@ export const TextAreaWrapper = styled.div`
   position: fixed;
   bottom: 2.5rem;
   width: 100%;
+  box-shadow: 0px -0.625rem 1rem 0px rgba(255, 255, 255, 0.8);
 `;
