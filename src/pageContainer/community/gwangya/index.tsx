@@ -1,13 +1,16 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-
 import { toast } from 'react-toastify';
 
 import * as S from './style';
 
 import { Header, CommunityCard, TextArea } from '@/components';
-import { useGetGwangyaPostList, usePostGwangyaContent } from '@/hooks';
+import {
+  useGetGwangyaPostList,
+  usePostGwangyaContent,
+  useIntersectionObserver,
+} from '@/hooks';
 import type { GwangyaPostType } from '@/types';
 import { isExistCookie } from '@/utils';
 
@@ -41,35 +44,17 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
     setTopCardId(data?.pages[0][0]?.id ?? null);
   }, [data]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleObserver = (
-    [entry]: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
+  const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting) {
-      observer.unobserve(entry.target);
-
       fetchPreviousPage();
-
-      observer.observe(entry.target);
     }
   };
 
-  useEffect(() => {
-    if (!loadMoreTriggerRef.current) return;
-
-    const option = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0,
-    };
-
-    const observer = new IntersectionObserver(handleObserver, option);
-
-    observer.observe(loadMoreTriggerRef.current);
-
-    return () => observer.disconnect();
-  }, [handleObserver]);
+  useIntersectionObserver(loadMoreTriggerRef, handleObserver, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0,
+  });
 
   const {
     mutate: mutateUploadContent,

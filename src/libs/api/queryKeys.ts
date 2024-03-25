@@ -7,6 +7,11 @@ export const gwangyaQueryKeys = {
   postGwangyaContent: () => ['gwangya', 'post', 'content'],
 };
 
+export const boardQueryKeys = {
+  getBoardList: () => ['board', 'post', 'list'],
+  postBoardList: () => ['board', 'post', 'list'],
+};
+
 export const menteeQueryKeys = {
   postMenteeRegister: () => ['mentee', 'register'],
   patchMenteeAuthority: () => ['mentee', 'authority'],

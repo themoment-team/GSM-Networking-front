@@ -38,3 +38,9 @@ export const tempMentorUrl = {
 export const userUrl = {
   postProfileImgUrl: () => `/user/profile-url`,
 };
+
+export const boardUrl = {
+  getBoardList: () => `/board`,
+  postBoardList: () => `/board`,
+  getBoardContent: (boardId: number) => `/board`,
+};
