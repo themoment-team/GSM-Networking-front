@@ -11,7 +11,7 @@ import { useAutoResizeTextArea } from '@/hooks';
 const MAX_LENGTH = 200;
 
 interface Props {
-  textAreaType: 'gwangya' | 'chatting';
+  textAreaType: 'gwangya' | 'chatting' | 'comment';
   onClick: (content: string) => void;
   disabled: boolean;
 }
@@ -26,6 +26,10 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
     chatting: {
       placeholder: '메시지 보내기',
       icon: <SendIcon />,
+    },
+    comment: {
+      placeholder: '댓글은 최대 100자 까지 쓸 수 있습니다.',
+      icon: <UploadIcon />,
     },
   } as const;
 
