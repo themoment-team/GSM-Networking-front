@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Client as StompClient } from '@stomp/stompjs';
 import SockJS from 'sockjs-client';
@@ -8,27 +8,19 @@ import SockJS from 'sockjs-client';
 import * as S from './style';
 
 import { Header } from '@/components';
-import { authUrl, get } from '@/libs';
-import type { TokenType } from '@/types';
-import { getMyId, getSessionId } from '@/utils';
-
-import type { Client } from '@stomp/stompjs';
+import type { ChatListType } from '@/types';
+import { getAccessToken, getMyId, getSessionId } from '@/utils';
 
 interface SocketType extends WebSocket {
   _transport: { url: string };
 }
 
 const ChatList = () => {
-  const client = useRef<Client | null>(null);
-
-  const getAccessToken = async () => {
-    const { accessToken } = await get<TokenType>(authUrl.getMyToken());
-    return accessToken;
-  };
+  const client = useRef<StompClient | null>(null);
+  const [chatList, setChatList] = useState<ChatListType[] | null>(null);
 
   const handleClient = async () => {
     const socket = new SockJS(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ws`);
-
     const accessToken = await getAccessToken();
 
     client.current = new StompClient({
@@ -45,13 +37,13 @@ const ChatList = () => {
 
       onConnect: async () => {
         console.log('WebSocket 연결이 열렸습니다.');
-        const subscriptionDestination = `/queue/user/${getSessionId(
+        const subDestination = `/queue/user/${getSessionId(
           socket as unknown as SocketType
         )}`;
         const userId = await getMyId();
 
         if (client.current) {
-          client.current.subscribe(subscriptionDestination, (message) => {
+          client.current.subscribe(subDestination, (message) => {
             try {
               console.log(message);
             } catch (error) {
@@ -75,15 +67,12 @@ const ChatList = () => {
           });
 
           client.current.publish({
-            destination: '/queue/header',
-            headers: { 'content-type': 'application/json' },
-            binaryBody: binaryData,
+            destination: '/query/header',
+            // headers: { 'content-type': 'application/json' },
+            // binaryBody: binaryData,
             body: body,
           });
         }
-      },
-      onStompError: (frame) => {
-        console.error(frame);
       },
     });
 
@@ -100,6 +89,7 @@ const ChatList = () => {
       <Header />
       <S.Conatiner>
         <S.Text>채팅 목록</S.Text>
+        {/* {chatList?.map((i) => <ChattingListCard key={i.opponentUserId}  />)} */}
       </S.Conatiner>
     </>
   );
