@@ -25,7 +25,7 @@ const CommentCard: React.FC<Props> = ({
   const path = usePathname();
 
   const onAddCommentClick = () => {
-    if (path.split('/').length < 5) push(`${path}/${id}`);
+    push(`${path}/${id}`);
   };
 
   return (
@@ -44,7 +44,9 @@ const CommentCard: React.FC<Props> = ({
             {mention && <S.Mention>@{mention} </S.Mention>}
             {content}
           </S.Content>
-          <S.AddComment onClick={onAddCommentClick}>댓글 달기</S.AddComment>
+          {path.split('/').length === 4 && (
+            <S.AddComment onClick={onAddCommentClick}>댓글 달기</S.AddComment>
+          )}
         </S.TextWrapper>
       </S.Container>
       {comments &&
