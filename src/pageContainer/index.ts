@@ -1,4 +1,5 @@
 export { default as ChatList } from './chat/list';
+export { default as ChatRoom } from './chat/room';
 export { default as Gwangya } from './gwangya';
 export { default as MenteeRegister } from './register/mentee';
 export { default as MentorRegister } from './register/mentor';
