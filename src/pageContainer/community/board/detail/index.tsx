@@ -16,7 +16,7 @@ interface Props {
   initialData: PostType[];
 }
 
-const PREV_PATH = 'community/board/list' as const;
+const PREV_PATH = '/community/board/list' as const;
 
 const CommentData1: CommentType = {
   id: 0,
