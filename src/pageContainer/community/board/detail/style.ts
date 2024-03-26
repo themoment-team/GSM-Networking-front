@@ -6,7 +6,7 @@ const FlexBox = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 4.375rem 0;
+  padding: 4.375rem 0 6.75rem;
 `;
 
 export const PostContainer = styled(FlexBox)`
@@ -30,4 +30,11 @@ export const Line = styled.div`
 
 export const CommentContainer = styled(FlexBox)`
   gap: 2.5rem;
+`;
+
+export const TextAreaWrapper = styled.div`
+  position: fixed;
+  bottom: 2.5rem;
+  width: 100%;
+  box-shadow: 0px -0.625rem 1rem 0px rgba(255, 255, 255, 0.8);
 `;
