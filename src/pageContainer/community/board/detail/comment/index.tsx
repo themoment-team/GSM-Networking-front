@@ -4,7 +4,7 @@ import { useParams } from 'next/navigation';
 
 import * as S from './style';
 
-import { Header, SubFunctionHeader, CommentCard } from '@/components';
+import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
 import type { PostType, CommentType } from '@/types';
 
 interface Props {
@@ -50,6 +50,8 @@ const CommentData: CommentType = {
 const AddComment: React.FC<Props> = () => {
   const { postId } = useParams();
 
+  const uploadComment = () => {};
+
   return (
     <S.Container>
       <Header />
@@ -59,6 +61,13 @@ const AddComment: React.FC<Props> = () => {
           <CommentCard comment={CommentData} />
         </S.CommentContainer>
       </S.PostContainer>
+      <S.TextAreaWrapper>
+        <TextArea
+          disabled={false}
+          onClick={uploadComment}
+          textAreaType='comment'
+        />
+      </S.TextAreaWrapper>
     </S.Container>
   );
 };
