@@ -1,5 +1,7 @@
 'use client';
 
+import { useRef, useState, useEffect } from 'react';
+
 import * as S from './style';
 
 import type { CardInfo } from '@/types';
@@ -10,12 +12,20 @@ interface Props {
 }
 
 const NoticeCardList: React.FC<Props> = ({ initialData }) => {
+  const [cardList, setCardList] = useState<CardInfo[]>(initialData);
+
   return (
-    <S.NoticeCardList>
-      {initialData.map((data) => (
-        <NoticeCard {...data} />
-      ))}
-    </S.NoticeCardList>
+    <>
+      {cardList.length ? (
+        <S.NoticeCardList>
+          {cardList.map((card) => (
+            <NoticeCard initialData={cardList} />
+          ))}
+        </S.NoticeCardList>
+      ) : (
+        <></>
+      )}
+    </>
   );
 };
 

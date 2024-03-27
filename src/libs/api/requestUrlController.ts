@@ -40,7 +40,7 @@ export const userUrl = {
 };
 
 export const boardUrl = {
-  getBoardList: () => `/board`,
+  getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=10`,
   postBoardList: () => `/board`,
   getBoardContent: (boardId: number) => `/board`,
 };

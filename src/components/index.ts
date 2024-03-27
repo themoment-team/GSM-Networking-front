@@ -17,6 +17,7 @@ export { default as MentorList } from './MentorList';
 export { default as MiniProfile } from './MiniProfile';
 export { default as NavigationEvents } from './NavigationEvents';
 export { default as PostContent } from './PostContent';
+export { default as NoticeCardList } from './NoticeCardList';
 export { default as PrivacyCard } from './PrivacyCard';
 export { default as Profile } from './Profile';
 export { default as RandomMentorImg } from './MentorCard/RandomMentorImg';

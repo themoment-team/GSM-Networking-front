@@ -5,37 +5,44 @@ import { boardUrl } from '@/libs';
 import type { CardInfo } from '@/types';
 
 import type { Metadata } from 'next';
-import NoticeCardList from '@/components/NoticeCardList';
+import { NoticeCardList } from '@/components';
 
 export const metadata: Metadata = {
   title: '광야',
-  description: '익명으로 자유롭게 소통할 수 있는 광소마의 넓은 들판입니다.',
+  description: '',
 };
 
 const BoardPage = async () => {
   const postList = await getBoardList();
+  console.log('postList:', postList);
 
-  return <NoticeCardList initialData={postList} />;
+  return <NoticeCardList initialData={[...postList]} />;
 };
 
 const getBoardList = async (): Promise<CardInfo[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  if (!accessToken)
-    return redirect('/auth/refresh/gwangya?redirect=/community/board');
+  if (!accessToken) return redirect('/auth/refresh');
 
   const response = await fetch(
-    new URL(`/api/v1${boardUrl}`, process.env.NEXT_PUBLIC_API_BASE_URL),
-    { headers: { accessToken: accessToken } }
+    new URL(`/api/v1${boardUrl.getBoardList(0)}`, process.env.BASE_URL),
+    {
+      method: 'GET',
+      headers: { Cookie: `accessToken=${accessToken}` },
+    }
   );
 
   if (response.status === 401) {
-    return redirect('/auth/refresh/gwangya?redirect=/community/board');
+    return redirect('/auth/refresh');
   }
 
-  if (!response.ok) {
-    return redirect('/auth/signin');
+  if (response.status === 403) {
+    return redirect('/auth/signup');
   }
+
+  // if (!response.ok) {
+  //   return redirect('/auth/signin');
+  // }
 
   const postList: CardInfo[] = await response.json();
 
