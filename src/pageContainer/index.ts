@@ -1,3 +1,4 @@
+export { default as CommunityWrite } from './community/write';
 export { default as Gwangya } from './community/gwangya';
 export { default as MenteeRegister } from './register/mentee';
 export { default as MentorRegister } from './register/mentor';
