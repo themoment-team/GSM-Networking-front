@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -18,6 +19,10 @@ interface Props {
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {
+  const { push } = useRouter();
+
+  const [isHovered, setIsHovered] = useState(false);
+
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
   const isSNSExist = !!worker.SNS;
@@ -33,9 +38,16 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
     }
   };
 
+  const handleButtonClick = () => {
+    push(`/chat/${worker.id}`)
+  };
+
   return (
     <S.WorkerCardContainer>
-      <S.WorkerImgBox>
+      <S.WorkerImgBox
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {worker.profileUrl ? (
           <Image
             src={worker.profileUrl}
@@ -45,6 +57,13 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
           />
         ) : (
           <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+        )}
+        {isHovered && (
+          <S.HoverButton onClick={handleButtonClick}>
+            <S.HoverText>
+              채팅하기
+            </S.HoverText>
+          </S.HoverButton>
         )}
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
