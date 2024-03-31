@@ -1,8 +1,11 @@
 import { cookies } from 'next/headers';
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { menteeUrl } from '@/libs';
 import type { MenteeType } from '@/types';
+
+const MENTEE_REGISTER_URL = '/register/mentee' as const;
 
 /**
  * 자신의 멘티 정보를 반환합니다.
@@ -26,7 +29,9 @@ export const getMyMenteeInfo = async (
     }
   );
 
-  if (response.status === 404) {
+  const currentPath = headers().get('next-url');
+
+  if (response.status === 404 && MENTEE_REGISTER_URL === currentPath) {
     return redirect('/register/mentee');
   }
 
