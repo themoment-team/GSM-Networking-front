@@ -1,13 +1,13 @@
-import { cookies, headers } from 'next/headers';
+import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { menteeUrl } from '@/libs';
 import type { MenteeType } from '@/types';
 
 const Path = {
-  MENTEE_REGISTER_URL: '/register/mentee',
-  SIGN_URL: '/auth/signin',
-  AUTH_REFRESH_URL: '/auth/refresh',
+  MENTEE_REGISTER_PATH: '/register/mentee',
+  SIGN_PATH: '/auth/signin',
+  AUTH_REFRESH_PATH: '/auth/refresh',
 } as const;
 
 /**
@@ -16,7 +16,8 @@ const Path = {
  * @returns 멘티 정보 반환 시 멘티, 멘티 정보가 없다면 register/mentee로 이동됩니다.
  */
 export const getMyMenteeInfo = async (
-  redirectUrl: string
+  redirectUrl: string,
+  blockUrl?: string
 ): Promise<MenteeType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
@@ -32,22 +33,25 @@ export const getMyMenteeInfo = async (
     }
   );
 
-  const currentPath = headers().get('next-url');
+  const menteeInfo = await response.json();
+  const isMenteeRegisterPath = Path.MENTEE_REGISTER_PATH !== blockUrl;
+  const isUnauthorized = response.status === 401;
+  const isForbidden = response.status === 403;
+  const isNotFound = response.status === 404;
 
-  if (response.status === 404 && Path.MENTEE_REGISTER_URL !== currentPath) {
-    return redirect(Path.MENTEE_REGISTER_URL);
+  if (isNotFound) {
+    if (isMenteeRegisterPath) return redirect(Path.MENTEE_REGISTER_PATH);
+    else return menteeInfo;
   }
 
-  if (response.status === 401) {
-    return redirect(`${Path.AUTH_REFRESH_URL}?redirect=${redirectUrl}`);
+  if (isUnauthorized) {
+    return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
   }
 
   // 403의 경우 멘토일 수 있습니다.
-  if (!response.ok && response.status !== 403) {
-    return redirect(Path.SIGN_URL);
+  if (!response.ok && !isForbidden) {
+    return redirect(Path.SIGN_PATH);
   }
-
-  const menteeInfo = await response.json();
 
   return menteeInfo;
 };
