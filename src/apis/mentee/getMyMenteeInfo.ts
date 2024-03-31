@@ -30,7 +30,7 @@ export const getMyMenteeInfo = async (
 
   const currentPath = headers().get('next-url');
 
-  if (response.status === 404 && MENTEE_REGISTER_URL === currentPath) {
+  if (response.status === 404 && MENTEE_REGISTER_URL !== currentPath) {
     return redirect('/register/mentee');
   }
 
