@@ -4,7 +4,11 @@ import { redirect } from 'next/navigation';
 import { menteeUrl } from '@/libs';
 import type { MenteeType } from '@/types';
 
-const MENTEE_REGISTER_URL = '/register/mentee' as const;
+const Path = {
+  MENTEE_REGISTER_URL: '/register/mentee',
+  SIGN_URL: '/auth/signin',
+  AUTH_REFRESH_URL: '/auth/refresh',
+} as const;
 
 /**
  * 자신의 멘티 정보를 반환합니다.
@@ -30,17 +34,17 @@ export const getMyMenteeInfo = async (
 
   const currentPath = headers().get('next-url');
 
-  if (response.status === 404 && MENTEE_REGISTER_URL !== currentPath) {
-    return redirect('/register/mentee');
+  if (response.status === 404 && Path.MENTEE_REGISTER_URL !== currentPath) {
+    return redirect(Path.MENTEE_REGISTER_URL);
   }
 
   if (response.status === 401) {
-    return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+    return redirect(`${Path.AUTH_REFRESH_URL}?redirect=${redirectUrl}`);
   }
 
   // 403의 경우 멘토일 수 있습니다.
   if (!response.ok && response.status !== 403) {
-    return redirect('/auth/signin');
+    return redirect(Path.SIGN_URL);
   }
 
   const menteeInfo = await response.json();
