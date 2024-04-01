@@ -1,10 +1,10 @@
 import { z } from 'zod';
 
-import { COMMUNITY_CATEGORIES_ARRAY } from '@/constants';
+import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 
 export const communityWriteFormSchema = z.object({
   category: z
-    .enum(['글 카테고리', ...COMMUNITY_CATEGORIES_ARRAY], {
+    .enum(['글 카테고리', ...COMMUNITY_CATEGORY_ARRAY], {
       required_error: '카테고리를 선택해주세요.',
     })
     // https://github.com/colinhacks/zod?tab=readme-ov-file#refine
