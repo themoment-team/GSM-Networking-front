@@ -1,6 +1,7 @@
 export * from './Buttons';
 export * from './FormItem';
 export * from './Modal';
+export { default as BoardContent } from './BoardContent';
 export { default as CareerCard } from './CareerCard';
 export { default as CareerRegistrationBox } from './CareerRegistrationBox';
 export { default as ChattingListCard } from './ChattingListCard';
@@ -16,7 +17,6 @@ export { default as MentorCard } from './MentorCard';
 export { default as MentorList } from './MentorList';
 export { default as MiniProfile } from './MiniProfile';
 export { default as NavigationEvents } from './NavigationEvents';
-export { default as PostContent } from './PostContent';
 export { default as PrivacyCard } from './PrivacyCard';
 export { default as Profile } from './Profile';
 export { default as RandomMentorImg } from './MentorCard/RandomMentorImg';

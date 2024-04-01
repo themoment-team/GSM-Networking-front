@@ -2,22 +2,23 @@
 
 import * as S from './style';
 
+import { CategoryType } from '@/types';
 import type { ReverseCategoryType } from '@/types';
 
 interface Props {
   title: string;
-  description: string;
+  content: string;
   category: ReverseCategoryType;
 }
 
-const PostContent: React.FC<Props> = ({ title, description, category }) => (
+const BoardContent: React.FC<Props> = ({ title, content, category }) => (
   <S.TextWrapper>
     <S.Title>{title}</S.Title>
-    <S.Description>{description}</S.Description>
+    <S.Description>{content}</S.Description>
     <S.CategoryBox>
-      <S.CategoryText>{category}</S.CategoryText>
+      <S.CategoryText>{CategoryType[category]}</S.CategoryText>
     </S.CategoryBox>
   </S.TextWrapper>
 );
 
-export default PostContent;
+export default BoardContent;

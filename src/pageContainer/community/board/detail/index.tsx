@@ -5,7 +5,7 @@ import * as S from './style';
 import {
   Header,
   SubFunctionHeader,
-  PostContent,
+  BoardContent,
   CommentCard,
   MiniProfile,
   ChattingButton,
@@ -21,7 +21,7 @@ interface Props {
 
 const PREV_PATH = 'community/board/' as const;
 
-const PostDetail: React.FC<Props> = ({ boardId, initialData }) => {
+const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const uploadComment = () => {};
 
   useGetBoardDetail(boardId, {
@@ -38,9 +38,9 @@ const PostDetail: React.FC<Props> = ({ boardId, initialData }) => {
             <MiniProfile profile={initialData.author} />
             <ChattingButton onClick={() => {}} />
           </S.WriterProfileWrapper>
-          <PostContent
+          <BoardContent
             title={initialData.title}
-            description={initialData.content}
+            content={initialData.content}
             category={initialData.boardCategory}
           />
           <S.Line />
@@ -62,4 +62,4 @@ const PostDetail: React.FC<Props> = ({ boardId, initialData }) => {
   );
 };
 
-export default PostDetail;
+export default BoardDetail;
