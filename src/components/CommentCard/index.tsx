@@ -1,5 +1,8 @@
 /**@jsxImportSource @emotion/react */
+
 'use client';
+
+import { useRouter, usePathname } from 'next/navigation';
 
 import { css } from '@emotion/react';
 
@@ -14,35 +17,51 @@ interface Props {
 }
 
 const CommentCard: React.FC<Props> = ({
-  comment: { author, comment, replyCommentId, replies },
+  comment: { commentId, author, comment, replyCommentId, replies },
   isReply,
-}) => (
-  <S.EveryWrapper>
-    <S.Container
-      css={
-        isReply &&
-        css`
-          margin-left: 2.75rem;
-        `
-      }
-    >
-      <MiniProfile profile={author} isSmallSize={!!isReply} />
-      <S.TextWrapper>
-        <S.Content>
-          {replyCommentId && <Reply replyCommentId={replyCommentId} />}
-          {comment}
-        </S.Content>
-        <S.AddComment>댓글 달기</S.AddComment>
-      </S.TextWrapper>
-    </S.Container>
-    {replies &&
-      replies.length > 0 &&
-      !isReply &&
-      replies.length > 0 &&
-      replies.map((comment) => (
-        <CommentCard key={comment.commentId} comment={comment} isReply={true} />
-      ))}
-  </S.EveryWrapper>
-);
+}) => {
+  const { push } = useRouter();
+
+  const path = usePathname();
+
+  const onAddCommentClick = () => {
+    push(`${path}/${commentId}`);
+  };
+
+  return (
+    <S.EveryWrapper>
+      <S.Container
+        css={
+          isReply &&
+          css`
+            margin-left: 2.75rem;
+          `
+        }
+      >
+        <MiniProfile profile={author} isSmallSize={!!isReply} />
+        <S.TextWrapper>
+          <S.Content>
+            {replyCommentId && <Reply replyCommentId={replyCommentId} />}
+            {comment}
+          </S.Content>
+          {path.split('/').length === 4 && (
+            <S.AddComment onClick={onAddCommentClick}>댓글 달기</S.AddComment>
+          )}
+        </S.TextWrapper>
+      </S.Container>
+      {replies &&
+        replies.length > 0 &&
+        !isReply &&
+        replies.length > 0 &&
+        replies.map((comment) => (
+          <CommentCard
+            key={comment.commentId}
+            comment={comment}
+            isReply={true}
+          />
+        ))}
+    </S.EveryWrapper>
+  );
+};
 
 export default CommentCard;
