@@ -1,6 +1,6 @@
 import type { ReverseCategoryType, CommentType, ProfileType } from '@/types';
 
-export interface PostType {
+export interface BoardType {
   id: string;
   title: string;
   content: string;

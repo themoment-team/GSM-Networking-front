@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { boardUrl } from '@/libs';
-import type { MenteeType } from '@/types';
+import type { BoardType } from '@/types';
 
 const Path = {
   MENTEE_REGISTER_PATH: '/register/mentee',
@@ -13,12 +13,12 @@ const Path = {
 /**
  * boardId에 따른 board 정보를 조회합니다.
  *
- * @returns board 정보를 반환합니다. board 정보가 없다면 redirectUrl로 redirect됩니다.
+ * @returns board 정보를 반환합니다. board 정보가 없다면 null을 반환합니다.
  */
 export const getBoardDetail = async (
   redirectUrl: string,
   boardId: string
-): Promise<MenteeType | null> => {
+): Promise<BoardType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
   if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
@@ -36,6 +36,10 @@ export const getBoardDetail = async (
   const boardDetail = await response.json();
   const isUnauthorized = response.status === 401;
   const isNotFound = response.status === 404;
+
+  if (isNotFound) {
+    return null;
+  }
 
   if (isUnauthorized) {
     return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
