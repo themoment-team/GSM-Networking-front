@@ -1,10 +1,9 @@
 import type { ProfileType } from '@/types';
 
 export interface CommentType {
-  id: number;
-  profile: ProfileType;
-  content: string;
-  createdAt: Date;
-  mention?: string;
-  comments?: CommentType[];
+  commentId: string;
+  author: ProfileType;
+  comment: string;
+  replies?: CommentType[];
+  replyCommentId?: string;
 }

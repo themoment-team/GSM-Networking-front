@@ -1,13 +1,23 @@
-// 후에 서버 측 명세가 나오면 enum으로 업데이트 하겠습니다.
+export enum CategoryType {
+  선생님 = 'TEACHER',
+  공지 = 'NOTICE',
+  QnA = 'QnA',
+  잡담 = 'CHAT',
+  자료공유 = 'SHARE',
+  스터디 = 'STUDY',
+  숙박 = 'HOSTEL',
+  모임 = 'MEET',
+  스포츠 = 'SPORT',
+}
 
-export type CategoryType =
-  | '전체'
-  | '선생님'
-  | '공지'
-  | 'QnA'
-  | '잡담'
-  | '자료공유'
-  | '스터디'
-  | '숙박'
-  | '모임'
-  | '스포츠';
+export enum ReverseCategoryType {
+  TEACHER = '선생님',
+  NOTICE = '공지',
+  QnA = 'QnA',
+  CHAT = '잡담',
+  SHARE = '자료공유',
+  STUDY = '스터디',
+  HOSTEL = '숙박',
+  MEET = '모임',
+  SPORT = '스포츠',
+}

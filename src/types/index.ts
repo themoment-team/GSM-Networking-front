@@ -1,4 +1,5 @@
 export * from './auth';
+export * from './board';
 export * from './cardInfo';
 export * from './career';
 export * from './category';
@@ -11,6 +12,5 @@ export * from './mentor';
 export * from './mentorInfo';
 export * from './opponentInfo';
 export * from './position';
-export * from './post';
 export * from './profile';
 export * from './worker';
