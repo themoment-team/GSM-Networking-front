@@ -27,8 +27,3 @@ export const AddComment = styled.span`
   color: ${({ theme }) => theme.color.grey[500]};
   cursor: pointer;
 `;
-
-export const Mention = styled.span`
-  ${({ theme }) => theme.typo.body2};
-  color: ${({ theme }) => theme.color.skyBlue[400]};
-`;

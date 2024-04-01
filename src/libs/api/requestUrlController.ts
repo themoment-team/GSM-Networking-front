@@ -4,6 +4,14 @@ export const authUrl = {
   getLogout: () => '/auth/logout',
 };
 
+export const boardUrl = {
+  getBoardDetail: (boardId: string) => `/board/${boardId}`,
+};
+
+export const commentUrl = {
+  getCommentDetail: (commentId: string) => `comment/${commentId}`,
+};
+
 export const fileUrl = {
   postUploadFile: () => '/file',
 };
