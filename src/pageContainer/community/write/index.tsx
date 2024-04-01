@@ -14,7 +14,7 @@ import {
   SelectFormItem,
   SubFunctionHeader,
 } from '@/components';
-import { COMMUNITY_CATEGORIES_ARRAY } from '@/constants';
+import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { communityWriteFormSchema } from '@/schemas';
 import type { CommunityWriteFormType } from '@/types';
 
@@ -53,7 +53,7 @@ const CommunityWrite = () => {
             <SelectFormItem
               {...register('category')}
               value={watch('category')}
-              options={[...COMMUNITY_CATEGORIES_ARRAY]}
+              options={[...COMMUNITY_CATEGORY_ARRAY]}
               selectTitle='카테고리'
               defaultValue={'글 카테고리'}
               errorMessage={errors.category?.message}
