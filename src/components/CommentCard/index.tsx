@@ -5,7 +5,7 @@ import { css } from '@emotion/react';
 
 import * as S from './style';
 
-import { MiniProfile } from '@/components';
+import { MiniProfile, Reply } from '@/components';
 import type { CommentType } from '@/types';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const CommentCard: React.FC<Props> = ({
-  comment: { profile, content, mention, comments },
+  comment: { author, comment, replyCommentId, replies },
   isReply,
 }) => (
   <S.EveryWrapper>
@@ -26,20 +26,21 @@ const CommentCard: React.FC<Props> = ({
         `
       }
     >
-      <MiniProfile profile={profile} isSmallSize={!!isReply} />
+      <MiniProfile profile={author} isSmallSize={!!isReply} />
       <S.TextWrapper>
         <S.Content>
-          {mention && <S.Mention>@{mention} </S.Mention>}
-          {content}
+          {replyCommentId && <Reply replyCommentId={replyCommentId} />}
+          {comment}
         </S.Content>
         <S.AddComment>댓글 달기</S.AddComment>
       </S.TextWrapper>
     </S.Container>
-    {comments &&
+    {replies &&
+      replies.length > 0 &&
       !isReply &&
-      comments.length > 0 &&
-      comments.map((comment) => (
-        <CommentCard key={comment.id} comment={comment} isReply={true} />
+      replies.length > 0 &&
+      replies.map((comment) => (
+        <CommentCard key={comment.commentId} comment={comment} isReply={true} />
       ))}
   </S.EveryWrapper>
 );

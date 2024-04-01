@@ -20,6 +20,7 @@ export { default as NavigationEvents } from './NavigationEvents';
 export { default as PrivacyCard } from './PrivacyCard';
 export { default as Profile } from './Profile';
 export { default as RandomMentorImg } from './MentorCard/RandomMentorImg';
+export { default as Reply } from './Reply';
 export { default as SearchBar } from './SearchBar';
 export { default as SearchNotFound } from './SearchNotFound';
 export { default as Select } from './Select';

@@ -5,7 +5,11 @@ export const authUrl = {
 };
 
 export const boardUrl = {
-  getBoardDetail: (boardId: string) => `/board${boardId}`,
+  getBoardDetail: (boardId: string) => `/board/${boardId}`,
+};
+
+export const commentUrl = {
+  getCommentDetail: (commentId: string) => `comment/${commentId}`,
 };
 
 export const fileUrl = {
