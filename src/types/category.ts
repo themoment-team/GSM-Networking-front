@@ -1,5 +1,4 @@
 export enum CategoryType {
-  전체 = 'ALL',
   선생님 = 'TEACHER',
   공지 = 'NOTICE',
   QnA = 'QnA',
@@ -12,7 +11,6 @@ export enum CategoryType {
 }
 
 export enum ReverseCategoryType {
-  ALL = '전체',
   TEACHER = '선생님',
   NOTICE = '공지',
   QnA = 'QnA',
