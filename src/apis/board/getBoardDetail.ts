@@ -4,11 +4,7 @@ import { redirect } from 'next/navigation';
 import { boardUrl } from '@/libs';
 import type { BoardType } from '@/types';
 
-const Path = {
-  MENTEE_REGISTER_PATH: '/register/mentee',
-  SIGN_PATH: '/auth/signin',
-  AUTH_REFRESH_PATH: '/auth/refresh',
-} as const;
+const AUTH_REFRESH_PATH = '/auth/refresh' as const;
 
 /**
  * boardId에 따른 board 정보를 조회합니다.
@@ -42,7 +38,7 @@ export const getBoardDetail = async (
   }
 
   if (isUnauthorized) {
-    return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
+    return redirect(`${AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
   }
 
   if (!response.ok) {

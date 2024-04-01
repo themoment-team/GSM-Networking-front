@@ -2,12 +2,12 @@
 
 import * as S from './style';
 
-import type { CategoryType } from '@/types';
+import type { ReverseCategoryType } from '@/types';
 
 interface Props {
   title: string;
   description: string;
-  category: CategoryType;
+  category: ReverseCategoryType;
 }
 
 const PostContent: React.FC<Props> = ({ title, description, category }) => (

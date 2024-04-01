@@ -1,3 +1,7 @@
+export const boardQueryKeys = {
+  getBoardDetail: (boardId: string) => ['board', boardId],
+};
+
 export const fileQueryKeys = {
   postUploadFile: () => ['file'],
 } as const;

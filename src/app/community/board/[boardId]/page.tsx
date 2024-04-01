@@ -1,4 +1,5 @@
-import { PostDetail } from '@/pageContainer';
+import { getBoardDetail } from '@/apis';
+import { BoardDetail } from '@/pageContainer';
 
 interface Params {
   params: {
@@ -6,8 +7,10 @@ interface Params {
   };
 }
 
-const PostDetailPage: React.FC<Params> = ({ params: { boardId } }) => (
-  <PostDetail initialData={[]} />
-);
+const BoardDetailPage: React.FC<Params> = async ({ params: { boardId } }) => {
+  const boardDetail = await getBoardDetail('/board', boardId);
 
-export default PostDetailPage;
+  return <BoardDetail initialData={boardDetail} boardId={boardId} />;
+};
+
+export default BoardDetailPage;
