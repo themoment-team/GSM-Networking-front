@@ -24,28 +24,28 @@ const PREV_PATH = '/community/board/' as const;
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const uploadComment = () => {};
 
-  useGetBoardDetail(boardId, {
+  const { data: boardData } = useGetBoardDetail(boardId, {
     initialData,
   });
 
   return (
     <S.Container>
       <Header />
-      {initialData && (
+      {boardData && (
         <S.PostContainer>
           <SubFunctionHeader prevPath={PREV_PATH} title='글' />
           <S.WriterProfileWrapper>
-            <MiniProfile profile={initialData.author} />
+            <MiniProfile profile={boardData.author} />
             <ChattingButton onClick={() => {}} />
           </S.WriterProfileWrapper>
           <BoardContent
-            title={initialData.title}
-            content={initialData.content}
-            category={initialData.boardCategory}
+            title={boardData.title}
+            content={boardData.content}
+            category={boardData.boardCategory}
           />
           <S.Line />
           <S.CommentContainer>
-            {initialData.comments.map((comment) => (
+            {boardData.comments.map((comment) => (
               <CommentCard key={comment.commentId} comment={comment} />
             ))}
           </S.CommentContainer>
