@@ -1,3 +1,4 @@
+export { default as AddComment } from './community/board/detail/comment';
 export { default as CommunityWrite } from './community/write';
 export { default as Gwangya } from './community/gwangya';
 export { default as MenteeRegister } from './register/mentee';
