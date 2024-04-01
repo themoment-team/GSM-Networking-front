@@ -52,7 +52,6 @@ const CommentCard: React.FC<Props> = ({
       {replies &&
         replies.length > 0 &&
         !isReply &&
-        replies.length > 0 &&
         replies.map((comment) => (
           <CommentCard
             key={comment.commentId}
