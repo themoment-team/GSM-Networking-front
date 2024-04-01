@@ -7,7 +7,7 @@ export const communityWriteFormSchema = z.object({
     .enum(['글 카테고리', ...COMMUNITY_CATEGORY_ARRAY], {
       required_error: '카테고리를 선택해주세요.',
     })
-    // https://github.com/colinhacks/zod?tab=readme-ov-file#refine
+    // https://zod.dev/?id=refine
     // Any truthy value will pass validation.
     // 함수의 결과가 true이면 validation 통과, false이면 validation 실패 (에러 발생)
     // 즉, value가 '글 카테고리' 시 에러 발생
