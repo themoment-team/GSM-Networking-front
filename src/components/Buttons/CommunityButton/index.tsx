@@ -30,7 +30,7 @@ const Community: React.FC<Props> = ({ segment }) => {
       <Link href='/community/gwangya' css={selectStyle('/community/gwangya')}>
         광야
       </Link>
-      <S.Devide />
+      <S.Divide />
       <Link href='/community/board' css={selectStyle('/community/board')}>
         게시판
       </Link>

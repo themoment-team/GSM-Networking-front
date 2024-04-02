@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const BoardCard = styled.div`
   display: flex;
-  padding: 28px 24px;
+  padding: 1.75rem 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
@@ -11,7 +11,7 @@ export const BoardCard = styled.div`
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   width: 37.5rem;
   cursor: pointer;
-  margin-bottom: 24px;
+  margin-bottom: 1.5rem;
 `;
 
 export const ContentBox = styled(Link)``;

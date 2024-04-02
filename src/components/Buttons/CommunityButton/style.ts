@@ -4,13 +4,13 @@ export const Button = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 0.75rem;
   ${({ theme }) => theme.typo.subtitle}
   color: ${({ theme }) => theme.color.grey['300']};
 `;
 
-export const Devide = styled.div`
-  width: 1px;
-  height: 23px;
+export const Divide = styled.div`
+  width: 0.0625rem;
+  height: 1.4375rem;
   background: ${({ theme }) => theme.color.grey['150']};
 `;

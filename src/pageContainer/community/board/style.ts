@@ -38,11 +38,8 @@ export const Title = styled.h1`
 `;
 
 export const LoadMoreTrigger = styled.div`
-  height: 100px;
-  width: 200px;
-  background-color: pink;
   position: relative;
-  bottom: 10px;
+  bottom: 0.625rem;
 `;
 
 export const BoardCardWrapper = styled.div`
