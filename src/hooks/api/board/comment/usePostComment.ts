@@ -12,6 +12,6 @@ export const usePostComment = (
   useMutation({
     mutationKey: commentQueryKeys.postComment(),
     mutationFn: (body: CommentRequestType) =>
-      post(`api/v1${commentUrl.postComment()}`, body),
+      post(commentUrl.postComment(), body),
     ...options,
   });

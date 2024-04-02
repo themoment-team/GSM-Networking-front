@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { ChangeEvent } from 'react';
 
 import * as S from './style';
@@ -10,7 +11,10 @@ import { useAutoResizeTextArea } from '@/hooks';
 
 interface Props {
   textAreaType: 'gwangya' | 'chatting' | 'comment';
-  onClick: (content: string) => void;
+  onClick: (
+    content: string,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => void;
   disabled: boolean;
 }
 
@@ -87,7 +91,7 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
             </S.MaxLengthNotice>
           )}
           <S.UploadButton
-            onClick={() => onClick(inputValue)}
+            onClick={() => onClick(inputValue, setInputValue)}
             disabled={disabled}
           >
             {textAreaElements[textAreaType].icon}

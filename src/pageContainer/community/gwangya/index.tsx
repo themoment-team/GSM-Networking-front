@@ -13,7 +13,7 @@ import {
   useIntersectionObserver,
 } from '@/hooks';
 import type { GwangyaPostType } from '@/types';
-import { isExistCookie } from '@/utils';
+import { isExistCookie, isAllowedContent } from '@/utils';
 
 interface Props {
   initialData: GwangyaPostType[];
@@ -69,9 +69,12 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
   });
 
   const uploadContent = (inputValue: string) => {
-    if (inputValue.replaceAll('\n', '').replaceAll('\u0020', '').length !== 0)
-      mutateUploadContent(inputValue);
-    else toast.error('게시물 내용을 입력해주세요.');
+    if (!isAllowedContent(inputValue)) {
+      toast.error('게시물 내용을 입력해주세요.');
+      return;
+    }
+
+    mutateUploadContent(inputValue);
   };
 
   return (
