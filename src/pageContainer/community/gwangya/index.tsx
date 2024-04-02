@@ -6,8 +6,12 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { Header, CommunityCard, TextArea } from '@/components';
-import { useGetGwangyaPostList, usePostGwangyaContent } from '@/hooks';
+import { Header, CommunityCard, TextArea, CommunityButton } from '@/components';
+import {
+  useGetGwangyaPostList,
+  usePostGwangyaContent,
+  useIntersectionObserver,
+} from '@/hooks';
 import type { GwangyaPostType } from '@/types';
 import { isExistCookie } from '@/utils';
 
@@ -41,35 +45,17 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
     setTopCardId(data?.pages[0][0]?.id ?? null);
   }, [data]);
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const handleObserver = (
-    [entry]: IntersectionObserverEntry[],
-    observer: IntersectionObserver
-  ) => {
+  const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting) {
-      observer.unobserve(entry.target);
-
       fetchPreviousPage();
-
-      observer.observe(entry.target);
     }
   };
 
-  useEffect(() => {
-    if (!loadMoreTriggerRef.current) return;
-
-    const option = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0,
-    };
-
-    const observer = new IntersectionObserver(handleObserver, option);
-
-    observer.observe(loadMoreTriggerRef.current);
-
-    return () => observer.disconnect();
-  }, [handleObserver]);
+  useIntersectionObserver(loadMoreTriggerRef, handleObserver, {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0,
+  });
 
   const {
     mutate: mutateUploadContent,
@@ -93,10 +79,7 @@ const Gwangya: React.FC<Props> = ({ initialData }) => {
       <Header />
       <S.Container>
         <S.TitleBox>
-          <S.Title>광야</S.Title>
-          <S.Description>
-            익명으로 자유롭게 소통할 수 있는 광소마의 넓은 들판입니다.
-          </S.Description>
+          <CommunityButton segment='/community/gwangya' />
         </S.TitleBox>
         <S.PostWrapper>
           <S.PostList ref={postListRef} isFetching={isFetchingPreviousPage}>

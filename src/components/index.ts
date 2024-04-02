@@ -1,6 +1,7 @@
 export * from './Buttons';
 export * from './FormItem';
 export * from './Modal';
+export { default as BoardCard } from './BoardCard';
 export { default as BoardContent } from './BoardContent';
 export { default as CareerCard } from './CareerCard';
 export { default as CareerRegistrationBox } from './CareerRegistrationBox';
