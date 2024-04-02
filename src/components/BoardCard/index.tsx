@@ -5,6 +5,7 @@ import React, { forwardRef } from 'react';
 import * as S from './style';
 
 import type { BoardInfo } from '@/types';
+import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
 
 // eslint-disable-next-line react/display-name
@@ -23,7 +24,7 @@ const BoardCard = forwardRef<HTMLDivElement, BoardInfo>(
                 <S.Time>{time}</S.Time>
               </S.DateAndTime>
             </S.HeaderTitle>
-            <S.Tag>#{boardCategory}</S.Tag>
+            <S.Tag>#{ReverseCategoryType[boardCategory]}</S.Tag>
           </S.ContentHeader>
           <S.Content>{title}</S.Content>
         </S.ContentBox>
