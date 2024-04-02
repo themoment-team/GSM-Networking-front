@@ -12,7 +12,8 @@ export const boardUrl = {
 };
 
 export const commentUrl = {
-  getCommentDetail: (commentId: string) => `comment/${commentId}`,
+  getCommentDetail: (commentId: string) => `/comment/${commentId}`,
+  postComment: () => `/comment`,
 };
 
 export const fileUrl = {
