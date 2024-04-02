@@ -1,5 +1,7 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 import { toast } from 'react-toastify';
 
 import * as S from './style';
@@ -15,6 +17,7 @@ import {
 } from '@/components';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
 import type { BoardType } from '@/types';
+import { isAllowedContent } from '@/utils';
 
 interface Props {
   initialData: BoardType | null;
@@ -24,10 +27,23 @@ interface Props {
 const PREV_PATH = '/community/board/' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
-  const { mutate: postMutate } = usePostComment();
+  const { data: boardData, refetch } = useGetBoardDetail(boardId, {
+    initialData,
+  });
 
-  const uploadComment = (comment: string) => {
-    if (comment.replaceAll('\n', '').replaceAll('\u0020', '').length === 0) {
+  const handleUploadSuccess = () => {
+    refetch();
+  };
+
+  const { mutate: postMutate } = usePostComment({
+    onSuccess: handleUploadSuccess,
+  });
+
+  const uploadComment = (
+    comment: string,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => {
+    if (!isAllowedContent(comment)) {
       toast.error('게시물 내용을 입력해주세요.');
       return;
     }
@@ -38,11 +54,8 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     };
 
     postMutate(commentObject);
+    setInputValue('');
   };
-
-  const { data: boardData } = useGetBoardDetail(boardId, {
-    initialData,
-  });
 
   return (
     <S.Container>
