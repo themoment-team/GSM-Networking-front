@@ -1,5 +1,7 @@
 'use client';
 
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import {
@@ -11,7 +13,7 @@ import {
   ChattingButton,
   TextArea,
 } from '@/components';
-import { useGetBoardDetail } from '@/hooks';
+import { useGetBoardDetail, usePostComment } from '@/hooks';
 import type { BoardType } from '@/types';
 
 interface Props {
@@ -22,7 +24,21 @@ interface Props {
 const PREV_PATH = '/community/board/' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
-  const uploadComment = () => {};
+  const { mutate: postMutate } = usePostComment();
+
+  const uploadComment = (comment: string) => {
+    if (comment.replaceAll('\n', '').replaceAll('\u0020', '').length === 0) {
+      toast.error('게시물 내용을 입력해주세요.');
+      return;
+    }
+
+    const commentObject = {
+      boardId: boardId,
+      comment: comment,
+    };
+
+    postMutate(commentObject);
+  };
 
   const { data: boardData } = useGetBoardDetail(boardId, {
     initialData,
