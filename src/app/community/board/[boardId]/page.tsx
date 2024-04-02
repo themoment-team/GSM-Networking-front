@@ -1,6 +1,6 @@
 import { getBoardDetail } from '@/apis';
 import { BoardDetail } from '@/pageContainer';
-import type { BoardType } from '@/types';
+import type { BoardType, CommentType } from '@/types';
 
 interface Params {
   params: {
@@ -21,17 +21,15 @@ const BoardDetailPage: React.FC<Params> = async ({ params: { boardId } }) => {
 
 export default BoardDetailPage;
 
+const addRandomValue = (object: BoardType | CommentType) => {
+  object.author.temporaryImgNumber = Math.floor(Math.random() * 5);
+};
+
 const addTemporaryImgNumber = (board: BoardType | null) => {
   if (!board) return null;
 
-  const newBoard = {
-    ...board,
-    temporaryImgNumber: Math.floor(Math.random() * 5),
-  };
-  newBoard.comments = newBoard.comments.map((comment) => ({
-    ...comment,
-    temporaryImgNumber: Math.floor(Math.random() * 5),
-  }));
+  addRandomValue(board);
+  board.comments.forEach((comment) => addRandomValue(comment));
 
-  return newBoard;
+  return board;
 };

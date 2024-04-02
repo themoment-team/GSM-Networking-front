@@ -6,4 +6,5 @@ export interface ProfileType {
   name: string;
   generation: number;
   profileUrl?: string;
+  temporaryImgNumber?: number;
 }
