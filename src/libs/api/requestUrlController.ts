@@ -6,6 +6,7 @@ export const authUrl = {
 
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
+  postBoardContent: () => '/board',
 };
 
 export const commentUrl = {
