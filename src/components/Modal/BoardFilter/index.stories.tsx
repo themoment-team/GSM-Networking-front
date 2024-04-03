@@ -14,7 +14,5 @@ export default meta;
 type Story = StoryObj<typeof FilterModal>;
 
 export const Primary: Story = {
-  args: {
-    filteredWorkerLength: 10,
-  },
+
 };

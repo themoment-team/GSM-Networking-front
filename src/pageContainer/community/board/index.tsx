@@ -1,14 +1,16 @@
 'use client';
 
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect ,useState} from 'react';
 
 import * as S from './style';
 
-import { Header, CommunityButton, WriteButton } from '@/components';
+import { Header, CommunityButton, WriteButton, FilterButton } from '@/components';
 import { BoardCard } from '@/components';
+import { BoardFilterModal } from '@/components';
 import { useIntersectionObserver } from '@/hooks';
 import { useGetBoardList } from '@/hooks';
 import type { BoardInfo } from '@/types';
+
 
 interface Props {
   initialData: BoardInfo[];
@@ -33,11 +35,13 @@ const Board: React.FC<Props> = ({ initialData }) => {
     rootMargin: '0px',
     threshold: 0,
   });
+  const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   useEffect(() => {
     // 초기 데이터를 가져올 시, 스크롤을 최상단으로 이동
     postListRef.current?.scrollTo(0, 0);
   }, []);
+
 
   return (
     <>
@@ -46,6 +50,11 @@ const Board: React.FC<Props> = ({ initialData }) => {
         <S.TitleBox>
           <CommunityButton segment='/community/board' />
         </S.TitleBox>
+        <FilterButton onClick={() =>
+        setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)} isActive={isShowFilterModal}/>
+        {isShowFilterModal && (
+          <BoardFilterModal setIsShowFilterModal={setIsShowFilterModal}/>
+      )}
         <S.BoardCardWrapper>
           <S.BoardCardList ref={postListRef} isFetching={isFetchingNextPage}>
             {data?.pages.map((page) =>

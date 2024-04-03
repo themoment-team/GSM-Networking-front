@@ -44,13 +44,13 @@ export const SectionTitle = styled.p`
   color: ${({ theme }) => theme.color.grey[500]};
   `;
 
-export const GenerationWrapper = styled.div`
+export const CategoryWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
   `;
 
-export const GenerationButton = styled.button`
+export const CategoryButton = styled.button`
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.grey[500]};
   padding: 0.375rem 1rem;
@@ -68,12 +68,12 @@ export const PositionHeader = styled.div`
   height: 2.25rem;
 `;
 
-export const PositionWrapper = styled(GenerationWrapper)`
+export const PositionWrapper = styled(CategoryWrapper)`
   height: 2.375rem;
   margin-top: 1.5rem;
 `;
 
-export const PositionButton = styled(GenerationButton)`
+export const PositionButton = styled(CategoryButton)`
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
 
   &:focus {
