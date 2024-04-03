@@ -1,7 +1,7 @@
 export enum CategoryType {
   선생님 = 'TEACHER',
   공지 = 'NOTICE',
-  QNA = 'QNA',
+  QnA = 'QNA',
   잡담 = 'CHAT',
   자료공유 = 'SHARE',
   스터디 = 'STUDY',
@@ -13,7 +13,7 @@ export enum CategoryType {
 export enum ReverseCategoryType {
   TEACHER = '선생님',
   NOTICE = '공지',
-  QNA = 'QNA',
+  QnA = 'QNA',
   CHAT = '잡담',
   SHARE = '자료공유',
   STUDY = '스터디',
