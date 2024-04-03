@@ -3,7 +3,6 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import { get, boardQueryKeys, boardUrl } from '@/libs';
 import type { BoardInfo } from '@/types';
 
-// TODO: useInfiniteQuery로 전환
 export const useGetBoardList = (initialData?: BoardInfo[]) =>
   useInfiniteQuery({
     queryKey: boardQueryKeys.getBoardList(),

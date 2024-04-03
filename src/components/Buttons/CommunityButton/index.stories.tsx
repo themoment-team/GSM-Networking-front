@@ -1,9 +1,9 @@
-import Community from '.';
+import CommunityButton from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Community> = {
-  component: Community,
+const meta: Meta<typeof CommunityButton> = {
+  component: CommunityButton,
   parameters: {
     layout: 'centered',
   },
@@ -11,8 +11,7 @@ const meta: Meta<typeof Community> = {
 
 export default meta;
 
-type Story = StoryObj<typeof Community>;
+type Story = StoryObj<typeof CommunityButton>;
 
 export const Primary: Story = {
-  args: {},
 };

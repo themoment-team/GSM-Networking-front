@@ -36,9 +36,6 @@ const getBoardList = async (): Promise<BoardInfo[]> => {
     return redirect('/auth/refresh');
   }
 
-  if (response.status === 403) {
-    return redirect('/auth/signup');
-  }
 
   if (!response.ok) {
     return redirect('/auth/signin');

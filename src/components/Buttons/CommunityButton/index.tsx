@@ -10,14 +10,16 @@ import * as S from './style';
 
 import { theme } from '@/styles';
 
+const GWANGYA_PATH = '/community/gwangya';
+const BOARD_PATH = '/community/board';
 
-type SegmentType = '' | '/community/gwangya' | '/community/board';
+type SegmentType = '' | typeof GWANGYA_PATH | typeof BOARD_PATH;
 
 interface Props {
   segment: SegmentType;
 }
 
-const Community: React.FC<Props> = ({ segment }) => {
+const CommunityButton: React.FC<Props> = ({ segment }) => {
   const selectStyle = (href: SegmentType) =>
     segment === href &&
     css`
@@ -27,15 +29,15 @@ const Community: React.FC<Props> = ({ segment }) => {
 
   return (
     <S.Button>
-      <Link href='/community/gwangya' css={selectStyle('/community/gwangya')}>
+      <Link href={GWANGYA_PATH} css={selectStyle(GWANGYA_PATH)}>
         광야
       </Link>
       <S.Divide />
-      <Link href='/community/board' css={selectStyle('/community/board')}>
+      <Link href={BOARD_PATH} css={selectStyle(BOARD_PATH)}>
         게시판
       </Link>
     </S.Button>
   );
 };
 
-export default Community;
+export default CommunityButton;
