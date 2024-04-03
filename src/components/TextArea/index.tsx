@@ -31,7 +31,7 @@ const textAreaElements = {
     MAX_LENGTH: 200,
   },
   comment: {
-    placeholder: '댓글은 최대 100자 까지 쓸 수 있습니다.',
+    placeholder: `댓글은 최대 300자 까지 쓸 수 있습니다.`,
     icon: <UploadIcon />,
     MAX_LENGTH: 300,
   },
