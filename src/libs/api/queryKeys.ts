@@ -1,5 +1,6 @@
 export const boardQueryKeys = {
   getBoardDetail: (boardId: string) => ['board', boardId],
+  postBoardContent: () => ['board', 'content'],
 };
 
 export const commentQueryKeys = {
