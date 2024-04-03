@@ -4,7 +4,7 @@ import * as S from './style';
 
 import { WriteIcon } from '@/assets';
 
-const WRITE_PATH = '/community/write';
+const WRITE_PATH = '/community/write' as const;
 
 
 const WriteButton: React.FC = () => (
