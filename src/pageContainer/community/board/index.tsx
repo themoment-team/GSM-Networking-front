@@ -49,9 +49,9 @@ const Board: React.FC<Props> = ({ initialData }) => {
       <S.Container>
         <S.TitleBox>
           <CommunityButton segment='/community/board' />
-        </S.TitleBox>
         <FilterButton onClick={() =>
         setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)} isActive={isShowFilterModal}/>
+        </S.TitleBox>
         {isShowFilterModal && (
           <BoardFilterModal setIsShowFilterModal={setIsShowFilterModal}/>
       )}
