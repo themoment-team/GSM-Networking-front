@@ -24,7 +24,7 @@ interface Props {
   boardId: string;
 }
 
-const PREV_PATH = '/community/board' as const;
+const PREV_PATH = '/community/board/' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
