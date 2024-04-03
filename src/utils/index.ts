@@ -1,5 +1,4 @@
 export { default as UTCDate } from './UTCDate';
-export { default as addTemporaryImgNumber } from './addTemporaryImgNumber';
 export { default as careerValidation } from './careerValidation';
 export { default as deepCopy } from './deepCopy';
 export { default as extractCareer } from './extractCareer';
