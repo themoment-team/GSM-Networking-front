@@ -14,9 +14,9 @@ export const metadata: Metadata = {
 };
 
 const BoardPage = async () => {
-  const postList = await getBoardList();
+  const boardList = await getBoardList();
 
-  return <Board initialData={[...postList]} />;
+  return <Board initialData={[...boardList]} />;
 };
 
 const getBoardList = async (): Promise<BoardInfo[]> => {
@@ -44,9 +44,9 @@ const getBoardList = async (): Promise<BoardInfo[]> => {
     return redirect('/auth/signin');
   }
 
-  const postList: BoardInfo[] = await response.json();
+  const boardList: BoardInfo[] = await response.json();
 
-  return postList;
+  return boardList;
 };
 
 export default BoardPage;
