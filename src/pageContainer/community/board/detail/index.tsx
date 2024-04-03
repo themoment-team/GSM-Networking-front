@@ -24,15 +24,15 @@ interface Props {
   boardId: string;
 }
 
-const PREV_PATH = '/community/board/' as const;
+const PREV_PATH = '/community/board' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
-  const { data: boardData } = useGetBoardDetail(boardId, {
+  const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
 
   const handleUploadSuccess = () => {
-    location.reload();
+    refetch();
   };
 
   const { mutate: postMutate } = usePostComment({
