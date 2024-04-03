@@ -10,8 +10,8 @@ import * as S from './style';
 
 import { theme } from '@/styles';
 
-const GWANGYA_PATH = '/community/gwangya';
-const BOARD_PATH = '/community/board';
+const GWANGYA_PATH = '/community/gwangya' as const;
+const BOARD_PATH = '/community/board' as const;
 
 type SegmentType = '' | typeof GWANGYA_PATH | typeof BOARD_PATH;
 
