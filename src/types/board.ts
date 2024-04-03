@@ -8,4 +8,5 @@ export interface BoardType {
   boardCategory: CategoryType;
   comments: CommentType[];
   author: ProfileType;
+  temporaryImgNumber?: number;
 }
