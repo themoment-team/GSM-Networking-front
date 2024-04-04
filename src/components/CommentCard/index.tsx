@@ -13,19 +13,22 @@ import type { CommentType } from '@/types';
 
 interface Props {
   comment: CommentType;
-  isReply?: boolean;
+  replyId?: string;
 }
 
 const CommentCard: React.FC<Props> = ({
   comment: { commentId, author, comment, replyCommentId, replies },
-  isReply,
+  replyId,
 }) => {
   const { push } = useRouter();
 
   const path = usePathname();
 
   const onAddCommentClick = () => {
-    if (isReply) push(`${path}/${commentId}?reply=true`);
+    if (replyId) {
+      push(`${path}/${replyId}?reply=${commentId}`);
+      return;
+    }
     push(`${path}/${commentId}`);
   };
 
@@ -33,13 +36,13 @@ const CommentCard: React.FC<Props> = ({
     <S.EveryWrapper>
       <S.Container
         css={
-          isReply &&
+          replyId &&
           css`
             margin-left: 2.75rem;
           `
         }
       >
-        <MiniProfile profile={author} isSmallSize={!!isReply} />
+        <MiniProfile profile={author} isSmallSize={!!replyId} />
         <S.TextWrapper>
           <S.Content>
             {replyCommentId && <Reply replyCommentId={replyCommentId} />}
@@ -52,12 +55,12 @@ const CommentCard: React.FC<Props> = ({
       </S.Container>
       {replies &&
         replies.length > 0 &&
-        !isReply &&
+        !replyId &&
         replies.map(({ comment }) => (
           <CommentCard
             key={comment.commentId}
             comment={comment}
-            isReply={true}
+            replyId={commentId}
           />
         ))}
     </S.EveryWrapper>

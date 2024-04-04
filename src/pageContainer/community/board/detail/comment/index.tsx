@@ -10,7 +10,7 @@ import * as S from './style';
 
 import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
 import { useGetCommentDetail, usePostComment } from '@/hooks';
-import type { CommentType } from '@/types';
+import type { CommentType, CommentRequestType } from '@/types';
 import { isAllowedContent } from '@/utils';
 
 interface Props {
@@ -25,10 +25,10 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
 
   const { boardId, commentId: parentCommentId } = useParams();
 
-  const params = useSearchParams();
+  const replyId = useSearchParams().get('reply');
 
   const handleUploadSuccess = () => {
-    // refetch();
+    refetch();
   };
 
   const { mutate: postMutate } = usePostComment({
@@ -44,13 +44,13 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
       return;
     }
 
-    const commentObject = {
+    const commentObject: CommentRequestType = {
       boardId: boardId as string,
       parentCommentId: parentCommentId as string,
       comment: comment,
     };
 
-    // console.log(params.entries());
+    if (replyId) commentObject['replyCommentId'] = replyId;
 
     postMutate(commentObject);
     setInputValue('');
