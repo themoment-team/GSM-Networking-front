@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
+import { invalidateQueries } from '@/app/queryClient';
 import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
 import { useGetCommentDetail, usePostComment } from '@/hooks';
 import type { CommentType, CommentRequestType } from '@/types';
@@ -29,6 +30,7 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
 
   const handleUploadSuccess = () => {
     refetch();
+    invalidateQueries(['board', boardId as string]);
     scrollToBottom();
   };
 
