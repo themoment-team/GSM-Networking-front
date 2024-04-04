@@ -25,6 +25,7 @@ const CommentCard: React.FC<Props> = ({
   const path = usePathname();
 
   const onAddCommentClick = () => {
+    if (isReply) push(`${path}/${commentId}?reply=true`);
     push(`${path}/${commentId}`);
   };
 
@@ -52,7 +53,7 @@ const CommentCard: React.FC<Props> = ({
       {replies &&
         replies.length > 0 &&
         !isReply &&
-        replies.map((comment) => (
+        replies.map(({ comment }) => (
           <CommentCard
             key={comment.commentId}
             comment={comment}
