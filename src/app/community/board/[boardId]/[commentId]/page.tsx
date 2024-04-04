@@ -6,6 +6,10 @@ interface Params {
   };
 }
 
-const AddCommentPage: React.FC<Params> = () => <AddComment initialData={[]} />;
+const AddCommentPage: React.FC<Params> = () => {
+  const commentDetail = await getBoardDetail('/board', boardId);
+
+  return <AddComment initialData={commentDetail} />;
+};
 
 export default AddCommentPage;
