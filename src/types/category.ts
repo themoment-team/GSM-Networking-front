@@ -4,7 +4,7 @@ export type CategoryFilterType = (typeof CATEGORYLIST)[number];
 export enum CategoryType {
   선생님 = 'TEACHER',
   공지 = 'NOTICE',
-  QnA = 'QnA',
+  QnA = 'QNA',
   잡담 = 'CHAT',
   자료공유 = 'SHARE',
   스터디 = 'STUDY',
@@ -16,7 +16,7 @@ export enum CategoryType {
 export enum ReverseCategoryType {
   TEACHER = '선생님',
   NOTICE = '공지',
-  QnA = 'QNA',
+  QNA = 'QnA',
   CHAT = '잡담',
   SHARE = '자료공유',
   STUDY = '스터디',
