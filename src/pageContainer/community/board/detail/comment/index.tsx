@@ -11,7 +11,7 @@ import * as S from './style';
 import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
 import { useGetCommentDetail, usePostComment } from '@/hooks';
 import type { CommentType, CommentRequestType } from '@/types';
-import { isAllowedContent } from '@/utils';
+import { isAllowedContent, scrollToBottom } from '@/utils';
 
 interface Props {
   initialData: CommentType | null;
@@ -29,6 +29,7 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
 
   const handleUploadSuccess = () => {
     refetch();
+    scrollToBottom();
   };
 
   const { mutate: postMutate } = usePostComment({
@@ -47,7 +48,7 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
     const commentObject: CommentRequestType = {
       boardId: boardId as string,
       parentCommentId: parentCommentId as string,
-      comment: comment,
+      comment,
     };
 
     if (replyId) commentObject['replyCommentId'] = replyId;
