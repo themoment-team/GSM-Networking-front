@@ -1,3 +1,6 @@
+import type { CATEGORYLIST } from '@/components/Modal/BoardFilter';
+export type CategoryFilterType = (typeof CATEGORYLIST)[number];
+
 export enum CategoryType {
   선생님 = 'TEACHER',
   공지 = 'NOTICE',

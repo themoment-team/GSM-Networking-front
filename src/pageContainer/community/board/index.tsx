@@ -1,25 +1,36 @@
 'use client';
 
-import { useRef, useEffect ,useState} from 'react';
+import { useRef, useEffect, useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 import * as S from './style';
 
-import { Header, CommunityButton, WriteButton, FilterButton } from '@/components';
+import {
+  Header,
+  CommunityButton,
+  WriteButton,
+  FilterButton,
+} from '@/components';
 import { BoardCard } from '@/components';
 import { BoardFilterModal } from '@/components';
 import { useIntersectionObserver } from '@/hooks';
 import { useGetBoardList } from '@/hooks';
 import type { BoardInfo } from '@/types';
-
+import type { CategoryFilterType } from '@/types';
 
 interface Props {
   initialData: BoardInfo[];
+  selectedPosition: CategoryFilterType | null;
+  setSelectedPosition: Dispatch<SetStateAction<CategoryFilterType | null>>;
 }
 
-const Board: React.FC<Props> = ({ initialData }) => {
+const Board: React.FC<Props> = ({
+  initialData,
+  selectedPosition,
+  setSelectedPosition,
+}) => {
   const postListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
-
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGetBoardList(initialData);
@@ -42,28 +53,30 @@ const Board: React.FC<Props> = ({ initialData }) => {
     postListRef.current?.scrollTo(0, 0);
   }, []);
 
-
   return (
     <>
       <Header />
       <S.Container>
         <S.TitleBox>
           <CommunityButton segment='/community/board' />
-        <FilterButton onClick={() =>
-        setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)} isActive={isShowFilterModal}/>
+          <FilterButton
+            onClick={() =>
+              setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)
+            }
+            isActive={isShowFilterModal}
+          />
         </S.TitleBox>
         {isShowFilterModal && (
-          <BoardFilterModal setIsShowFilterModal={setIsShowFilterModal}/>
-      )}
+          <BoardFilterModal
+            setIsShowFilterModal={setIsShowFilterModal}
+            selectedPosition={selectedPosition}
+            setSelectedPosition={setSelectedPosition}
+          />
+        )}
         <S.BoardCardWrapper>
           <S.BoardCardList ref={postListRef} isFetching={isFetchingNextPage}>
             {data?.pages.map((page) =>
-              page.map((card) => (
-                <BoardCard
-                  key={card.id}
-                  {...card}
-                />
-              ))
+              page.map((card) => <BoardCard key={card.id} {...card} />)
             )}
             {!isFetchingNextPage && hasNextPage && (
               <S.LoadMoreTrigger ref={loadMoreTriggerRef} />

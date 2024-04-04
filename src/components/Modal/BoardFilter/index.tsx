@@ -3,8 +3,8 @@
 import * as S from './style';
 
 import { CloseIcon } from '@/assets';
-
-const CATEGORYLIST = [
+import type { CategoryFilterType } from '@/types';
+export const CATEGORYLIST = [
   '전체',
   '선생님',
   '공지',
@@ -18,13 +18,26 @@ const CATEGORYLIST = [
 ] as const;
 
 interface Props {
+  selectedCategory: CategoryFilterType | null;
   setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setSelectedCategory: React.Dispatch<
+    React.SetStateAction<CategoryFilterType | null>
+  >;
 }
 
-const BoardFilterModal: React.FC<Props> = ({ setIsShowFilterModal }) => {
+const BoardFilterModal: React.FC<Props> = ({
+  setIsShowFilterModal,
+  selectedCategory,
+  setSelectedCategory,
+}) => {
   const closeModal = () => {
     setIsShowFilterModal(false);
   };
+
+  const handleCategoryClick = (Category: CategoryFilterType) =>
+    setSelectedCategory(() =>
+      selectedCategory === Category ? null : Category
+    );
 
   return (
     <S.Modal>
@@ -38,7 +51,13 @@ const BoardFilterModal: React.FC<Props> = ({ setIsShowFilterModal }) => {
         <S.SectionTitle>구분</S.SectionTitle>
         <S.CategoryWrapper>
           {CATEGORYLIST.map((category) => (
-            <S.CategoryButton key={category}>{category}</S.CategoryButton>
+            <S.CategoryButton
+              key={category}
+              isSelected={selectedCategory === category}
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category}
+            </S.CategoryButton>
           ))}
         </S.CategoryWrapper>
       </S.SectionWrapper>

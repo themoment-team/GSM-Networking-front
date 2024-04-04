@@ -42,17 +42,21 @@ export const SectionWrapper = styled.div`
 export const SectionTitle = styled.p`
   ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.grey[500]};
-  `;
+`;
 
 export const CategoryWrapper = styled.div`
   display: flex;
   gap: 0.5rem;
   flex-wrap: wrap;
-  `;
+`;
 
-export const CategoryButton = styled.button`
+export const CategoryButton = styled.button<{ isSelected: boolean }>`
   ${({ theme }) => theme.typo.body1}
-  color: ${({ theme }) => theme.color.grey[500]};
+  color: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[400] : theme.color.grey[500]};
+  background: ${({ theme, isSelected }) =>
+    isSelected ? theme.color.skyBlue[50] : theme.color.white};
+
   padding: 0.375rem 1rem;
   border-radius: 1.25rem;
   font-feature-settings: 'tnum';
