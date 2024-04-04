@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { commentUrl } from '@/libs';
-import type { BoardType } from '@/types';
+import type { CommentType } from '@/types';
 
 const AUTH_REFRESH_PATH = '/auth/refresh' as const;
 
@@ -14,7 +14,7 @@ const AUTH_REFRESH_PATH = '/auth/refresh' as const;
 export const getCommentDetail = async (
   redirectUrl: string,
   commentId: string
-): Promise<BoardType | null> => {
+): Promise<CommentType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
   if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
