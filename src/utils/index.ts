@@ -6,6 +6,7 @@ export { default as extractSubstring } from './extractSubstring';
 export { default as formatTelNum } from './formatTelNum';
 export { default as getGwangyaToken } from './getGwangyaToken';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
+export { default as isAllowedContent } from './isAllowedContent';
 export { default as isExistCookie } from './isExistCookie';
 export { default as isNumeric } from './isNumeric';
 export { default as minutesToMs } from './minutesToMs';

@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 import type { ChangeEvent } from 'react';
 
 import * as S from './style';
@@ -8,31 +9,35 @@ import * as S from './style';
 import { SendIcon, UploadIcon } from '@/assets';
 import { useAutoResizeTextArea } from '@/hooks';
 
-const MAX_LENGTH = 200;
-
 interface Props {
   textAreaType: 'gwangya' | 'chatting' | 'comment';
-  onClick: (content: string) => void;
+  onClick: (
+    content: string,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => void;
   disabled: boolean;
 }
 
-const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
-  const textAreaElements = {
-    gwangya: {
-      placeholder:
-        '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
-      icon: <UploadIcon />,
-    },
-    chatting: {
-      placeholder: '메시지 보내기',
-      icon: <SendIcon />,
-    },
-    comment: {
-      placeholder: '댓글은 최대 100자 까지 쓸 수 있습니다.',
-      icon: <UploadIcon />,
-    },
-  } as const;
+const textAreaElements = {
+  gwangya: {
+    placeholder:
+      '비방 및 성적 발언, 욕설 등이 포함된 글은 삭제 조치를 받을 수 있습니다.',
+    icon: <UploadIcon />,
+    MAX_LENGTH: 200,
+  },
+  chatting: {
+    placeholder: '메시지 보내기',
+    icon: <SendIcon />,
+    MAX_LENGTH: 200,
+  },
+  comment: {
+    placeholder: `댓글은 최대 300자 까지 쓸 수 있습니다.`,
+    icon: <UploadIcon />,
+    MAX_LENGTH: 300,
+  },
+} as const;
 
+const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
   const [inputValue, setInputValue] = useState<string>('');
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
   const [isFocused, setIsFocused] = useState(false);
@@ -61,7 +66,10 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
   }, []);
 
   const handleInputChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const inputValue = e.target.value.slice(0, MAX_LENGTH);
+    const inputValue = e.target.value.slice(
+      0,
+      textAreaElements[textAreaType].MAX_LENGTH
+    );
 
     setInputValue(inputValue);
   };
@@ -70,7 +78,7 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
     <S.TextAreaContainer isFocused={isFocused}>
       <S.TextField
         placeholder={textAreaElements[textAreaType].placeholder}
-        maxLength={MAX_LENGTH}
+        maxLength={textAreaElements[textAreaType].MAX_LENGTH}
         value={inputValue}
         onChange={handleInputChange}
         ref={textAreaRef}
@@ -79,11 +87,11 @@ const TextArea: React.FC<Props> = ({ textAreaType, onClick, disabled }) => {
         <S.UploadWrapper>
           {isMultiLine && textAreaType === 'gwangya' && (
             <S.MaxLengthNotice>
-              {MAX_LENGTH - inputValue.length}
+              {textAreaElements[textAreaType].MAX_LENGTH - inputValue.length}
             </S.MaxLengthNotice>
           )}
           <S.UploadButton
-            onClick={() => onClick(inputValue)}
+            onClick={() => onClick(inputValue, setInputValue)}
             disabled={disabled}
           >
             {textAreaElements[textAreaType].icon}

@@ -4,6 +4,7 @@ export const boardQueryKeys = {
 
 export const commentQueryKeys = {
   getCommentDetail: (commentId: string) => ['comment', commentId],
+  postComment: () => ['comment', 'create'],
 };
 
 export const fileQueryKeys = {

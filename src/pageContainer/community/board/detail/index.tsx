@@ -1,5 +1,9 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
+
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import {
@@ -11,8 +15,9 @@ import {
   ChattingButton,
   TextArea,
 } from '@/components';
-import { useGetBoardDetail } from '@/hooks';
+import { useGetBoardDetail, usePostComment } from '@/hooks';
 import type { BoardType } from '@/types';
+import { isAllowedContent } from '@/utils';
 
 interface Props {
   initialData: BoardType | null;
@@ -22,11 +27,35 @@ interface Props {
 const PREV_PATH = '/community/board/' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
-  const uploadComment = () => {};
-
-  const { data: boardData } = useGetBoardDetail(boardId, {
+  const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
+
+  const handleUploadSuccess = () => {
+    refetch();
+  };
+
+  const { mutate: postMutate } = usePostComment({
+    onSuccess: handleUploadSuccess,
+  });
+
+  const uploadComment = (
+    comment: string,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => {
+    if (!isAllowedContent(comment)) {
+      toast.error('게시물 내용을 입력해주세요.');
+      return;
+    }
+
+    const commentObject = {
+      boardId: boardId,
+      comment: comment,
+    };
+
+    postMutate(commentObject);
+    setInputValue('');
+  };
 
   return (
     <S.Container>

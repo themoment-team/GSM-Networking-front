@@ -13,26 +13,21 @@ interface Props {
 }
 
 const MiniProfile: React.FC<Props> = ({
-  profile: { name, generation, profileUrl },
+  profile: { name, generation, profileUrl, temporaryImgNumber = 0 },
   isSmallSize,
-}) => {
-  // TODO : server side 와 마크업을 일치시키기 위한 로직 변경 필요.
-  const randomValue = Math.floor(Math.random() * 5); //0부터 4까지 중의 랜덤값 생성
-
-  return (
-    <S.ProfileWrapper>
-      <S.ProfileImageBox isSmallSize={!!isSmallSize}>
-        {profileUrl ? (
-          <Image src={profileUrl} alt='profile img' fill />
-        ) : (
-          <RandomMentorImg temporaryImgNumber={randomValue} />
-        )}
-      </S.ProfileImageBox>
-      <S.UserInfo>
-        {generation}기 {name}
-      </S.UserInfo>
-    </S.ProfileWrapper>
-  );
-};
+}) => (
+  <S.ProfileWrapper>
+    <S.ProfileImageBox isSmallSize={!!isSmallSize}>
+      {profileUrl ? (
+        <Image src={profileUrl} alt='profile img' fill />
+      ) : (
+        <RandomMentorImg temporaryImgNumber={temporaryImgNumber} />
+      )}
+    </S.ProfileImageBox>
+    <S.UserInfo>
+      {generation}기 {name}
+    </S.UserInfo>
+  </S.ProfileWrapper>
+);
 
 export default MiniProfile;
