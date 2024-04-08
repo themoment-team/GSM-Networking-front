@@ -8,7 +8,6 @@ import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
 
-// eslint-disable-next-line react/display-name
 const BoardCard = forwardRef<HTMLDivElement, BoardInfoType>(
   ({ id, createdAt, title, authorName, boardCategory }, ref) => {
     const { monthDay, time } = parseDateString(createdAt);
@@ -32,4 +31,7 @@ const BoardCard = forwardRef<HTMLDivElement, BoardInfoType>(
     );
   }
 );
+
+BoardCard.displayName = 'BoardCard';
+
 export default BoardCard;
