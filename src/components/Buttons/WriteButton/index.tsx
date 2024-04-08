@@ -4,12 +4,11 @@ import * as S from './style';
 
 import { WriteIcon } from '@/assets';
 
-interface Props {
-  onClick?: () => void;
-}
+const WRITE_PATH = '/community/write' as const;
 
-const WriteButton: React.FC<Props> = ({ onClick }) => (
-  <S.Button type='button' onClick={onClick}>
+
+const WriteButton: React.FC = () => (
+  <S.Button href={WRITE_PATH}>
     <WriteIcon />
   </S.Button>
 );

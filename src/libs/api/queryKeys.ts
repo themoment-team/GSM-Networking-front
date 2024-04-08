@@ -1,10 +1,12 @@
 export const boardQueryKeys = {
   getBoardDetail: (boardId: string) => ['board', boardId],
   postBoardContent: () => ['board', 'content'],
+  getBoardList: () => ['board', 'post', 'list'],
 };
 
 export const commentQueryKeys = {
   getCommentDetail: (commentId: string) => ['comment', commentId],
+  postComment: () => ['comment', 'create'],
 };
 
 export const fileQueryKeys = {

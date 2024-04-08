@@ -1,20 +1,20 @@
 import styled from '@emotion/styled';
+import Link from 'next/link';
 
-export const NoticeCard = styled.div`
+export const BoardCard = styled.div`
   display: flex;
   padding: 1.75rem 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: flex-end;
-  gap: 0.5rem;
   border-radius: 0.75rem;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   width: 37.5rem;
-  height: 10.1875rem;
   cursor: pointer;
+  margin-bottom: 1.5rem;
 `;
 
-export const ContentBox = styled.div``;
+export const ContentBox = styled(Link)``;
 
 export const ContentHeader = styled.div`
   display: flex;
@@ -52,14 +52,10 @@ export const Tag = styled.div`
   color: ${({ theme }) => theme.color.grey['700']};
 `;
 
-export const Content = styled.textarea`
+export const Content = styled.div`
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.black};
   width: 34.5rem;
-  resize: none;
-  outline: none;
-  background: none;
-  border: none;
   word-break: break-all;
   margin-top: 0.4688rem;
   cursor: pointer;

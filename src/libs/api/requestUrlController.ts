@@ -6,11 +6,13 @@ export const authUrl = {
 
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
+  getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
 };
 
 export const commentUrl = {
-  getCommentDetail: (commentId: string) => `comment/${commentId}`,
+  getCommentDetail: (commentId: string) => `/comment/${commentId}`,
+  postComment: () => `/comment`,
 };
 
 export const fileUrl = {

@@ -23,7 +23,7 @@ export const CategoryBox = styled.div`
   align-items: center;
 
   border-radius: 1.25rem;
-  border: 1px solid ${({ theme }) => theme.color.grey[100]};
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
   background: ${({ theme }) => theme.color.white};
 
   width: fit-content;

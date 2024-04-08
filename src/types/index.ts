@@ -1,6 +1,6 @@
 export * from './auth';
 export * from './board';
-export * from './cardInfo';
+export * from './boardInfo';
 export * from './career';
 export * from './category';
 export * from './comment';
