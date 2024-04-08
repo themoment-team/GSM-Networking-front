@@ -1,7 +1,6 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
-import type { Dispatch, SetStateAction } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
 import * as S from './style';
 
@@ -10,27 +9,24 @@ import {
   CommunityButton,
   WriteButton,
   FilterButton,
+  BoardCard,
+  BoardFilterModal,
 } from '@/components';
-import { BoardCard } from '@/components';
-import { BoardFilterModal } from '@/components';
-import { useIntersectionObserver } from '@/hooks';
-import { useGetBoardList } from '@/hooks';
+import { useIntersectionObserver, useGetBoardList } from '@/hooks';
+import { ReverseCategoryType } from '@/types';
 import type { BoardInfo } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
 interface Props {
   initialData: BoardInfo[];
-  selectedPosition: CategoryFilterType | null;
-  setSelectedPosition: Dispatch<SetStateAction<CategoryFilterType | null>>;
 }
 
-const Board: React.FC<Props> = ({
-  initialData,
-  selectedPosition,
-  setSelectedPosition,
-}) => {
-  const postListRef = useRef<HTMLDivElement>(null);
+const Board: React.FC<Props> = ({ initialData }) => {
+  const [selectedCategory, setSelectedCategory] =
+    useState<CategoryFilterType | null>(null);
+  const boardListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
+  const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGetBoardList(initialData);
@@ -46,11 +42,9 @@ const Board: React.FC<Props> = ({
     rootMargin: '0px',
     threshold: 0,
   });
-  const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   useEffect(() => {
-    // 초기 데이터를 가져올 시, 스크롤을 최상단으로 이동
-    postListRef.current?.scrollTo(0, 0);
+    boardListRef.current?.scrollTo(0, 0);
   }, []);
 
   return (
@@ -60,23 +54,29 @@ const Board: React.FC<Props> = ({
         <S.TitleBox>
           <CommunityButton segment='/community/board' />
           <FilterButton
-            onClick={() =>
-              setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)
-            }
+            onClick={() => setIsShowFilterModal((prev) => !prev)}
             isActive={isShowFilterModal}
           />
         </S.TitleBox>
         {isShowFilterModal && (
           <BoardFilterModal
             setIsShowFilterModal={setIsShowFilterModal}
-            selectedPosition={selectedPosition}
-            setSelectedPosition={setSelectedPosition}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
           />
         )}
         <S.BoardCardWrapper>
-          <S.BoardCardList ref={postListRef} isFetching={isFetchingNextPage}>
+          <S.BoardCardList ref={boardListRef} isFetching={isFetchingNextPage}>
             {data?.pages.map((page) =>
-              page.map((card) => <BoardCard key={card.id} {...card} />)
+              page
+                .filter(
+                  (board) =>
+                    !selectedCategory ||
+                    selectedCategory === '전체' ||
+                    ReverseCategoryType[board.boardCategory] ===
+                      selectedCategory
+                )
+                .map((board) => <BoardCard key={board.id} {...board} />)
             )}
             {!isFetchingNextPage && hasNextPage && (
               <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
