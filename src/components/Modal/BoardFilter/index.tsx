@@ -4,6 +4,7 @@ import * as S from './style';
 
 import { CloseIcon } from '@/assets';
 import type { CategoryFilterType } from '@/types';
+
 export const CATEGORYLIST = [
   '전체',
   '선생님',
@@ -34,9 +35,9 @@ const BoardFilterModal: React.FC<Props> = ({
     setIsShowFilterModal(false);
   };
 
-  const handleCategoryClick = (Category: CategoryFilterType) =>
+  const handleCategoryClick = (category: CategoryFilterType) =>
     setSelectedCategory(() =>
-      selectedCategory === Category ? null : Category
+      selectedCategory === category ? null : category
     );
 
   return (
