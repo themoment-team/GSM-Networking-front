@@ -1,4 +1,4 @@
-export interface BoardInfo {
+export interface BoardInfoType {
   id: number;
   title: string;
   boardCategory:

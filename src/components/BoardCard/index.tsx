@@ -4,12 +4,12 @@ import React, { forwardRef } from 'react';
 
 import * as S from './style';
 
-import type { BoardInfo } from '@/types';
+import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
 
 // eslint-disable-next-line react/display-name
-const BoardCard = forwardRef<HTMLDivElement, BoardInfo>(
+const BoardCard = forwardRef<HTMLDivElement, BoardInfoType>(
   ({ id, createdAt, title, authorName, boardCategory }, ref) => {
     const { monthDay, time } = parseDateString(createdAt);
 

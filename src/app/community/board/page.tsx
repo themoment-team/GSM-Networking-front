@@ -3,10 +3,9 @@ import { redirect } from 'next/navigation';
 
 import { boardUrl } from '@/libs';
 import { Board } from '@/pageContainer';
-import type { BoardInfo } from '@/types';
+import type { BoardInfoType } from '@/types';
 
 import type { Metadata } from 'next';
-
 
 export const metadata: Metadata = {
   title: '게시판',
@@ -19,7 +18,7 @@ const BoardPage = async () => {
   return <Board initialData={[...boardList]} />;
 };
 
-const getBoardList = async (): Promise<BoardInfo[]> => {
+const getBoardList = async (): Promise<BoardInfoType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 
   if (!accessToken) return redirect('/auth/refresh');
@@ -36,12 +35,11 @@ const getBoardList = async (): Promise<BoardInfo[]> => {
     return redirect('/auth/refresh');
   }
 
-
   if (!response.ok) {
     return redirect('/auth/signin');
   }
 
-  const boardList: BoardInfo[] = await response.json();
+  const boardList: BoardInfoType[] = await response.json();
 
   return boardList;
 };
