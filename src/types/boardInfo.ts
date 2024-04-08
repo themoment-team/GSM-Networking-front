@@ -4,7 +4,7 @@ export interface BoardInfo {
   boardCategory:
     | 'TEACHER'
     | 'NOTICE'
-    | 'QnA'
+    | 'QNA'
     | 'CHAT'
     | 'SHARE'
     | 'STUDY'
