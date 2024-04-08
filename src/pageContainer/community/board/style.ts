@@ -9,7 +9,6 @@ export const Container = styled.div`
   }
 `;
 
-
 export const BoardCardList = styled.div<{ isFetching: boolean }>`
   height: 100%;
   display: flex;
@@ -57,4 +56,12 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   position: relative;
   bottom: 5.3125rem;
+`;
+
+export const NotFoundIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;
