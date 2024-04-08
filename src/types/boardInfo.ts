@@ -1,16 +1,9 @@
+import type { ReverseCategoryType } from '@/types';
+
 export interface BoardInfoType {
   id: number;
   title: string;
-  boardCategory:
-    | 'TEACHER'
-    | 'NOTICE'
-    | 'QnA'
-    | 'CHAT'
-    | 'SHARE'
-    | 'STUDY'
-    | 'HOSTEL'
-    | 'MEET'
-    | 'SPORT';
+  boardCategory: keyof typeof ReverseCategoryType;
   authorName: string;
   createdAt: string;
 }
