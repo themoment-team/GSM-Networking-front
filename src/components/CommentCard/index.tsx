@@ -25,11 +25,7 @@ const CommentCard: React.FC<Props> = ({
   const path = usePathname();
 
   const onAddCommentClick = () => {
-    if (replyId) {
-      push(`${path}/${replyId}?reply=${commentId}`);
-      return;
-    }
-    push(`${path}/${commentId}`);
+    push(`${path}/${replyId ? replyId + '?reply=' + commentId : commentId}`);
   };
 
   return (
