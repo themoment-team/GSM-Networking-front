@@ -8,16 +8,15 @@ import { Header, CommunityButton, WriteButton } from '@/components';
 import { BoardCard } from '@/components';
 import { useIntersectionObserver } from '@/hooks';
 import { useGetBoardList } from '@/hooks';
-import type { BoardInfo } from '@/types';
+import type { BoardInfoType } from '@/types';
 
 interface Props {
-  initialData: BoardInfo[];
+  initialData: BoardInfoType[];
 }
 
 const Board: React.FC<Props> = ({ initialData }) => {
   const postListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
-
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGetBoardList(initialData);
@@ -49,12 +48,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
         <S.BoardCardWrapper>
           <S.BoardCardList ref={postListRef} isFetching={isFetchingNextPage}>
             {data?.pages.map((page) =>
-              page.map((card) => (
-                <BoardCard
-                  key={card.id}
-                  {...card}
-                />
-              ))
+              page.map((card) => <BoardCard key={card.id} {...card} />)
             )}
             {!isFetchingNextPage && hasNextPage && (
               <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
