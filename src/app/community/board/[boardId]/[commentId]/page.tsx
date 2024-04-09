@@ -1,3 +1,4 @@
+import { getCommentDetail } from '@/apis';
 import { AddComment } from '@/pageContainer';
 
 interface Params {
@@ -6,6 +7,10 @@ interface Params {
   };
 }
 
-const AddCommentPage: React.FC<Params> = () => <AddComment initialData={[]} />;
+const AddCommentPage: React.FC<Params> = async ({ params: { commentId } }) => {
+  const commentDetail = await getCommentDetail('/board', commentId);
+
+  return <AddComment initialData={commentDetail} commentId={commentId} />;
+};
 
 export default AddCommentPage;
