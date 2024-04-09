@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MiniProfile: React.FC<Props> = ({
-  profile: { name, generation, profileUrl, defaultImgNumber },
+  profile: { name, generation, profileUrl, defaultImgNumber = 0 },
   isSmallSize,
 }) => (
   <S.ProfileWrapper>
