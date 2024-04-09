@@ -1,5 +1,8 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
 import { useForm } from 'react-hook-form';
 
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -15,10 +18,17 @@ import {
   SubFunctionHeader,
 } from '@/components';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
+import { usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
-import type { CommunityWriteFormType } from '@/types';
+import {
+  CategoryType,
+  type BoardContentWriteType,
+  type CommunityWriteFormType,
+} from '@/types';
 
 const CommunityWrite = () => {
+  const { push } = useRouter();
+
   const {
     register,
     handleSubmit,
@@ -33,13 +43,27 @@ const CommunityWrite = () => {
     },
   });
 
-  const onSubmit = () => {
-    // for test
-    toast.success('글 작성이 완료되었습니다.');
+  const { mutate: mutatePostBoardContent, isPending } = usePostBoardContent({
+    onSuccess: () => {
+      toast.success('글 작성에 성공했습니다.');
+      push('/community');
+    },
+    onError: () => {
+      toast.error('글 작성에 실패했습니다.');
+    },
+  });
+
+  const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
+    const body: BoardContentWriteType = {
+      title: data.title,
+      content: data.content,
+      boardCategory: CategoryType[data.category as keyof typeof CategoryType],
+    };
+
+    mutatePostBoardContent(body);
   };
 
-  const onError = () => {
-    // for test
+  const onError: SubmitErrorHandler<CommunityWriteFormType> = () => {
     toast.error('입력값을 확인해주세요.');
   };
 
@@ -75,7 +99,9 @@ const CommunityWrite = () => {
               />
             </FormItemWrapper>
           </S.FormFieldsWrapper>
-          <S.NextButton type='submit'>다음</S.NextButton>
+          <S.NextButton type='submit' disabled={isPending}>
+            다음
+          </S.NextButton>
         </S.Form>
       </S.Container>
     </>

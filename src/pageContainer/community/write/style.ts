@@ -56,4 +56,10 @@ export const NextButton = styled.button`
   align-items: center;
   color: ${({ theme }) => theme.color.white};
   margin-top: 0.875rem;
+
+  :disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.color.grey[200]};
+    color: ${({ theme }) => theme.color.grey[500]};
+  }
 `;
