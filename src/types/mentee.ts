@@ -4,4 +4,5 @@ export interface MenteeType {
   generation: number;
   phoneNumber: string;
   profileUrl?: string;
+  defaultImgNumber: number;
 }
