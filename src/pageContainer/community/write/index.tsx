@@ -46,7 +46,7 @@ const CommunityWrite = () => {
   const { mutate: mutatePostBoardContent, isPending } = usePostBoardContent({
     onSuccess: () => {
       toast.success('글 작성에 성공했습니다.');
-      push('/community');
+      push('/community/board');
     },
     onError: () => {
       toast.error('글 작성에 실패했습니다.');
