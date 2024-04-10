@@ -26,6 +26,8 @@ import {
   type CommunityWriteFormType,
 } from '@/types';
 
+const BOARD_PATH = '/community/board';
+
 const CommunityWrite = () => {
   const { push } = useRouter();
 
@@ -46,7 +48,7 @@ const CommunityWrite = () => {
   const { mutate: mutatePostBoardContent, isPending } = usePostBoardContent({
     onSuccess: () => {
       toast.success('글 작성에 성공했습니다.');
-      push('/community');
+      push(BOARD_PATH);
     },
     onError: () => {
       toast.error('글 작성에 실패했습니다.');
@@ -71,7 +73,7 @@ const CommunityWrite = () => {
     <>
       <Header />
       <S.Container>
-        <SubFunctionHeader prevPath='/community' title='글 작성' />
+        <SubFunctionHeader prevPath={BOARD_PATH} title='글 작성' />
         <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
           <S.FormFieldsWrapper>
             <SelectFormItem
