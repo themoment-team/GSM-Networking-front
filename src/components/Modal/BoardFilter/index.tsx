@@ -3,20 +3,10 @@
 import * as S from './style';
 
 import { CloseIcon } from '@/assets';
+import { ReverseCategoryType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
-export const CATEGORYLIST = [
-  '전체',
-  '선생님',
-  '공지',
-  'QnA',
-  '잡담',
-  '자료공유',
-  '스터디',
-  '숙박',
-  '모임',
-  '스포츠',
-] as const;
+const CATEGORYLIST: string[] = Object.values(ReverseCategoryType);
 
 interface Props {
   selectedCategory: CategoryFilterType | null;
