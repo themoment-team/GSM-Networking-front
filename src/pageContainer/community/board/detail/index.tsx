@@ -17,7 +17,7 @@ import {
 } from '@/components';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
 import type { BoardType } from '@/types';
-import { isAllowedContent } from '@/utils';
+import { isAllowedContent, scrollToBottom } from '@/utils';
 
 interface Props {
   initialData: BoardType | null;
@@ -33,6 +33,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
 
   const handleUploadSuccess = () => {
     refetch();
+    scrollToBottom();
   };
 
   const { mutate: postMutate } = usePostComment({

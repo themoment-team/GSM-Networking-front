@@ -4,11 +4,10 @@ export const authUrl = {
   getLogout: () => '/auth/logout',
 };
 
-
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
   getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
-  postBoardList: () => `/board`,
+  postBoardContent: () => '/board',
 };
 
 export const commentUrl = {

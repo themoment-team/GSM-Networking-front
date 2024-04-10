@@ -12,3 +12,4 @@ export { default as isNumeric } from './isNumeric';
 export { default as minutesToMs } from './minutesToMs';
 export { default as minutesToSeconds } from './minutesToSeconds';
 export { default as parseDateString } from './dateFormat';
+export { default as scrollToBottom } from './scrollToBottom';

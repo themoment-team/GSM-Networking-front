@@ -4,6 +4,7 @@ import React, { useRef, useEffect, useState } from 'react';
 
 import * as S from './style';
 
+
 import { FilterNotFoundIcon } from '@/assets';
 import {
   Header,
@@ -16,11 +17,11 @@ import {
 import { BOARD_PATH } from '@/constants';
 import { useIntersectionObserver, useGetBoardList } from '@/hooks';
 import { ReverseCategoryType } from '@/types';
-import type { BoardInfo } from '@/types';
+import type { BoardInfoType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
 interface Props {
-  initialData: BoardInfo[];
+  initialData: BoardInfoType[];
 }
 
 const ALL_CATEGORIES = '전체' as const;

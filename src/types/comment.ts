@@ -7,10 +7,14 @@ export interface CommentRequestType {
   comment: string;
 }
 
+interface ReplyType {
+  comment: CommentType;
+}
+
 export interface CommentType {
   commentId: string;
   author: ProfileType;
   comment: string;
-  replies?: CommentType[];
+  replies?: ReplyType[];
   replyCommentId?: string;
 }

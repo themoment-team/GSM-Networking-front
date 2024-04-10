@@ -1,63 +1,75 @@
 'use client';
 
-import { useParams } from 'next/navigation';
+import type { Dispatch, SetStateAction } from 'react';
+
+import { useParams, useSearchParams } from 'next/navigation';
+
+import { toast } from 'react-toastify';
 
 import * as S from './style';
 
+import { invalidateQueries } from '@/app/queryClient';
 import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
-import type { BoardType, CommentType } from '@/types';
+import { useGetCommentDetail, usePostComment } from '@/hooks';
+import type { CommentType, CommentRequestType } from '@/types';
+import { isAllowedContent, scrollToBottom } from '@/utils';
 
 interface Props {
-  initialData: BoardType[];
+  initialData: CommentType | null;
+  commentId: string;
 }
 
 const PREV_PATH = '/community/board/' as const;
 
-const CommentData: CommentType = {
-  commentId: '0',
-  author: {
-    name: '이승제',
-    generation: 6,
-  },
-  comment:
-    '커뮤니티는 공동의 관심사를 가진 사람들이 소통하고 협력하는 공간입니다. 지역, 온라인, 직업, 취미 등에서 형성되며 지식과 경험을 공유하고 서로 지원하는 곳입니다. 토론, 학습, 문화 교류 등을 통해 다양성과 포용성을 존중하며 구성원들이 발전하고 성장하는 공동체입니다.',
-  replies: [
-    {
-      replyCommentId: '0',
-      commentId: '1',
-      author: {
-        name: '이승제',
-        generation: 6,
-      },
-      comment:
-        '커뮤니티는 공동의 관심사를 가진 사람들이 소통하고 협력하는 공간입니다. 지역, 온라인, 직업, 취미 등에서 형성되며 지식과 경험을 공유하고 서로 지원하는 곳입니다. 토론, 학습, 문화 교류 등을 통해 다양성과 포용성을 존중하며 구성원들이 발전하고 성장하는 공동체입니다.',
-    },
-    {
-      commentId: '2',
-      author: {
-        name: '이승제',
-        generation: 6,
-      },
-      comment:
-        '커뮤니티는 공동의 관심사를 가진 사람들이 소통하고 협력하는 공간입니다. 지역, 온라인, 직업, 취미 등에서 형성되며 지식과 경험을 공유하고 서로 지원하는 곳입니다. 토론, 학습, 문화 교류 등을 통해 다양성과 포용성을 존중하며 구성원들이 발전하고 성장하는 공동체입니다.',
-    },
-  ],
-};
+const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
+  const { data, refetch } = useGetCommentDetail(commentId, { initialData });
 
-const AddComment: React.FC<Props> = () => {
-  const { postcommentId } = useParams();
+  const { boardId, commentId: parentCommentId } = useParams();
 
-  const uploadComment = () => {};
+  const replyId = useSearchParams().get('reply');
+
+  const handleUploadSuccess = () => {
+    refetch();
+    invalidateQueries(['board', boardId as string]);
+    scrollToBottom();
+  };
+
+  const { mutate: postMutate } = usePostComment({
+    onSuccess: handleUploadSuccess,
+  });
+
+  const uploadComment = (
+    comment: string,
+    setInputValue: Dispatch<SetStateAction<string>>
+  ) => {
+    if (!isAllowedContent(comment)) {
+      toast.error('게시물 내용을 입력해주세요.');
+      return;
+    }
+
+    const commentObject: CommentRequestType = {
+      boardId: boardId as string,
+      parentCommentId: parentCommentId as string,
+      comment,
+    };
+
+    if (replyId) commentObject['replyCommentId'] = replyId;
+
+    postMutate(commentObject);
+    setInputValue('');
+  };
 
   return (
     <S.Container>
       <Header />
-      <S.PostContainer>
-        <SubFunctionHeader prevPath={PREV_PATH + postcommentId} title='댓글' />
-        <S.CommentContainer>
-          <CommentCard comment={CommentData} />
-        </S.CommentContainer>
-      </S.PostContainer>
+      {data && (
+        <S.PostContainer>
+          <SubFunctionHeader prevPath={PREV_PATH + boardId} title='댓글' />
+          <S.CommentContainer>
+            <CommentCard comment={data} />
+          </S.CommentContainer>
+        </S.PostContainer>
+      )}
       <S.TextAreaWrapper>
         <TextArea
           disabled={false}
