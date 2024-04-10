@@ -1,5 +1,4 @@
-import type { CATEGORYLIST } from '@/components/Modal/BoardFilter';
-export type CategoryFilterType = (typeof CATEGORYLIST)[number];
+export type CategoryFilterType = CategoryType[keyof CategoryType];
 
 export enum CategoryType {
   선생님 = 'TEACHER',
