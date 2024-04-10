@@ -6,10 +6,7 @@ import { CloseIcon } from '@/assets';
 import { ReverseCategoryType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
-const CATEGORY_LIST: string[] = [
-  '전체',
-  ...Object.values(ReverseCategoryType),
-] as const;
+const CATEGORY_LIST: string[] = ['전체', ...Object.values(ReverseCategoryType)];
 
 interface Props {
   selectedCategory: CategoryFilterType | null;
