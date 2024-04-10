@@ -6,7 +6,10 @@ import { CloseIcon } from '@/assets';
 import { ReverseCategoryType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
-const CATEGORYLIST: string[] = Object.values(ReverseCategoryType);
+const CATEGORY_LIST: string[] = [
+  '전체',
+  ...Object.values(ReverseCategoryType),
+] as const;
 
 interface Props {
   selectedCategory: CategoryFilterType | null;
@@ -41,7 +44,7 @@ const BoardFilterModal: React.FC<Props> = ({
       <S.SectionWrapper>
         <S.SectionTitle>구분</S.SectionTitle>
         <S.CategoryWrapper>
-          {CATEGORYLIST.map((category) => (
+          {CATEGORY_LIST.map((category) => (
             <S.CategoryButton
               key={category}
               isSelected={selectedCategory === category}
