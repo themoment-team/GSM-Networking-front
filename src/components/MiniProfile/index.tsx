@@ -21,7 +21,7 @@ const MiniProfile: React.FC<Props> = ({
       {profileUrl ? (
         <Image src={profileUrl} alt='profile img' fill />
       ) : (
-        <RandomMentorImg temporaryImgNumber={defaultImgNumber} />
+        <RandomMentorImg defaultImgNumber={defaultImgNumber} />
       )}
     </S.ProfileImageBox>
     <S.UserInfo>

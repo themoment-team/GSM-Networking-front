@@ -6,5 +6,5 @@ export interface ProfileType {
   name: string;
   generation: number;
   profileUrl?: string;
-  defaultImgNumber?: number;
+  defaultImgNumber: number;
 }

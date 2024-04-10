@@ -67,11 +67,5 @@ const getMentorList = async (): Promise<WorkerType[]> => {
 
   const mentorList = await response.json();
 
-  return addTemporaryImgNumber(mentorList);
+  return mentorList;
 };
-
-const addTemporaryImgNumber = (mentorList: WorkerType[]) =>
-  mentorList.map((worker) => ({
-    ...worker,
-    temporaryImgNumber: Math.floor(Math.random() * 5),
-  }));

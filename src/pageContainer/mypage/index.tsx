@@ -48,9 +48,7 @@ const MyPage: React.FC = () => {
           <>
             <S.ProfileContainer>
               <Profile
-                name={data.name}
-                generation={data.generation}
-                profileUrl={data.profileUrl}
+                {...data}
                 profileRegisterModalOpen={() =>
                   setOpenModalCase('profileImgRegister')
                 }
