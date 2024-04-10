@@ -36,8 +36,8 @@ const BoardFilterModal: React.FC<Props> = ({
   };
 
   const handleCategoryClick = (category: CategoryFilterType) =>
-    setSelectedCategory(() =>
-      selectedCategory === category ? null : category
+    setSelectedCategory((prevSelectedCategory: CategoryFilterType | null) =>
+      prevSelectedCategory === category ? null : category
     );
 
   return (
