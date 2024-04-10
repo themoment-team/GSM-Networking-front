@@ -1,3 +1,4 @@
+export { default as COMMUNITY_CATEGORY_ARRAY } from './communityCategory';
 export { default as MENTEE_GENERATION_ARRAY } from './menteeGeneration';
 export { default as MENTOR_GENERATION_ARRAY } from './mentorGeneration';
 export { default as MONTH_ARRAY } from './month';

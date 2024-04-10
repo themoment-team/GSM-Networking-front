@@ -6,12 +6,19 @@ export const ProfileWrapper = styled.div`
   align-items: center;
 `;
 
-export const ProfileImageBox = styled.div`
+enum SmallSize {
+  true = '1.5rem',
+  false = '2.25rem',
+}
+
+export const ProfileImageBox = styled.div<{ isSmallSize: boolean }>`
   background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 50%;
   overflow: hidden;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: ${({ isSmallSize }) =>
+    isSmallSize ? SmallSize.true : SmallSize.false};
+  height: ${({ isSmallSize }) =>
+    isSmallSize ? SmallSize.true : SmallSize.false};
   position: relative;
 
   & > img {
@@ -20,8 +27,8 @@ export const ProfileImageBox = styled.div`
 
   svg {
     margin: 0.5rem 0 0 0rem;
-    width: 2rem;
-    height: 2rem;
+    width: 90%;
+    height: 90%;
     transform: scaleX(-1);
   }
 `;

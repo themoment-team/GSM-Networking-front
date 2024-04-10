@@ -5,6 +5,15 @@ export const authUrl = {
   getMyToken: () => '/auth/my-token',
 };
 
+export const boardUrl = {
+  getBoardDetail: (boardId: string) => `/board/${boardId}`,
+};
+
+export const commentUrl = {
+  getCommentDetail: (commentId: string) => `/comment/${commentId}`,
+  postComment: () => `/comment`,
+};
+
 export const fileUrl = {
   postUploadFile: () => '/file',
 };

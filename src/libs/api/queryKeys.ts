@@ -1,3 +1,12 @@
+export const boardQueryKeys = {
+  getBoardDetail: (boardId: string) => ['board', boardId],
+};
+
+export const commentQueryKeys = {
+  getCommentDetail: (commentId: string) => ['comment', commentId],
+  postComment: () => ['comment', 'create'],
+};
+
 export const fileQueryKeys = {
   postUploadFile: () => ['file'],
 } as const;
