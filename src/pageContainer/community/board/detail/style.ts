@@ -7,6 +7,10 @@ const FlexBox = styled.div`
 
 export const Container = styled.div`
   padding: 4.375rem 0 6.75rem;
+
+  @media (max-width: 600px) {
+    padding: 4.375rem 1rem 0 1rem;
+  }
 `;
 
 export const PostContainer = styled(FlexBox)`
