@@ -27,7 +27,7 @@ export const Primary: Story = {
         name: '더모먼트',
         URL: 'https://official.hellogsm.kr/',
       },
-      temporaryImgNumber: 0,
+      defaultImgNumber: 0,
       profileUrl:
         'https://gsm-networking-bucket.s3.ap-northeast-2.amazonaws.com/a6c46a31-485e-4cc4-b9ad-e572eee14f622023-11-21T09%3A16%3A21.446456989.jpeg',
     },
