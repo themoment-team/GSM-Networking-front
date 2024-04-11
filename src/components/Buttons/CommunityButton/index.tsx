@@ -8,12 +8,9 @@ import { css } from '@emotion/react';
 
 import * as S from './style';
 
+import { GWANGYA_PATH, BOARD_PATH } from '@/constants';
 import { theme } from '@/styles';
-
-const GWANGYA_PATH = '/community/gwangya' as const;
-const BOARD_PATH = '/community/board' as const;
-
-type SegmentType = '' | typeof GWANGYA_PATH | typeof BOARD_PATH;
+import type { SegmentType } from '@/types';
 
 interface Props {
   segment: SegmentType;
@@ -41,3 +38,4 @@ const CommunityButton: React.FC<Props> = ({ segment }) => {
 };
 
 export default CommunityButton;
+

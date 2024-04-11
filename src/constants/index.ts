@@ -1,4 +1,7 @@
+export { default as BOARD_PATH } from './boardPath';
+export { default as CATEGORY_ARRAY } from './category';
 export { default as COMMUNITY_CATEGORY_ARRAY } from './communityCategory';
+export { default as GWANGYA_PATH } from './gwangyaPath';
 export { default as MENTEE_GENERATION_ARRAY } from './menteeGeneration';
 export { default as MENTOR_GENERATION_ARRAY } from './mentorGeneration';
 export { default as MONTH_ARRAY } from './month';

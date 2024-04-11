@@ -5,6 +5,7 @@ export { default as DeleteIcon } from './DeleteIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as ExitIcon } from './ExitIcon';
 export { default as FilterIcon } from './FilterIcon';
+export { default as FilterNotFoundIcon } from './FilterNotFoundIcon';
 export { default as FoldIcon } from './FoldIcon';
 export { default as GoBackIcon } from './GoBackIcon';
 export { default as GoogleIcon } from './GoogleIcon';

@@ -7,12 +7,13 @@ import { FilterIcon } from '@/assets';
 interface Props {
   onClick: () => void;
   isActive: boolean;
+  title: string;
 }
 
-const FilterButton: React.FC<Props> = ({ onClick, isActive }) => (
+const FilterButton: React.FC<Props> = ({ onClick, isActive, title }) => (
   <S.Button type='button' onClick={onClick} isActive={isActive}>
     <FilterIcon />
-    필터
+    {title}
   </S.Button>
 );
 

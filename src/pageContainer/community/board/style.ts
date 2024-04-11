@@ -9,7 +9,6 @@ export const Container = styled.div`
   }
 `;
 
-
 export const BoardCardList = styled.div<{ isFetching: boolean }>`
   height: 100%;
   display: flex;
@@ -27,7 +26,8 @@ export const BoardCardList = styled.div<{ isFetching: boolean }>`
 
 export const TitleBox = styled.div`
   display: flex;
-  align-items: end;
+  align-items: center;
+  justify-content: space-between;
   gap: 0.75rem;
   margin-top: 2.5rem;
 `;
@@ -43,8 +43,8 @@ export const LoadMoreTrigger = styled.div`
 `;
 
 export const BoardCardWrapper = styled.div`
-  height: calc(100vh - 14rem);
-  height: calc(100dvh - 14rem);
+  height: calc(100vh - 15rem);
+  height: calc(100dvh - 15rem);
   margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
@@ -56,4 +56,12 @@ export const ButtonWrapper = styled.div`
   justify-content: flex-end;
   position: relative;
   bottom: 5.3125rem;
+`;
+
+export const NotFoundIconWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 `;

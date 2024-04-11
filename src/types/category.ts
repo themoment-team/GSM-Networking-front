@@ -1,3 +1,5 @@
+export type CategoryFilterType = CategoryType[keyof CategoryType];
+
 export enum CategoryType {
   선생님 = 'TEACHER',
   공지 = 'NOTICE',

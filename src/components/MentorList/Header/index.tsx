@@ -9,6 +9,8 @@ interface Props {
   setIsShowFilterModal: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const BUTTON_TITLE = '필터' as const;
+
 const MentorListHeader: React.FC<Props> = ({
   keyword,
   isShowFilterModal,
@@ -26,6 +28,7 @@ const MentorListHeader: React.FC<Props> = ({
         setIsShowFilterModal((isShowFilterModal) => !isShowFilterModal)
       }
       isActive={isShowFilterModal}
+      title={BUTTON_TITLE}
     />
   </S.Header>
 );
