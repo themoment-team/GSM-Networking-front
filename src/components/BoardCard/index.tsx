@@ -13,8 +13,8 @@ const BoardCard = forwardRef<HTMLDivElement, BoardInfoType>(
     const { monthDay, time } = parseDateString(createdAt);
 
     return (
-      <S.BoardCard ref={ref}>
-        <S.ContentBox href={`/community/board/${id}`}>
+      <S.ContentBox href={`/community/board/${id}`}>
+        <S.BoardCard ref={ref}>
           <S.ContentHeader>
             <S.HeaderTitle>
               <S.Name>{authorName}</S.Name>
@@ -26,8 +26,8 @@ const BoardCard = forwardRef<HTMLDivElement, BoardInfoType>(
             <S.Tag>#{ReverseCategoryType[boardCategory]}</S.Tag>
           </S.ContentHeader>
           <S.Content>{title}</S.Content>
-        </S.ContentBox>
-      </S.BoardCard>
+        </S.BoardCard>
+      </S.ContentBox>
     );
   }
 );
