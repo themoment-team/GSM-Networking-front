@@ -12,7 +12,6 @@ import {
   BoardContent,
   CommentCard,
   MiniProfile,
-  ChattingButton,
   TextArea,
 } from '@/components';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
@@ -66,7 +65,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           <SubFunctionHeader prevPath={PREV_PATH} title='글' />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            <ChattingButton onClick={() => {}} />
+            {/* <ChattingButton onClick={() => {}} /> */}
           </S.WriterProfileWrapper>
           <BoardContent
             title={boardData.title}

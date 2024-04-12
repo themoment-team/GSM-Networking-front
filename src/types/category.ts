@@ -1,8 +1,9 @@
 export type CategoryFilterType = CategoryType[keyof CategoryType];
 
 export enum CategoryType {
-  선생님 = 'TEACHER',
+  // 선생님 = 'TEACHER',
   공지 = 'NOTICE',
+  채용 = 'EMPLOYMENT',
   QnA = 'QNA',
   잡담 = 'CHAT',
   자료공유 = 'SHARE',
@@ -13,8 +14,9 @@ export enum CategoryType {
 }
 
 export enum ReverseCategoryType {
-  TEACHER = '선생님',
+  // TEACHER = '선생님',
   NOTICE = '공지',
+  EMPLOYMENT = '채용',
   QNA = 'QnA',
   CHAT = '잡담',
   SHARE = '자료공유',

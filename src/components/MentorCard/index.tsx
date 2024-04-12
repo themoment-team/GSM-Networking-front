@@ -1,9 +1,8 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -19,9 +18,9 @@ interface Props {
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {
-  const { push } = useRouter();
+  // const { push } = useRouter();
 
-  const [isHovered, setIsHovered] = useState(false);
+  // const [isHovered, setIsHovered] = useState(false);
 
   const isCompanyURLExist = !!worker.company.URL;
   const isEmailExist = !!worker.email;
@@ -38,15 +37,15 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
     }
   };
 
-  const handleButtonClick = () => {
-    push(`/chat/${worker.id}`);
-  };
+  // const handleButtonClick = () => {
+  //   push(`/chat/${worker.id}`);
+  // };
 
   return (
     <S.WorkerCardContainer>
       <S.WorkerImgBox
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+      // onMouseEnter={() => setIsHovered(true)}
+      // onMouseLeave={() => setIsHovered(false)}
       >
         {worker.profileUrl ? (
           <Image
@@ -58,11 +57,11 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
         ) : (
           <RandomWorkerImg defaultImgNumber={worker.defaultImgNumber} />
         )}
-        {isHovered && (
+        {/* {isHovered && (
           <S.HoverButton onClick={handleButtonClick}>
             <S.HoverText>채팅하기</S.HoverText>
           </S.HoverButton>
-        )}
+        )} */}
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>

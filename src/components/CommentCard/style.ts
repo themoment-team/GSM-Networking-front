@@ -23,6 +23,7 @@ export const Content = styled.pre`
 `;
 
 export const AddComment = styled.span`
+  width: fit-content;
   ${({ theme }) => theme.typo.body2};
   color: ${({ theme }) => theme.color.grey[500]};
   cursor: pointer;
