@@ -97,11 +97,33 @@ export const WorkerImgBox = styled.div`
   position: relative;
   overflow: hidden;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[50]};
+  /* transition: filter 0.3s;
+
+  &:hover {
+    filter: brightness(0.8);
+  } */
 
   & > img {
     object-fit: cover;
   }
 `;
+
+// export const HoverButton = styled.button`
+//   color: ${({ theme }) => theme.color.white};
+//   background: rgba(0, 0, 0, 0.5);
+//   border-radius: 0.75rem;
+//   position: absolute;
+//   gap: 0.625rem;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+//   padding: 0.25rem 0.75rem;
+//   cursor: pointer;
+// `;
+
+// export const HoverText = styled.span`
+//   ${({ theme }) => theme.typo.caption};
+// `;
 
 export const BlueCheckIconWrapper = styled.div`
   cursor: pointer;

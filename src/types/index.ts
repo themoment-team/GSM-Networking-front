@@ -1,5 +1,9 @@
 export * from './auth';
+export * from './board';
+export * from './boardInfo';
 export * from './career';
+export * from './category';
+export * from './comment';
 export * from './form';
 export * from './generation';
 export * from './gwangya';
@@ -9,4 +13,5 @@ export * from './mentorInfo';
 export * from './opponentInfo';
 export * from './position';
 export * from './profile';
+export * from './segment';
 export * from './worker';

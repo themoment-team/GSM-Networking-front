@@ -30,7 +30,7 @@ import { mentorInfoFormSchema } from '@/schemas';
 import type {
   CareerFormType,
   MentorInfoFormType,
-  MentorType,
+  MentorRequestType,
   TempMentorType,
   RequestCareerType,
 } from '@/types';
@@ -153,7 +153,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
       return toast.error('재직 회사 정보를 다시 확인해주세요.');
     }
 
-    const body: MentorType = {
+    const body: MentorRequestType = {
       name: data.name,
       email: data.email,
       generation: Number(data.generation),

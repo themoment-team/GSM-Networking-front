@@ -12,30 +12,30 @@ type Story = StoryObj<typeof RandomMentorImg>;
 
 export const MentorImg0: Story = {
   args: {
-    temporaryImgNumber: 0,
+    defaultImgNumber: 0,
   },
 };
 
 export const MentorImg1: Story = {
   args: {
-    temporaryImgNumber: 1,
+    defaultImgNumber: 1,
   },
 };
 
 export const MentorImg2: Story = {
   args: {
-    temporaryImgNumber: 2,
+    defaultImgNumber: 2,
   },
 };
 
 export const MentorImg3: Story = {
   args: {
-    temporaryImgNumber: 3,
+    defaultImgNumber: 3,
   },
 };
 
 export const MentorImg4: Story = {
   args: {
-    temporaryImgNumber: 4,
+    defaultImgNumber: 4,
   },
 };

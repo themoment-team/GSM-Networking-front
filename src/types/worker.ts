@@ -13,7 +13,7 @@ export interface WorkerType {
   position: PositionType;
   company: CompanyType;
   SNS: string;
-  temporaryImgNumber: number;
+  defaultImgNumber: number;
   registered: boolean;
   profileUrl: string | null;
 }
