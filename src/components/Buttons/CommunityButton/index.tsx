@@ -2,9 +2,9 @@
 
 'use client';
 
-import Link from 'next/link';
-
 import { css } from '@emotion/react';
+
+import { Link } from 'next-view-transitions';
 
 import * as S from './style';
 
@@ -38,4 +38,3 @@ const CommunityButton: React.FC<Props> = ({ segment }) => {
 };
 
 export default CommunityButton;
-
