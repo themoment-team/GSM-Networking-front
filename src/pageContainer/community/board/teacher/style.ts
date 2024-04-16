@@ -60,9 +60,3 @@ export const NotFoundIconWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
-
-export const Title = styled.h1`
-  color: ${({ theme }) => theme.color.black};
-
-  ${({ theme }) => theme.typo.h4};
-`;

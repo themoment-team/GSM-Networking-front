@@ -2,11 +2,10 @@
 
 import { useRef, useEffect } from 'react';
 
-import * as S from './style';
-
 import { FilterNotFoundIcon } from '@/assets';
 import { Header, WriteButton, BoardCard } from '@/components';
 import { useIntersectionObserver, useGetBoardList } from '@/hooks';
+import * as S from '@/pageContainer/community/board/style';
 import type { BoardInfoType } from '@/types';
 
 interface Props {
