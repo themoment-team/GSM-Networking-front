@@ -1,9 +1,5 @@
-import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
-
-import { boardUrl } from '@/libs';
+import { getBoardList } from '@/apis';
 import { TeacherBoard } from '@/pageContainer';
-import type { BoardInfoType } from '@/types';
 
 import type { Metadata } from 'next';
 
@@ -20,37 +16,6 @@ const TeacherBoardPage = async () => {
   const boardList = await getBoardList();
 
   return <TeacherBoard initialData={[...boardList]} />;
-};
-
-const TEACHER_CATEGORY = 'TEACHER';
-
-const getBoardList = async (): Promise<BoardInfoType[]> => {
-  const accessToken = cookies().get('accessToken')?.value;
-
-  if (!accessToken) return redirect('/auth/refresh');
-
-  const response = await fetch(
-    new URL(
-      `/api/v1${boardUrl.getBoardList(0)}&category=${TEACHER_CATEGORY}`,
-      process.env.BASE_URL
-    ),
-    {
-      method: 'GET',
-      headers: { Cookie: `accessToken=${accessToken}` },
-    }
-  );
-
-  if (response.status === 401) {
-    return redirect('/auth/refresh');
-  }
-
-  if (!response.ok) {
-    return redirect('/auth/signin');
-  }
-
-  const boardList: BoardInfoType[] = await response.json();
-
-  return boardList;
 };
 
 export default TeacherBoardPage;
