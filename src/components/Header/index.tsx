@@ -39,6 +39,9 @@ const Header: React.FC<Props> = ({ clearList }) => {
         </S.LogoLink>
         <S.RightBox>
           <S.RedirectBox>
+            <S.CommunityLink href='/community/board/teacher'>
+              선생님 공지
+            </S.CommunityLink>
             <S.CommunityLink href='/community/gwangya'>
               커뮤니티
             </S.CommunityLink>
