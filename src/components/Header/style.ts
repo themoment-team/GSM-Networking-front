@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 export const Header = styled.header`
   width: 100%;

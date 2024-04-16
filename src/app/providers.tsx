@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { ThemeProvider } from '@emotion/react';
 
 import { QueryClientProvider } from '@tanstack/react-query';
+import { ViewTransitions } from 'next-view-transitions';
 
 import QueryClient from '@/app/queryClient';
 import { theme } from '@/styles';
@@ -18,7 +19,11 @@ const Providers: React.FC<Props> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <ViewTransitions>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </ViewTransitions>
     </ThemeProvider>
   );
 };
