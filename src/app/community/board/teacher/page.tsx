@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { boardUrl } from '@/libs';
-import { Board } from '@/pageContainer';
+import { TeacherBoard } from '@/pageContainer';
 import type { BoardInfoType } from '@/types';
 
 import type { Metadata } from 'next';
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 const TeacherBoardPage = async () => {
   const boardList = await getBoardList();
 
-  return <Board initialData={[...boardList]} />;
+  return <TeacherBoard initialData={[...boardList]} />;
 };
 
 const TEACHER_CATEGORY = 'TEACHER';
@@ -31,7 +31,7 @@ const getBoardList = async (): Promise<BoardInfoType[]> => {
 
   const response = await fetch(
     new URL(
-      `/api/v1${boardUrl.getBoardList(0)}&${TEACHER_CATEGORY}`,
+      `/api/v1${boardUrl.getBoardList(0)}&category=${TEACHER_CATEGORY}`,
       process.env.BASE_URL
     ),
     {
