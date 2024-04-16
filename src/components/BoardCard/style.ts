@@ -9,7 +9,8 @@ export const BoardCard = styled.div`
   align-items: flex-end;
   border-radius: 0.75rem;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
-  width: 37.5rem;
+  max-width: 37.5rem;
+  width: 100%;
   cursor: pointer;
   margin-bottom: 1.5rem;
 `;
@@ -18,7 +19,8 @@ export const ContentBox = styled(Link)``;
 
 export const ContentHeader = styled.div`
   display: flex;
-  width: 34.5rem;
+  max-width: 34.5rem;
+  width: 100%;
   padding-right: 0.5rem;
   justify-content: space-between;
   align-items: center;
@@ -55,7 +57,8 @@ export const Tag = styled.div`
 export const Content = styled.div`
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.black};
-  width: 34.5rem;
+  max-width: 34.5rem;
+  width: 100%;
   word-break: break-all;
   margin-top: 0.4688rem;
   cursor: pointer;
