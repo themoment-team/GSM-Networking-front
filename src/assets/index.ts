@@ -18,6 +18,7 @@ export { default as MoreIcon } from './MoreIcon';
 export { default as MyPageIcon } from './MyPageIcon';
 export { default as NotExistEmailIcon } from './NotExistEmailIcon';
 export { default as NotExistSNSIcon } from './NotExistSNSIcon';
+export { default as NoticeIcon } from './NoticeIcon';
 export { default as PenIcon } from './PenIcon';
 export { default as PersonIcon } from './PersonIcon';
 export { default as PersonImg0 } from './PersonImg0';

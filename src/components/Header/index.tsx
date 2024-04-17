@@ -10,6 +10,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { NoticeIcon } from '@/assets';
 import { useGetMyInfo } from '@/hooks';
 
 interface Props {
@@ -48,19 +49,22 @@ const Header: React.FC<Props> = ({ clearList }) => {
             {!data && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
+            <S.CommunityLink href='/community/board/teacher'>
+              <NoticeIcon />
+            </S.CommunityLink>
+            <S.ProfileBox type='button' onClick={handleProfileClick}>
+              {data?.profileUrl ? (
+                <Image
+                  src={data.profileUrl}
+                  alt='profile img'
+                  fill
+                  sizes='36px'
+                />
+              ) : (
+                <I.MyPageIcon />
+              )}
+            </S.ProfileBox>
           </S.RedirectBox>
-          <S.ProfileBox type='button' onClick={handleProfileClick}>
-            {data?.profileUrl ? (
-              <Image
-                src={data.profileUrl}
-                alt='profile img'
-                fill
-                sizes='36px'
-              />
-            ) : (
-              <I.MyPageIcon />
-            )}
-          </S.ProfileBox>
         </S.RightBox>
       </S.Inner>
     </S.Header>

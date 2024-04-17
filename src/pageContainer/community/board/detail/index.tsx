@@ -1,6 +1,6 @@
 'use client';
 
-import type { Dispatch, SetStateAction } from 'react';
+import { type Dispatch, type SetStateAction } from 'react';
 
 import { toast } from 'react-toastify';
 
@@ -15,6 +15,7 @@ import {
   TextArea,
 } from '@/components';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
+import { CategoryType } from '@/types';
 import type { BoardType } from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
@@ -24,6 +25,7 @@ interface Props {
 }
 
 const PREV_PATH = '/community/board/' as const;
+const TEACHER_PATH = '/community/board/teacher' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
@@ -62,7 +64,14 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
       <Header />
       {boardData && (
         <S.PostContainer>
-          <SubFunctionHeader prevPath={PREV_PATH} title='글' />
+          <SubFunctionHeader
+            prevPath={
+              boardData?.boardCategory === CategoryType.선생님
+                ? TEACHER_PATH
+                : PREV_PATH
+            }
+            title='글'
+          />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
             {/* <ChattingButton onClick={() => {}} /> */}
