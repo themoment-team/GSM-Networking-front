@@ -22,6 +22,7 @@
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "@types/sockjs-client": "^1.5.4",
+    "@types/stompjs": "^2.3.9",
     "axios": "^1.5.1",
     "emotion-reset": "^3.0.1",
     "eslint": "8.48.0",
