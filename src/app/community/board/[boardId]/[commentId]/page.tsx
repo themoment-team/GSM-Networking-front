@@ -8,7 +8,7 @@ interface Params {
 }
 
 const AddCommentPage: React.FC<Params> = async ({ params: { commentId } }) => {
-  const commentDetail = await getCommentDetail('/board', commentId);
+  const commentDetail = await getCommentDetail('/community/board', commentId);
 
   return <AddComment initialData={commentDetail} commentId={commentId} />;
 };

@@ -10,6 +10,7 @@ import * as S from './style';
 
 import { invalidateQueries } from '@/app/queryClient';
 import { Header, SubFunctionHeader, CommentCard, TextArea } from '@/components';
+import { BOARD_PATH } from '@/constants';
 import { useGetCommentDetail, usePostComment } from '@/hooks';
 import type { CommentType, CommentRequestType } from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
@@ -18,8 +19,6 @@ interface Props {
   initialData: CommentType | null;
   commentId: string;
 }
-
-const PREV_PATH = '/community/board/' as const;
 
 const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
   const { data, refetch } = useGetCommentDetail(commentId, { initialData });
@@ -64,7 +63,7 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
       <Header />
       {data && (
         <S.PostContainer>
-          <SubFunctionHeader prevPath={PREV_PATH + boardId} title='댓글' />
+          <SubFunctionHeader prevPath={BOARD_PATH + boardId} title='댓글' />
           <S.CommentContainer>
             <CommentCard comment={data} />
           </S.CommentContainer>

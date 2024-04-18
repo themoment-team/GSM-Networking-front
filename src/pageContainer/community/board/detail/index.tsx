@@ -14,6 +14,7 @@ import {
   MiniProfile,
   TextArea,
 } from '@/components';
+import { BOARD_PATH } from '@/constants';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
 import type { BoardType } from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
@@ -22,8 +23,6 @@ interface Props {
   initialData: BoardType | null;
   boardId: string;
 }
-
-const PREV_PATH = '/community/board/' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
@@ -62,7 +61,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
       <Header />
       {boardData && (
         <S.PostContainer>
-          <SubFunctionHeader prevPath={PREV_PATH} title='글' />
+          <SubFunctionHeader prevPath={BOARD_PATH} title='글' />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
             {/* <ChattingButton onClick={() => {}} /> */}

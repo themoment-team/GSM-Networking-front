@@ -17,6 +17,7 @@ import {
   SelectFormItem,
   SubFunctionHeader,
 } from '@/components';
+import { BOARD_PATH } from '@/constants';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
@@ -25,8 +26,6 @@ import {
   type BoardContentWriteType,
   type CommunityWriteFormType,
 } from '@/types';
-
-const BOARD_PATH = '/community/board';
 
 const CommunityWrite = () => {
   const { push } = useRouter();
