@@ -63,7 +63,10 @@ const AddComment: React.FC<Props> = ({ initialData, commentId }) => {
       <Header />
       {data && (
         <S.PostContainer>
-          <SubFunctionHeader prevPath={BOARD_PATH + boardId} title='댓글' />
+          <SubFunctionHeader
+            prevPath={`${BOARD_PATH}/${boardId}`}
+            title='댓글'
+          />
           <S.CommentContainer>
             <CommentCard comment={data} />
           </S.CommentContainer>
