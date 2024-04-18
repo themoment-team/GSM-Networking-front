@@ -6,7 +6,7 @@ const PersonImg5 = () => (
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clip-path='url(#clip0_7722_10130)'>
+    <g clipPath='url(#clip0_7722_10130)'>
       <path
         d='M332 101.5L301.5 155.5L403.5 188.5L414 131.5C389.2 103.5 350 96.1666 332 101.5Z'
         fill='#FF7575'
