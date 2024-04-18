@@ -2,6 +2,7 @@
 
 import * as S from './style';
 
+import { BOARD_PATH } from '@/constants';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
@@ -16,7 +17,7 @@ const BoardCard: React.FC<BoardInfoType> = ({
   const { monthDay, time } = parseDateString(createdAt);
 
   return (
-    <S.ContentBox href={`/community/board/${id}`}>
+    <S.ContentBox href={`${BOARD_PATH}/${id}`}>
       <S.BoardCard>
         <S.ContentHeader>
           <S.HeaderTitle>
