@@ -39,9 +39,15 @@ const getMentorList = async (): Promise<WorkerType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
   const gwangyaToken = cookies().get('gwangyaToken')?.value;
 
+  const redirectPath = cookies().get('redirect')?.value;
+
   if (!accessToken) return redirect('/auth/refresh');
 
   if (!gwangyaToken) return redirect('/auth/refresh/gwangya?redirect=/');
+
+  if (redirectPath && redirectPath !== '/') {
+    return redirect(redirectPath);
+  }
 
   const response = await fetch(
     new URL(`/api/v1${mentorUrl.getMentorList()}`, process.env.BASE_URL),
