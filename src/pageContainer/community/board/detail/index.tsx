@@ -19,10 +19,21 @@ import { CategoryType } from '@/types';
 import type { BoardType } from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
+import type { Metadata } from 'next';
+
 interface Props {
   initialData: BoardType | null;
   boardId: string;
 }
+
+export const metadata = (boardData: BoardType | null): Metadata => ({
+  title: boardData ? boardData.title : '상세 게시판',
+  description: boardData ? boardData.content : '상세 게시판 페이지입니다.',
+  openGraph: {
+    title: boardData ? boardData.title : '게시판',
+    description: boardData ? boardData.content : '게시판 페이지입니다.',
+  },
+});
 
 const PREV_PATH = '/community/board/' as const;
 const TEACHER_PATH = '/community/board/teacher' as const;
@@ -58,6 +69,8 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     postMutate(commentObject);
     setInputValue('');
   };
+
+  metadata(boardData ?? null);
 
   return (
     <S.Container>
