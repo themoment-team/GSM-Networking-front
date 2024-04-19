@@ -20,6 +20,8 @@ const RandomMentorImg: React.FC<Props> = ({ defaultImgNumber }) => {
       return <I.PersonImg3 />;
     case 4:
       return <I.PersonImg4 />;
+    case 5:
+      return <I.PersonImg5 />;
     default:
       return null;
   }

@@ -26,6 +26,7 @@ export { default as PersonImg1 } from './PersonImg1';
 export { default as PersonImg2 } from './PersonImg2';
 export { default as PersonImg3 } from './PersonImg3';
 export { default as PersonImg4 } from './PersonImg4';
+export { default as PersonImg5 } from './PersonImg5';
 export { default as PlusIcon } from './PlusIcon';
 export { default as RemovePositionIcon } from './RemovePositionIcon';
 export { default as SNSIcon } from './SNSIcon';
