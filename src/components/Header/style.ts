@@ -1,14 +1,16 @@
+import { HeaderPosition } from '@/types';
 import styled from '@emotion/styled';
 import Link from 'next/link';
 
-export const Header = styled.header`
+export const Header = styled.header<{ position: HeaderPosition }>`
   width: 100%;
   height: 4.375rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
-  position: absolute;
+  background-color: ${({ theme }) => theme.color.white};
+  position: ${({ position }) => position};
   left: 0;
   top: 0;
   z-index: 5;

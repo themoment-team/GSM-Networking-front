@@ -29,7 +29,7 @@ export const TitleBox = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  margin-top: 2.5rem;
+  margin-top: 2rem;
 `;
 
 export const Title = styled.h1`
