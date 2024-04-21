@@ -55,7 +55,8 @@ const CommunityWrite = () => {
     },
   });
 
-  const { data: isTeacher } = useGetIsTeacher();
+  const { data: isTeacherData } = useGetIsTeacher();
+  const isTeacher = isTeacherData?.isTeacher;
 
   let filteredCategories = COMMUNITY_CATEGORY_ARRAY;
 
