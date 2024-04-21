@@ -2,8 +2,12 @@ import { useQuery } from '@tanstack/react-query';
 
 import { get, userQueryKeys, userUrl } from '@/libs';
 
+interface TeacherData {
+  isTeacher: boolean;
+}
+
 export const useGetIsTeacher = () =>
-  useQuery({
+  useQuery<TeacherData>({
     queryKey: userQueryKeys.getIsTeacher(),
-    queryFn: () => get<boolean>(userUrl.isTeacher()),
+    queryFn: () => get<TeacherData>(userUrl.isTeacher()),
   });
