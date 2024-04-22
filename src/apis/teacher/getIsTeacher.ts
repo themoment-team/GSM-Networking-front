@@ -33,5 +33,5 @@ export const getIsTeacher = async (
   }
   const isTeacher = await response.json();
 
-  return isTeacher;
+  return isTeacher?.isTeacher;
 };
