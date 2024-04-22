@@ -19,6 +19,7 @@ export const PostContainer = styled(FlexBox)`
 
 export const CommentContainer = styled(FlexBox)`
   gap: 2.5rem;
+  padding-bottom: 7.5rem;
 `;
 
 export const TextAreaWrapper = styled.div`

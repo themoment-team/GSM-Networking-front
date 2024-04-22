@@ -6,10 +6,10 @@ const FlexBox = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 4.375rem 0 6.75rem;
+  padding: 0 0 6.75rem;
 
   @media (max-width: 600px) {
-    padding: 4.375rem 1rem 0 1rem;
+    padding: 0 1rem;
   }
 `;
 
@@ -25,7 +25,8 @@ export const WriterProfileWrapper = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 37.5rem;
+  max-width: 37.5rem;
+  width: 100%;
   height: 1px;
   margin: 0.5rem 0;
 
@@ -34,6 +35,7 @@ export const Line = styled.div`
 
 export const CommentContainer = styled(FlexBox)`
   gap: 2.5rem;
+  padding-bottom: 7.5rem;
 `;
 
 export const TextAreaWrapper = styled.div`
@@ -41,4 +43,8 @@ export const TextAreaWrapper = styled.div`
   bottom: 2.5rem;
   width: 100%;
   box-shadow: 0px -0.625rem 1rem 0px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 600px) {
+    width: calc(100% - 2rem);
+  }
 `;
