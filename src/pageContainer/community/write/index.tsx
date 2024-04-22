@@ -19,6 +19,7 @@ import {
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
+import { useGetIsTeacher } from '@/hooks';
 import { usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
 import {
@@ -54,6 +55,17 @@ const CommunityWrite = () => {
     },
   });
 
+  const { data: isTeacherData } = useGetIsTeacher();
+  const isTeacher = isTeacherData?.isTeacher;
+
+  let filteredCategories = COMMUNITY_CATEGORY_ARRAY;
+
+  if (!isTeacher) {
+    filteredCategories = filteredCategories.filter(
+      (category) => category !== '선생님'
+    );
+  }
+
   const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
     const body: BoardContentWriteType = {
       title: data.title,
@@ -78,7 +90,7 @@ const CommunityWrite = () => {
             <SelectFormItem
               {...register('category')}
               value={watch('category')}
-              options={[...COMMUNITY_CATEGORY_ARRAY]}
+              options={[...filteredCategories]}
               selectTitle='카테고리'
               defaultValue={'글 카테고리'}
               errorMessage={errors.category?.message}

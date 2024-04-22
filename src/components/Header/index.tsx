@@ -8,7 +8,7 @@ import { useRouter } from 'next/navigation';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useGetMyMenteeInfo, useGetMyInfo } from '@/hooks';
+import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
 interface Props {
@@ -20,6 +20,9 @@ const Header: React.FC<Props> = ({
   clearList,
   position = HeaderPosition.ABSOLUTE,
 }) => {
+  const { data: isTeacherData } = useGetIsTeacher();
+  const isTeacher = isTeacherData?.isTeacher;
+
   const { data: mentorInfo } = useGetMyInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
   const [profileUrl, setProfileUrl] = useState<string>('');
@@ -54,17 +57,19 @@ const Header: React.FC<Props> = ({
             {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact> */}
-            {!mentorInfo && (
+            {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
           </S.RedirectBox>
-          <S.ProfileBox type='button' onClick={handleProfileClick}>
-            {profileUrl ? (
-              <Image src={profileUrl} alt='profile img' fill sizes='36px' />
-            ) : (
-              <I.MyPageIcon />
-            )}
-          </S.ProfileBox>
+          {!isTeacher && (
+            <S.ProfileBox type='button' onClick={handleProfileClick}>
+              {profileUrl ? (
+                <Image src={profileUrl} alt='profile img' fill sizes='36px' />
+              ) : (
+                <I.MyPageIcon />
+              )}
+            </S.ProfileBox>
+          )}
         </S.RightBox>
       </S.Inner>
     </S.Header>

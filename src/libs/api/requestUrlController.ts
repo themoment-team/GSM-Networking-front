@@ -48,4 +48,5 @@ export const tempMentorUrl = {
 
 export const userUrl = {
   postProfileImgUrl: () => `/user/profile-url`,
+  isTeacher: () => `/user/is-teacher`,
 };
