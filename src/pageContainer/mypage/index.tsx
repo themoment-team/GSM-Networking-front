@@ -4,8 +4,6 @@ import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { toast } from 'react-toastify';
-
 import * as S from './style';
 
 import {
@@ -15,7 +13,8 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyInfo } from '@/hooks';
+import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
+import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
 const MyPage: React.FC = () => {
@@ -25,15 +24,17 @@ const MyPage: React.FC = () => {
 
   const { push } = useRouter();
 
-  const { data, isError } = useGetMyInfo();
+  const [userInfo, setUserInfo] = useState<
+    MenteeType | MentorInfoType | null
+  >();
+
+  const { data: mentorInfo } = useGetMyInfo();
+  const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
-    if (isError) {
-      toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
-      push('/');
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isError]);
+    if (mentorInfo) setUserInfo(mentorInfo);
+    if (menteeInfo) setUserInfo(menteeInfo);
+  }, [menteeInfo, mentorInfo]);
 
   const onUpdateButtonClick = () => push('/register/mentor');
 
@@ -44,11 +45,11 @@ const MyPage: React.FC = () => {
       )}
       <Header />
       <S.Container>
-        {data && (
+        {userInfo && (
           <>
             <S.ProfileContainer>
               <Profile
-                {...data}
+                {...userInfo}
                 profileRegisterModalOpen={() =>
                   setOpenModalCase('profileImgRegister')
                 }
@@ -62,27 +63,29 @@ const MyPage: React.FC = () => {
                   <PrivacyCard
                     privacy={{
                       privacyKey: '전화번호',
-                      privacyValue: formatTelNum(data.phoneNumber),
+                      privacyValue: formatTelNum(userInfo.phoneNumber),
                     }}
                   />
-                  {data.SNS && (
+                  {'SNS' in userInfo && userInfo.SNS && (
                     <PrivacyCard
                       privacy={{
                         privacyKey: 'SNS',
-                        privacyValue: data.SNS,
+                        privacyValue: userInfo.SNS,
                       }}
                     />
                   )}
                 </S.InfoBox>
               </S.InfoWrapper>
-              <S.InfoWrapper>
-                <S.InfoText>재직 정보</S.InfoText>
-                <S.InfoBox>
-                  {data.career.map((career) => (
-                    <CareerCard career={career} key={career.id} />
-                  ))}
-                </S.InfoBox>
-              </S.InfoWrapper>
+              {'career' in userInfo && (
+                <S.InfoWrapper>
+                  <S.InfoText>재직 정보</S.InfoText>
+                  <S.InfoBox>
+                    {userInfo.career.map((career) => (
+                      <CareerCard career={career} key={career.id} />
+                    ))}
+                  </S.InfoBox>
+                </S.InfoWrapper>
+              )}
             </S.InfoContainer>
           </>
         )}
@@ -96,9 +99,11 @@ const MyPage: React.FC = () => {
           <S.WithdrawText>회원탈퇴</S.WithdrawText>
         </S.WithdrawBox>
       </S.WithdrawContainer> */}
-        <S.UpdateButton onClick={onUpdateButtonClick}>
-          개인정보 및 재직정보 수정
-        </S.UpdateButton>
+        {userInfo && 'career' in userInfo && (
+          <S.UpdateButton onClick={onUpdateButtonClick}>
+            개인정보 및 재직정보 수정
+          </S.UpdateButton>
+        )}
       </S.Container>
     </>
   );

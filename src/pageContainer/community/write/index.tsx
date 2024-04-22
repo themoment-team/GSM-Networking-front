@@ -100,6 +100,7 @@ const CommunityWrite = () => {
               inputTitle='제목'
               placeholder='50자 이내'
               errorMessage={errors.title?.message}
+              maxLength={50}
             />
             <FormItemWrapper
               title='내용'
@@ -109,6 +110,7 @@ const CommunityWrite = () => {
                 {...register('content')}
                 placeholder='1000자 이내'
                 isError={!!errors.content?.message}
+                maxLength={1000}
               />
             </FormItemWrapper>
           </S.FormFieldsWrapper>
