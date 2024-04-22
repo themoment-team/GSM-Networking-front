@@ -24,6 +24,8 @@ export async function GET(request: NextRequest) {
 
   const cookieStore = cookies();
 
+  cookies().set('redirect', redirectPath);
+
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
   try {

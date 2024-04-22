@@ -13,11 +13,16 @@ const AUTH_REFRESH_PATH = '/auth/refresh' as const;
  */
 export const getCommentDetail = async (
   redirectUrl: string,
-  commentId: string
+  commentId: string,
+  boardId: string
 ): Promise<CommentType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+  if (!accessToken) {
+    return redirect(
+      `/auth/refresh?redirect=${redirectUrl}/${boardId}/${commentId}`
+    );
+  }
 
   const response = await fetch(
     new URL(
@@ -41,7 +46,9 @@ export const getCommentDetail = async (
   }
 
   if (isUnauthorized) {
-    return redirect(`${AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
+    return redirect(
+      `${AUTH_REFRESH_PATH}?redirect=${redirectUrl}/${boardId}/${commentId}}`
+    );
   }
 
   if (!response.ok) {

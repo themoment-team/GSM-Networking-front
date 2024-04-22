@@ -9,14 +9,19 @@ import * as S from './style';
 
 import * as I from '@/assets';
 import { useGetMyMenteeInfo, useGetMyInfo } from '@/hooks';
+import { HeaderPosition } from '@/types';
+
 interface Props {
+  position?: HeaderPosition;
   clearList?: () => void;
 }
 
-const Header: React.FC<Props> = ({ clearList }) => {
+const Header: React.FC<Props> = ({
+  clearList,
+  position = HeaderPosition.ABSOLUTE,
+}) => {
   const { data: mentorInfo } = useGetMyInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
-
   const [profileUrl, setProfileUrl] = useState<string>('');
 
   const { push } = useRouter();
@@ -31,7 +36,7 @@ const Header: React.FC<Props> = ({ clearList }) => {
   }, [mentorInfo, menteeInfo]);
 
   return (
-    <S.Header>
+    <S.Header position={position}>
       <meta
         name='viewport'
         content='width=device-width, initial-scale=1, maximum-scale=1'
