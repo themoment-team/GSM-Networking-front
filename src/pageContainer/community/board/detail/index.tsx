@@ -14,7 +14,6 @@ import {
   MiniProfile,
   TextArea,
 } from '@/components';
-import { BOARD_PATH } from '@/constants';
 import { useGetBoardDetail, usePostComment } from '@/hooks';
 import { CategoryType } from '@/types';
 import { HeaderPosition, type BoardType } from '@/types';
@@ -86,7 +85,6 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
             }
             title='글'
           />
-          <SubFunctionHeader prevPath={BOARD_PATH} title='글' />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
             {/* <ChattingButton onClick={() => {}} /> */}
