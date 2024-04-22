@@ -57,7 +57,7 @@ const Header: React.FC<Props> = ({
             {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact> */}
-            {!mentorInfo && !isTeacher && (
+            {menteeInfo && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
           </S.RedirectBox>
