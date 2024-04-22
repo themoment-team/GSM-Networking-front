@@ -54,12 +54,16 @@ const Header: React.FC<Props> = ({
             <S.CommunityLink href='/community/gwangya'>
               커뮤니티
             </S.CommunityLink>
+
             {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact> */}
             {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
+            <S.CommunityLink href='/community/board/teacher'>
+              <I.NoticeIcon />
+            </S.CommunityLink>
           </S.RedirectBox>
           {!isTeacher && (
             <S.ProfileBox type='button' onClick={handleProfileClick}>
