@@ -1,9 +1,27 @@
 import styled from '@emotion/styled';
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Title = styled.p`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[800]};
-  margin-bottom: 1.5rem;
+`;
+
+export const TitleWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 0.25rem;
+`;
+
+export const XButton = styled.button`
+  .closeIcon {
+    fill: ${({ theme }) => theme.color.grey[400]};
+  }
 `;
 
 export const ImgInput = styled.input`
@@ -11,8 +29,8 @@ export const ImgInput = styled.input`
 `;
 
 export const ImgInputLabel = styled.label`
-  width: 14.5rem;
-  height: 14rem;
+  width: 11.75rem;
+  height: 10rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -20,4 +38,5 @@ export const ImgInputLabel = styled.label`
   border: 1px dashed ${({ theme }) => theme.color.grey[200]};
   border-radius: 0.625rem;
   cursor: pointer;
+  margin: 1rem 0;
 `;

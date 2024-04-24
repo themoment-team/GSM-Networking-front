@@ -1,67 +1,67 @@
 'use client';
 
-import { css } from '@emotion/react';
+import { useState } from 'react';
 
-import { toast } from 'react-toastify';
+import { css } from '@emotion/react';
 
 import * as S from './style';
 
-import { ImageRegisterIcon } from '@/assets';
-import { MyPageModalWrapper } from '@/components';
+import { CloseIcon } from '@/assets';
 import {
-  useGetMyInfo,
-  useGetMyMenteeInfo,
-  usePostProfileImgUrl,
-  usePostUploadFile,
-} from '@/hooks';
-import type { PostProfileImgType } from '@/types';
+  DefaultProfileSelect,
+  MyPageModalWrapper,
+  ProfileChange,
+} from '@/components';
+import { Step } from '@/types';
 
 interface Props {
   closeModal: () => void;
 }
 
 const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
-  const { mutate: mutateUploadFile } = usePostUploadFile();
-  const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
-  const { refetch: refetchGetMyInfo } = useGetMyInfo();
-  const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
+  const [step, setStep] = useState<Step>(Step.DEFAULT);
 
-  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
+  // const { mutate: mutateUploadFile } = usePostUploadFile();
+  // const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
+  // const { refetch: refetchGetMyInfo } = useGetMyInfo();
+  // const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
-    const profileImg = e.target.files[0];
+  // const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   if (!e.target.files) return;
 
-    if (profileImg.size > 1024 * 1024 * 20) {
-      return toast.error('프로필 이미지는 20MB 이하만 업로드 가능합니다.');
-    }
+  //   const profileImg = e.target.files[0];
 
-    const formData = new FormData();
+  //   if (profileImg.size > 1024 * 1024 * 20) {
+  //     return toast.error('프로필 이미지는 20MB 이하만 업로드 가능합니다.');
+  //   }
 
-    formData.append('file', profileImg);
+  //   const formData = new FormData();
 
-    mutateUploadFile(formData, {
-      onSuccess: ({ fileUrl }) => {
-        const data: PostProfileImgType = {
-          profileUrl: fileUrl,
-        };
+  //   formData.append('file', profileImg);
 
-        mutateProfileImgUrl(data, {
-          onSuccess: () => {
-            toast.success('프로필 이미지 업로드에 성공했습니다.');
-            refetchGetMyMenteeInfo();
-            refetchGetMyInfo();
-            closeModal();
-          },
-          onError: () => {
-            toast.error('프로필 이미지 업로드에 실패했습니다.');
-          },
-        });
-      },
-      onError: () => {
-        toast.error('프로필 이미지 업로드에 실패했습니다.');
-      },
-    });
-  };
+  //   mutateUploadFile(formData, {
+  //     onSuccess: ({ fileUrl }) => {
+  //       const data: PostProfileImgType = {
+  //         profileUrl: fileUrl,
+  //       };
+
+  //       mutateProfileImgUrl(data, {
+  //         onSuccess: () => {
+  //           toast.success('프로필 이미지 업로드에 성공했습니다.');
+  //           refetchGetMyMenteeInfo();
+  //           refetchGetMyInfo();
+  //           closeModal();
+  //         },
+  //         onError: () => {
+  //           toast.error('프로필 이미지 업로드에 실패했습니다.');
+  //         },
+  //       });
+  //     },
+  //     onError: () => {
+  //       toast.error('프로필 이미지 업로드에 실패했습니다.');
+  //     },
+  //   });
+  // };
 
   return (
     <MyPageModalWrapper
@@ -71,16 +71,19 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
         padding: 1.5rem;
       `}
     >
-      <S.Title>프로필 이미지 변경</S.Title>
-      <S.ImgInput
-        type='file'
-        id='img-input'
-        accept='image/*'
-        onChange={handleFileInputChange}
-      />
-      <S.ImgInputLabel htmlFor='img-input'>
-        <ImageRegisterIcon />
-      </S.ImgInputLabel>
+      <S.Container>
+        <S.TitleWrapper>
+          <S.Title>프로필 이미지 변경</S.Title>
+          <S.XButton onClick={closeModal}>
+            <CloseIcon />
+          </S.XButton>
+        </S.TitleWrapper>
+        {step === Step.DEFAULT && <ProfileChange setStep={setStep} />}
+        {/* {step === Step.PROFILE_IMG_CHANGE && <ProfileChange />} */}
+        {step === Step.DEFAULTPROFILECHANGE && (
+          <DefaultProfileSelect closeModal={closeModal} />
+        )}
+      </S.Container>
     </MyPageModalWrapper>
   );
 };
