@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
@@ -16,6 +18,8 @@ import {
   InputFormItem,
   SelectFormItem,
   SubFunctionHeader,
+  FileUploadButton,
+  FileUpload,
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
@@ -44,6 +48,10 @@ const CommunityWrite = () => {
       content: '',
     },
   });
+
+  const [openModalCase, setOpenModalCase] = useState<
+    'close' | 'fileRegister' | 'signOut' | 'withdraw'
+  >('close');
 
   const { mutate: mutatePostBoardContent, isPending } = usePostBoardContent({
     onSuccess: () => {
@@ -82,6 +90,9 @@ const CommunityWrite = () => {
 
   return (
     <>
+      {openModalCase === 'fileRegister' && (
+        <FileUpload closeModal={() => setOpenModalCase('close')} />
+      )}
       <Header />
       <S.Container>
         <SubFunctionHeader prevPath={BOARD_PATH} title='글 작성' />
@@ -102,17 +113,22 @@ const CommunityWrite = () => {
               errorMessage={errors.title?.message}
               maxLength={50}
             />
-            <FormItemWrapper
-              title='내용'
-              errorMessage={errors.content?.message}
-            >
-              <S.Textarea
-                {...register('content')}
-                placeholder='1000자 이내'
-                isError={!!errors.content?.message}
-                maxLength={1000}
+            <div>
+              <FormItemWrapper
+                title='내용'
+                errorMessage={errors.content?.message}
+              >
+                <S.Textarea
+                  {...register('content')}
+                  placeholder='1000자 이내'
+                  isError={!!errors.content?.message}
+                  maxLength={1000}
+                />
+              </FormItemWrapper>
+              <FileUploadButton
+                onClick={() => setOpenModalCase('fileRegister')}
               />
-            </FormItemWrapper>
+            </div>
           </S.FormFieldsWrapper>
           <S.NextButton type='submit' disabled={isPending}>
             다음
