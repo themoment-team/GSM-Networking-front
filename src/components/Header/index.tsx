@@ -1,16 +1,14 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { toast } from 'react-toastify';
-
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useGetMyInfo } from '@/hooks';
+import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
 interface Props {
@@ -22,14 +20,23 @@ const Header: React.FC<Props> = ({
   clearList,
   position = HeaderPosition.ABSOLUTE,
 }) => {
-  const { data } = useGetMyInfo();
+  const { data: isTeacherData } = useGetIsTeacher();
+  const isTeacher = isTeacherData?.isTeacher;
+
+  const { data: mentorInfo } = useGetMyInfo();
+  const { data: menteeInfo } = useGetMyMenteeInfo();
+  const [profileUrl, setProfileUrl] = useState<string>('');
 
   const { push } = useRouter();
 
   const handleProfileClick = () => {
-    if (data) push('/mypage');
-    else toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
+    push('/mypage');
   };
+
+  useEffect(() => {
+    if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
+    if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
+  }, [mentorInfo, menteeInfo]);
 
   return (
     <S.Header position={position}>
@@ -47,25 +54,26 @@ const Header: React.FC<Props> = ({
             <S.CommunityLink href='/community/gwangya'>
               커뮤니티
             </S.CommunityLink>
+
             {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact> */}
-            {!data && (
+            {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
+            <S.CommunityLink href='/community/board/teacher'>
+              <I.NoticeIcon />
+            </S.CommunityLink>
           </S.RedirectBox>
-          <S.ProfileBox type='button' onClick={handleProfileClick}>
-            {data?.profileUrl ? (
-              <Image
-                src={data.profileUrl}
-                alt='profile img'
-                fill
-                sizes='36px'
-              />
-            ) : (
-              <I.MyPageIcon />
-            )}
-          </S.ProfileBox>
+          {!isTeacher && (
+            <S.ProfileBox type='button' onClick={handleProfileClick}>
+              {profileUrl ? (
+                <Image src={profileUrl} alt='profile img' fill sizes='36px' />
+              ) : (
+                <I.MyPageIcon />
+              )}
+            </S.ProfileBox>
+          )}
         </S.RightBox>
       </S.Inner>
     </S.Header>

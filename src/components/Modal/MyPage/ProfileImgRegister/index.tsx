@@ -8,8 +8,12 @@ import * as S from './style';
 
 import { ImageRegisterIcon } from '@/assets';
 import { MyPageModalWrapper } from '@/components';
-import { useGetMyInfo, usePostProfileImgUrl } from '@/hooks';
-import { usePostUploadFile } from '@/hooks';
+import {
+  useGetMyInfo,
+  useGetMyMenteeInfo,
+  usePostProfileImgUrl,
+  usePostUploadFile,
+} from '@/hooks';
 import type { PostProfileImgType } from '@/types';
 
 interface Props {
@@ -20,6 +24,7 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
   const { mutate: mutateUploadFile } = usePostUploadFile();
   const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
   const { refetch: refetchGetMyInfo } = useGetMyInfo();
+  const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
@@ -43,6 +48,7 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
         mutateProfileImgUrl(data, {
           onSuccess: () => {
             toast.success('프로필 이미지 업로드에 성공했습니다.');
+            refetchGetMyMenteeInfo();
             refetchGetMyInfo();
             closeModal();
           },

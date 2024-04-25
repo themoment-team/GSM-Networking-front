@@ -1,6 +1,6 @@
 import { HeaderPosition } from '@/types';
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
 export const Header = styled.header<{ position: HeaderPosition }>`
   width: 100%;
@@ -42,6 +42,7 @@ export const LogoLink = styled(Link)`
 export const CommunityLink = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
+  display: flex;
 `;
 
 export const MentorContact = styled.button`
@@ -64,6 +65,7 @@ export const RightBox = styled.div`
 
 export const RedirectBox = styled.div`
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 `;
 
