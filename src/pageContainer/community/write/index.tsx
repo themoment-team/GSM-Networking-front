@@ -19,7 +19,7 @@ import {
   SelectFormItem,
   SubFunctionHeader,
   FileUploadButton,
-  FileUpload,
+  FileUploadModal,
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
@@ -91,7 +91,7 @@ const CommunityWrite = () => {
   return (
     <>
       {openModalCase === 'fileRegister' && (
-        <FileUpload closeModal={() => setOpenModalCase('close')} />
+        <FileUploadModal closeModal={() => setOpenModalCase('close')} />
       )}
       <Header />
       <S.Container>
@@ -113,7 +113,7 @@ const CommunityWrite = () => {
               errorMessage={errors.title?.message}
               maxLength={50}
             />
-            <div>
+            <S.FileContainer>
               <FormItemWrapper
                 title='내용'
                 errorMessage={errors.content?.message}
@@ -125,10 +125,13 @@ const CommunityWrite = () => {
                   maxLength={1000}
                 />
               </FormItemWrapper>
-              <FileUploadButton
-                onClick={() => setOpenModalCase('fileRegister')}
-              />
-            </div>
+              <S.MapFileBox>
+                <FileUploadButton
+                  onClick={() => setOpenModalCase('fileRegister')}
+                />
+                <S.MapFileBox />
+              </S.MapFileBox>
+            </S.FileContainer>
           </S.FormFieldsWrapper>
           <S.NextButton type='submit' disabled={isPending}>
             다음
