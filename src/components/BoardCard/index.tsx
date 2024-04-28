@@ -27,13 +27,11 @@ const BoardCard: React.FC<BoardInfoType> = ({
 
   const { refetch } = useGetBoardList();
 
-  const handleUploadSuccess = () => {
-    refetch();
-    setLikeBtnClick((prev) => !prev);
-  };
-
   const { mutate: postMutate } = usePostLikeCount(id, {
-    onSuccess: handleUploadSuccess,
+    onSuccess: (likeCurrent) => {
+      refetch();
+      setLikeBtnClick(likeCurrent.currentStatus);
+    },
   });
 
   const uploadLike = () => {
