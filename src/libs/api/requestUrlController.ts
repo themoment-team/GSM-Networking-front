@@ -47,7 +47,7 @@ export const tempMentorUrl = {
 };
 
 export const userUrl = {
-  patchProfileNumber: () => '/profile-number',
+  patchProfileNumber: () => '/user/profile-number',
   postProfileImgUrl: () => `/user/profile-url`,
   isTeacher: () => `/user/is-teacher`,
 };
