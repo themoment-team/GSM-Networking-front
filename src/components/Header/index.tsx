@@ -65,8 +65,12 @@ const Header: React.FC<Props> = ({
               <I.NoticeIcon />
             </S.CommunityLink>
           </S.RedirectBox>
-          {!isTeacher && (
-            <S.ProfileBox type='button' onClick={handleProfileClick}>
+          {isTeacher ? (
+            <S.TeacherBox>
+              <I.TeacherImg />
+            </S.TeacherBox>
+          ) : (
+            <S.ProfileBox onClick={handleProfileClick}>
               {profileUrl ? (
                 <Image src={profileUrl} alt='profile img' fill sizes='36px' />
               ) : (
