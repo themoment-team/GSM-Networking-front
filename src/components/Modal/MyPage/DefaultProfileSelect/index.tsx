@@ -28,19 +28,22 @@ const DefaultProfileSelect = ({ closeModal }: Props) => {
   const { mutate: mutateProfileNumber, isPending } = usePatchProfileNumber();
 
   const handleButtonClick = () => {
-    if (selectedProfile) {
-      const data: PatchProfileNumberType = {
-        profileNumber: selectedProfile,
-      };
+    if (!selectedProfile) {
+      toast.error('기본 프로필을 선택해주세요.');
+      return;
+    }
 
-      mutateProfileNumber(data, {
-        onSuccess: () => {
-          toast.success('기본 프로필로 변경되었습니다');
-          closeModal();
-        },
-        onError: () => toast.error('기본 프로필 변경에 실패했습니다.'),
-      });
-    } else toast.error('기본 프로필을 선택해주세요.');
+    const data: PatchProfileNumberType = {
+      profileNumber: selectedProfile,
+    };
+
+    mutateProfileNumber(data, {
+      onSuccess: () => {
+        toast.success('기본 프로필로 변경되었습니다');
+        closeModal();
+      },
+      onError: () => toast.error('기본 프로필 변경에 실패했습니다.'),
+    });
   };
 
   return (
