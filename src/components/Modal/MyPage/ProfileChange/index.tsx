@@ -1,7 +1,8 @@
 'use client';
 
-import type { Dispatch, SetStateAction } from 'react';
-import React from 'react';
+import type { ChangeEvent, Dispatch, SetStateAction } from 'react';
+
+import { toast } from 'react-toastify';
 
 import * as S from './style';
 
@@ -10,10 +11,23 @@ import { Step } from '@/types';
 
 interface Props {
   setStep: Dispatch<SetStateAction<Step>>;
+  setImgUrl: Dispatch<SetStateAction<string>>;
 }
 
-const ProfileChange = ({ setStep }: Props) => {
+const ProfileChange = ({ setStep, setImgUrl }: Props) => {
   const handleButtonClick = () => setStep(Step.DEFAULTPROFILECHANGE);
+  const handleFileInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      const reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0]);
+      reader.onload = () => {
+        if (typeof reader.result === 'string') setImgUrl(reader.result);
+      };
+      setStep(Step.PROFILE_IMG_CHANGE);
+    } else {
+      toast('에러가 발생했습니다.');
+    }
+  };
 
   return (
     <>
@@ -24,7 +38,7 @@ const ProfileChange = ({ setStep }: Props) => {
         type='file'
         id='img-input'
         accept='image/*'
-        // onChange={handleFileInputChange}
+        onChange={handleFileInputChange}
       />
       <S.ImgInputLabel htmlFor='img-input'>
         <ImageRegisterIcon />
