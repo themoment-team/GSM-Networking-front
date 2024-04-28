@@ -1,7 +1,7 @@
 const TeacherImg = () => (
   <svg
-    width='661'
-    height='642'
+    width='41.3125rem'
+    height='40.125rem'
     viewBox='0 0 661 642'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
