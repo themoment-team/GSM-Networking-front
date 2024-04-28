@@ -18,6 +18,10 @@ export const gwangyaQueryKeys = {
   postGwangyaContent: () => ['gwangya', 'post', 'content'],
 };
 
+export const likeQueryKeys = {
+  postLikeCount: () => ['like'],
+};
+
 export const menteeQueryKeys = {
   postMenteeRegister: () => ['mentee', 'register'],
   patchMenteeAuthority: () => ['mentee', 'authority'],

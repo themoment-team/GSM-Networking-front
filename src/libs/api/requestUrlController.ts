@@ -26,6 +26,10 @@ export const gwangyaUrl = {
   getGwangyaToken: () => `/gwangya/token`,
 };
 
+export const likeUrl = {
+  postLikeCount: (boardId: number) => `/like/${boardId}`,
+};
+
 export const menteeUrl = {
   postMenteeRegister: () => '/mentee',
   patchMenteeAuthority: () => '/mentee/update',

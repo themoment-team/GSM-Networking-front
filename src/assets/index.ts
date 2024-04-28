@@ -1,6 +1,7 @@
 export { default as BlueCheckIcon } from './BlueCheckIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CloseIcon } from './CloseIcon';
+export { default as CommentIcon } from './CommentIcon';
 export { default as DeleteIcon } from './DeleteIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as ExitIcon } from './ExitIcon';
@@ -11,6 +12,7 @@ export { default as GoBackIcon } from './GoBackIcon';
 export { default as GoogleIcon } from './GoogleIcon';
 export { default as GsmNetworkingIcon } from './GsmNetworkingIcon';
 export { default as ImageRegisterIcon } from './ImageRegisterIcon';
+export { default as LikeIcon } from './LikeIcon';
 export { default as LogoIcon } from './LogoIcon';
 export { default as MenteeSelectIcon } from './MenteeSelectIcon';
 export { default as MentorSelectIcon } from './MentorSelectIcon';
