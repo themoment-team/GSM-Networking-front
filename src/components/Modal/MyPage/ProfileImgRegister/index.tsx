@@ -11,6 +11,7 @@ import {
   DefaultProfileSelect,
   MyPageModalWrapper,
   ProfileChange,
+  ProfileImgChange,
 } from '@/components';
 import { Step } from '@/types';
 
@@ -20,6 +21,7 @@ interface Props {
 
 const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
   const [step, setStep] = useState<Step>(Step.DEFAULT);
+  const [imgUrl, setImgUrl] = useState<string>('');
 
   // const { mutate: mutateUploadFile } = usePostUploadFile();
   // const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
@@ -78,11 +80,24 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
             <CloseIcon />
           </S.XButton>
         </S.TitleWrapper>
-        {step === Step.DEFAULT && <ProfileChange setStep={setStep} />}
-        {/* {step === Step.PROFILE_IMG_CHANGE && <ProfileChange />} */}
-        {step === Step.DEFAULTPROFILECHANGE && (
-          <DefaultProfileSelect closeModal={closeModal} />
-        )}
+        {
+          // 처음 보게될 모달
+          step === Step.DEFAULT && (
+            <ProfileChange setStep={setStep} setImgUrl={setImgUrl} />
+          )
+        }
+        {
+          // 기본 이미지 변경 클릭시 보게될 모달
+          step === Step.DEFAULTPROFILECHANGE && (
+            <DefaultProfileSelect closeModal={closeModal} />
+          )
+        }
+        {
+          // 이미지 파일 선택시 보게될 모달
+          step === Step.PROFILE_IMG_CHANGE && (
+            <ProfileImgChange imgUrl={imgUrl} closeModal={closeModal} />
+          )
+        }
       </S.Container>
     </MyPageModalWrapper>
   );
