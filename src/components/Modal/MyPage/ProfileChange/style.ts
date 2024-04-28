@@ -10,7 +10,7 @@ export const Description = styled.p`
 `;
 
 export const DefaultImgButton = styled.button`
-  ${({ theme }) => theme.typo.button}
+  ${({ theme }) => theme.typo.button};
   color: ${({ theme }) => theme.color.skyBlue[400]};
   border: 0.0625rem solid ${({ theme }) => theme.color.skyBlue[400]};
   padding: 0.5625rem 2.4063rem;
