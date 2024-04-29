@@ -42,8 +42,7 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
   const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
   const onCropComplete = useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (_: any, croppedAreaPixel: CroppedAreaType) => {
+    (_: unknown, croppedAreaPixel: CroppedAreaType) => {
       setCroppedAreaPixels(croppedAreaPixel);
     },
     []
