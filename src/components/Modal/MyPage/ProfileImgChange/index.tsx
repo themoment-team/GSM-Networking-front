@@ -94,7 +94,7 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
     canvas.height = image.height;
 
     ctx!.translate(image.width / 2, image.height / 2);
-    ctx!.translate(-image.width / 2, -image.height / 2);
+    ctx!.translate(-image.width / 2, image.height / -2);
     ctx!.drawImage(image, 0, 0);
 
     const croppedCanvas = document.createElement('canvas');
