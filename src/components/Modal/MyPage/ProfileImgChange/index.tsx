@@ -48,6 +48,8 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
     []
   );
 
+  const onError = () => toast.error('프로필 이미지 업로드에 실패했습니다.');
+
   const onCropButtonClick = async () => {
     const formData = new FormData();
     const profileImg = await getCroppedImg(imgUrl, croppedAreaPixels!);
@@ -68,14 +70,10 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
             refetchGetMyInfo();
             closeModal();
           },
-          onError: () => {
-            toast.error('프로필 이미지 업로드에 실패했습니다.');
-          },
+          onError: onError,
         });
       },
-      onError: () => {
-        toast.error('프로필 이미지 업로드에 실패했습니다.');
-      },
+      onError: onError,
     });
   };
 
