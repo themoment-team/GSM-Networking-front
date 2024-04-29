@@ -27,7 +27,7 @@ export const WriterProfileWrapper = styled.div`
 export const Line = styled.div`
   max-width: 37.5rem;
   width: 100%;
-  height: 1px;
+  height: 0.0625rem;
   margin: 0.5rem 0;
 
   background-color: ${({ theme }) => theme.color.grey[100]};
