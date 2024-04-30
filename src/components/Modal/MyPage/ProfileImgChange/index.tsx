@@ -137,7 +137,7 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
       <S.CropperWrapper>
         <Cropper
           image={imgUrl}
-          aspect={47 / 40}
+          aspect={188 / 160}
           showGrid={false}
           crop={crop}
           onCropChange={setCrop}
