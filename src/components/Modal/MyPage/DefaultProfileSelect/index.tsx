@@ -23,7 +23,7 @@ interface Props {
   closeModal: () => void;
 }
 
-const DefaultProfileSelect = ({ closeModal }: Props) => {
+const DefaultProfileSelect: React.FC<Props> = ({ closeModal }) => {
   const [selectedProfile, setSelectedProfile] = useState<number>();
   const { mutate: mutateProfileNumber, isPending } = usePatchProfileNumber();
 
