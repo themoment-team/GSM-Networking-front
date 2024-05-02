@@ -73,23 +73,6 @@ export const GapBox = styled.div`
   width: 4rem;
 `;
 
-export const TeacherBox = styled.div`
-  background-color: ${({ theme }) => theme.color.grey[50]};
-  border-radius: 3.125rem;
-  overflow: hidden;
-  width: 2.25rem;
-  height: 2.25rem;
-  position: relative;
-
-  & > svg {
-    width: 2.1875rem;
-    height: 2rem;
-    position: relative;
-    top: 0.44rem;
-    left: 0.13rem;
-  }
-`;
-
 export const ProfileBox = styled.button`
   background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 3.125rem;
