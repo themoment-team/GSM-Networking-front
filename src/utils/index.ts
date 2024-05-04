@@ -6,6 +6,7 @@ export { default as extractCareer } from './extractCareer';
 export { default as extractSubstring } from './extractSubstring';
 export { default as formatTelNum } from './formatTelNum';
 export { default as getGwangyaToken } from './getGwangyaToken';
+export { default as getPopupList } from './getPopupList';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isAllowedContent } from './isAllowedContent';
 export { default as isExistCookie } from './isExistCookie';
