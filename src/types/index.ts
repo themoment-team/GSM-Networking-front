@@ -16,4 +16,5 @@ export * from './popup';
 export * from './position';
 export * from './profile';
 export * from './segment';
+export * from './step';
 export * from './worker';

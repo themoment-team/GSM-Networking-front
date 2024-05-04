@@ -1,0 +1,5 @@
+export enum Step {
+  DEFAULT,
+  DEFAULTPROFILECHANGE,
+  PROFILE_IMG_CHANGE,
+}
