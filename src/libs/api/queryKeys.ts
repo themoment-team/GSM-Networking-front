@@ -40,4 +40,5 @@ export const tempMentorQueryKeys = {
 export const userQueryKeys = {
   postProfileImgUrl: () => ['user', 'profile'],
   getIsTeacher: () => ['user', 'teacher'],
+  patchProfileNumber: () => ['user', 'profile', 'number'],
 };

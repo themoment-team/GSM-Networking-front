@@ -1,3 +1,7 @@
+export interface PatchProfileNumberType {
+  profileNumber: number;
+}
+
 export interface PostProfileImgType {
   profileUrl: string;
 }
