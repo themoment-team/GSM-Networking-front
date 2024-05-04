@@ -12,6 +12,7 @@ export * from './mentee';
 export * from './mentor';
 export * from './mentorInfo';
 export * from './opponentInfo';
+export * from './popup';
 export * from './position';
 export * from './profile';
 export * from './segment';
