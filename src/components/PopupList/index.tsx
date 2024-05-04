@@ -13,7 +13,7 @@ const PopupList = () => {
     const response = await getPopupList();
     // console.log(response);
     // const filtered = response.filter(() => {});
-    // setPopupList()
+    setPopupList(response);
   };
 
   useEffect(() => {
