@@ -15,6 +15,10 @@ export const commentUrl = {
   postComment: () => `/comment`,
 };
 
+export const etcUrl = {
+  getPopupList: () => '/popup',
+};
+
 export const fileUrl = {
   postUploadFile: () => '/file',
 };
