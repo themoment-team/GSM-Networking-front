@@ -1,24 +1,15 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { PopupCard } from '@/components';
-import type { PopupType } from '@/types';
-import { getPopupList } from '@/utils';
+import { useGetPopupList } from '@/hooks/api/popup';
 
 const PopupList = () => {
-  const [popupList, setPopupList] = useState<PopupType[]>();
+  const { data } = useGetPopupList();
+  // const filtered = response.filter(() => {});
 
-  const getPopup = async () => {
-    const response = await getPopupList();
-    // console.log(response);
-    // const filtered = response.filter(() => {});
-    setPopupList(response);
-  };
-
-  useEffect(() => {
-    getPopup();
-  }, []);
+  useEffect(() => {}, [data]);
 
   return (
     <>
