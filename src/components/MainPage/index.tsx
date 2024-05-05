@@ -48,6 +48,7 @@ const MainPage: React.FC<Props> = ({
 
   return (
     <>
+      <PopupList />
       <Header clearList={clearList} />
       <Container>
         <MentorList
@@ -60,7 +61,6 @@ const MainPage: React.FC<Props> = ({
           setSelectedPosition={setSelectedPosition}
         />
       </Container>
-      <PopupList />
     </>
   );
 };
