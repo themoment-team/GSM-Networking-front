@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 export const CardWrapper = styled.div`
   display: flex;
-  justify-content: center;
 `;
 
 export const Card = styled.div`
@@ -14,6 +13,8 @@ export const Card = styled.div`
   box-shadow: 0.0625rem 0.5625rem 1.125rem 0 rgba(6, 15, 39, 0.06);
   background-color: ${({ theme }) => theme.color.white};
   z-index: 2;
+  transform: translateX(-50%);
+  max-width: 37.5rem;
 `;
 
 export const TopSection = styled.div`
