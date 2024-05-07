@@ -17,8 +17,17 @@ const PopupList = () => {
     ? (JSON.parse(prevInvisiblePopuplist) as number[])
     : [];
 
+  const deleteExpiredPopup = () => {
+    const currentPopupList = data!.map(({ id }) => id);
+    const filteredList = JSON.stringify(
+      invisiblePopupList.filter((id) => currentPopupList.includes(id))
+    );
+    localStorage.setItem(INVISIBLEPOPUPLIST, filteredList);
+  };
+
   useEffect(() => {
     if (data) {
+      deleteExpiredPopup();
       const filteredList = data.filter(
         ({ id }) => !invisiblePopupList.includes(id)
       );
