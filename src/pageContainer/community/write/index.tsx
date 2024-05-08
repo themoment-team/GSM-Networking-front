@@ -32,12 +32,10 @@ import {
   type CommunityWriteFormType,
 } from '@/types';
 
-interface Props {
-  selectedFile: File;
-}
-
-const CommunityWrite: React.FC<Props> = ({ selectedFile }) => {
+const CommunityWrite = () => {
   const { push } = useRouter();
+
+  const [files, setFiles] = useState<FileList>();
 
   // console.log(selectedFile);
 
@@ -97,7 +95,10 @@ const CommunityWrite: React.FC<Props> = ({ selectedFile }) => {
   return (
     <>
       {openModalCase === 'fileRegister' && (
-        <FileUploadModal closeModal={() => setOpenModalCase('close')} />
+        <FileUploadModal
+          setFiles={setFiles}
+          closeModal={() => setOpenModalCase('close')}
+        />
       )}
       <Header />
       <S.Container>

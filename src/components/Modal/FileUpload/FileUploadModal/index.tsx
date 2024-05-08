@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import type { Dispatch, SetStateAction } from 'react';
 
 import { css } from '@emotion/react';
 
@@ -10,24 +10,19 @@ import * as S from './style';
 
 import { FileRegisterIcon, CancleFileUpload } from '@/assets';
 import { FileUploadModalWrapper } from '@/components';
-import { CommunityWrite } from '@/pageContainer';
 
 interface Props {
   closeModal: () => void;
+  setFiles: Dispatch<SetStateAction<FileList | undefined>>;
 }
 
-const FileUpload: React.FC<Props> = ({ closeModal }) => {
-  const [state, setState] = useState<File>();
+const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-
     const selectedFiles = e.target.files;
-    setState(selectedFiles[0]);
-    // console.log(Array(selectedFiles[0]));
-    // console.log(state);
 
-    <CommunityWrite selectedFile={selectedFiles[0]} />;
+    if (!selectedFiles) return;
 
+    setFiles(selectedFiles);
     closeModal();
     toast.success('파일 등록에 성공하였습니다.');
   };
@@ -56,6 +51,7 @@ const FileUpload: React.FC<Props> = ({ closeModal }) => {
       <S.FileInput
         type='file'
         id='file-input'
+        multiple
         accept='image/*, .hwp, .hwpx'
         onChange={handleFileInputChange}
       />
