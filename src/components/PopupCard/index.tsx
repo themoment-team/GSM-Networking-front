@@ -28,10 +28,15 @@ const PopupCard: React.FC<Props> = ({ id, boardId, title, setPopupList }) => {
 
   const handleCloseButtonClick = () => {
     if (isChecked) {
-      const prevInvisiblePopuplist = localStorage.getItem(INVISIBLEPOPUPLIST);
-      const invisiblePopupList = prevInvisiblePopuplist
-        ? (JSON.parse(prevInvisiblePopuplist) as number[])
-        : [];
+      const parsedPrevInvisiblePopuplist = JSON.parse(
+        localStorage.getItem(INVISIBLEPOPUPLIST)!
+      );
+      const invisiblePopupList =
+        parsedPrevInvisiblePopuplist &&
+        Array.isArray(parsedPrevInvisiblePopuplist) &&
+        parsedPrevInvisiblePopuplist.every((i) => typeof i === 'number')
+          ? (parsedPrevInvisiblePopuplist as number[])
+          : [];
       const newInvisiblePopupList = JSON.stringify([...invisiblePopupList, id]);
       localStorage.setItem(INVISIBLEPOPUPLIST, newInvisiblePopupList);
     }

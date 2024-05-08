@@ -12,10 +12,15 @@ import type { PopupType } from '@/types';
 const PopupList = () => {
   const { data } = useGetPopupList();
   const [popupList, setPopupList] = useState<PopupType[]>([]);
-  const prevInvisiblePopuplist = localStorage.getItem(INVISIBLEPOPUPLIST);
-  const invisiblePopupList = prevInvisiblePopuplist
-    ? (JSON.parse(prevInvisiblePopuplist) as number[])
-    : [];
+  const parsedPrevInvisiblePopuplist = JSON.parse(
+    localStorage.getItem(INVISIBLEPOPUPLIST)!
+  );
+  const invisiblePopupList =
+    parsedPrevInvisiblePopuplist &&
+    Array.isArray(parsedPrevInvisiblePopuplist) &&
+    parsedPrevInvisiblePopuplist.every((i) => typeof i === 'number')
+      ? (parsedPrevInvisiblePopuplist as number[])
+      : [];
 
   const deleteExpiredPopup = () => {
     const currentPopupList = data!.map(({ id }) => id);
