@@ -38,8 +38,6 @@ const CommunityWrite = () => {
 
   const [files, setFiles] = useState<File[]>([]);
 
-  // console.log(selectedFile);
-
   const {
     register,
     handleSubmit,
@@ -85,6 +83,10 @@ const CommunityWrite = () => {
       content: data.content,
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
+
+    if (files.length > 0) {
+      body.file = files;
+    }
 
     mutatePostBoardContent(body);
   };
