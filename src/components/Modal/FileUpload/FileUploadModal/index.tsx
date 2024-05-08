@@ -10,33 +10,26 @@ import * as S from './style';
 
 import { FileRegisterIcon, CancleFileUpload } from '@/assets';
 import { FileUploadModalWrapper } from '@/components';
+import { CommunityWrite } from '@/pageContainer';
 
 interface Props {
   closeModal: () => void;
 }
 
 const FileUpload: React.FC<Props> = ({ closeModal }) => {
-  const [selectedFiles, setSelectedFiles] = useState<File[]>([]);
-
+  const [state, setState] = useState<File>();
   const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!e.target.files) return;
 
-    const files = Array.from(e.target.files);
+    const selectedFiles = e.target.files;
+    setState(selectedFiles[0]);
+    // console.log(Array(selectedFiles[0]));
+    // console.log(state);
 
-    if (selectedFiles.length + files.length > 10) {
-      return toast.error('최대 10개까지 파일을 업로드할 수 있습니다.');
-    }
+    <CommunityWrite selectedFile={selectedFiles[0]} />;
 
-    const formData = new FormData();
-
-    files.forEach((file) => {
-      if (file.size > 1024 * 1024 * 20) {
-        toast.error('파일은 20MB 이하만 업로드 가능합니다.');
-      } else {
-        setSelectedFiles((prevFiles) => [...prevFiles, file]);
-        formData.append('files', file);
-      }
-    });
+    closeModal();
+    toast.success('파일 등록에 성공하였습니다.');
   };
 
   return (

@@ -1,18 +1,27 @@
-'use client';
+// 'use client';
 
-import * as S from './style';
+// import * as S from './style';
 
-import { FileUploadIcon } from '@/assets';
+// import { CancleFileUpload, FileUploadIcon } from '@/assets';
 
-interface Props {
-  onClick?: () => void;
-}
+// interface Props {
+//   data: File[];
+// }
 
-const SelectFile: React.FC<Props> = () => (
-  <S.Container>
-    <FileUploadIcon />
-    <S.Text>파일 추가</S.Text>
-  </S.Container>
-);
+// const SelectFile: React.FC<Props> = ({ data }) => (
+//   <div>
+//     {data.map((file, index) => (
+//       <S.Container key={index}>
+//         <S.FileNameContainer>
+//           <FileUploadIcon />
+//           <S.Text>{file.name}</S.Text>
+//         </S.FileNameContainer>
+//         <S.CancleUploadContainer>
+//           <CancleFileUpload />
+//         </S.CancleUploadContainer>
+//       </S.Container>
+//     ))}
+//   </div>
+// );
 
-export default SelectFile;
+// export default SelectFile;

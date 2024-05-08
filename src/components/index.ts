@@ -25,6 +25,7 @@ export { default as Reply } from './Reply';
 export { default as SearchBar } from './SearchBar';
 export { default as SearchNotFound } from './SearchNotFound';
 export { default as Select } from './Select';
+// export { default as SelectFile } from './SelectFile';
 export { default as SubFunctionHeader } from './SubFunctionHeader';
 export { default as TempMentorCard } from './TempMentorCard';
 export { default as TextArea } from './TextArea';
