@@ -13,7 +13,7 @@ import { FileUploadModalWrapper } from '@/components';
 
 interface Props {
   closeModal: () => void;
-  setFiles: Dispatch<SetStateAction<FileList | undefined>>;
+  setFiles: Dispatch<SetStateAction<File[]>>;
 }
 
 const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
@@ -22,7 +22,7 @@ const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
 
     if (!selectedFiles) return;
 
-    setFiles(selectedFiles);
+    setFiles(Array.from(selectedFiles));
     closeModal();
     toast.success('파일 등록에 성공하였습니다.');
   };

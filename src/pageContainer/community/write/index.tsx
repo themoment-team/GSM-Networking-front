@@ -21,6 +21,7 @@ import {
   FileUploadButton,
   FileUploadModal,
 } from '@/components';
+import SelectFile from '@/components/SelectFile';
 import { BOARD_PATH } from '@/constants';
 import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { useGetIsTeacher } from '@/hooks';
@@ -35,7 +36,7 @@ import {
 const CommunityWrite = () => {
   const { push } = useRouter();
 
-  const [files, setFiles] = useState<FileList>();
+  const [files, setFiles] = useState<File[]>([]);
 
   // console.log(selectedFile);
 
@@ -136,7 +137,12 @@ const CommunityWrite = () => {
                 <FileUploadButton
                   onClick={() => setOpenModalCase('fileRegister')}
                 />
-                <S.MapFileBox>{/* <SelectFile data={data} /> */}</S.MapFileBox>
+                <S.MapFileBox>
+                  {files &&
+                    files.map((file, index) => (
+                      <SelectFile key={file.name + index} file={file} />
+                    ))}
+                </S.MapFileBox>
               </S.MapFileBox>
             </S.FileContainer>
           </S.FormFieldsWrapper>

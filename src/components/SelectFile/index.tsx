@@ -1,27 +1,23 @@
-// 'use client';
+'use client';
 
-// import * as S from './style';
+import * as S from './style';
 
-// import { CancleFileUpload, FileUploadIcon } from '@/assets';
+import { CancleFileUpload, FileUploadIcon } from '@/assets';
 
-// interface Props {
-//   data: File[];
-// }
+interface Props {
+  file: File;
+}
 
-// const SelectFile: React.FC<Props> = ({ data }) => (
-//   <div>
-//     {data.map((file, index) => (
-//       <S.Container key={index}>
-//         <S.FileNameContainer>
-//           <FileUploadIcon />
-//           <S.Text>{file.name}</S.Text>
-//         </S.FileNameContainer>
-//         <S.CancleUploadContainer>
-//           <CancleFileUpload />
-//         </S.CancleUploadContainer>
-//       </S.Container>
-//     ))}
-//   </div>
-// );
+const SelectFile: React.FC<Props> = ({ file }) => (
+  <S.Container>
+    <S.FileNameContainer>
+      <FileUploadIcon />
+      <S.Text>{file.name}</S.Text>
+    </S.FileNameContainer>
+    <S.CancleUploadContainer>
+      <CancleFileUpload />
+    </S.CancleUploadContainer>
+  </S.Container>
+);
 
-// export default SelectFile;
+export default SelectFile;
