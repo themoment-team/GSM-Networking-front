@@ -9,7 +9,7 @@ export const Card = styled.div`
   border-radius: 0.75rem;
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
+  row-gap: 0.75rem;
   box-shadow: 0.0625rem 0.5625rem 1.125rem 0 rgba(6, 15, 39, 0.06);
   background-color: ${({ theme }) => theme.color.white};
   z-index: 2;
