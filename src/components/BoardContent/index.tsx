@@ -1,19 +1,20 @@
 'use client';
 
-import { useState } from 'react';
-
 import { LikeButton } from '..';
 
 import * as S from './style';
 
+import { useGetBoardDetail } from '@/hooks';
+import { usePostLikeCount } from '@/hooks';
 import type { CategoryType } from '@/types';
 import { ReverseCategoryType } from '@/types';
-
 interface Props {
   title: string;
   content: string;
   category: CategoryType;
   likeCount: number;
+  isLike: boolean;
+  boardId: string;
 }
 
 const BoardContent: React.FC<Props> = ({
@@ -21,20 +22,34 @@ const BoardContent: React.FC<Props> = ({
   content,
   category,
   likeCount,
+  isLike,
+  boardId,
 }) => {
-  const [isActive, setIsActive] = useState<boolean>(false);
+  const { refetch } = useGetBoardDetail(boardId);
+
+  const { mutate: postMutate } = usePostLikeCount(parseInt(boardId), {
+    onSuccess: () => {
+      refetch();
+    },
+  });
+
+  const uploadLike = () => {
+    postMutate();
+  };
+
   return (
     <S.TextWrapper>
       <S.Title>{title}</S.Title>
       <S.Description>{content}</S.Description>
       <S.CategoryBox>
         <S.CategoryText>{ReverseCategoryType[category]}</S.CategoryText>
+        <LikeButton
+          onClick={uploadLike}
+          likeCount={likeCount}
+          isActive={isLike}
+          isDetail={true}
+        />
       </S.CategoryBox>
-      <LikeButton
-        likeCount={likeCount}
-        onClick={() => setIsActive((isActive) => !isActive)}
-        isActive={isActive}
-      />
     </S.TextWrapper>
   );
 };

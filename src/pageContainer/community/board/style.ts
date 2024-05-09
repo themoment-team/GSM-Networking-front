@@ -53,9 +53,9 @@ export const BoardCardWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  position: relative;
-  bottom: 5.3125rem;
+  position: absolute;
+  right: 0;
+  bottom: 2.8125rem;
 `;
 
 export const NotFoundIconWrapper = styled.div`

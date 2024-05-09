@@ -10,4 +10,5 @@ export interface BoardInfoType {
   author: ProfileType;
   likeCount: number;
   commentCount: number;
+  isLike: boolean;
 }

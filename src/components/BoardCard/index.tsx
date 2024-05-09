@@ -1,8 +1,7 @@
 'use client';
 
-import { useState } from 'react';
-
 import { MiniProfile } from '..';
+import { LikeButton } from '..';
 
 import * as S from './style';
 
@@ -21,16 +20,15 @@ const BoardCard: React.FC<BoardInfoType> = ({
   author,
   likeCount,
   commentCount,
+  isLike,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
-  const [likeBtnClick, setLikeBtnClick] = useState<boolean>(false);
 
   const { refetch } = useGetBoardList();
 
   const { mutate: postMutate } = usePostLikeCount(id, {
-    onSuccess: (likeCurrent) => {
+    onSuccess: () => {
       refetch();
-      setLikeBtnClick(likeCurrent.currentStatus);
     },
   });
 
@@ -55,11 +53,12 @@ const BoardCard: React.FC<BoardInfoType> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        <S.Like onClick={uploadLike} isClicked={likeBtnClick}>
-          <I.LikeIcon isClicked={likeBtnClick} />
-          <S.Dots isClicked={likeBtnClick} />
-        </S.Like>
-        <S.LikeCount>{likeCount}</S.LikeCount>
+        <LikeButton
+          onClick={uploadLike}
+          likeCount={likeCount}
+          isActive={isLike}
+          isDetail={false}
+        />
         <S.Comment>
           <I.CommentIcon />
           <S.CommentCount>{commentCount}</S.CommentCount>

@@ -94,8 +94,9 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
             content={boardData.content}
             category={boardData.boardCategory}
             likeCount={boardData.likeCount}
+            isLike={boardData.isLike}
+            boardId={boardId}
           />
-
           <S.Line />
           <S.CommentContainer>
             {boardData.comments.map((comment) => (
