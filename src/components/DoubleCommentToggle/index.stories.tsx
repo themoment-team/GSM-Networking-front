@@ -1,14 +1,14 @@
-import CommentCard from '.';
+import DoubleCommentToggle from '.';
 
 import type { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof CommentCard> = {
-  component: CommentCard,
+const meta: Meta<typeof DoubleCommentToggle> = {
+  component: DoubleCommentToggle,
 };
 
 export default meta;
 
-type Story = StoryObj<typeof CommentCard>;
+type Story = StoryObj<typeof DoubleCommentToggle>;
 
 export const Open: Story = {
   args: {

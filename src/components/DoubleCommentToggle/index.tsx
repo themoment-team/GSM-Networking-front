@@ -14,7 +14,7 @@ interface Props {
   commentCount: number;
 }
 
-const CommentCard: React.FC<Props> = ({
+const DoubleCommentToggle: React.FC<Props> = ({
   isOppened,
   setIsOppened,
   commentCount,
@@ -33,4 +33,4 @@ const CommentCard: React.FC<Props> = ({
   );
 };
 
-export default CommentCard;
+export default DoubleCommentToggle;

@@ -8,6 +8,8 @@ export { default as CareerRegistrationBox } from './CareerRegistrationBox';
 export { default as ChattingListCard } from './ChattingListCard';
 export { default as CommentCard } from './CommentCard';
 export { default as CommunityCard } from './CommunityCard';
+export { default as DoubleCommentCard } from './DoubleCommentCard';
+export { default as DoubleCommentToggle } from './DoubleCommentToggle';
 export { default as DropDown } from './DropDown';
 export { default as FilterButton } from './Buttons/Filter';
 export { default as Header } from './Header';
