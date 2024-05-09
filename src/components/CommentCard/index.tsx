@@ -46,24 +46,27 @@ const CommentCard: React.FC<Props> = ({
             <S.AddComment onClick={onAddCommentClick}>댓글 달기</S.AddComment>
           )}
           {replies && replies.length > 0 && (
-            <DoubleCommentToggle
-              isOppened={isOppened}
-              setIsOppened={setIsOppened}
-              commentCount={0}
-            />
+            <>
+              <DoubleCommentToggle
+                isOppened={isOppened}
+                setIsOppened={setIsOppened}
+                commentCount={replies.length}
+              />
+              {isOppened && (
+                <S.DoubleCommentWrapper>
+                  {replies.map(({ comment }) => (
+                    <DoubleCommentCard
+                      key={comment.commentId}
+                      comment={comment}
+                      replyId={commentId}
+                    />
+                  ))}
+                </S.DoubleCommentWrapper>
+              )}
+            </>
           )}
         </S.TextWrapper>
       </S.Container>
-
-      {replies &&
-        replies.length > 0 &&
-        replies.map(({ comment }) => (
-          <DoubleCommentCard
-            key={comment.commentId}
-            comment={comment}
-            replyId={commentId}
-          />
-        ))}
     </S.EveryWrapper>
   );
 };

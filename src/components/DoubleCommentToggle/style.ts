@@ -2,6 +2,7 @@ import styled from '@emotion/styled';
 
 export const ToggleWrapper = styled.div`
   display: flex;
+  margin: 0.5rem 0;
 `;
 
 export const Text = styled.span`
@@ -14,5 +15,5 @@ export const Text = styled.span`
 export const ToggleButton = styled.button<{ isOppened: boolean }>`
   transition: ease-in-out 0.2s;
 
-  transform: rotate(${({ isOppened }) => (isOppened ? -90 : 0)}deg);
+  transform: rotate(${({ isOppened }) => (isOppened ? 0 : -90)}deg);
 `;
