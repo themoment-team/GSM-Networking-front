@@ -12,16 +12,16 @@ type Story = StoryObj<typeof DoubleCommentToggle>;
 
 export const Open: Story = {
   args: {
-    isOppened: true,
+    isOpened: true,
     commentCount: 2,
-    setIsOppened: () => {},
+    setIsOpened: () => {},
   },
 };
 
 export const Close: Story = {
   args: {
-    isOppened: false,
+    isOpened: false,
     commentCount: 2,
-    setIsOppened: () => {},
+    setIsOpened: () => {},
   },
 };

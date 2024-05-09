@@ -9,24 +9,24 @@ import * as S from './style';
 import { ToggleIcon } from '@/assets';
 
 interface Props {
-  isOppened: boolean;
-  setIsOppened: Dispatch<SetStateAction<boolean>>;
+  isOpened: boolean;
+  setIsOpened: Dispatch<SetStateAction<boolean>>;
   commentCount: number;
 }
 
 const DoubleCommentToggle: React.FC<Props> = ({
-  isOppened,
-  setIsOppened,
+  isOpened,
+  setIsOpened,
   commentCount,
 }) => {
   const onToggleClick = () => {
-    setIsOppened((prev) => !prev);
+    setIsOpened((prev) => !prev);
   };
 
   return (
     <S.ToggleWrapper>
       <S.Text>댓글 {commentCount}개</S.Text>
-      <S.ToggleButton isOppened={isOppened} onClick={onToggleClick}>
+      <S.ToggleButton isOppened={isOpened} onClick={onToggleClick}>
         <ToggleIcon />
       </S.ToggleButton>
     </S.ToggleWrapper>

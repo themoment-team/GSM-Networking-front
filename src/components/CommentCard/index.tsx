@@ -26,7 +26,7 @@ const CommentCard: React.FC<Props> = ({
   const path = usePathname();
   const isBoardDetail = path.split('/').length === 4;
 
-  const [isOppened, setIsOppened] = useState<boolean>(!isBoardDetail);
+  const [isOpened, setIsOpened] = useState<boolean>(!isBoardDetail);
 
   const { push } = useRouter();
 
@@ -49,11 +49,11 @@ const CommentCard: React.FC<Props> = ({
           {replies && replies.length > 0 && (
             <>
               <DoubleCommentToggle
-                isOppened={isOppened}
-                setIsOppened={setIsOppened}
+                isOpened={isOpened}
+                setIsOpened={setIsOpened}
                 commentCount={replies.length}
               />
-              {isOppened && (
+              {isOpened && (
                 <S.DoubleCommentWrapper>
                   {replies.map(({ comment }) => (
                     <DoubleCommentCard
