@@ -23,11 +23,12 @@ interface Props {
 const CommentCard: React.FC<Props> = ({
   comment: { commentId, author, comment, replyCommentId, replies },
 }) => {
-  const [isOppened, setIsOppened] = useState<boolean>(false);
+  const path = usePathname();
+  const isBoardDetail = path.split('/').length === 4;
+
+  const [isOppened, setIsOppened] = useState<boolean>(!isBoardDetail);
 
   const { push } = useRouter();
-
-  const path = usePathname();
 
   const onAddCommentClick = () => {
     push(`${path}/${commentId}`);
@@ -42,7 +43,7 @@ const CommentCard: React.FC<Props> = ({
             {replyCommentId && <Reply replyCommentId={replyCommentId} />}
             {comment}
           </S.Content>
-          {path.split('/').length === 4 && (
+          {isBoardDetail && (
             <S.AddComment onClick={onAddCommentClick}>댓글 달기</S.AddComment>
           )}
           {replies && replies.length > 0 && (
