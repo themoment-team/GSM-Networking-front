@@ -10,7 +10,7 @@ import * as S from './style';
 import { CheckedIcon, CloseIcon, NotCheckedIcon } from '@/assets';
 import { INVISIBLEPOPUPLIST } from '@/constants';
 import type { PopupType } from '@/types';
-import { isNumberArray } from '@/utils';
+import { checkLocalstorageValue, isNumberArray } from '@/utils';
 
 interface Props {
   id: number;
@@ -29,9 +29,8 @@ const PopupCard: React.FC<Props> = ({ id, boardId, title, setPopupList }) => {
 
   const handleCloseButtonClick = () => {
     if (isChecked) {
-      const parsedPrevInvisiblePopuplist = JSON.parse(
-        localStorage.getItem(INVISIBLEPOPUPLIST)!
-      );
+      const parsedPrevInvisiblePopuplist =
+        checkLocalstorageValue(INVISIBLEPOPUPLIST);
       const invisiblePopupList =
         parsedPrevInvisiblePopuplist &&
         isNumberArray(parsedPrevInvisiblePopuplist)

@@ -13,9 +13,13 @@ import { isNumberArray } from '@/utils';
 const PopupList = () => {
   const { data } = useGetPopupList();
   const [popupList, setPopupList] = useState<PopupType[]>([]);
-  const parsedPrevInvisiblePopuplist = JSON.parse(
-    localStorage.getItem(INVISIBLEPOPUPLIST)!
-  );
+  const parsedPrevInvisiblePopuplist = (() => {
+    try {
+      return JSON.parse(localStorage.getItem(INVISIBLEPOPUPLIST)!);
+    } catch {
+      return null;
+    }
+  })();
   const invisiblePopupList =
     parsedPrevInvisiblePopuplist && isNumberArray(parsedPrevInvisiblePopuplist)
       ? (parsedPrevInvisiblePopuplist as number[])
