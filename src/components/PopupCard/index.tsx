@@ -10,6 +10,7 @@ import * as S from './style';
 import { CheckedIcon, CloseIcon, NotCheckedIcon } from '@/assets';
 import { INVISIBLEPOPUPLIST } from '@/constants';
 import type { PopupType } from '@/types';
+import { isNumberArray } from '@/utils';
 
 interface Props {
   id: number;
@@ -33,8 +34,7 @@ const PopupCard: React.FC<Props> = ({ id, boardId, title, setPopupList }) => {
       );
       const invisiblePopupList =
         parsedPrevInvisiblePopuplist &&
-        Array.isArray(parsedPrevInvisiblePopuplist) &&
-        parsedPrevInvisiblePopuplist.every((i) => typeof i === 'number')
+        isNumberArray(parsedPrevInvisiblePopuplist)
           ? (parsedPrevInvisiblePopuplist as number[])
           : [];
       const newInvisiblePopupList = JSON.stringify([...invisiblePopupList, id]);

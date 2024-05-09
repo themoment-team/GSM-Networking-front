@@ -8,6 +8,7 @@ import { PopupCard } from '@/components';
 import { INVISIBLEPOPUPLIST } from '@/constants';
 import { useGetPopupList } from '@/hooks/api/popup';
 import type { PopupType } from '@/types';
+import { isNumberArray } from '@/utils';
 
 const PopupList = () => {
   const { data } = useGetPopupList();
@@ -16,9 +17,7 @@ const PopupList = () => {
     localStorage.getItem(INVISIBLEPOPUPLIST)!
   );
   const invisiblePopupList =
-    parsedPrevInvisiblePopuplist &&
-    Array.isArray(parsedPrevInvisiblePopuplist) &&
-    parsedPrevInvisiblePopuplist.every((i) => typeof i === 'number')
+    parsedPrevInvisiblePopuplist && isNumberArray(parsedPrevInvisiblePopuplist)
       ? (parsedPrevInvisiblePopuplist as number[])
       : [];
 
