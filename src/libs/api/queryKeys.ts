@@ -9,10 +9,6 @@ export const commentQueryKeys = {
   postComment: () => ['comment', 'create'],
 } as const;
 
-export const etcQueryKeys = {
-  getPopupList: () => ['popup', 'list'],
-} as const;
-
 export const fileQueryKeys = {
   postUploadFile: () => ['file'],
 } as const;
@@ -34,6 +30,10 @@ export const mentorQueryKeys = {
   getMentorList: () => ['mentor', 'list'],
   deleteMyMentorData: () => ['mentor', 'my'],
   getMyInfo: () => ['mentor', 'my', 'info'],
+} as const;
+
+export const popupQueryKeys = {
+  getPopupList: () => ['popup', 'list'],
 } as const;
 
 export const tempMentorQueryKeys = {
