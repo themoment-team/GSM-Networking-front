@@ -1,5 +1,3 @@
-/**@jsxImportSource @emotion/react */
-
 'use client';
 
 import { useState } from 'react';
