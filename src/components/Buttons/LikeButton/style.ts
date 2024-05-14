@@ -57,8 +57,8 @@ export const Like = styled.button<{ isClicked: boolean; border: boolean }>`
           ? theme.color.skyBlue[400]
           : theme.color.grey[150]
         : 'none'};
-  padding: ${({ border }) => (border ? '4px 12px' : '0px')};
-  border-radius: 5px;
+  padding: ${({ border }) => (border ? '0.25rem 0.75rem' : '0rem')};
+  border-radius: 0.3125rem;
   display: flex;
   align-items: flex-start;
   gap: 0.25rem;
@@ -68,19 +68,19 @@ export const Dots = styled.div<{ isClicked: boolean }>`
   animation: ${({ isClicked }) => (isClicked ? blink : '')} 0.5s ease-in-out
     forwards;
   display: block;
-  width: 4px;
-  height: 4px;
+  width: 0.25rem;
+  height: 0.25rem;
   background-color: transparent;
   border-radius: 50%;
   position: absolute;
   transform: translate(-50%, -50%) scale(0);
   box-shadow:
-    0 -40px 0 #148eff,
-    0 40px 0 #148eff,
-    -40px 0 0 #148eff,
-    40px 0 0 #148eff,
-    -30px -30px 0 #148eff,
-    30px -30px 0 #148eff,
-    30px 30px 0 #148eff,
-    -30px 30px 0 #148eff;
+    0 -2.5rem 0 #148eff,
+    0 2.5rem 0 #148eff,
+    -2.5rem 0 0 #148eff,
+    2.5rem 0 0 #148eff,
+    -1.875rem -1.875rem 0 #148eff,
+    1.875rem -1.875rem 0 #148eff,
+    1.875rem 1.875rem 0 #148eff,
+    -1.875rem 1.875rem 0 #148eff;
 `;

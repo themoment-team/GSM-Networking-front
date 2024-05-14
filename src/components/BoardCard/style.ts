@@ -1,27 +1,9 @@
 import styled from '@emotion/styled';
 import { Link } from 'next-view-transitions';
 
-import { keyframes } from '@emotion/react';
-
-/*점 애니메이션*/
-const blink = keyframes`
-  0%{
-      transform: translate(200%, -300%) scale(0.5);
-      opacity: 0.8;
-  }
-  80%{
-      transform: translate(200%, -300%) scale(1);
-      opacity: 1;
-  }
-  100%{
-      transform: translate(200%, -300%) scale(1.1);
-      opacity: 0;
-  }
-`;
-
 export const BoardCard = styled(Link)`
   display: flex;
-  padding: 49px 24px;
+  padding: 3.0625rem 1.5rem;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -38,20 +20,20 @@ export const ContentBox = styled.div`
 
 export const Comment = styled.div`
   position: relative;
-  right: 20px;
+  right: 1.25rem;
   svg {
     position: relative;
-    top: 3px;
+    top: 0.1875rem;
   }
 `;
 
 export const BottomBox = styled.div`
   display: flex;
   position: absolute;
-  bottom: 50px;
-  right: 24px;
-  width: 106px;
-  height: 24px;
+  bottom: 3.125rem;
+  right: 1.5rem;
+  width: 6.625rem;
+  height: 1.5rem;
   justify-content: space-between;
   ${({ theme }) => theme.typo.body1}
   color: ${({ theme }) => theme.color.grey['300']};
@@ -59,44 +41,13 @@ export const BottomBox = styled.div`
 
 export const LikeCount = styled.span`
   position: relative;
-  right: 15px;
-  top: 1px;
+  right: 0.9375rem;
+  top: 0.0625rem;
 `;
 export const CommentCount = styled.span`
   position: relative;
-  top: 1px;
-  left: 7px;
-`;
-
-export const Like = styled.button<{ isClicked: boolean }>`
-  svg {
-    &:active {
-      transition: all 0.5;
-      transform: scale(0.95);
-      transform: rotateX(45deg);
-    }
-  }
-`;
-
-export const Dots = styled.div<{ isClicked: boolean }>`
-  animation: ${({ isClicked }) => (isClicked ? blink : '')} 0.5s ease-in-out
-    forwards;
-  display: block;
-  width: 4px;
-  height: 4px;
-  background-color: transparent;
-  border-radius: 50%;
-  position: absolute;
-  transform: translate(-50%, -50%) scale(0);
-  box-shadow:
-    0 -40px 0 #148eff,
-    0 40px 0 #148eff,
-    -40px 0 0 #148eff,
-    40px 0 0 #148eff,
-    -30px -30px 0 #148eff,
-    30px -30px 0 #148eff,
-    30px 30px 0 #148eff,
-    -30px 30px 0 #148eff;
+  top: 0.0625rem;
+  left: 0.4375rem;
 `;
 
 export const ContentHeader = styled.div`
@@ -107,7 +58,7 @@ export const ContentHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   position: relative;
-  bottom: 20px;
+  bottom: 1.25rem;
 `;
 
 export const HeaderTitle = styled.div`
@@ -147,5 +98,5 @@ export const Content = styled.div`
   margin-top: 0.4688rem;
   cursor: pointer;
   position: relative;
-  bottom: 20px;
+  bottom: 1.25rem;
 `;
