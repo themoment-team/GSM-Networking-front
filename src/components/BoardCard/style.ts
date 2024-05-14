@@ -30,7 +30,7 @@ export const Comment = styled.div`
 export const BottomBox = styled.div`
   display: flex;
   position: absolute;
-  bottom: 3.125rem;
+  bottom: 1.125rem;
   right: 1.5rem;
   width: 6.625rem;
   height: 1.5rem;

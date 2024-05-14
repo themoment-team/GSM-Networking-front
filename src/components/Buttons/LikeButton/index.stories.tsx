@@ -13,4 +13,11 @@ export default meta;
 
 type Story = StoryObj<typeof LikeButton>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    onClick: () => {},
+    isActive: false,
+    likeCount: 11,
+    isDetail: false,
+  },
+};
