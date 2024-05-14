@@ -43,8 +43,8 @@ export const LoadMoreTrigger = styled.div`
 `;
 
 export const BoardCardWrapper = styled.div`
-  height: calc(100vh - 15rem);
-  height: calc(100dvh - 15rem);
+  height: calc(100vh - 12rem);
+  height: calc(100dvh - 12rem);
   margin-top: 1.75rem;
   display: flex;
   flex-direction: column;

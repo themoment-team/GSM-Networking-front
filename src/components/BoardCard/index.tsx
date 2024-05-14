@@ -1,5 +1,9 @@
 'use client';
 
+import { useState } from 'react';
+
+import { toast } from 'react-toastify';
+
 import { MiniProfile } from '..';
 import { LikeButton } from '..';
 
@@ -11,6 +15,12 @@ import { useGetBoardList, usePostLikeCount } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
+
+interface LikeContextType {
+  previousLikeCount: number;
+  previousIsLike: boolean;
+}
+
 const BoardCard: React.FC<BoardInfoType> = ({
   id,
   createdAt,
@@ -23,10 +33,31 @@ const BoardCard: React.FC<BoardInfoType> = ({
   isLike,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
+  const [optimisticLikeCount, setOptimisticLikeCount] = useState(likeCount);
+  const [optimisticIsLike, setOptimisticIsLike] = useState(isLike);
 
   const { refetch } = useGetBoardList();
 
   const { mutate: postMutate } = usePostLikeCount(id, {
+    onMutate: async (): Promise<LikeContextType> => {
+      setOptimisticLikeCount((prev) =>
+        optimisticIsLike ? prev - 1 : prev + 1
+      );
+      setOptimisticIsLike((prev) => !prev);
+
+      return {
+        previousLikeCount: optimisticLikeCount,
+        previousIsLike: optimisticIsLike,
+      };
+    },
+    onError: (err, variables, context) => {
+      const contextData = context as LikeContextType;
+      if (contextData) {
+        setOptimisticLikeCount(contextData.previousLikeCount);
+        setOptimisticIsLike(contextData.previousIsLike);
+      }
+      toast.error('좋아요 업데이트에 실패했습니다.');
+    },
     onSuccess: () => {
       refetch();
     },
@@ -55,8 +86,8 @@ const BoardCard: React.FC<BoardInfoType> = ({
       <S.BottomBox>
         <LikeButton
           onClick={uploadLike}
-          likeCount={likeCount}
-          isActive={isLike}
+          likeCount={optimisticLikeCount}
+          isActive={optimisticIsLike}
           isDetail={false}
         />
         <S.Comment>
