@@ -21,6 +21,7 @@ export const Primary: Story = {
     isLike: false,
     boardCategory: 'CHAT',
     commentCount: 11,
+    createdAt: '2024-12-28T23:27:54',
     author: {
       name: '박준호',
       generation: 6,

@@ -8,6 +8,7 @@ export const BoardCard = styled(Link)`
   justify-content: center;
   align-items: center;
   border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  border-radius: 0.75rem;
   max-width: 37.5rem;
   width: 100%;
   cursor: pointer;
@@ -29,9 +30,9 @@ export const Comment = styled.div`
 
 export const BottomBox = styled.div`
   display: flex;
-  position: absolute;
-  bottom: 1.125rem;
-  right: 1.5rem;
+  position: relative;
+  bottom: 4.5rem;
+  left: 29rem;
   width: 6.625rem;
   height: 1.5rem;
   justify-content: space-between;
