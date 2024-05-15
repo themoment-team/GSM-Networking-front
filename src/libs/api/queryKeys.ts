@@ -3,12 +3,12 @@ export const boardQueryKeys = {
   postBoardContent: () => ['board', 'content'],
   getBoardList: () => ['board', 'post', 'list'],
   getBoard: () => ['board', 'detail'],
-};
+} as const;
 
 export const commentQueryKeys = {
   getCommentDetail: (commentId: string) => ['comment', commentId],
   postComment: () => ['comment', 'create'],
-};
+} as const;
 
 export const fileQueryKeys = {
   postUploadFile: () => ['file'],
@@ -17,7 +17,7 @@ export const fileQueryKeys = {
 export const gwangyaQueryKeys = {
   getGwangyaPostList: () => ['gwangya', 'post', 'list'],
   postGwangyaContent: () => ['gwangya', 'post', 'content'],
-};
+} as const;
 
 export const likeQueryKeys = {
   postLikeCount: () => ['like'],
@@ -37,12 +37,17 @@ export const mentorQueryKeys = {
   getMyInfo: () => ['mentor', 'my', 'info'],
 } as const;
 
+export const popupQueryKeys = {
+  getPopupList: () => ['popup', 'list'],
+} as const;
+
 export const tempMentorQueryKeys = {
   getSearchTempMentor: (keyword: string) => ['temp', 'mentor', keyword],
   deleteTempMentor: () => ['temp', 'mentor', 'delete'],
-};
+} as const;
 
 export const userQueryKeys = {
   postProfileImgUrl: () => ['user', 'profile'],
   getIsTeacher: () => ['user', 'teacher'],
-};
+  patchProfileNumber: () => ['user', 'profile', 'number'],
+} as const;
