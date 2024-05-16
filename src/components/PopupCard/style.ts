@@ -20,7 +20,7 @@ export const Card = styled.div`
 export const TopSection = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const BottomSection = styled.div`
@@ -35,6 +35,8 @@ export const Title = styled.div`
   ${({ theme }) => theme.typo.subtitle};
   cursor: pointer;
   margin-right: 0.5rem;
+  position: relative;
+  top: 0.0625rem;
 `;
 
 export const CheckButton = styled.button`
