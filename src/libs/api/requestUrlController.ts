@@ -7,6 +7,7 @@ export const authUrl = {
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
   getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
+  getBoard: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
 } as const;
 
@@ -25,6 +26,10 @@ export const gwangyaUrl = {
   postGwangyaContent: () => `/gwangya`,
   getGwangyaToken: () => `/gwangya/token`,
 } as const;
+
+export const likeUrl = {
+  postLikeCount: (boardId: number) => `/like/${boardId}`,
+};
 
 export const menteeUrl = {
   postMenteeRegister: () => '/mentee',

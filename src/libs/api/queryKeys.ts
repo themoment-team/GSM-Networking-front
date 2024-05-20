@@ -2,6 +2,7 @@ export const boardQueryKeys = {
   getBoardDetail: (boardId: string) => ['board', boardId],
   postBoardContent: () => ['board', 'content'],
   getBoardList: () => ['board', 'post', 'list'],
+  getBoard: () => ['board', 'detail'],
 } as const;
 
 export const commentQueryKeys = {
@@ -17,6 +18,10 @@ export const gwangyaQueryKeys = {
   getGwangyaPostList: () => ['gwangya', 'post', 'list'],
   postGwangyaContent: () => ['gwangya', 'post', 'content'],
 } as const;
+
+export const likeQueryKeys = {
+  postLikeCount: () => ['like'],
+};
 
 export const menteeQueryKeys = {
   postMenteeRegister: () => ['mentee', 'register'],

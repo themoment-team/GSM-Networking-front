@@ -93,6 +93,9 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
             title={boardData.title}
             content={boardData.content}
             category={boardData.boardCategory}
+            likeCount={boardData.likeCount}
+            isLike={boardData.isLike}
+            boardId={boardId}
           />
           <S.Line />
           <S.CommentContainer>

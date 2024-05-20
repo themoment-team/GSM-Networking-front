@@ -8,6 +8,7 @@ export * from './form';
 export * from './generation';
 export * from './gwangya';
 export * from './header';
+export * from './like';
 export * from './mentee';
 export * from './mentor';
 export * from './mentorInfo';
