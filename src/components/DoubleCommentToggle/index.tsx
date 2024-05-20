@@ -1,5 +1,3 @@
-/**@jsxImportSource @emotion/react */
-
 'use client';
 
 import type { Dispatch, SetStateAction } from 'react';
