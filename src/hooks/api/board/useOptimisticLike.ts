@@ -5,11 +5,7 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { usePostLikeCount } from '@/hooks';
-
-interface LikeContextType {
-  previousLikeCount: number;
-  previousIsLike: boolean;
-}
+import type { LikeContextType } from '@/types';
 
 export const useOptimisticLike = (
   boardId: number,
@@ -34,7 +30,7 @@ export const useOptimisticLike = (
       };
     },
     onError: (err, variables, context) => {
-      const contextData = context as LikeContextType;
+      const contextData = context;
       if (contextData) {
         setOptimisticLikeCount(contextData.previousLikeCount);
         setOptimisticIsLike(contextData.previousIsLike);
