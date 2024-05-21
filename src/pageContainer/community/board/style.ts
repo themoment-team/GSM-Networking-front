@@ -43,8 +43,8 @@ export const LoadMoreTrigger = styled.div`
 `;
 
 export const BoardCardWrapper = styled.div`
-  height: calc(100vh - 15rem);
-  height: calc(100dvh - 15rem);
+  height: calc(100vh - 12rem);
+  height: calc(100dvh - 12rem);
   margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
@@ -53,9 +53,9 @@ export const BoardCardWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
-  justify-content: flex-end;
-  position: relative;
-  bottom: 5.3125rem;
+  position: absolute;
+  right: 0;
+  bottom: 2.8125rem;
 `;
 
 export const NotFoundIconWrapper = styled.div`
