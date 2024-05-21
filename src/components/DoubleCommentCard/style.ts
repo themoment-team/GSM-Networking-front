@@ -23,26 +23,8 @@ export const Content = styled.pre`
 `;
 
 export const AddComment = styled.span`
-  width: fit-content;
   ${({ theme }) => theme.typo.body2};
+  width: fit-content;
   color: ${({ theme }) => theme.color.grey[500]};
   cursor: pointer;
-`;
-
-export const DoubleCommentWrapper = styled.div`
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  opacity: 0;
-  animation: fadeIn 0.2s ease-in forwards;
 `;
