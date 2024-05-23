@@ -7,7 +7,6 @@ import * as S from './style';
 
 import * as I from '@/assets';
 import { BOARD_PATH } from '@/constants';
-import { useGetBoardList, useOptimisticLike } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
@@ -21,14 +20,8 @@ const BoardCard: React.FC<BoardInfoType> = ({
   author,
   likeCount,
   commentCount,
-  isLike,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
-
-  const { refetch } = useGetBoardList();
-
-  const { optimisticLikeCount, optimisticIsLike, uploadLike } =
-    useOptimisticLike(id, likeCount, isLike, refetch);
 
   return (
     <S.ContentBox>
@@ -47,12 +40,7 @@ const BoardCard: React.FC<BoardInfoType> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        <LikeButton
-          onClick={uploadLike}
-          likeCount={optimisticLikeCount}
-          isActive={optimisticIsLike}
-          isDetail={false}
-        />
+        <LikeButton likeCount={likeCount} isDetail={false} />
         <S.Comment>
           <I.CommentIcon />
           <S.CommentCount>{commentCount}</S.CommentCount>

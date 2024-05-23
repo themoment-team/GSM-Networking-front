@@ -12,7 +12,6 @@ export const BoardCard = styled(Link)`
   max-width: 37.5rem;
   width: 100%;
   cursor: pointer;
-  margin-bottom: 1.5rem;
 `;
 
 export const ContentBox = styled.div`
@@ -31,7 +30,7 @@ export const Comment = styled.div`
 export const BottomBox = styled.div`
   display: flex;
   position: relative;
-  bottom: 4.5rem;
+  bottom: 3.5rem;
   left: 29rem;
   width: 6.625rem;
   height: 1.5rem;

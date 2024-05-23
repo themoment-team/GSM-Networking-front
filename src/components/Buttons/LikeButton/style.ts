@@ -40,31 +40,24 @@ export const Count = styled.span`
   top: 0.0625rem;
 `;
 
-export const Like = styled.button<{ isClicked: boolean; border: boolean }>`
-  svg {
-    &:active {
-      transition: all 0.5;
-      transform: scale(0.95);
-      transform: rotateX(45deg);
-    }
-  }
+export const Like = styled.button<{ isClicked?: boolean; isDetail: boolean }>`
   color: ${({ theme, isClicked }) =>
-    isClicked ? theme.color.skyBlue[400] : theme.color.grey[150]};
+    isClicked ? theme.color.skyBlue[400] : theme.color.grey[300]};
   border: 0.0625rem solid
-    ${({ theme, isClicked, border }) =>
-      border
+    ${({ theme, isClicked, isDetail }) =>
+      isDetail
         ? isClicked
           ? theme.color.skyBlue[400]
           : theme.color.grey[150]
         : 'none'};
-  padding: ${({ border }) => (border ? '0.25rem 0.75rem' : '0rem')};
+  padding: ${({ isDetail }) => (isDetail ? '0.25rem 0.75rem' : '0rem')};
   border-radius: 0.3125rem;
   display: flex;
   align-items: flex-start;
   gap: 0.25rem;
 `;
 
-export const Dots = styled.div<{ isClicked: boolean }>`
+export const Dots = styled.div<{ isClicked?: boolean }>`
   animation: ${({ isClicked }) => (isClicked ? blink : '')} 0.5s ease-in-out
     forwards;
   display: block;
