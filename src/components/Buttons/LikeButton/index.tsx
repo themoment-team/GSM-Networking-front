@@ -5,8 +5,8 @@ import * as S from './style';
 import * as I from '@/assets';
 
 interface Props {
-  onClick: () => void;
-  isActive: boolean;
+  onClick?: () => void;
+  isActive?: boolean;
   likeCount: number;
   isDetail: boolean;
 }
@@ -17,7 +17,7 @@ const LikeButton: React.FC<Props> = ({
   likeCount,
   isDetail,
 }) => (
-  <S.Like onClick={onClick} isClicked={isActive} border={isDetail}>
+  <S.Like onClick={onClick} isClicked={isActive} isDetail={isDetail}>
     <I.LikeIcon isClicked={isActive} />
     <S.Dots isClicked={isActive} />
     <S.Count>{likeCount}</S.Count>

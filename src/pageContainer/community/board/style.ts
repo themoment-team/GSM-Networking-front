@@ -15,7 +15,6 @@ export const BoardCardList = styled.div<{ isFetching: boolean }>`
   flex-direction: column;
   overflow-y: ${({ isFetching }) => (isFetching ? 'hidden' : 'scroll')};
   position: relative;
-  gap: 1.5rem;
 
   ::-webkit-scrollbar {
     background: none;
