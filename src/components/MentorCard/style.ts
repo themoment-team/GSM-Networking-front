@@ -78,7 +78,7 @@ export const SNSLink = styled.a`
 `;
 
 export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
-  width: 100%;
+  width: fit-content;
   overflow: hidden;
   white-space: nowrap;
 
