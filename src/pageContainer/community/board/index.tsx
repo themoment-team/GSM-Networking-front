@@ -33,7 +33,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
-  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage, refetch } =
     useGetBoardList(initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
@@ -69,7 +69,9 @@ const Board: React.FC<Props> = ({ initialData }) => {
       );
     }
     return filteredData.map((page) =>
-      page.map((board) => <BoardCard key={board.id} {...board} />)
+      page.map((board) => (
+        <BoardCard refetch={refetch} key={board.id} {...board} />
+      ))
     );
   };
 

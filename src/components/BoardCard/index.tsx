@@ -14,9 +14,23 @@ import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
 
+import type {
+  InfiniteData,
+  QueryObserverResult,
+  RefetchOptions,
+} from '@tanstack/react-query';
+
 const TEACHER_NOTICE_PAGE_PATH = '/community/board/teacher' as const;
 
-const BoardCard: React.FC<BoardInfoType> = ({
+interface Props extends BoardInfoType {
+  refetch: (
+    options?: RefetchOptions | undefined
+  ) => Promise<
+    QueryObserverResult<InfiniteData<BoardInfoType[], unknown>, Error>
+  >;
+}
+
+const BoardCard: React.FC<Props> = ({
   id,
   createdAt,
   title,
@@ -26,6 +40,7 @@ const BoardCard: React.FC<BoardInfoType> = ({
   likeCount,
   commentCount,
   isPinned: initialPinned,
+  refetch,
 }) => {
   const [isPinned, setIsPinned] = useState<boolean>(initialPinned);
 
@@ -35,7 +50,11 @@ const BoardCard: React.FC<BoardInfoType> = ({
 
   const isTeacherPage = TEACHER_NOTICE_PAGE_PATH === pathname;
 
-  const { mutate: patchBoardPin } = usePatchBoardPin(id);
+  const { mutate: patchBoardPin } = usePatchBoardPin(id, {
+    onSuccess: () => {
+      refetch();
+    },
+  });
 
   const onPinClick = () => {
     setIsPinned((prev) => !prev);
