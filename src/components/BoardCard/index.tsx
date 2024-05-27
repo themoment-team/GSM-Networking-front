@@ -1,5 +1,7 @@
 'use client';
 
+import { usePathname } from 'next/navigation';
+
 import * as S from './style';
 
 import * as I from '@/assets';
@@ -8,6 +10,8 @@ import { BOARD_PATH } from '@/constants';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
+
+const TEACHER_NOTICE_PAGE_PATH = '/community/board/teacher' as const;
 
 const BoardCard: React.FC<BoardInfoType> = ({
   id,
@@ -20,6 +24,12 @@ const BoardCard: React.FC<BoardInfoType> = ({
   commentCount,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
+
+  const pathname = usePathname();
+
+  const isTeacherPage = TEACHER_NOTICE_PAGE_PATH === pathname;
+
+  const onPinClick = () => {};
 
   return (
     <S.ContentBox>
@@ -38,7 +48,11 @@ const BoardCard: React.FC<BoardInfoType> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        <Pin isClicked={true} onClick={() => {}} />
+        {isTeacherPage ? (
+          <Pin isClicked={true} onClick={onPinClick} />
+        ) : (
+          <div />
+        )}
         <S.LikeCommentWrapper>
           <LikeButton likeCount={likeCount} isDetail={false} />
           <S.Comment>
