@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { usePathname } from 'next/navigation';
 
 import * as S from './style';
@@ -7,6 +9,7 @@ import * as S from './style';
 import * as I from '@/assets';
 import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
+import { usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
@@ -22,14 +25,22 @@ const BoardCard: React.FC<BoardInfoType> = ({
   author,
   likeCount,
   commentCount,
+  isPinned: initialPinned,
 }) => {
+  const [isPinned, setIsPinned] = useState<boolean>(initialPinned);
+
   const { monthDay, time } = parseDateString(createdAt);
 
   const pathname = usePathname();
 
   const isTeacherPage = TEACHER_NOTICE_PAGE_PATH === pathname;
 
-  const onPinClick = () => {};
+  const { mutate: patchBoardPin } = usePatchBoardPin(id);
+
+  const onPinClick = () => {
+    setIsPinned((prev) => !prev);
+    patchBoardPin();
+  };
 
   return (
     <S.ContentBox>
@@ -49,7 +60,7 @@ const BoardCard: React.FC<BoardInfoType> = ({
       </S.BoardCard>
       <S.BottomBox>
         {isTeacherPage ? (
-          <Pin isClicked={true} onClick={onPinClick} />
+          <Pin isPinned={isPinned} onClick={onPinClick} />
         ) : (
           <div />
         )}

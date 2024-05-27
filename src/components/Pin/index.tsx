@@ -6,13 +6,13 @@ import { PinIcon } from '@/assets';
 
 interface Props {
   onClick: () => void;
-  isClicked: boolean;
+  isPinned: boolean;
 }
 
-const Pin: React.FC<Props> = ({ onClick, isClicked }) => (
+const Pin: React.FC<Props> = ({ onClick, isPinned }) => (
   <S.PinWrapper onClick={onClick}>
-    <PinIcon isClicked={isClicked} />
-    <S.Text isClicked={isClicked}>상단 고정</S.Text>
+    <PinIcon isPinned={isPinned} />
+    <S.Text isPinned={isPinned}>상단 고정</S.Text>
   </S.PinWrapper>
 );
 export default Pin;

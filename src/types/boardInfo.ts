@@ -11,4 +11,5 @@ export interface BoardInfoType {
   likeCount: number;
   commentCount: number;
   isLike: boolean;
+  isPinned: boolean;
 }

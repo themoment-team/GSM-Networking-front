@@ -9,8 +9,8 @@ export const PinWrapper = styled.div`
   cursor: pointer;
 `;
 
-export const Text = styled.span<{ isClicked: boolean }>`
+export const Text = styled.span<{ isPinned: boolean }>`
   ${({ theme }) => theme.typo.body2};
-  color: ${({ theme, isClicked }) =>
-    isClicked ? theme.color.skyBlue[400] : theme.color.grey[400]};
+  color: ${({ theme, isPinned }) =>
+    isPinned ? theme.color.skyBlue[400] : theme.color.grey[400]};
 `;
