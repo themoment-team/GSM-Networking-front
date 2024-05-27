@@ -54,6 +54,9 @@ const BoardCard: React.FC<Props> = ({
     onSuccess: () => {
       refetch();
     },
+    onError: () => {
+      setIsPinned((prev) => !prev);
+    },
   });
 
   const onPinClick = () => {
