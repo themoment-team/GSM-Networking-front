@@ -5,6 +5,8 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
+import { RandomMentorImg } from '..';
+
 import * as S from './style';
 
 import * as I from '@/assets';
@@ -26,6 +28,7 @@ const Header: React.FC<Props> = ({
   const { data: mentorInfo } = useGetMyInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
   const [profileUrl, setProfileUrl] = useState<string>('');
+  const [profileNum, setProfileNum] = useState<number | null>(null);
 
   const { push } = useRouter();
 
@@ -36,6 +39,10 @@ const Header: React.FC<Props> = ({
   useEffect(() => {
     if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
     if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
+    if (mentorInfo?.defaultImgNumber)
+      setProfileNum(mentorInfo.defaultImgNumber);
+    if (menteeInfo?.defaultImgNumber)
+      setProfileNum(menteeInfo.defaultImgNumber);
   }, [mentorInfo, menteeInfo]);
 
   return (
@@ -70,7 +77,8 @@ const Header: React.FC<Props> = ({
               {profileUrl ? (
                 <Image src={profileUrl} alt='profile img' fill sizes='36px' />
               ) : (
-                <I.MyPageIcon />
+                <RandomMentorImg defaultImgNumber={profileNum!} />
+                // <I.MyPageIcon />
               )}
             </S.ProfileBox>
           )}
