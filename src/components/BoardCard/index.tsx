@@ -1,11 +1,9 @@
 'use client';
 
-import { MiniProfile } from '..';
-import { LikeButton } from '..';
-
 import * as S from './style';
 
 import * as I from '@/assets';
+import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
@@ -40,11 +38,14 @@ const BoardCard: React.FC<BoardInfoType> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        <LikeButton likeCount={likeCount} isDetail={false} />
-        <S.Comment>
-          <I.CommentIcon />
-          <S.CommentCount>{commentCount}</S.CommentCount>
-        </S.Comment>
+        <Pin isClicked={true} onClick={() => {}} />
+        <S.LikeCommentWrapper>
+          <LikeButton likeCount={likeCount} isDetail={false} />
+          <S.Comment>
+            <I.CommentIcon />
+            <S.CommentCount>{commentCount}</S.CommentCount>
+          </S.Comment>
+        </S.LikeCommentWrapper>
       </S.BottomBox>
     </S.ContentBox>
   );
