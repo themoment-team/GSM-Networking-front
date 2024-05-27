@@ -23,10 +23,6 @@ export const Comment = styled.div`
   display: flex;
   gap: 0.25rem;
   align-items: center;
-
-  svg {
-    position: relative;
-  }
 `;
 
 export const BottomBox = styled.div`
@@ -45,7 +41,7 @@ export const BottomBox = styled.div`
 
 export const LikeCommentWrapper = styled.div`
   display: flex;
-  gap: 2.875rem;
+  gap: 1rem;
 `;
 
 export const LikeCount = styled.span`
@@ -53,10 +49,7 @@ export const LikeCount = styled.span`
   top: 0.0625rem;
 `;
 
-export const CommentCount = styled.span`
-  position: relative;
-  top: 0.0625rem;
-`;
+export const CommentCount = styled.span``;
 
 export const ContentHeader = styled.div`
   display: flex;
