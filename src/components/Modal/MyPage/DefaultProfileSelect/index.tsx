@@ -7,7 +7,11 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { usePatchProfileNumber } from '@/hooks';
+import {
+  useGetMyInfo,
+  useGetMyMenteeInfo,
+  usePatchProfileNumber,
+} from '@/hooks';
 import type { PatchProfileNumberType } from '@/types';
 
 const options = [
@@ -24,22 +28,26 @@ interface Props {
 }
 
 const DefaultProfileSelect: React.FC<Props> = ({ closeModal }) => {
-  const [selectedProfile, setSelectedProfile] = useState<number>();
+  const [selectedProfile, setSelectedProfile] = useState<number | null>(null);
   const { mutate: mutateProfileNumber, isPending } = usePatchProfileNumber();
+  const { refetch: refetchGetMyInfo } = useGetMyInfo();
+  const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
   const handleButtonClick = () => {
-    if (!selectedProfile) {
+    if (selectedProfile === null) {
       toast.error('기본 프로필을 선택해주세요.');
       return;
     }
 
     const data: PatchProfileNumberType = {
-      profileNumber: selectedProfile,
+      profileNumber: selectedProfile!,
     };
 
     mutateProfileNumber(data, {
       onSuccess: () => {
         toast.success('기본 프로필로 변경되었습니다');
+        refetchGetMyInfo();
+        refetchGetMyMenteeInfo();
         closeModal();
       },
       onError: () => toast.error('기본 프로필 변경에 실패했습니다.'),
