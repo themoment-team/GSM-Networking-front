@@ -37,6 +37,7 @@ const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
+    setProfileUrl('');
     if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
     if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
     if (mentorInfo?.defaultImgNumber)
