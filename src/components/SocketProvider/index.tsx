@@ -32,10 +32,13 @@ export const SocketProvider = ({ children }: { children: ReactNode }) => {
   }, [socket]);
 
   useEffect(() => {
-    const socketInstance: Socket = ClientIO(process.env.NEXT_PUBLIC_SITE_URL!, {
-      path: '/api/socket/io',
-      addTrailingSlash: false,
-    });
+    const socketInstance: Socket = ClientIO(
+      process.env.NEXT_PUBLIC_API_BASE_URL!,
+      {
+        path: '/api/socket/io',
+        addTrailingSlash: false,
+      }
+    );
 
     socketInstance.on('connect', () => {
       setIsConnected(true);

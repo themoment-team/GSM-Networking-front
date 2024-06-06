@@ -1,88 +1,47 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { Client as StompClient } from '@stomp/stompjs';
-import SockJS from 'sockjs-client';
+import axios from 'axios';
 
 import * as S from './style';
 
 import { Header } from '@/components';
-import type { ChatListType } from '@/types';
-import { getAccessToken, getMyId, getSessionId } from '@/utils';
+import { useSocket } from '@/components';
 
-interface SocketType extends WebSocket {
-  _transport: { url: string };
+interface message {
+  userId: number;
+  content: string;
 }
 
 const ChatList = () => {
-  const client = useRef<StompClient | null>(null);
-  const [chatList, setChatList] = useState<ChatListType[] | null>(null);
-
-  const handleClient = async () => {
-    const socket = new SockJS(`${process.env.NEXT_PUBLIC_API_BASE_URL}/ws`);
-    const accessToken = await getAccessToken();
-
-    client.current = new StompClient({
-      connectHeaders: {
-        access_token: accessToken,
-      },
-      webSocketFactory: () => socket,
-      debug: (str) => {
-        console.log(str);
-      },
-      reconnectDelay: 5000,
-      heartbeatIncoming: 4000,
-      heartbeatOutgoing: 4000,
-
-      onConnect: async () => {
-        console.log('WebSocket 연결이 열렸습니다.');
-        const subDestination = `/queue/user/${getSessionId(
-          socket as unknown as SocketType
-        )}`;
-        const userId = await getMyId();
-
-        if (client.current) {
-          client.current.subscribe(subDestination, (message) => {
-            try {
-              console.log(message);
-            } catch (error) {
-              console.error('오류가 발생했습니다:', error);
-            }
-          });
-
-          const encoder = new TextEncoder();
-          const binaryData = encoder.encode(
-            JSON.stringify({
-              userId: userId,
-              epochMilli: Date.now(),
-              limit: 5,
-            })
-          );
-
-          const body = JSON.stringify({
-            userId: userId,
-            epochMilli: Date.now(),
-            limit: 5,
-          });
-
-          client.current.publish({
-            destination: '/query/header',
-            // headers: { 'content-type': 'application/json' },
-            // binaryBody: binaryData,
-            body: body,
-          });
-        }
-      },
-    });
-
-    client.current.activate();
-  };
+  const [messages, setMessages] = useState<message[]>([]);
+  const [currentMessage, setCurrentMessage] = useState('');
+  const { socket /*, isConnected*/ } = useSocket();
+  const [userId /*, setUserId*/] = useState<number>();
 
   useEffect(() => {
-    handleClient();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    if (!socket) {
+      return;
+    }
+
+    socket.on('message', (data: message) => {
+      setMessages((messages) => [...messages, ...[data]]);
+    });
+
+    return () => {
+      socket.off('message');
+    };
+  }, [socket, messages]);
+
+  const sendMessage = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    await axios.post('/api/chat', {
+      userId: userId,
+      content: currentMessage + '테스트',
+    });
+    setCurrentMessage('');
+  };
 
   return (
     <>
@@ -90,6 +49,7 @@ const ChatList = () => {
       <S.Conatiner>
         <S.Text>채팅 목록</S.Text>
         {/* {chatList?.map((i) => <ChattingListCard key={i.opponentUserId}  />)} */}
+        <button onClick={sendMessage}>테스트</button>
       </S.Conatiner>
     </>
   );
