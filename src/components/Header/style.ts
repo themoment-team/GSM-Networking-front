@@ -93,3 +93,7 @@ export const ProfileBox = styled.button`
     left: 0.13rem;
   }
 `;
+
+export const NotificationButton = styled.button`
+  height: 1.5625rem;
+`;

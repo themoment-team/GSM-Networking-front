@@ -64,6 +64,9 @@ const Header: React.FC<Props> = ({
             <S.CommunityLink href='/community/board/teacher'>
               <I.NoticeIcon />
             </S.CommunityLink>
+            <S.NotificationButton>
+              <I.BellIcon />
+            </S.NotificationButton>
           </S.RedirectBox>
           {!isTeacher && (
             <S.ProfileBox type='button' onClick={handleProfileClick}>

@@ -1,3 +1,4 @@
+export { default as BellIcon } from './BellIcon';
 export { default as BlueCheckIcon } from './BlueCheckIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CheckedIcon } from './CheckedIcon';
