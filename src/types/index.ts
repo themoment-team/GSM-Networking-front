@@ -15,4 +15,5 @@ export * from './mentorInfo';
 export * from './opponentInfo';
 export * from './position';
 export * from './profile';
+export * from './socket';
 export * from './worker';
