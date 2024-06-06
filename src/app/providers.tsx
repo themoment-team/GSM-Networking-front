@@ -6,6 +6,7 @@ import { ThemeProvider } from '@emotion/react';
 
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
+import { SocketProvider } from '@/components';
 import { theme } from '@/styles';
 
 interface Props {
@@ -26,7 +27,11 @@ const Providers: React.FC<Props> = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <SocketProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </SocketProvider>
     </ThemeProvider>
   );
 };
