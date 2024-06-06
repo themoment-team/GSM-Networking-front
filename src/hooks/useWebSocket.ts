@@ -12,7 +12,6 @@ const useWebSocket = (
   useEffect(() => {
     const socket = new WebSocket(url);
     socketRef.current = socket;
-    console.log(1);
 
     socket.onopen = () => {
       console.log('WebSocket connection established');
