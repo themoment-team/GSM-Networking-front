@@ -40,9 +40,9 @@ const Header: React.FC<Props> = ({
     setProfileUrl('');
     if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
     if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
-    if (mentorInfo?.defaultImgNumber)
+    if (mentorInfo?.defaultImgNumber !== undefined)
       setProfileNum(mentorInfo.defaultImgNumber);
-    if (menteeInfo?.defaultImgNumber)
+    if (menteeInfo?.defaultImgNumber !== undefined)
       setProfileNum(menteeInfo.defaultImgNumber);
   }, [mentorInfo, menteeInfo]);
 
