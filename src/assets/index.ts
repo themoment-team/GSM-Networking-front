@@ -15,6 +15,7 @@ export { default as GsmNetworkingIcon } from './GsmNetworkingIcon';
 export { default as ImageRegisterIcon } from './ImageRegisterIcon';
 export { default as LikeIcon } from './LikeIcon';
 export { default as LogoIcon } from './LogoIcon';
+export { default as MarkerIcon } from './MarkerIcon';
 export { default as MenteeSelectIcon } from './MenteeSelectIcon';
 export { default as MentorSelectIcon } from './MentorSelectIcon';
 export { default as MoreIcon } from './MoreIcon';
