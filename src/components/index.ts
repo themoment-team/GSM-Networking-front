@@ -16,6 +16,7 @@ export { default as Header } from './Header';
 export { default as InfoSearch } from './InfoSearch';
 export { default as Layout } from './Layout';
 export { default as MainPage } from './MainPage';
+export { default as MapComponent } from './Map';
 export { default as MentorCard } from './MentorCard';
 export { default as MentorList } from './MentorList';
 export { default as MiniProfile } from './MiniProfile';

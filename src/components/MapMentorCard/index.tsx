@@ -6,6 +6,8 @@ import Image from 'next/image';
 
 import { toast } from 'react-toastify';
 
+import { RandomMentorImg } from '..';
+
 import * as S from './style';
 
 import * as I from '@/assets';
@@ -46,7 +48,7 @@ const MapMentorCard: React.FC<Props> = ({ worker }) => {
               sizes='60px'
             />
           ) : (
-            ''
+            <RandomMentorImg defaultImgNumber={worker.defaultImgNumber} />
           )}
         </S.WorkerImgBox>
         <S.Worker>

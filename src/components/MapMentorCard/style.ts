@@ -4,10 +4,10 @@ export const MapMentorCard = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   align-self: stretch;
-  width: 568px;
-  height: 60px;
+  width: 35.5rem;
+  height: 3.75rem;
 `;
 
 export const WorkerImgBox = styled.div`
@@ -15,15 +15,23 @@ export const WorkerImgBox = styled.div`
   border-radius: 100%;
   display: flex;
   justify-content: center;
-  align-items: end;
-  width: 60px;
-  height: 60px;
+  align-items: center;
+  width: 3.75rem;
+  height: 3.75rem;
   position: relative;
   overflow: hidden;
   background-color: ${({ theme }) => theme.color.grey[100]};
 
   & > img {
     object-fit: cover;
+  }
+
+  & svg {
+    width: 3.4375rem;
+    height: 3.375rem;
+    position: relative;
+    top: 0.625rem;
+    left: 0.13rem;
   }
 `;
 
@@ -86,7 +94,7 @@ export const WorkerInfoHead = styled.div`
 `;
 
 export const ButtonBox = styled.div`
-  height: 20px;
+  height: 1.25rem;
   gap: 0.75rem;
   display: flex;
   justify-content: flex-end;
