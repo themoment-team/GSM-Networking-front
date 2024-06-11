@@ -55,6 +55,8 @@ const TeacherBoard: React.FC<Props> = ({ initialData }) => {
     );
   };
 
+  console.log(data?.pages);
+
   return (
     <>
       <Header />

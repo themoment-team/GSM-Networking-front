@@ -1,7 +1,5 @@
 'use client';
 
-import { useState } from 'react';
-
 import { usePathname } from 'next/navigation';
 
 import { toast } from 'react-toastify';
@@ -41,11 +39,9 @@ const BoardCard: React.FC<Props> = ({
   author,
   likeCount,
   commentCount,
-  isPinned: initialPinned,
+  isPinned,
   listRefetch,
 }) => {
-  const [isPinned, setIsPinned] = useState<boolean>(initialPinned);
-
   const { monthDay, time } = parseDateString(createdAt);
 
   const pathname = usePathname();
@@ -54,18 +50,19 @@ const BoardCard: React.FC<Props> = ({
 
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {
-      console.log(listRefetch);
       listRefetch();
+      if (!isPinned) {
+        toast.success('게시물이 고정되었습니다.');
+      } else {
+        toast.success('게시물이 고정 해제되었습니다.');
+      }
     },
-    onError: (error) => {
-      console.log(error);
+    onError: () => {
       toast.error('게시물 고정에 실패했습니다.');
-      setIsPinned((prev) => !prev);
     },
   });
 
   const onPinClick = () => {
-    setIsPinned((prev) => !prev);
     patchBoardPin();
   };
 
