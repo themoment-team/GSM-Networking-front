@@ -85,7 +85,7 @@ export const ProfileBox = styled.button`
     object-fit: cover;
   }
 
-  & > svg {
+  & svg {
     width: 2.1875rem;
     height: 2rem;
     position: relative;
