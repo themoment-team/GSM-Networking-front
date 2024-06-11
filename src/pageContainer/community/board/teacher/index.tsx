@@ -18,7 +18,7 @@ const TeacherBoard: React.FC<Props> = ({ initialData }) => {
   const boardListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
 
-  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage, refetch } =
     useGetBoardList(initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
@@ -49,7 +49,9 @@ const TeacherBoard: React.FC<Props> = ({ initialData }) => {
       );
     }
     return filteredData.map((page) =>
-      page.map((board) => <BoardCard key={board.id} {...board} />)
+      page.map((board) => (
+        <BoardCard listRefetch={refetch} key={board.id} {...board} />
+      ))
     );
   };
 

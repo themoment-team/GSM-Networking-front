@@ -70,7 +70,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
     }
     return filteredData.map((page) =>
       page.map((board) => (
-        <BoardCard refetch={refetch} key={board.id} {...board} />
+        <BoardCard listRefetch={refetch} key={board.id} {...board} />
       ))
     );
   };

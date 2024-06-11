@@ -4,6 +4,8 @@ import { useState } from 'react';
 
 import { usePathname } from 'next/navigation';
 
+import { toast } from 'react-toastify';
+
 import * as S from './style';
 
 import * as I from '@/assets';
@@ -23,7 +25,7 @@ import type {
 const TEACHER_NOTICE_PAGE_PATH = '/community/board/teacher' as const;
 
 interface Props extends BoardInfoType {
-  refetch: (
+  listRefetch: (
     options?: RefetchOptions | undefined
   ) => Promise<
     QueryObserverResult<InfiniteData<BoardInfoType[], unknown>, Error>
@@ -40,7 +42,7 @@ const BoardCard: React.FC<Props> = ({
   likeCount,
   commentCount,
   isPinned: initialPinned,
-  refetch,
+  listRefetch,
 }) => {
   const [isPinned, setIsPinned] = useState<boolean>(initialPinned);
 
@@ -52,9 +54,12 @@ const BoardCard: React.FC<Props> = ({
 
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {
-      refetch();
+      console.log(listRefetch);
+      listRefetch();
     },
-    onError: () => {
+    onError: (error) => {
+      console.log(error);
+      toast.error('게시물 고정에 실패했습니다.');
       setIsPinned((prev) => !prev);
     },
   });
