@@ -13,13 +13,13 @@ type Story = StoryObj<typeof Pin>;
 export const Clicked: Story = {
   args: {
     onClick: () => {},
-    isClicked: true,
+    isPinned: true,
   },
 };
 
 export const NotClicked: Story = {
   args: {
     onClick: () => {},
-    isClicked: false,
+    isPinned: false,
   },
 };
