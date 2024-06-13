@@ -10,6 +10,7 @@ import { RandomMentorImg } from '..';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
@@ -69,7 +70,7 @@ const Header: React.FC<Props> = ({
             {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
-            <S.CommunityLink href='/community/board/teacher'>
+            <S.CommunityLink href={TEACHER_NOTICE_PAGE_PATH}>
               <I.NoticeIcon />
             </S.CommunityLink>
           </S.RedirectBox>

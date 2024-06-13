@@ -1,6 +1,6 @@
 import { usePathname } from 'next/navigation';
 
-const TEACHER_NOTICE_PAGE_PATH = '/community/board/teacher' as const;
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 
 const NoticeIcon = () => {
   const pathname = usePathname();

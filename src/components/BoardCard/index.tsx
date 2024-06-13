@@ -9,6 +9,7 @@ import * as S from './style';
 import * as I from '@/assets';
 import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import { useGetIsTeacher, usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
@@ -19,8 +20,6 @@ import type {
   QueryObserverResult,
   RefetchOptions,
 } from '@tanstack/react-query';
-
-const TEACHER_NOTICE_PAGE_PATH = '/community/board/teacher' as const;
 
 interface Props extends BoardInfoType {
   listRefetch: (
