@@ -9,7 +9,7 @@ import * as S from './style';
 import * as I from '@/assets';
 import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
-import { usePatchBoardPin } from '@/hooks';
+import { useGetIsTeacher, usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
@@ -43,6 +43,8 @@ const BoardCard: React.FC<Props> = ({
   listRefetch,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
+
+  const { data: isTeacher } = useGetIsTeacher();
 
   const pathname = usePathname();
 
@@ -83,7 +85,7 @@ const BoardCard: React.FC<Props> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        {isTeacherPage ? (
+        {isTeacherPage && isTeacher ? (
           <Pin isPinned={isPinned} onClick={onPinClick} />
         ) : (
           <div />
