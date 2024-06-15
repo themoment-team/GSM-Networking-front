@@ -38,13 +38,20 @@ const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setProfileUrl('');
-    if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
-    if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
-    if (mentorInfo?.defaultImgNumber !== undefined)
-      setProfileNum(mentorInfo.defaultImgNumber);
-    if (menteeInfo?.defaultImgNumber !== undefined)
-      setProfileNum(menteeInfo.defaultImgNumber);
+    const updateProfileUrl = () => {
+      if (menteeInfo?.profileUrl) return menteeInfo.profileUrl;
+      if (mentorInfo?.profileUrl) return mentorInfo.profileUrl;
+      return '';
+    };
+
+    const updateProfileNum = () => {
+      if (menteeInfo?.defaultImgNumber) return menteeInfo.defaultImgNumber;
+      if (mentorInfo?.defaultImgNumber) return mentorInfo.defaultImgNumber;
+      return null;
+    };
+
+    setProfileUrl(updateProfileUrl());
+    setProfileNum(updateProfileNum());
   }, [mentorInfo, menteeInfo]);
 
   return (
