@@ -48,3 +48,11 @@ export const TextAreaWrapper = styled.div`
     width: calc(100% - 2rem);
   }
 `;
+
+export const UpdateButton = styled.button`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.63rem;
+`;
