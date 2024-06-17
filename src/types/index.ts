@@ -1,4 +1,5 @@
 export * from './auth';
+export * from './author';
 export * from './board';
 export * from './boardInfo';
 export * from './career';
