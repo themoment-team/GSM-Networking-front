@@ -4,3 +4,4 @@ export * from './useGetBoardDetail';
 export * from './useGetBoardList';
 export * from './useOptimisticLike';
 export * from './usePostBoardContent';
+export * from './usePatchBoard';
