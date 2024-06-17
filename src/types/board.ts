@@ -1,7 +1,14 @@
-import type { CategoryType, CommentType, ProfileType } from '@/types';
+import type { AuthorType, CategoryType, CommentType } from '@/types';
 
-export interface BoardContentWriteType
-  extends Pick<BoardType, 'title' | 'content' | 'boardCategory'> {}
+export interface BoardContentWriteType extends BoardUpdateType {
+  popupExp?: number;
+}
+
+export interface BoardUpdateType {
+  title: string;
+  content: string;
+  boardCategory: CategoryType;
+}
 
 export interface BoardType {
   id: number;
@@ -10,7 +17,7 @@ export interface BoardType {
   createdAt: Date;
   boardCategory: CategoryType;
   comments: CommentType[];
-  author: ProfileType;
+  author: AuthorType;
   likeCount: number;
   isLike: boolean;
 }
