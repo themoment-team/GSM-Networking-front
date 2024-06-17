@@ -9,6 +9,7 @@ export const boardUrl = {
   getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   getBoard: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
+  patchBoard: (boardId: string) => `/board/${boardId}`,
 } as const;
 
 export const commentUrl = {
