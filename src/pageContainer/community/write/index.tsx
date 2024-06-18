@@ -35,8 +35,6 @@ interface Props {
 const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
   const { push } = useRouter();
 
-  console.log(prevBoard);
-
   const {
     register,
     handleSubmit,
