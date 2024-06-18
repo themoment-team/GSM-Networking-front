@@ -4,12 +4,6 @@ export interface BoardContentWriteType extends BoardUpdateType {
   popupExp?: number;
 }
 
-export interface BoardUpdateType {
-  title: string;
-  content: string;
-  boardCategory: CategoryType;
-}
-
 export interface BoardType {
   id: number;
   title: string;
@@ -20,4 +14,10 @@ export interface BoardType {
   author: AuthorType;
   likeCount: number;
   isLike: boolean;
+}
+
+export interface BoardUpdateType {
+  title: string;
+  content: string;
+  boardCategory: CategoryType;
 }

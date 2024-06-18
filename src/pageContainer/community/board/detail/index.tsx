@@ -22,8 +22,13 @@ import {
   useGetMyMenteeInfo,
   usePostComment,
 } from '@/hooks';
-import { CategoryType, MenteeType, MentorInfoType } from '@/types';
-import { HeaderPosition, type BoardType } from '@/types';
+import {
+  CategoryType,
+  type MenteeType,
+  type MentorInfoType,
+  HeaderPosition,
+  type BoardType,
+} from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
 import type { Metadata } from 'next';
