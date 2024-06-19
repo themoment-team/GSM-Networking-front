@@ -1,7 +1,7 @@
 import type { CategoryType, CommentType, ProfileType } from '@/types';
 
 export interface BoardContentWriteType
-  extends Pick<BoardType, 'title' | 'content' | 'boardCategory' | 'file'> {}
+  extends Pick<BoardType, 'title' | 'content' | 'boardCategory' | 'files'> {}
 
 export interface BoardType {
   id: string;
@@ -11,5 +11,5 @@ export interface BoardType {
   boardCategory: CategoryType;
   comments: CommentType[];
   author: ProfileType;
-  file?: File[];
+  files?: File[];
 }

@@ -85,7 +85,7 @@ const CommunityWrite = () => {
     };
 
     if (files.length > 0) {
-      body.file = files;
+      body.files = files;
     }
 
     mutatePostBoardContent(body);
@@ -142,7 +142,12 @@ const CommunityWrite = () => {
                 <S.MapFileBox>
                   {files &&
                     files.map((file, index) => (
-                      <SelectFile key={file.name + index} file={file} />
+                      <SelectFile
+                        index={index}
+                        key={file.name + index}
+                        file={file}
+                        setFiles={setFiles}
+                      />
                     ))}
                 </S.MapFileBox>
               </S.MapFileBox>

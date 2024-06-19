@@ -1,20 +1,26 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
+
 import * as S from './style';
 
 import { CancleFileUpload, FileUploadIcon } from '@/assets';
 
 interface Props {
   file: File;
+  setFiles: Dispatch<SetStateAction<File[]>>;
+  index: number;
 }
 
-const SelectFile: React.FC<Props> = ({ file }) => (
+const SelectFile: React.FC<Props> = ({ file, setFiles, index }) => (
   <S.Container>
     <S.FileNameContainer>
       <FileUploadIcon />
       <S.Text>{file.name}</S.Text>
     </S.FileNameContainer>
-    <S.CancleUploadContainer>
+    <S.CancleUploadContainer
+      onClick={() => setFiles((prev) => prev.filter((_, i) => i !== index))}
+    >
       <CancleFileUpload />
     </S.CancleUploadContainer>
   </S.Container>
