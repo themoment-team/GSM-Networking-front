@@ -40,7 +40,9 @@ const BoardCard: React.FC<Props> = ({
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
 
-  const { data: isTeacher } = useGetIsTeacher();
+  const { data } = useGetIsTeacher();
+
+  const isTeacher = !!data?.isTeacher;
 
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {
@@ -80,11 +82,7 @@ const BoardCard: React.FC<Props> = ({
       </S.BoardCard>
       <S.BottomBox>
         {isTeacher || isPinned ? (
-          <Pin
-            isPinned={isPinned}
-            onClick={onPinClick}
-            isTeacher={!!isTeacher}
-          />
+          <Pin isPinned={isPinned} onClick={onPinClick} isTeacher={isTeacher} />
         ) : (
           <div />
         )}
