@@ -38,6 +38,7 @@ export { default as SNSIcon } from './SNSIcon';
 export { default as SearchIcon } from './SearchIcon';
 export { default as SearchNotFoundIcon } from './SearchNotFoundIcon';
 export { default as SendIcon } from './SendIcon';
+export { default as SmallXIcon } from './SmallXIcon';
 export { default as TeacherImg } from './TeacherImg';
 export { default as ToggleIcon } from './ToggleIcon';
 export { default as TriangleIcon } from './TriangleIcon';

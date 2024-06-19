@@ -13,4 +13,8 @@ export const Button = styled.button`
 
   color: ${({ theme }) => theme.color.white};
   ${({ theme }) => theme.typo.button}
+
+  position: relative;
+  left: 25%;
+  bottom: 3.75rem;
 `;

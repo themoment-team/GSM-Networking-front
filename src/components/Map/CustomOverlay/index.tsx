@@ -8,12 +8,18 @@ interface CustomOverlayProps {
   onClose: () => void;
   latitude: number;
   longitude: number;
+  name: string;
+  company: string;
+  position: string;
 }
 
 const CustomOverlay: React.FC<CustomOverlayProps> = ({
   onClose,
   latitude,
   longitude,
+  name,
+  company,
+  position,
 }) => {
   const CloseButtonClick = () => {
     onClose();
@@ -22,18 +28,18 @@ const CustomOverlay: React.FC<CustomOverlayProps> = ({
   return (
     <S.CustomOverlay>
       <S.Topbox>
-        <S.Name>6기 박준호</S.Name>
+        <S.Name>{name}</S.Name>
         <div onClick={CloseButtonClick}>
-          <I.CloseIcon />
+          <I.SmallXIcon />
         </div>
       </S.Topbox>
       <S.Middlebox>
-        <S.Positon>데브옵스</S.Positon>
-        <S.Company>삼성전자</S.Company>
+        <S.Positon>{position}</S.Positon>
+        <S.Company>{company}</S.Company>
       </S.Middlebox>
       <S.Bottombox>
         <a
-          href={`https://map.kakao.com/link/to/광주소프트웨어마이스터고등학교,${latitude},${longitude}`}
+          href={`https://map.kakao.com/link/to/${company},${latitude},${longitude}`}
           target='_blank'
         >
           <S.LocationBtn>길 찾기</S.LocationBtn>

@@ -9,6 +9,7 @@ export * from './generation';
 export * from './gwangya';
 export * from './header';
 export * from './like';
+export * from './marker';
 export * from './mentee';
 export * from './mentor';
 export * from './mentorInfo';

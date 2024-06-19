@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 export const CustomOverlay = styled.div`
   ${({ theme }) => theme.typo.body2};
   position: absolute;
-  bottom: 80px;
+  bottom: 60px;
   right: -99px;
   background: ${({ theme }) => theme.color.white};
   border-radius: 12px;

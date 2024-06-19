@@ -12,10 +12,11 @@ import {
 } from '@/components';
 import { MapMentorCard, SearchNotFound } from '@/components';
 import { HeaderPosition } from '@/types';
-import type { WorkerType } from '@/types';
+import type { MarkerType, WorkerType } from '@/types';
 
 interface Props {
   initMentorList: WorkerType[];
+  initMarkerList: MarkerType[];
 }
 const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
   const lowerCaseKeyword = keyword.toLowerCase();
@@ -27,7 +28,7 @@ const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
   );
 };
 
-const Map: React.FC<Props> = ({ initMentorList }) => {
+const Map: React.FC<Props> = ({ initMentorList, initMarkerList }) => {
   const [workerList, setWorkerList] = useState<WorkerType[]>(initMentorList);
   const [keyword, setKeyword] = useState<string>('');
 
@@ -43,7 +44,7 @@ const Map: React.FC<Props> = ({ initMentorList }) => {
     <>
       <Header position={HeaderPosition.STICKY} />
       <SubFunctionHeader prevPath={PREV_PATH} title='지도' />
-      <MapComponent />
+      <MapComponent markerList={initMarkerList} />
       <SearchBar
         keyword={keyword}
         setKeyword={setKeyword}

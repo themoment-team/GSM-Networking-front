@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { Container } from './style';
 
-import { PopupList } from '@/components';
+import { MapButton, PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
 import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
@@ -60,6 +60,7 @@ const MainPage: React.FC<Props> = ({
           setSelectedGeneration={setSelectedGeneration}
           setSelectedPosition={setSelectedPosition}
         />
+        <MapButton />
       </Container>
     </>
   );

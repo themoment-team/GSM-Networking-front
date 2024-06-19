@@ -6,19 +6,25 @@ import { CustomOverlayMap, Map, MapMarker } from 'react-kakao-maps-sdk';
 
 import CustomOverlay from './CustomOverlay';
 
-interface Props {}
+import type { MarkerType } from '@/types';
 
-const MapComponent: React.FC<Props> = () => {
+interface Props {
+  markerList: MarkerType[];
+}
+
+const MapComponent: React.FC<Props> = ({ markerList }) => {
   const imageSrc = '/images/GNMarker.png' as const;
   const latitude = 37.56100278 as const;
   const longitude = 126.9996417 as const;
-  const [isCustomOverlayVisible, setIsCustomOverlayVisible] =
-    useState<boolean>(true);
-  const handleOnClick = () => {
-    setIsCustomOverlayVisible((prev) => !prev);
+
+  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
+
+  const handleMarkerClick = (marker: MarkerType) => {
+    setSelectedMarker(marker);
   };
-  const handleOnClose = () => {
-    setIsCustomOverlayVisible((prev) => !prev);
+
+  const handleOverlayClose = () => {
+    setSelectedMarker(null);
   };
 
   return (
@@ -27,23 +33,40 @@ const MapComponent: React.FC<Props> = () => {
         lat: latitude,
         lng: longitude,
       }}
-      level={8}
-      style={{ width: '600px', height: '400px', borderRadius: '12px' }}
+      level={7}
+      style={{
+        width: '600px',
+        height: '400px',
+        borderRadius: '12px',
+        marginBottom: '16px',
+      }}
     >
-      <MapMarker
-        position={{ lat: 37.56100278, lng: 126.9996417 }}
-        image={{
-          src: imageSrc,
-          size: { width: 60, height: 60 },
-        }}
-      />
-      <div onClick={handleOnClick}>djdld</div>
-      {isCustomOverlayVisible && (
-        <CustomOverlayMap position={{ lat: latitude, lng: longitude }}>
+      {markerList.map((marker, index) => (
+        <MapMarker
+          key={index}
+          position={{ lat: marker.company.lat, lng: marker.company.lon }}
+          image={{
+            src: imageSrc,
+            size: { width: 36, height: 36 },
+          }}
+          title={marker.name}
+          onClick={() => handleMarkerClick(marker)}
+        />
+      ))}
+      {selectedMarker && (
+        <CustomOverlayMap
+          position={{
+            lat: selectedMarker.company.lat,
+            lng: selectedMarker.company.lon,
+          }}
+        >
           <CustomOverlay
-            onClose={handleOnClose}
-            latitude={latitude}
-            longitude={longitude}
+            onClose={handleOverlayClose}
+            latitude={selectedMarker.company.lat}
+            longitude={selectedMarker.company.lon}
+            name={selectedMarker.name}
+            company={selectedMarker.company.name}
+            position={selectedMarker.company.position}
           />
         </CustomOverlayMap>
       )}

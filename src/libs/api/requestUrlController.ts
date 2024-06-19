@@ -43,6 +43,8 @@ export const mentorUrl = {
   putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
   getMyInfo: () => '/mentor/my',
+  patchCompanyRegister: () => 'mentor/career/company-address',
+  getMarker: () => '/mentor/marker',
 } as const;
 
 export const popupUrl = {
