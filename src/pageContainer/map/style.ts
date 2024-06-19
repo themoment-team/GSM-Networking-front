@@ -4,10 +4,11 @@ export const Container = styled.div``;
 
 export const MentorListWrapper = styled.div`
   width: 100%;
+  // 100vh - (리스트 상단 height + 하단 여백 2.5rem)
   height: calc(100dvh - 39.1875rem);
   overflow-y: scroll;
-  gap: 56px;
-  margin-top: 28px;
+  gap: 3.5rem;
+  margin-top: 1.75rem;
   display: flex;
   flex-direction: column;
 
