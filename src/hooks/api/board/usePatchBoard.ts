@@ -10,7 +10,7 @@ export const usePatchBoard = (
   options?: UseMutationOptions<unknown, AxiosError, BoardUpdateType>
 ) =>
   useMutation({
-    mutationKey: boardQueryKeys.patchBoard(),
+    mutationKey: boardQueryKeys.patchBoard(boardId!),
     mutationFn: (content: BoardUpdateType) =>
       patch(boardUrl.patchBoard(boardId!), content),
     ...options,
