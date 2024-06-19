@@ -3,7 +3,7 @@
 /* eslint-disable no-empty */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
-const PATH = '/community/write?boardid=' as const;
+const WRITE_BOARD_PATH = '/community/write?boardid=' as const;
 
 import {
   getBoardDetail,
@@ -19,12 +19,12 @@ const isMyBoard = async (id: string): Promise<[boolean, BoardType]> => {
   let myInfo: MenteeType | MentorType | null;
 
   try {
-    myInfo = await getMyMenteeInfo(`${PATH}${id}`);
+    myInfo = await getMyMenteeInfo(`${WRITE_BOARD_PATH}${id}`);
   } catch {}
 
   try {
-    const isTeacher = await getIsTeacher(`${PATH}${id}`);
-    myInfo = await getMyInfo(`${PATH}${id}`, isTeacher!);
+    const isTeacher = await getIsTeacher(`${WRITE_BOARD_PATH}${id}`);
+    myInfo = await getMyInfo(`${WRITE_BOARD_PATH}${id}`, isTeacher!);
   } catch {}
 
   return [board!.author.id === myInfo!.id, board!];
