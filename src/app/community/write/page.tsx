@@ -14,9 +14,8 @@ const CommunityWritePage: React.FC<Params> = async ({ searchParams }) => {
     const [isMy, board] = await isMyBoard(boardId);
     if (isMy) {
       return <CommunityWrite prevBoard={board} />;
-    } else {
-      redirect('/community/write');
     }
+    redirect('/community/write');
   }
 
   return <CommunityWrite />;
