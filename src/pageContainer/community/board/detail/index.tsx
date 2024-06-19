@@ -63,8 +63,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
-    if (mentorInfo) setUserInfo(mentorInfo);
-    if (menteeInfo) setUserInfo(menteeInfo);
+    setUserInfo(mentorInfo || menteeInfo || null);
   }, [menteeInfo, mentorInfo]);
 
   const handleUploadSuccess = () => {
