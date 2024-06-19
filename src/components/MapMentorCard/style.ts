@@ -60,7 +60,9 @@ export const MentorHead = styled.div`
   height: 3.75rem;
   gap: 1rem;
 `;
+
 export const WorkerName = styled.p``;
+
 export const WorkerGeneration = styled.p``;
 
 export const WorkerInfoBody = styled.div`

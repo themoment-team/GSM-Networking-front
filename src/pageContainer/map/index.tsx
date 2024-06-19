@@ -10,7 +10,8 @@ import {
   SubFunctionHeader,
   SearchBar,
 } from '@/components';
-import { MapMentorCard, SearchNotFound } from '@/components';
+import { MapMentorCard } from '@/components';
+import { MapSearchNotFound } from '@/components';
 import { HeaderPosition } from '@/types';
 import type { MarkerType, WorkerType } from '@/types';
 
@@ -18,6 +19,7 @@ interface Props {
   initMentorList: WorkerType[];
   initMarkerList: MarkerType[];
 }
+
 const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
   const lowerCaseKeyword = keyword.toLowerCase();
 
@@ -31,6 +33,8 @@ const isIncludesKeyword = (worker: WorkerType, keyword: string) => {
 const Map: React.FC<Props> = ({ initMentorList, initMarkerList }) => {
   const [workerList, setWorkerList] = useState<WorkerType[]>(initMentorList);
   const [keyword, setKeyword] = useState<string>('');
+  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
+  const [selectedWorkerId, setSelectedWorkerId] = useState<string | null>(null);
 
   useEffect(() => {
     setWorkerList(
@@ -40,11 +44,23 @@ const Map: React.FC<Props> = ({ initMentorList, initMarkerList }) => {
 
   const PREV_PATH = '/' as const;
 
+  const handleMarkerClick = (marker: MarkerType | null) => {
+    setSelectedMarker(marker);
+  };
+
+  const handleWorkerClick = (workerId: string) => {
+    setSelectedWorkerId(workerId === selectedWorkerId ? null : workerId);
+  };
+
   return (
     <>
       <Header position={HeaderPosition.STICKY} />
       <SubFunctionHeader prevPath={PREV_PATH} title='지도' />
-      <MapComponent markerList={initMarkerList} />
+      <MapComponent
+        markerList={initMarkerList}
+        selectedMarker={selectedMarker}
+        onMarkerClick={handleMarkerClick}
+      />
       <SearchBar
         keyword={keyword}
         setKeyword={setKeyword}
@@ -53,14 +69,20 @@ const Map: React.FC<Props> = ({ initMentorList, initMarkerList }) => {
       {workerList.length ? (
         <S.MentorListWrapper>
           {workerList.map((worker) => (
-            <MapMentorCard key={worker.id} worker={worker} />
+            <MapMentorCard
+              key={worker.id}
+              worker={worker}
+              onMarkerClick={handleMarkerClick}
+              onWorkerClick={handleWorkerClick}
+              isSelected={worker.id === selectedWorkerId}
+            />
           ))}
         </S.MentorListWrapper>
       ) : (
         <S.NotFoundContainer>
-          <SearchNotFound
+          <MapSearchNotFound
             textArr={[
-              '해당 정보를 가진 졸업생을 찾을 수 없어요.',
+              '회사 및 사람을 찾을 수 없어요.',
               '오타, 띄어쓰기 등을 확인 해주세요.',
             ]}
           />

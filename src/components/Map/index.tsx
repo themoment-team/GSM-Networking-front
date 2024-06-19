@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { CustomOverlayMap, Map, MapMarker } from 'react-kakao-maps-sdk';
 
@@ -10,36 +10,54 @@ import type { MarkerType } from '@/types';
 
 interface Props {
   markerList: MarkerType[];
+  selectedMarker: MarkerType | null;
+  onMarkerClick: (marker: MarkerType | null) => void;
 }
 
-const MapComponent: React.FC<Props> = ({ markerList }) => {
+const MapComponent: React.FC<Props> = ({
+  markerList,
+  selectedMarker,
+  onMarkerClick,
+}) => {
   const imageSrc = '/images/GNMarker.png' as const;
-  const latitude = 37.56100278 as const;
-  const longitude = 126.9996417 as const;
+  const initialLat = 37.56100278 as const;
+  const initialLng = 126.9996417 as const;
+  const initialLevel = 7;
 
-  const [selectedMarker, setSelectedMarker] = useState<MarkerType | null>(null);
+  const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>({
+    lat: initialLat,
+    lng: initialLng,
+  });
+  const [mapLevel, setMapLevel] = useState<number>(initialLevel);
 
-  const handleMarkerClick = (marker: MarkerType) => {
-    setSelectedMarker(marker);
-  };
-
-  const handleOverlayClose = () => {
-    setSelectedMarker(null);
-  };
+  useEffect(() => {
+    if (selectedMarker) {
+      setMapCenter({
+        lat: selectedMarker.company.lat,
+        lng: selectedMarker.company.lon,
+      });
+      setMapLevel(4);
+    } else {
+      setMapLevel(initialLevel);
+    }
+  }, [selectedMarker]);
 
   return (
     <Map
-      center={{
-        lat: latitude,
-        lng: longitude,
-      }}
-      level={7}
+      center={mapCenter}
+      level={mapLevel}
       style={{
-        width: '600px',
-        height: '400px',
-        borderRadius: '12px',
-        marginBottom: '16px',
+        width: '37.5rem',
+        height: '25rem',
+        borderRadius: '0.75rem',
+        marginBottom: '1rem',
       }}
+      onCenterChanged={(map) =>
+        setMapCenter({
+          lat: map.getCenter().getLat(),
+          lng: map.getCenter().getLng(),
+        })
+      }
     >
       {markerList.map((marker, index) => (
         <MapMarker
@@ -50,7 +68,7 @@ const MapComponent: React.FC<Props> = ({ markerList }) => {
             size: { width: 36, height: 36 },
           }}
           title={marker.name}
-          onClick={() => handleMarkerClick(marker)}
+          onClick={() => onMarkerClick(marker)}
         />
       ))}
       {selectedMarker && (
@@ -61,7 +79,7 @@ const MapComponent: React.FC<Props> = ({ markerList }) => {
           }}
         >
           <CustomOverlay
-            onClose={handleOverlayClose}
+            onClose={() => onMarkerClick(null)}
             latitude={selectedMarker.company.lat}
             longitude={selectedMarker.company.lon}
             name={selectedMarker.name}
