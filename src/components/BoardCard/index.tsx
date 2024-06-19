@@ -1,7 +1,5 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-
 import { toast } from 'react-toastify';
 
 import * as S from './style';
@@ -9,7 +7,6 @@ import * as S from './style';
 import * as I from '@/assets';
 import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
-import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import { useGetIsTeacher, usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
@@ -45,10 +42,6 @@ const BoardCard: React.FC<Props> = ({
 
   const { data: isTeacher } = useGetIsTeacher();
 
-  const pathname = usePathname();
-
-  const isTeacherPage = TEACHER_NOTICE_PAGE_PATH === pathname;
-
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {
       listRefetch();
@@ -64,7 +57,9 @@ const BoardCard: React.FC<Props> = ({
   });
 
   const onPinClick = () => {
-    patchBoardPin();
+    if (isTeacher) {
+      patchBoardPin();
+    }
   };
 
   return (
@@ -84,8 +79,12 @@ const BoardCard: React.FC<Props> = ({
         <S.Content>{title}</S.Content>
       </S.BoardCard>
       <S.BottomBox>
-        {isTeacherPage && isTeacher ? (
-          <Pin isPinned={isPinned} onClick={onPinClick} />
+        {isTeacher || isPinned ? (
+          <Pin
+            isPinned={isPinned}
+            onClick={onPinClick}
+            isTeacher={!!isTeacher}
+          />
         ) : (
           <div />
         )}

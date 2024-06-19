@@ -1,12 +1,12 @@
 import styled from '@emotion/styled';
 
-export const PinWrapper = styled.div`
+export const PinWrapper = styled.div<{ isTeacher: boolean }>`
   display: flex;
   gap: 0.25rem;
 
   align-items: center;
 
-  cursor: pointer;
+  ${({ isTeacher }) => isTeacher && 'cursor: pointer'};
 `;
 
 export const Text = styled.span<{ isPinned: boolean }>`
