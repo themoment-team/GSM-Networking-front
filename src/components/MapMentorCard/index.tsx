@@ -47,18 +47,24 @@ const MapMentorCard: React.FC<Props> = ({
   }, [isSelected]);
 
   const handleMarkerClick = () => {
+    setIsClicked((prev) => !prev);
     if (!isClicked) {
-      onMarkerClick({
-        id: parseInt(worker.id),
-        name: worker.name,
-        generation: worker.generation as number,
-        company: {
-          name: worker.company.name,
-          position: worker.position,
-          lat: worker.company.lat!,
-          lon: worker.company.lon!,
-        },
-      });
+      if (worker.generation !== null) {
+        const markerData: MarkerType = {
+          id: parseInt(worker.id),
+          name: worker.name,
+          generation: worker.generation,
+          company: {
+            name: worker.company.name,
+            position: worker.position,
+            lat: worker.company.lat!,
+            lon: worker.company.lon!,
+          },
+        };
+        onMarkerClick(markerData);
+      } else {
+        onMarkerClick(null);
+      }
     } else {
       onMarkerClick(null);
     }

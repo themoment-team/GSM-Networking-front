@@ -14,16 +14,16 @@ interface Props {
   onMarkerClick: (marker: MarkerType | null) => void;
 }
 
+const imageSrc = '/images/GNMarker.png' as const;
+const initialLat = 37.56100278 as const;
+const initialLng = 126.9996417 as const;
+const initialLevel = 7 as const;
+
 const MapComponent: React.FC<Props> = ({
   markerList,
   selectedMarker,
   onMarkerClick,
 }) => {
-  const imageSrc = '/images/GNMarker.png' as const;
-  const initialLat = 37.56100278 as const;
-  const initialLng = 126.9996417 as const;
-  const initialLevel = 7;
-
   const [mapCenter, setMapCenter] = useState<{ lat: number; lng: number }>({
     lat: initialLat,
     lng: initialLng,
