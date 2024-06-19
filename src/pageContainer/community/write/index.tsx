@@ -53,20 +53,14 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
 
   const { mutate: mutatePostBoardContent, isPending: isPostPending } =
     usePostBoardContent({
-      onSuccess: () => {
-        toast.success('글 작성에 성공했습니다.');
-        push(BOARD_PATH);
-      },
+      onSuccess: () => onMutateSuccess('작성'),
       onError: () => toast.error('글 작성에 실패했습니다.'),
     });
 
   const { mutate: mutatePatchBoard, isPending: isPatchPending } = usePatchBoard(
     prevBoard?.id.toString(),
     {
-      onSuccess: () => {
-        toast.success('글 수정에 성공했습니다.');
-        push(BOARD_PATH);
-      },
+      onSuccess: () => onMutateSuccess('수정'),
       onError: () => toast.error('글 수정에 실패했습니다.'),
     }
   );
@@ -81,6 +75,11 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
       (category) => category !== '선생님'
     );
   }
+
+  const onMutateSuccess = (type: string) => {
+    toast.success(`글 ${type}에 성공했습니다.`);
+    push(BOARD_PATH);
+  };
 
   const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
     const body: BoardContentWriteType = {
