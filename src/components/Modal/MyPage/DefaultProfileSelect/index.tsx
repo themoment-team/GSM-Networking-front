@@ -40,7 +40,7 @@ const DefaultProfileSelect: React.FC<Props> = ({ closeModal }) => {
     }
 
     const data: PatchProfileNumberType = {
-      profileNumber: selectedProfile!,
+      profileNumber: selectedProfile,
     };
 
     mutateProfileNumber(data, {
