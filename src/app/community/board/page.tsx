@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const BoardPage = async () => {
-  const boardList = await getBoardList();
+  const boardList = await getBoardList(null);
 
   return <Board initialData={[...boardList]} />;
 };

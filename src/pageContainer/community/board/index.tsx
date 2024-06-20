@@ -16,7 +16,7 @@ import {
 import { BOARD_PATH } from '@/constants';
 import { useIntersectionObserver, useGetBoardList } from '@/hooks';
 import { ReverseCategoryType } from '@/types';
-import type { BoardInfoType } from '@/types';
+import type { BoardInfoType, CategoryType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
 interface Props {
@@ -34,7 +34,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useGetBoardList(initialData);
+    useGetBoardList(selectedCategory as CategoryType | null, initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {

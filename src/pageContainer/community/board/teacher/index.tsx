@@ -6,20 +6,21 @@ import { FilterNotFoundIcon } from '@/assets';
 import { Header, WriteButton, BoardCard } from '@/components';
 import { useIntersectionObserver, useGetBoardList } from '@/hooks';
 import * as S from '@/pageContainer/community/board/style';
-import type { BoardInfoType } from '@/types';
+import type { BoardInfoType, CategoryFilterType, CategoryType } from '@/types';
 
 interface Props {
   initialData: BoardInfoType[];
+  selectedCategory: CategoryFilterType | null;
 }
 
 const TEACHER_CATEGORY = 'TEACHER';
 
-const TeacherBoard: React.FC<Props> = ({ initialData }) => {
+const TeacherBoard: React.FC<Props> = ({ initialData, selectedCategory }) => {
   const boardListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useGetBoardList(initialData);
+    useGetBoardList(selectedCategory as CategoryType | null, initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {
