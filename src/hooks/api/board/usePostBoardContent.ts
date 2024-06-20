@@ -12,6 +12,8 @@ export const usePostBoardContent = (
   useMutation({
     mutationKey: boardQueryKeys.postBoardContent(),
     mutationFn: (content: BoardContentWriteType) =>
-      post(boardUrl.postBoardContent(), content),
+      post(boardUrl.postBoardContent(), content, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+      }),
     ...options,
   });
