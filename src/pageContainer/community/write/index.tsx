@@ -78,17 +78,21 @@ const CommunityWrite = () => {
   }
 
   const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
+    const formData = new FormData();
+
     const body: BoardContentWriteType = {
       title: data.title,
       content: data.content,
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
+    formData.append('json', JSON.stringify(body));
+
     if (files.length > 0) {
-      body.files = files;
+      files.forEach((file) => formData.append('file', file));
     }
 
-    mutatePostBoardContent(body);
+    mutatePostBoardContent(formData);
   };
 
   const onError: SubmitErrorHandler<CommunityWriteFormType> = () => {
