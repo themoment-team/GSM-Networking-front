@@ -37,9 +37,10 @@ const MapComponent: React.FC<Props> = ({
         lng: selectedMarker.company.lon,
       });
       setMapLevel(4);
-    } else {
-      setMapLevel(initialLevel);
+      return;
     }
+
+    setMapLevel(initialLevel);
   }, [selectedMarker]);
 
   return (

@@ -11,7 +11,6 @@ export const MapMentorCard = styled.div`
 `;
 
 export const WorkerImgBox = styled.div`
-  background-color: ${({ theme }) => theme.color.grey[50]};
   border-radius: 100%;
   display: flex;
   justify-content: center;

@@ -33,12 +33,14 @@ export const Topbox = styled.div`
   display: flex;
   justify-content: space-between;
 `;
+
 export const LocationBtn = styled.div``;
 export const Name = styled.div``;
 export const Company = styled.div``;
 export const Positon = styled.div``;
 export const Icons = styled.div``;
 export const Location = styled.div``;
+
 export const Middlebox = styled.div`
   width: 10.125rem;
   height: 1.3125rem;
@@ -46,6 +48,7 @@ export const Middlebox = styled.div`
   justify-content: space-between;
   color: ${({ theme }) => theme.color.grey[400]};
 `;
+
 export const Bottombox = styled.div`
   width: 10.125rem;
   height: 1.3125rem;
