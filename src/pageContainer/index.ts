@@ -1,4 +1,5 @@
 export { default as AddComment } from './community/board/detail/comment';
+export { default as AddressRegister } from './map/address';
 export { default as Board } from './community/board';
 export { default as BoardDetail } from './community/board/detail';
 export { default as CommunityWrite } from './community/write';
