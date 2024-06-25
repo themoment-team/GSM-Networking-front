@@ -34,7 +34,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useGetBoardList(selectedCategory as CategoryType | null, initialData);
+    useGetBoardList(selectedCategory as CategoryType, initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {

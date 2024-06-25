@@ -5,7 +5,7 @@ import { boardUrl } from '@/libs';
 import type { BoardInfoType, CategoryType } from '@/types';
 
 export const getBoardList = async (
-  category: CategoryType | null
+  category?: CategoryType
 ): Promise<BoardInfoType[]> => {
   const accessToken = cookies().get('accessToken')?.value;
 

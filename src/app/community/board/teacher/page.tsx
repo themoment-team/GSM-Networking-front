@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 };
 
 const TeacherBoardPage = async () => {
-  const boardList = await getBoardList(null);
+  const boardList = await getBoardList();
 
   return <TeacherBoard initialData={[...boardList]} selectedCategory={null} />;
 };
