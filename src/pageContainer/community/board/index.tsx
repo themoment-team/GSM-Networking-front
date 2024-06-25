@@ -34,6 +34,8 @@ const Board: React.FC<Props> = ({ initialData }) => {
   const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
     useGetBoardList(selectedCategory as CategoryType, initialData);
 
+  const { refetch: refetchBoardList } = useGetBoardList();
+
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {
       fetchNextPage();
@@ -47,8 +49,9 @@ const Board: React.FC<Props> = ({ initialData }) => {
   });
 
   useEffect(() => {
+    refetchBoardList();
     boardListRef.current?.scrollTo(0, 0);
-  }, []);
+  }, [selectedCategory, refetchBoardList]);
 
   const boardContents = () => {
     const filteredData = data?.pages;
