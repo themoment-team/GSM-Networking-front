@@ -86,10 +86,10 @@ const CommunityWrite = () => {
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
-    formData.append('json', JSON.stringify(body));
+    formData.append('content', JSON.stringify(body));
 
     if (files.length > 0) {
-      files.forEach((file) => formData.append('file', file));
+      files.forEach((file) => formData.append('files', file));
     }
 
     mutatePostBoardContent(formData);
