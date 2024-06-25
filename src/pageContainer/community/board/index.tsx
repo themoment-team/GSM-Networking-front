@@ -15,7 +15,6 @@ import {
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import { useIntersectionObserver, useGetBoardList } from '@/hooks';
-import { ReverseCategoryType } from '@/types';
 import type { BoardInfoType, CategoryType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
@@ -23,7 +22,6 @@ interface Props {
   initialData: BoardInfoType[];
 }
 
-const ALL_CATEGORIES = '전체' as const;
 const BUTTON_TITLE = '카테고리' as const;
 
 const Board: React.FC<Props> = ({ initialData }) => {
@@ -52,15 +50,8 @@ const Board: React.FC<Props> = ({ initialData }) => {
     boardListRef.current?.scrollTo(0, 0);
   }, []);
 
-  const filteredBoardCards = () => {
-    const filteredData = data?.pages.map((page) =>
-      page.filter(
-        (board) =>
-          !selectedCategory ||
-          selectedCategory === ALL_CATEGORIES ||
-          ReverseCategoryType[board.boardCategory] === selectedCategory
-      )
-    );
+  const boardContents = () => {
+    const filteredData = data?.pages;
     if (!filteredData || filteredData.every((page) => page.length === 0)) {
       return (
         <S.NotFoundIconWrapper>
@@ -94,7 +85,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
         )}
         <S.BoardCardWrapper>
           <S.BoardCardList ref={boardListRef} isFetching={isFetchingNextPage}>
-            {filteredBoardCards()}
+            {boardContents()}
             {!isFetchingNextPage && hasNextPage && (
               <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
             )}
