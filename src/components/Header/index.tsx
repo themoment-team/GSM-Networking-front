@@ -10,6 +10,7 @@ import { RandomMentorImg } from '..';
 import * as S from './style';
 
 import * as I from '@/assets';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
@@ -37,13 +38,13 @@ const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setProfileUrl('');
-    if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
-    if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
-    if (mentorInfo?.defaultImgNumber !== undefined)
-      setProfileNum(mentorInfo.defaultImgNumber);
-    if (menteeInfo?.defaultImgNumber !== undefined)
-      setProfileNum(menteeInfo.defaultImgNumber);
+    const userProfileUrl =
+      menteeInfo?.profileUrl || mentorInfo?.profileUrl || '';
+    const userProfileNum =
+      menteeInfo?.defaultImgNumber || mentorInfo?.defaultImgNumber || null;
+
+    setProfileUrl(userProfileUrl);
+    setProfileNum(userProfileNum);
   }, [mentorInfo, menteeInfo]);
 
   return (
@@ -69,7 +70,7 @@ const Header: React.FC<Props> = ({
             {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
-            <S.CommunityLink href='/community/board/teacher'>
+            <S.CommunityLink href={TEACHER_NOTICE_PAGE_PATH}>
               <I.NoticeIcon />
             </S.CommunityLink>
           </S.RedirectBox>

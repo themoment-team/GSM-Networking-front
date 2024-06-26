@@ -14,6 +14,7 @@ export interface BoardType {
   author: AuthorType;
   likeCount: number;
   isLike: boolean;
+  isPinned: boolean;
 }
 
 export interface BoardUpdateType {

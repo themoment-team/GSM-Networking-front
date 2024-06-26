@@ -14,6 +14,7 @@ export const boardUrl = {
     }`,
   getBoard: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
+  patchBoardPin: (boardId: number) => `/board/pin/${boardId}`,
   patchBoard: (boardId: string) => `/board/${boardId}`,
 } as const;
 

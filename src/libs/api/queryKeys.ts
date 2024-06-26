@@ -2,6 +2,8 @@ export const boardQueryKeys = {
   getBoardDetail: (boardId: string) => ['board', boardId],
   postBoardContent: () => ['board', 'content'],
   getBoardList: () => ['board', 'post', 'list'],
+  getBoard: () => ['board', 'detail'],
+  patchBoardPin: (boardId: number) => ['board', 'pin', boardId],
   patchBoard: (boardId: string) => ['board', 'patch', boardId],
 } as const;
 

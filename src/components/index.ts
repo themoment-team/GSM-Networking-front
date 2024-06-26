@@ -21,6 +21,7 @@ export { default as MentorCard } from './MentorCard';
 export { default as MentorList } from './MentorList';
 export { default as MiniProfile } from './MiniProfile';
 export { default as NavigationEvents } from './NavigationEvents';
+export { default as Pin } from './Pin';
 export { default as PopupCard } from './PopupCard';
 export { default as PopupList } from './PopupList';
 export { default as PrivacyCard } from './PrivacyCard';

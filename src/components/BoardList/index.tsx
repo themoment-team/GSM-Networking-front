@@ -43,7 +43,9 @@ const BoardList: React.FC<Props> = ({ initialData, selectedCategory }) => {
       <S.BoardCardList ref={boardListRef} isFetching={isFetchingNextPage}>
         {data?.pages && data.pages.length > 0 ? (
           data.pages.map((page) =>
-            page.map((board) => <BoardCard key={board.id} {...board} />)
+            page.map((board) => (
+              <BoardCard listRefetch={refetch} key={board.id} {...board} />
+            ))
           )
         ) : (
           <S.NotFoundIconWrapper>
