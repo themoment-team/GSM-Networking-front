@@ -4,7 +4,7 @@ import { get, boardQueryKeys, boardUrl } from '@/libs';
 import type { BoardInfoType, CategoryType } from '@/types';
 
 export const useGetBoardList = (
-  category?: CategoryType,
+  category?: CategoryType | null,
   initialData?: BoardInfoType[]
 ) =>
   useInfiniteQuery({

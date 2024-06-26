@@ -3,6 +3,7 @@ export * from './FormItem';
 export * from './Modal';
 export { default as BoardCard } from './BoardCard';
 export { default as BoardContent } from './BoardContent';
+export { default as BoardList } from './BoardList';
 export { default as CareerCard } from './CareerCard';
 export { default as CareerRegistrationBox } from './CareerRegistrationBox';
 export { default as ChattingListCard } from './ChattingListCard';

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 const TeacherBoardPage = async () => {
   const boardList = await getBoardList();
 
-  return <TeacherBoard initialData={[...boardList]} selectedCategory={null} />;
+  return <TeacherBoard initialData={[...boardList]} />;
 };
 
 export default TeacherBoardPage;
