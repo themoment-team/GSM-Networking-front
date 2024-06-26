@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import * as S from './style';
 
@@ -13,6 +13,7 @@ import {
   BoardList,
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
+import { CategoryType } from '@/types';
 import type { BoardInfoType } from '@/types';
 import type { CategoryFilterType } from '@/types';
 
@@ -28,9 +29,6 @@ const Board: React.FC<Props> = ({ initialData }) => {
 
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
   return (
     <>
       <Header />
@@ -52,7 +50,9 @@ const Board: React.FC<Props> = ({ initialData }) => {
         )}
         <BoardList
           initialData={initialData}
-          selectedCategory={selectedCategory}
+          selectedCategory={
+            selectedCategory ? CategoryType[selectedCategory] : null
+          }
         />
         <S.ButtonWrapper>
           <WriteButton />

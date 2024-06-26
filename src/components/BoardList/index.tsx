@@ -7,19 +7,19 @@ import * as S from './style';
 import { FilterNotFoundIcon } from '@/assets';
 import { BoardCard } from '@/components';
 import { useGetBoardList, useIntersectionObserver } from '@/hooks';
-import type { BoardInfoType, CategoryFilterType, CategoryType } from '@/types';
+import type { BoardInfoType, CategoryType } from '@/types';
 
 interface Props {
   initialData: BoardInfoType[];
-  selectedCategory: CategoryFilterType | null;
+  selectedCategory: CategoryType | null;
 }
 
 const BoardList: React.FC<Props> = ({ initialData, selectedCategory }) => {
   const boardListRef = useRef<HTMLDivElement>(null);
   const loadMoreTriggerRef = useRef<HTMLDivElement>(null);
 
-  const { data, fetchNextPage, isFetchingNextPage, hasNextPage } =
-    useGetBoardList(selectedCategory as CategoryType, initialData);
+  const { data, fetchNextPage, isFetchingNextPage, hasNextPage, refetch } =
+    useGetBoardList(selectedCategory, initialData);
 
   const handleObserver = ([entry]: IntersectionObserverEntry[]) => {
     if (entry.isIntersecting && hasNextPage) {
@@ -35,7 +35,8 @@ const BoardList: React.FC<Props> = ({ initialData, selectedCategory }) => {
 
   useEffect(() => {
     boardListRef.current?.scrollTo(0, 0);
-  }, []);
+    refetch();
+  }, [selectedCategory, refetch]);
 
   return (
     <S.BoardCardWrapper>
