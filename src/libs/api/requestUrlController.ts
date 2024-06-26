@@ -1,3 +1,5 @@
+import type { CategoryType } from '@/types';
+
 export const authUrl = {
   loginLink: () => '/auth/oauth2/authorization/google',
   patchRefresh: () => '/auth/reissue',
@@ -6,7 +8,10 @@ export const authUrl = {
 
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
-  getBoardList: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
+  getBoardList: (cursorId: number, category?: CategoryType | null) =>
+    `/board?cursorId=${cursorId}&pageSize=8${
+      category ? `&boardCategory=${category}` : ''
+    }`,
   getBoard: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
   patchBoard: (boardId: string) => `/board/${boardId}`,
