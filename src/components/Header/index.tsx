@@ -5,11 +5,10 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { RandomMentorImg } from '..';
-
 import * as S from './style';
 
 import * as I from '@/assets';
+import { RandomMentorImg } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
 import { HeaderPosition } from '@/types';

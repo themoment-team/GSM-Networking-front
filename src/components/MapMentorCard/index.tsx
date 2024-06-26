@@ -6,11 +6,10 @@ import Image from 'next/image';
 
 import { toast } from 'react-toastify';
 
-import { RandomMentorImg } from '..';
-
 import * as S from './style';
 
 import * as I from '@/assets';
+import { RandomMentorImg } from '@/components';
 import type { WorkerType, MarkerType } from '@/types';
 
 interface Props {
