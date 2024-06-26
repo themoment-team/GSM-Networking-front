@@ -47,11 +47,12 @@ const BoardCard: React.FC<Props> = ({
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {
       listRefetch();
+
       if (!isPinned) {
         toast.success('게시물이 고정되었습니다.');
-      } else {
-        toast.success('게시물이 고정 해제되었습니다.');
+        return;
       }
+      toast.success('게시물이 고정 해제되었습니다.');
     },
     onError: () => {
       toast.error('게시물 고정에 실패했습니다.');
