@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import * as S from './style';
 
@@ -10,6 +10,7 @@ import {
   WriteButton,
   FilterButton,
   BoardFilterModal,
+  BoardList,
 } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import type { BoardInfoType } from '@/types';
@@ -27,6 +28,9 @@ const Board: React.FC<Props> = ({ initialData }) => {
 
   const [isShowFilterModal, setIsShowFilterModal] = useState<boolean>(false);
 
+  useEffect(() => {
+    console.log(selectedCategory);
+  }, [selectedCategory]);
   return (
     <>
       <Header />
@@ -46,14 +50,10 @@ const Board: React.FC<Props> = ({ initialData }) => {
             setSelectedCategory={setSelectedCategory}
           />
         )}
-        {/* <S.BoardCardWrapper>
-          <S.BoardCardList ref={boardListRef} isFetching={isFetchingNextPage}>
-            {boardContents()}
-            {!isFetchingNextPage && hasNextPage && (
-              <S.LoadMoreTrigger ref={loadMoreTriggerRef} />
-            )}
-          </S.BoardCardList>
-        </S.BoardCardWrapper> */}
+        <BoardList
+          initialData={initialData}
+          selectedCategory={selectedCategory}
+        />
         <S.ButtonWrapper>
           <WriteButton />
         </S.ButtonWrapper>
