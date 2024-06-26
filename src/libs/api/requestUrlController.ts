@@ -9,7 +9,9 @@ export const authUrl = {
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
   getBoardList: (cursorId: number, category?: CategoryType | null) =>
-    `/board?cursorId=${cursorId}&pageSize=8&category=${category}`,
+    `/board?cursorId=${cursorId}&pageSize=8${
+      category ? `&boardCategory=${category}` : ''
+    }`,
   getBoard: (cursorId: number) => `/board?cursorId=${cursorId}&pageSize=8`,
   postBoardContent: () => '/board',
 } as const;
