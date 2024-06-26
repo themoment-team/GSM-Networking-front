@@ -1,4 +1,4 @@
-export type CategoryFilterType = CategoryType[keyof CategoryType];
+export type CategoryFilterType = keyof typeof CategoryType;
 
 export enum CategoryType {
   선생님 = 'TEACHER',

@@ -45,7 +45,9 @@ const BoardFilterModal: React.FC<Props> = ({
             <S.CategoryButton
               key={category}
               isSelected={selectedCategory === category}
-              onClick={() => handleCategoryClick(category)}
+              onClick={() =>
+                handleCategoryClick(category as CategoryFilterType)
+              }
             >
               {category}
             </S.CategoryButton>

@@ -14,6 +14,13 @@ export interface BoardType {
   author: AuthorType;
   likeCount: number;
   isLike: boolean;
+  isPinned: boolean;
+}
+
+export interface BoardUpdateType {
+  title: string;
+  content: string;
+  boardCategory: CategoryType;
 }
 
 export interface BoardUpdateType {
