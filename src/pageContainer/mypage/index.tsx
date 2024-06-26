@@ -24,9 +24,9 @@ const MyPage: React.FC = () => {
 
   const { push } = useRouter();
 
-  const [userInfo, setUserInfo] = useState<
-    MenteeType | MentorInfoType | null
-  >();
+  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
+    null
+  );
 
   const { data: mentorInfo } = useGetMyInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
