@@ -1,4 +1,4 @@
-import CategoryType from './category';
+import { CategoryType } from '@/types';
 
 const COMMUNITY_CATEGORY_ARRAY = Object.keys(CategoryType);
 
