@@ -1,7 +1,6 @@
 import { useMutation } from '@tanstack/react-query';
 
 import { boardQueryKeys, boardUrl, post } from '@/libs';
-// import type { BoardContentWriteType } from '@/types';
 
 import type { UseMutationOptions } from '@tanstack/react-query';
 import type { AxiosError } from 'axios';
