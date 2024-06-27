@@ -7,7 +7,7 @@ export const Container = styled.button`
   align-items: center;
   gap: 0.1875rem;
   border-radius: 0.625rem;
-  border: 1px solid var(--Grey-grey-100, #eff0f2);
+  border: 1px solid ${({ theme }) => theme.color.grey[100]};
 `;
 
 export const Text = styled.p`
