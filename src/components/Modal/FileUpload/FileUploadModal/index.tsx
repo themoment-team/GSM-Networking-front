@@ -38,11 +38,7 @@ const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
       <S.FileUploadInfo>
         <S.TitleContainer>
           <S.Title>파일 추가</S.Title>
-          <S.CancleUploadContainer
-            onClick={() => {
-              closeModal();
-            }}
-          >
+          <S.CancleUploadContainer onClick={closeModal}>
             <CancleFileUpload />
           </S.CancleUploadContainer>
         </S.TitleContainer>
