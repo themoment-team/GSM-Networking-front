@@ -20,8 +20,8 @@ import {
   SubFunctionHeader,
   FileUploadButton,
   FileUploadModal,
+  SelectFile,
 } from '@/components';
-import SelectFile from '@/components/SelectFile';
 import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
