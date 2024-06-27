@@ -86,7 +86,12 @@ const CommunityWrite = () => {
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
-    formData.append('content', JSON.stringify(body));
+    formData.append(
+      'content',
+      new Blob([JSON.stringify(body)], {
+        type: 'application/json',
+      })
+    );
 
     if (files.length > 0) {
       files.forEach((file) => formData.append('files', file));
