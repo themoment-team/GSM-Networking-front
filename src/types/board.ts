@@ -22,3 +22,9 @@ export interface BoardUpdateType {
   content: string;
   boardCategory: CategoryType;
 }
+
+export interface BoardUpdateType {
+  title: string;
+  content: string;
+  boardCategory: CategoryType;
+}

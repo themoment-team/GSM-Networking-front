@@ -28,6 +28,7 @@ export default function RootLayout({
           href='https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.8/dist/web/variable/pretendardvariable-dynamic-subset.css'
         />
         {/* Global Site Tag (gtag.js) - Google Analytics */}
+
         <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
@@ -45,6 +46,10 @@ export default function RootLayout({
               });
             `,
           }}
+        />
+        <Script
+          src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.NEXT_PUBLIC_KAKAOMAP_APPKEY}&autoload=false&libraries=services,clusterer`}
+          strategy='beforeInteractive'
         />
       </head>
       <body>
