@@ -8,6 +8,7 @@ export interface MentorRequestType extends MenteeRequestType {
 
 export interface MentorType extends MentorRequestType {
   defaultImgNumber: number;
+  id: number;
 }
 
 export interface TempMentorType extends Omit<MentorType, 'career' | 'snsUrl'> {

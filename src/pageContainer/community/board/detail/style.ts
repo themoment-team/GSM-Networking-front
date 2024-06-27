@@ -27,7 +27,7 @@ export const WriterProfileWrapper = styled.div`
 export const Line = styled.div`
   max-width: 37.5rem;
   width: 100%;
-  height: 1px;
+  height: 0.0625rem;
   margin: 0.5rem 0;
 
   background-color: ${({ theme }) => theme.color.grey[100]};
@@ -47,4 +47,12 @@ export const TextAreaWrapper = styled.div`
   @media (max-width: 600px) {
     width: calc(100% - 2rem);
   }
+`;
+
+export const UpdateButton = styled.button`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.63rem;
 `;

@@ -1,5 +1,6 @@
 export { default as UTCDate } from './UTCDate';
 export { default as careerValidation } from './careerValidation';
+export { default as checkLocalstorageValue } from './checkLocalstorageValue';
 export { default as deepCopy } from './deepCopy';
 export { default as deleteCookie } from './deleteCookie';
 export { default as extractCareer } from './extractCareer';
@@ -9,6 +10,8 @@ export { default as getGwangyaToken } from './getGwangyaToken';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isAllowedContent } from './isAllowedContent';
 export { default as isExistCookie } from './isExistCookie';
+export { default as isMyBoard } from './isMyBoard';
+export { default as isNumberArray } from './isNumberArray';
 export { default as isNumeric } from './isNumeric';
 export { default as minutesToMs } from './minutesToMs';
 export { default as minutesToSeconds } from './minutesToSeconds';

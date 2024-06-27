@@ -8,4 +8,5 @@ export interface MenteeRequestType {
 
 export interface MenteeType extends MenteeRequestType {
   defaultImgNumber: number;
+  id: number;
 }

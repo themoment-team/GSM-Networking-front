@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { Container } from './style';
 
+import { PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
 import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
@@ -47,6 +48,7 @@ const MainPage: React.FC<Props> = ({
 
   return (
     <>
+      <PopupList />
       <Header clearList={clearList} />
       <Container>
         <MentorList

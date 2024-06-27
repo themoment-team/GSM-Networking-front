@@ -20,7 +20,7 @@ const typo = {
     fontWeight: 700,
   },
   subtitle: {
-    fontSize: '1.25rem',
+    fontSize: '1.125rem',
     lineHeight: '150%',
     fontWeight: 600,
   },

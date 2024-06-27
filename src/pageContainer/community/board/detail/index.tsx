@@ -1,6 +1,8 @@
 'use client';
 
-import { type Dispatch, type SetStateAction } from 'react';
+import { useState, type Dispatch, type SetStateAction, useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -14,9 +16,20 @@ import {
   MiniProfile,
   TextArea,
 } from '@/components';
-import { useGetBoardDetail, usePostComment } from '@/hooks';
-import { CategoryType } from '@/types';
-import { HeaderPosition, type BoardType } from '@/types';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
+import {
+  useGetBoardDetail,
+  useGetMyInfo,
+  useGetMyMenteeInfo,
+  usePostComment,
+} from '@/hooks';
+import {
+  CategoryType,
+  type MenteeType,
+  type MentorInfoType,
+  HeaderPosition,
+  type BoardType,
+} from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
 import type { Metadata } from 'next';
@@ -36,12 +49,22 @@ export const metadata = (boardData: BoardType | null): Metadata => ({
 });
 
 const PREV_PATH = '/community/board/' as const;
-const TEACHER_PATH = '/community/board/teacher' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
+  const { push } = useRouter();
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
+  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
+    null
+  );
+
+  const { data: mentorInfo } = useGetMyInfo();
+  const { data: menteeInfo } = useGetMyMenteeInfo();
+
+  useEffect(() => {
+    setUserInfo(mentorInfo || menteeInfo || null);
+  }, [menteeInfo, mentorInfo]);
 
   const handleUploadSuccess = () => {
     refetch();
@@ -72,6 +95,9 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
 
   metadata(boardData ?? null);
 
+  const handleUpdateButtonClick = () =>
+    push(`/community/write?boardid=${boardId}`);
+
   return (
     <S.Container>
       <Header position={HeaderPosition.STICKY} />
@@ -80,7 +106,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           <SubFunctionHeader
             prevPath={
               boardData?.boardCategory === CategoryType.선생님
-                ? TEACHER_PATH
+                ? TEACHER_NOTICE_PAGE_PATH
                 : PREV_PATH
             }
             title='글'
@@ -88,11 +114,19 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
             {/* <ChattingButton onClick={() => {}} /> */}
+            {userInfo?.id === boardData.author.id && (
+              <S.UpdateButton onClick={handleUpdateButtonClick}>
+                수정하기
+              </S.UpdateButton>
+            )}
           </S.WriterProfileWrapper>
           <BoardContent
             title={boardData.title}
             content={boardData.content}
             category={boardData.boardCategory}
+            likeCount={boardData.likeCount}
+            isLike={boardData.isLike}
+            boardId={boardId}
           />
           <S.Line />
           <S.CommentContainer>

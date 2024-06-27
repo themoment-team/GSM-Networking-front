@@ -22,18 +22,22 @@ import {
   FileUploadModal,
 } from '@/components';
 import SelectFile from '@/components/SelectFile';
-import { BOARD_PATH } from '@/constants';
-import { COMMUNITY_CATEGORY_ARRAY } from '@/constants';
-import { useGetIsTeacher } from '@/hooks';
-import { usePostBoardContent } from '@/hooks';
+import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
+import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
+import type { BoardType } from '@/types';
 import {
   CategoryType,
   type BoardContentWriteType,
   type CommunityWriteFormType,
+  ReverseCategoryType,
 } from '@/types';
 
-const CommunityWrite = () => {
+interface Props {
+  prevBoard?: BoardType;
+}
+
+const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
   const { push } = useRouter();
 
   const [files, setFiles] = useState<File[]>([]);
@@ -46,9 +50,11 @@ const CommunityWrite = () => {
   } = useForm<CommunityWriteFormType>({
     resolver: zodResolver(communityWriteFormSchema),
     defaultValues: {
-      category: '글 카테고리',
-      title: '',
-      content: '',
+      category: prevBoard
+        ? ReverseCategoryType[prevBoard!.boardCategory]
+        : '글 카테고리',
+      title: prevBoard?.title ?? '',
+      content: prevBoard?.content ?? '',
     },
   });
 
@@ -56,15 +62,24 @@ const CommunityWrite = () => {
     'close' | 'fileRegister' | 'signOut' | 'withdraw'
   >('close');
 
-  const { mutate: mutatePostBoardContent, isPending } = usePostBoardContent({
-    onSuccess: () => {
-      toast.success('글 작성에 성공했습니다.');
-      push(BOARD_PATH);
-    },
-    onError: () => {
-      toast.error('글 작성에 실패했습니다.');
-    },
-  });
+  const { mutate: mutatePostBoardContent, isPending: isPostPending } =
+    usePostBoardContent({
+      onSuccess: () => {
+        toast.success('글 작성에 성공했습니다.');
+        push(BOARD_PATH);
+      },
+      onError: () => {
+        toast.error('글 작성에 실패했습니다.');
+      },
+    });
+
+  const { mutate: mutatePatchBoard, isPending: isPatchPending } = usePatchBoard(
+    prevBoard?.id.toString(),
+    {
+      onSuccess: () => onMutateSuccess('수정'),
+      onError: () => toast.error('글 수정에 실패했습니다.'),
+    }
+  );
 
   const { data: isTeacherData } = useGetIsTeacher();
   const isTeacher = isTeacherData?.isTeacher;
@@ -76,6 +91,11 @@ const CommunityWrite = () => {
       (category) => category !== '선생님'
     );
   }
+
+  const onMutateSuccess = (type: string) => {
+    toast.success(`글 ${type}에 성공했습니다.`);
+    push(BOARD_PATH);
+  };
 
   const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
     const formData = new FormData();
@@ -97,6 +117,11 @@ const CommunityWrite = () => {
       files.forEach((file) => formData.append('files', file));
     }
 
+    if (prevBoard) {
+      mutatePatchBoard(formData);
+      return;
+    }
+
     mutatePostBoardContent(formData);
   };
 
@@ -114,7 +139,10 @@ const CommunityWrite = () => {
       )}
       <Header />
       <S.Container>
-        <SubFunctionHeader prevPath={BOARD_PATH} title='글 작성' />
+        <SubFunctionHeader
+          prevPath={BOARD_PATH}
+          title={prevBoard ? '글 수정' : '글 작성'}
+        />
         <S.Form onSubmit={handleSubmit(onSubmit, onError)}>
           <S.FormFieldsWrapper>
             <SelectFormItem
@@ -162,7 +190,10 @@ const CommunityWrite = () => {
               </S.MapFileBox>
             </S.FileContainer>
           </S.FormFieldsWrapper>
-          <S.NextButton type='submit' disabled={isPending}>
+          <S.NextButton
+            type='submit'
+            disabled={prevBoard ? isPatchPending : isPostPending}
+          >
             다음
           </S.NextButton>
         </S.Form>
