@@ -1,6 +1,7 @@
 import type { AuthorType, CategoryType, CommentType } from '@/types';
 
-export interface BoardContentWriteType extends BoardUpdateType {
+export interface BoardContentWriteType
+  extends Pick<BoardType, 'title' | 'content' | 'boardCategory' | 'files'> {
   popupExp?: number;
 }
 
@@ -11,6 +12,7 @@ export interface BoardType {
   createdAt: Date;
   boardCategory: CategoryType;
   comments: CommentType[];
+  files?: File[];
   author: AuthorType;
   likeCount: number;
   isLike: boolean;

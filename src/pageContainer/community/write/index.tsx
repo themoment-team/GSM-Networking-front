@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { useRouter } from 'next/navigation';
 
 import type { SubmitErrorHandler, SubmitHandler } from 'react-hook-form';
@@ -16,6 +18,9 @@ import {
   InputFormItem,
   SelectFormItem,
   SubFunctionHeader,
+  FileUploadButton,
+  FileUploadModal,
+  SelectFile,
 } from '@/components';
 import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
@@ -35,6 +40,8 @@ interface Props {
 const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
   const { push } = useRouter();
 
+  const [files, setFiles] = useState<File[]>([]);
+
   const {
     register,
     handleSubmit,
@@ -51,10 +58,19 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
     },
   });
 
+  const [openModalCase, setOpenModalCase] = useState<
+    'close' | 'fileRegister' | 'signOut' | 'withdraw'
+  >('close');
+
   const { mutate: mutatePostBoardContent, isPending: isPostPending } =
     usePostBoardContent({
-      onSuccess: () => onMutateSuccess('작성'),
-      onError: () => toast.error('글 작성에 실패했습니다.'),
+      onSuccess: () => {
+        toast.success('글 작성에 성공했습니다.');
+        push(BOARD_PATH);
+      },
+      onError: () => {
+        toast.error('글 작성에 실패했습니다.');
+      },
     });
 
   const { mutate: mutatePatchBoard, isPending: isPatchPending } = usePatchBoard(
@@ -82,14 +98,31 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
   };
 
   const onSubmit: SubmitHandler<CommunityWriteFormType> = (data) => {
+    const formData = new FormData();
+
     const body: BoardContentWriteType = {
       title: data.title,
       content: data.content,
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
-    if (prevBoard) mutatePatchBoard(body);
-    else mutatePostBoardContent(body);
+    formData.append(
+      'content',
+      new Blob([JSON.stringify(body)], {
+        type: 'application/json',
+      })
+    );
+
+    if (files.length > 0) {
+      files.forEach((file) => formData.append('files', file));
+    }
+
+    if (prevBoard) {
+      mutatePatchBoard(formData);
+      return;
+    }
+
+    mutatePostBoardContent(formData);
   };
 
   const onError: SubmitErrorHandler<CommunityWriteFormType> = () => {
@@ -98,6 +131,12 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
 
   return (
     <>
+      {openModalCase === 'fileRegister' && (
+        <FileUploadModal
+          setFiles={setFiles}
+          closeModal={() => setOpenModalCase('close')}
+        />
+      )}
       <Header />
       <S.Container>
         <SubFunctionHeader
@@ -121,17 +160,35 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               errorMessage={errors.title?.message}
               maxLength={50}
             />
-            <FormItemWrapper
-              title='내용'
-              errorMessage={errors.content?.message}
-            >
-              <S.Textarea
-                {...register('content')}
-                placeholder='1000자 이내'
-                isError={!!errors.content?.message}
-                maxLength={1000}
-              />
-            </FormItemWrapper>
+            <S.FileContainer>
+              <FormItemWrapper
+                title='내용'
+                errorMessage={errors.content?.message}
+              >
+                <S.Textarea
+                  {...register('content')}
+                  placeholder='1000자 이내'
+                  isError={!!errors.content?.message}
+                  maxLength={1000}
+                />
+              </FormItemWrapper>
+              <S.MapFileBox>
+                <FileUploadButton
+                  onClick={() => setOpenModalCase('fileRegister')}
+                />
+                <S.MapFileBox>
+                  {files &&
+                    files.map((file, index) => (
+                      <SelectFile
+                        index={index}
+                        key={file.name + index}
+                        file={file}
+                        setFiles={setFiles}
+                      />
+                    ))}
+                </S.MapFileBox>
+              </S.MapFileBox>
+            </S.FileContainer>
           </S.FormFieldsWrapper>
           <S.NextButton
             type='submit'
