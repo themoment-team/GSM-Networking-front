@@ -13,4 +13,11 @@ export default meta;
 
 type Story = StoryObj<typeof FileDownloadButton>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    file: {
+      name: '파일 예시 1',
+      url: 'file url test',
+    },
+  },
+};

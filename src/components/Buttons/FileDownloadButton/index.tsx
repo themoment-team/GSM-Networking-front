@@ -3,19 +3,20 @@
 import * as S from './style';
 
 import { FileUploadIcon, FileDownloadIcon } from '@/assets';
+import type { FileType } from '@/types';
 
 interface Props {
-  // file: any;
+  file: FileType;
 }
 
-const FileUploadButton: React.FC<Props> = ({}) => {
+const FileUploadButton: React.FC<Props> = ({ file }) => {
   const downloadFile = () => {};
 
   return (
     <S.Container onClick={downloadFile}>
       <S.FileNameContainer>
         <FileUploadIcon />
-        <S.Text>{'파일 이름'}</S.Text>
+        <S.Text>{file.name}</S.Text>
       </S.FileNameContainer>
 
       <FileDownloadIcon />
