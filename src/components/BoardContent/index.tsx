@@ -4,25 +4,18 @@ import { LikeButton } from '..';
 
 import * as S from './style';
 
-import { useGetBoardDetail } from '@/hooks';
-import { useOptimisticLike } from '@/hooks';
-import type { CategoryType } from '@/types';
+import { FileDownloadButton } from '@/components';
+import { useGetBoardDetail, useOptimisticLike } from '@/hooks';
 import { ReverseCategoryType } from '@/types';
+import type { BoardResponseType } from '@/types';
+
 interface Props {
-  title: string;
-  content: string;
-  category: CategoryType;
-  likeCount: number;
-  isLike: boolean;
+  boardData: BoardResponseType;
   boardId: string;
 }
 
 const BoardContent: React.FC<Props> = ({
-  title,
-  content,
-  category,
-  likeCount,
-  isLike,
+  boardData: { title, content, boardCategory, likeCount, isLike, fileList },
   boardId,
 }) => {
   const { refetch } = useGetBoardDetail(boardId);
@@ -34,8 +27,12 @@ const BoardContent: React.FC<Props> = ({
     <S.TextWrapper>
       <S.Title>{title}</S.Title>
       <S.Description>{content}</S.Description>
+      {fileList &&
+        fileList.map((file) => (
+          <FileDownloadButton file={file} key={file.url} />
+        ))}
       <S.CategoryBox>
-        <S.CategoryText>{ReverseCategoryType[category]}</S.CategoryText>
+        <S.CategoryText>{ReverseCategoryType[boardCategory]}</S.CategoryText>
         <LikeButton
           onClick={uploadLike}
           likeCount={optimisticLikeCount}
