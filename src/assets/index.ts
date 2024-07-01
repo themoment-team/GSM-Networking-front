@@ -7,6 +7,7 @@ export { default as CommentIcon } from './CommentIcon';
 export { default as DeleteIcon } from './DeleteIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as ExitIcon } from './ExitIcon';
+export { default as FileDownloadIcon } from './FileDownloadIcon';
 export { default as FileRegisterIcon } from './FileRegisterIcon';
 export { default as FileUploadIcon } from './FileUploadIcon';
 export { default as FilterIcon } from './FilterIcon';
