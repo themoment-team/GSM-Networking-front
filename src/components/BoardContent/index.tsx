@@ -29,7 +29,7 @@ const BoardContent: React.FC<Props> = ({
       <S.Description>{content}</S.Description>
       {fileList &&
         fileList.map((file) => (
-          <FileDownloadButton file={file} key={file.url} />
+          <FileDownloadButton file={file} key={file.id} />
         ))}
       <S.CategoryBox>
         <S.CategoryText>{ReverseCategoryType[boardCategory]}</S.CategoryText>
