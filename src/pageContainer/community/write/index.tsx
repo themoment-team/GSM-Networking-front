@@ -25,7 +25,7 @@ import {
 import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
-import type { BoardType } from '@/types';
+import type { BoardResponseType } from '@/types';
 import {
   CategoryType,
   type BoardContentWriteType,
@@ -34,7 +34,7 @@ import {
 } from '@/types';
 
 interface Props {
-  prevBoard?: BoardType;
+  prevBoard?: BoardResponseType;
 }
 
 const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {

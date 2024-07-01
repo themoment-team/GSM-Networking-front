@@ -120,7 +120,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
               </S.UpdateButton>
             )}
           </S.WriterProfileWrapper>
-          <BoardContent boardData={boardData} boardId={boardId} />
+          <BoardContent boardData={boardData} />
           <S.Line />
           <S.CommentContainer>
             {boardData.comments.map((comment) => (

@@ -12,9 +12,9 @@ import {
   getMyMenteeInfo,
 } from '@/apis';
 import { BOARD_PATH } from '@/constants';
-import type { BoardType, MenteeType, MentorType } from '@/types';
+import type { BoardResponseType, MenteeType, MentorType } from '@/types';
 
-const isMyBoard = async (id: string): Promise<[boolean, BoardType]> => {
+const isMyBoard = async (id: string): Promise<[boolean, BoardResponseType]> => {
   const board = await getBoardDetail(BOARD_PATH, id);
   let myInfo: MenteeType | MentorType | null;
 

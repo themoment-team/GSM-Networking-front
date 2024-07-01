@@ -2,7 +2,7 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { boardUrl } from '@/libs';
-import type { BoardType } from '@/types';
+import type { BoardResponseType } from '@/types';
 
 const AUTH_REFRESH_PATH = '/auth/refresh' as const;
 
@@ -14,7 +14,7 @@ const AUTH_REFRESH_PATH = '/auth/refresh' as const;
 export const getBoardDetail = async (
   redirectUrl: string,
   boardId: string
-): Promise<BoardType | null> => {
+): Promise<BoardResponseType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
   if (!accessToken)

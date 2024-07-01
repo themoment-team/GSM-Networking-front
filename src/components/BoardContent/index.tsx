@@ -11,17 +11,15 @@ import type { BoardResponseType } from '@/types';
 
 interface Props {
   boardData: BoardResponseType;
-  boardId: string;
 }
 
 const BoardContent: React.FC<Props> = ({
-  boardData: { title, content, boardCategory, likeCount, isLike, fileList },
-  boardId,
+  boardData: { id, title, content, boardCategory, likeCount, isLike, fileList },
 }) => {
-  const { refetch } = useGetBoardDetail(boardId);
+  const { refetch } = useGetBoardDetail(String(id));
 
   const { optimisticLikeCount, optimisticIsLike, uploadLike } =
-    useOptimisticLike(parseInt(boardId), likeCount, isLike, refetch);
+    useOptimisticLike(id, likeCount, isLike, refetch);
 
   return (
     <S.TextWrapper>
