@@ -65,7 +65,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           <SubFunctionHeader prevPath={PREV_PATH} title='글' />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            <ChattingButton onClick={() => {}} />
+            <ChattingButton phoneNumber={boardData.author.phoneNumber} />
           </S.WriterProfileWrapper>
           <BoardContent
             title={boardData.title}

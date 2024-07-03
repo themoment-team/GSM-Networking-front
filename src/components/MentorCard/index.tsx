@@ -3,7 +3,6 @@
 import React, { useState } from 'react';
 
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -13,14 +12,13 @@ import * as S from './style';
 import * as I from '@/assets';
 import { ToolTip } from '@/components';
 import type { WorkerType } from '@/types/worker';
+import { locateToMessage } from '@/utils';
 
 interface Props {
   worker: WorkerType;
 }
 
 const MentorCard: React.FC<Props> = ({ worker }) => {
-  const { push } = useRouter();
-
   const [isHovered, setIsHovered] = useState(false);
 
   const isCompanyURLExist = !!worker.company.URL;
@@ -39,7 +37,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   };
 
   const handleButtonClick = () => {
-    push(`/chat/${worker.id}`)
+    locateToMessage(worker.phoneNumber);
   };
 
   return (
@@ -60,9 +58,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
         )}
         {isHovered && (
           <S.HoverButton onClick={handleButtonClick}>
-            <S.HoverText>
-              채팅하기
-            </S.HoverText>
+            <S.HoverText>채팅하기</S.HoverText>
           </S.HoverButton>
         )}
       </S.WorkerImgBox>

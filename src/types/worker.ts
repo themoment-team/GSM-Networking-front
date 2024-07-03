@@ -16,4 +16,5 @@ export interface WorkerType {
   temporaryImgNumber: number;
   registered: boolean;
   profileUrl: string | null;
+  phoneNumber: string;
 }
