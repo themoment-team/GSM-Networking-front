@@ -49,7 +49,7 @@ export const mentorUrl = {
   getMentorList: () => '/mentor',
   putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
-  getMyInfo: () => '/mentor/my',
+  getMyMentorInfo: () => '/mentor/my',
 };
 
 export const tempMentorUrl = {

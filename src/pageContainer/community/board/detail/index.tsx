@@ -15,11 +15,12 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
+  ChattingButton,
 } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetBoardDetail,
-  useGetMyInfo,
+  useGetMyMentorInfo,
   useGetMyMenteeInfo,
   usePostComment,
 } from '@/hooks';
@@ -59,7 +60,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     null
   );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
