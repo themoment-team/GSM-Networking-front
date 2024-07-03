@@ -106,6 +106,8 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
+    if (data.popupExp) body['popupExp'] = Number(data.popupExp);
+
     formData.append(
       'content',
       new Blob([JSON.stringify(body)], {
@@ -160,6 +162,14 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               errorMessage={errors.title?.message}
               maxLength={50}
             />
+            {isTeacher && watch('category') === '선생님' && (
+              <InputFormItem
+                {...register('popupExp')}
+                inputTitle='팝업 유지 기간'
+                placeholder='미작성시 팝업이 뜨지 않아요'
+                errorMessage={errors.popupExp?.message}
+              />
+            )}
             <S.FileContainer>
               <FormItemWrapper
                 title='내용'
