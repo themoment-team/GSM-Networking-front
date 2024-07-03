@@ -19,19 +19,17 @@ export const Description = styled.pre`
 
 export const CategoryBox = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-
-  border-radius: 1.25rem;
-  border: 1px solid ${({ theme }) => theme.color.grey[100]};
-  background: ${({ theme }) => theme.color.white};
-
-  width: fit-content;
-  padding: 0.375rem 1rem;
   margin-top: 0.75rem;
 `;
 
 export const CategoryText = styled.span`
+  border-radius: 1.25rem;
+  border: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
+  background: ${({ theme }) => theme.color.white};
+  padding: 0.375rem 1rem;
+
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[500]};
 `;

@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
+import { Link } from 'next-view-transitions';
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   display: flex;
   width: 3.125rem;
   height: 3.125rem;

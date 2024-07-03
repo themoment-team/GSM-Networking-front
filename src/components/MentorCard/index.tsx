@@ -54,7 +54,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
             sizes='(max-width: 600px) 33vw, 200px'
           />
         ) : (
-          <RandomWorkerImg temporaryImgNumber={worker.temporaryImgNumber} />
+          <RandomWorkerImg defaultImgNumber={worker.defaultImgNumber} />
         )}
         {isHovered && (
           <S.HoverButton onClick={handleButtonClick}>

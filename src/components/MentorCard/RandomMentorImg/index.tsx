@@ -5,11 +5,11 @@ import React from 'react';
 import * as I from '@/assets';
 
 interface Props {
-  temporaryImgNumber: number;
+  defaultImgNumber: number;
 }
 
-const RandomMentorImg: React.FC<Props> = ({ temporaryImgNumber }) => {
-  switch (temporaryImgNumber) {
+const RandomMentorImg: React.FC<Props> = ({ defaultImgNumber }) => {
+  switch (defaultImgNumber) {
     case 0:
       return <I.PersonImg0 />;
     case 1:
@@ -20,6 +20,8 @@ const RandomMentorImg: React.FC<Props> = ({ temporaryImgNumber }) => {
       return <I.PersonImg3 />;
     case 4:
       return <I.PersonImg4 />;
+    case 5:
+      return <I.PersonImg5 />;
     default:
       return null;
   }

@@ -7,6 +7,7 @@ export interface MentorInfoType {
   generation: number;
   SNS?: string;
   phoneNumber: string;
+  defaultImgNumber: number;
   profileUrl?: string;
   registered: boolean;
   career: CareerType[];

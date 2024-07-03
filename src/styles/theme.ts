@@ -20,7 +20,7 @@ const typo = {
     fontWeight: 700,
   },
   subtitle: {
-    fontSize: '1.25rem',
+    fontSize: '1.125rem',
     lineHeight: '150%',
     fontWeight: 600,
   },
@@ -71,6 +71,7 @@ const color = {
     400: '#A5A6A9',
     300: '#B4B5B7',
     200: '#CBCCCE',
+    150: '#D8D9DA',
     100: '#EFF0F2',
     50: '#F5F6F8',
   },

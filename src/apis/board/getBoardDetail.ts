@@ -17,7 +17,8 @@ export const getBoardDetail = async (
 ): Promise<BoardType | null> => {
   const accessToken = cookies().get('accessToken')?.value;
 
-  if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+  if (!accessToken)
+    return redirect(`/auth/refresh?redirect=${redirectUrl}/${boardId}`);
 
   const response = await fetch(
     new URL(`/api/v1${boardUrl.getBoardDetail(boardId)}`, process.env.BASE_URL),
@@ -38,7 +39,7 @@ export const getBoardDetail = async (
   }
 
   if (isUnauthorized) {
-    return redirect(`${AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
+    return redirect(`${AUTH_REFRESH_PATH}?redirect=${redirectUrl}/${boardId}`);
   }
 
   if (!response.ok) {

@@ -22,7 +22,7 @@ export const FormFieldsWrapper = styled.div`
 
 export const Textarea = styled.textarea<{ isError: boolean }>`
   ${({ theme }) => theme.typo.body1};
-  height: 29.5rem;
+  height: 26.0625rem;
   padding: 0.75rem 1rem;
   border-radius: 0.625rem;
   border: 1px solid ${({ theme }) => theme.color.grey[100]};
@@ -56,4 +56,30 @@ export const NextButton = styled.button`
   align-items: center;
   color: ${({ theme }) => theme.color.white};
   margin-top: 0.875rem;
+
+  :disabled {
+    cursor: default;
+    background-color: ${({ theme }) => theme.color.grey[200]};
+    color: ${({ theme }) => theme.color.grey[500]};
+  }
+`;
+
+export const FileContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2.5rem;
+`;
+
+export const MapFileBox = styled.div`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+`;
+
+export const ModalWrapper = styled.dialog`
+  border: 0;
+  padding: 0;
 `;

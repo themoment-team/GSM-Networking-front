@@ -10,35 +10,40 @@ import type { MentorInfoType } from '@/types';
  * @returns 멘토 정보 반환 시 멘토, null 반환 시 멘티입니다.
  */
 export const getMyInfo = async (
-  redirectUrl: string
+  redirectUrl: string,
+  isTeacher: boolean | null
 ): Promise<MentorInfoType | null> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  if (!isTeacher) {
+    const accessToken = cookies().get('accessToken')?.value;
 
-  if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+    if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
 
-  const response = await fetch(
-    new URL(`/api/v1${mentorUrl.getMentorInfo()}`, process.env.BASE_URL),
-    {
-      method: 'GET',
-      headers: {
-        Cookie: `accessToken=${accessToken}`,
-      },
+    const response = await fetch(
+      new URL(`/api/v1${mentorUrl.getMyInfo()}`, process.env.BASE_URL),
+      {
+        method: 'GET',
+        headers: {
+          Cookie: `accessToken=${accessToken}`,
+        },
+      }
+    );
+
+    if (response.status === 403) {
+      return null;
     }
-  );
 
-  if (response.status === 403) {
+    if (response.status === 401) {
+      return redirect(`/auth/refresh?redirect=${redirectUrl}`);
+    }
+
+    if (!response.ok) {
+      return redirect('/auth/signin');
+    }
+
+    const mentorInfo = await response.json();
+
+    return mentorInfo;
+  } else {
     return null;
   }
-
-  if (response.status === 401) {
-    return redirect(`/auth/refresh?redirect=${redirectUrl}`);
-  }
-
-  if (!response.ok) {
-    return redirect('/auth/signin');
-  }
-
-  const mentorInfo = await response.json();
-
-  return mentorInfo;
 };

@@ -1,33 +1,53 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { toast } from 'react-toastify';
-
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useGetMentorInfo } from '@/hooks';
+import { RandomMentorImg } from '@/components';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
+import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
+import { HeaderPosition } from '@/types';
 
 interface Props {
+  position?: HeaderPosition;
   clearList?: () => void;
 }
 
-const Header: React.FC<Props> = ({ clearList }) => {
-  const { data } = useGetMentorInfo();
+const Header: React.FC<Props> = ({
+  clearList,
+  position = HeaderPosition.ABSOLUTE,
+}) => {
+  const { data: isTeacherData } = useGetIsTeacher();
+  const isTeacher = isTeacherData?.isTeacher;
+
+  const { data: mentorInfo } = useGetMyInfo();
+  const { data: menteeInfo } = useGetMyMenteeInfo();
+  const [profileUrl, setProfileUrl] = useState<string>('');
+  const [profileNum, setProfileNum] = useState<number | null>(null);
 
   const { push } = useRouter();
 
   const handleProfileClick = () => {
-    if (data) push('/mypage');
-    else toast.info('멘티인 사용자에게는 지원되지 않는 기능입니다.');
+    push('/mypage');
   };
 
+  useEffect(() => {
+    const userProfileUrl =
+      menteeInfo?.profileUrl || mentorInfo?.profileUrl || '';
+    const userProfileNum =
+      menteeInfo?.defaultImgNumber || mentorInfo?.defaultImgNumber || null;
+
+    setProfileUrl(userProfileUrl);
+    setProfileNum(userProfileNum);
+  }, [mentorInfo, menteeInfo]);
+
   return (
-    <S.Header>
+    <S.Header position={position}>
       <meta
         name='viewport'
         content='width=device-width, initial-scale=1, maximum-scale=1'
@@ -42,25 +62,27 @@ const Header: React.FC<Props> = ({ clearList }) => {
             <S.CommunityLink href='/community/gwangya'>
               커뮤니티
             </S.CommunityLink>
+
             {/* <S.MentorContact type='button' onClick={comingSoonToast}>
               멘토 컨택
             </S.MentorContact> */}
-            {!data && (
+            {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
+            <S.CommunityLink href={TEACHER_NOTICE_PAGE_PATH}>
+              <I.NoticeIcon />
+            </S.CommunityLink>
           </S.RedirectBox>
-          <S.ProfileBox type='button' onClick={handleProfileClick}>
-            {data?.profileUrl ? (
-              <Image
-                src={data.profileUrl}
-                alt='profile img'
-                fill
-                sizes='36px'
-              />
-            ) : (
-              <I.MyPageIcon />
-            )}
-          </S.ProfileBox>
+          {!isTeacher && (
+            <S.ProfileBox type='button' onClick={handleProfileClick}>
+              {profileUrl ? (
+                <Image src={profileUrl} alt='profile img' fill sizes='36px' />
+              ) : (
+                <RandomMentorImg defaultImgNumber={profileNum!} />
+                // <I.MyPageIcon />
+              )}
+            </S.ProfileBox>
+          )}
         </S.RightBox>
       </S.Inner>
     </S.Header>

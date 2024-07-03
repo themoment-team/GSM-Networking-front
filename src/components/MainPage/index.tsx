@@ -2,11 +2,9 @@
 
 import { useState } from 'react';
 
-import { useRouter } from 'next/navigation';
-
 import * as S from './style';
 
-import { ChatListShiftIcon } from '@/assets';
+import { MapButton, PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
 import { useGetMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
@@ -34,7 +32,7 @@ const MainPage: React.FC<Props> = ({
     null
   );
   const [keyword, setKeyword] = useState<string>('');
-  const { push } = useRouter();
+  // const { push } = useRouter();
 
   useGetMentorInfo({
     initialData: defaultMyInfo,
@@ -50,10 +48,11 @@ const MainPage: React.FC<Props> = ({
     setSelectedPosition(null);
   };
 
-  const handleBtnClick = () => push('/chat/list');
+  // const handleBtnClick = () => push('/chat/list');
 
   return (
     <>
+      <PopupList />
       <Header clearList={clearList} />
       <S.Container>
         <MentorList
@@ -65,9 +64,10 @@ const MainPage: React.FC<Props> = ({
           setSelectedGeneration={setSelectedGeneration}
           setSelectedPosition={setSelectedPosition}
         />
-        <S.ChatListShiftButton onClick={handleBtnClick}>
+        {/* <S.ChatListShiftButton onClick={handleBtnClick}>
           <ChatListShiftIcon />
-        </S.ChatListShiftButton>
+        </S.ChatListShiftButton> */}
+        <MapButton />
       </S.Container>
     </>
   );

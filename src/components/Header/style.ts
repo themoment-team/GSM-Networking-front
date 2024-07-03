@@ -1,14 +1,16 @@
+import { HeaderPosition } from '@/types';
 import styled from '@emotion/styled';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 
-export const Header = styled.header`
+export const Header = styled.header<{ position: HeaderPosition }>`
   width: 100%;
   height: 4.375rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-bottom: 0.0625rem solid ${({ theme }) => theme.color.grey[100]};
-  position: absolute;
+  background-color: ${({ theme }) => theme.color.white};
+  position: ${({ position }) => position};
   left: 0;
   top: 0;
   z-index: 5;
@@ -40,6 +42,7 @@ export const LogoLink = styled(Link)`
 export const CommunityLink = styled(Link)`
   ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey[400]};
+  display: flex;
 `;
 
 export const MentorContact = styled.button`
@@ -62,6 +65,7 @@ export const RightBox = styled.div`
 
 export const RedirectBox = styled.div`
   display: flex;
+  align-items: center;
   gap: 1.5rem;
 `;
 

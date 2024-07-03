@@ -13,7 +13,7 @@ interface Props {
 }
 
 const MiniProfile: React.FC<Props> = ({
-  profile: { name, generation, profileUrl, temporaryImgNumber = 0 },
+  profile: { name, generation, profileUrl, defaultImgNumber = 0 },
   isSmallSize,
 }) => (
   <S.ProfileWrapper>
@@ -21,7 +21,7 @@ const MiniProfile: React.FC<Props> = ({
       {profileUrl ? (
         <Image src={profileUrl} alt='profile img' fill />
       ) : (
-        <RandomMentorImg temporaryImgNumber={temporaryImgNumber} />
+        <RandomMentorImg defaultImgNumber={defaultImgNumber} />
       )}
     </S.ProfileImageBox>
     <S.UserInfo>

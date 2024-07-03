@@ -6,7 +6,11 @@ const FlexBox = styled.div`
 `;
 
 export const Container = styled.div`
-  padding: 4.375rem 0 6.75rem;
+  padding: 0 0 6.75rem;
+
+  @media (max-width: 600px) {
+    padding: 0 1rem;
+  }
 `;
 
 export const PostContainer = styled(FlexBox)`
@@ -21,8 +25,9 @@ export const WriterProfileWrapper = styled.div`
 `;
 
 export const Line = styled.div`
-  width: 37.5rem;
-  height: 1px;
+  max-width: 37.5rem;
+  width: 100%;
+  height: 0.0625rem;
   margin: 0.5rem 0;
 
   background-color: ${({ theme }) => theme.color.grey[100]};
@@ -30,6 +35,7 @@ export const Line = styled.div`
 
 export const CommentContainer = styled(FlexBox)`
   gap: 2.5rem;
+  padding-bottom: 7.5rem;
 `;
 
 export const TextAreaWrapper = styled.div`
@@ -37,4 +43,16 @@ export const TextAreaWrapper = styled.div`
   bottom: 2.5rem;
   width: 100%;
   box-shadow: 0px -0.625rem 1rem 0px rgba(255, 255, 255, 0.8);
+
+  @media (max-width: 600px) {
+    width: calc(100% - 2rem);
+  }
+`;
+
+export const UpdateButton = styled.button`
+  ${({ theme }) => theme.typo.body2};
+  color: ${({ theme }) => theme.color.white};
+  background-color: ${({ theme }) => theme.color.skyBlue[400]};
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.63rem;
 `;

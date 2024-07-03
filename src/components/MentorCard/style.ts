@@ -78,7 +78,7 @@ export const SNSLink = styled.a`
 `;
 
 export const CompanyLink = styled.a<{ isCompanyURLExist: boolean }>`
-  width: 100%;
+  width: fit-content;
   overflow: hidden;
   white-space: nowrap;
 
@@ -110,7 +110,7 @@ export const WorkerImgBox = styled.div`
 
 export const HoverButton = styled.button`
   color: ${({ theme }) => theme.color.white};
-  background: rgba(0, 0, 0, 0.50);
+  background: rgba(0, 0, 0, 0.5);
   border-radius: 0.75rem;
   position: absolute;
   gap: 0.625rem;
@@ -123,7 +123,7 @@ export const HoverButton = styled.button`
 
 export const HoverText = styled.span`
   ${({ theme }) => theme.typo.caption};
-`
+`;
 
 export const BlueCheckIconWrapper = styled.div`
   cursor: pointer;

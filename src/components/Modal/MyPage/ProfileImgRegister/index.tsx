@@ -1,61 +1,27 @@
 'use client';
 
-import { css } from '@emotion/react';
+import { useState } from 'react';
 
-import { toast } from 'react-toastify';
+import { css } from '@emotion/react';
 
 import * as S from './style';
 
-import { ImageRegisterIcon } from '@/assets';
-import { MyPageModalWrapper } from '@/components';
-import { useGetMentorInfo, usePostProfileImgUrl } from '@/hooks';
-import { usePostUploadFile } from '@/hooks';
-import type { PostProfileImgType } from '@/types';
+import { CloseIcon } from '@/assets';
+import {
+  DefaultProfileSelect,
+  MyPageModalWrapper,
+  ProfileChange,
+  ProfileImgChange,
+} from '@/components';
+import { Step } from '@/types';
 
 interface Props {
   closeModal: () => void;
 }
 
 const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
-  const { mutate: mutateUploadFile } = usePostUploadFile();
-  const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
-  const { refetch: refetchGetMyInfo } = useGetMentorInfo();
-
-  const handleFileInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e.target.files) return;
-
-    const profileImg = e.target.files[0];
-
-    if (profileImg.size > 1024 * 1024 * 20) {
-      return toast.error('프로필 이미지는 20MB 이하만 업로드 가능합니다.');
-    }
-
-    const formData = new FormData();
-
-    formData.append('file', profileImg);
-
-    mutateUploadFile(formData, {
-      onSuccess: ({ fileUrl }) => {
-        const data: PostProfileImgType = {
-          profileUrl: fileUrl,
-        };
-
-        mutateProfileImgUrl(data, {
-          onSuccess: () => {
-            toast.success('프로필 이미지 업로드에 성공했습니다.');
-            refetchGetMyInfo();
-            closeModal();
-          },
-          onError: () => {
-            toast.error('프로필 이미지 업로드에 실패했습니다.');
-          },
-        });
-      },
-      onError: () => {
-        toast.error('프로필 이미지 업로드에 실패했습니다.');
-      },
-    });
-  };
+  const [step, setStep] = useState<Step>(Step.DEFAULT);
+  const [imgUrl, setImgUrl] = useState<string>('');
 
   return (
     <MyPageModalWrapper
@@ -65,16 +31,32 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
         padding: 1.5rem;
       `}
     >
-      <S.Title>프로필 이미지 변경</S.Title>
-      <S.ImgInput
-        type='file'
-        id='img-input'
-        accept='image/*'
-        onChange={handleFileInputChange}
-      />
-      <S.ImgInputLabel htmlFor='img-input'>
-        <ImageRegisterIcon />
-      </S.ImgInputLabel>
+      <S.Container>
+        <S.TitleWrapper>
+          <S.Title>프로필 이미지 변경</S.Title>
+          <S.XButton onClick={closeModal}>
+            <CloseIcon />
+          </S.XButton>
+        </S.TitleWrapper>
+        {
+          // 처음 보게될 모달
+          step === Step.DEFAULT && (
+            <ProfileChange setStep={setStep} setImgUrl={setImgUrl} />
+          )
+        }
+        {
+          // 기본 이미지 변경 클릭시 보게될 모달
+          step === Step.DEFAULTPROFILECHANGE && (
+            <DefaultProfileSelect closeModal={closeModal} />
+          )
+        }
+        {
+          // 이미지 파일 선택시 보게될 모달
+          step === Step.PROFILE_IMG_CHANGE && (
+            <ProfileImgChange imgUrl={imgUrl} closeModal={closeModal} />
+          )
+        }
+      </S.Container>
     </MyPageModalWrapper>
   );
 };
