@@ -29,6 +29,7 @@ export const Primary: Story = {
       },
       defaultImgNumber: 0,
       profileUrl: null,
+      phoneNumber: '010-1234-5678',
     },
   },
 };

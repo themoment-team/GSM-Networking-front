@@ -6,7 +6,7 @@ export { default as deleteCookie } from './deleteCookie';
 export { default as extractCareer } from './extractCareer';
 export { default as extractSubstring } from './extractSubstring';
 export { default as formatTelNum } from './formatTelNum';
-export { default as getAccessToken } from './getAccessToken';
+// export { default as getAccessToken } from './getAccessToken';
 export { default as getGwangyaToken } from './getGwangyaToken';
 export { default as getMyId } from './getMyId';
 export { default as getSessionId } from './getSessionId';

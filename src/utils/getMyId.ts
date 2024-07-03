@@ -8,7 +8,7 @@ const getMyId = async () => {
   let menteeInfo: MenteeInfoType | null;
 
   try {
-    mentorInfo = await get(mentorUrl.getMentorInfo());
+    mentorInfo = await get(mentorUrl.getMyMentorInfo());
   } catch (error) {
     if (axios.isAxiosError(error)) {
       if (error.response!.status === 403) mentorInfo = null;

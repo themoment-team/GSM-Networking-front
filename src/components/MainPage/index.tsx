@@ -6,7 +6,7 @@ import * as S from './style';
 
 import { MapButton, PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
-import { useGetMentorInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
   WorkerType,
   GenerationType,
@@ -34,7 +34,7 @@ const MainPage: React.FC<Props> = ({
   const [keyword, setKeyword] = useState<string>('');
   // const { push } = useRouter();
 
-  useGetMentorInfo({
+  useGetMyMentorInfo({
     initialData: defaultMyInfo,
   });
 

@@ -50,7 +50,12 @@ export const mentorUrl = {
   putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
   getMyMentorInfo: () => '/mentor/my',
+  getMarker: () => '/mentor/marker',
 };
+
+export const popupUrl = {
+  getPopupList: () => '/popup',
+} as const;
 
 export const tempMentorUrl = {
   getSearchTempMentor: (userName: string) => `/temp-mentor/search/${userName}`,

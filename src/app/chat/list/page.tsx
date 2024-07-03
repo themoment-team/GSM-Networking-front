@@ -1,5 +1,5 @@
-import { ChatList } from '@/pageContainer';
+// import { ChatList } from '@/pageContainer';
 
-const ChattingList = () => <ChatList />;
+const ChattingList = () => <div />;
 
 export default ChattingList;

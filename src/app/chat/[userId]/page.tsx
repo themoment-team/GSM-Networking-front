@@ -1,5 +1,5 @@
-import { ChatRoom } from '@/pageContainer';
+// import { ChatRoom } from '@/pageContainer';
 
-const ChattingRoom = () => <ChatRoom />;
+const ChattingRoom = () => <div />;
 
 export default ChattingRoom;

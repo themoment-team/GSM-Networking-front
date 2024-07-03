@@ -24,7 +24,7 @@ import {
   useDeleteTempMentor,
   usePostMentorRegister,
   usePutMentorUpdate,
-  useGetMentorInfo,
+  useGetMyMentorInfo,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -56,7 +56,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { data: myInfoData, isError } = useGetMentorInfo();
+  const { data: myInfoData, isError } = useGetMyMentorInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
