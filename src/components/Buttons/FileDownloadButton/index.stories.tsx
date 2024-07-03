@@ -16,8 +16,9 @@ type Story = StoryObj<typeof FileDownloadButton>;
 export const Primary: Story = {
   args: {
     file: {
-      id: '파일 예시 1',
+      id: '1',
       fileUrls: 'file url test',
+      name: 'test',
     },
   },
 };

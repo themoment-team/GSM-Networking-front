@@ -9,7 +9,7 @@ interface Props {
   file: FileType;
 }
 
-const FileDownloadButton: React.FC<Props> = ({ file: { id, fileUrls } }) => {
+const FileDownloadButton: React.FC<Props> = ({ file: { fileUrls, name } }) => {
   const downloadFile = () => {
     window.open(fileUrls);
   };
@@ -18,9 +18,8 @@ const FileDownloadButton: React.FC<Props> = ({ file: { id, fileUrls } }) => {
     <S.Container onClick={downloadFile}>
       <S.FileNameContainer>
         <FileUploadIcon />
-        <S.Text>{id}</S.Text>
+        <S.Text>{name}</S.Text>
       </S.FileNameContainer>
-
       <FileDownloadIcon />
     </S.Container>
   );
