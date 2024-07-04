@@ -6,6 +6,7 @@ export * from './career';
 export * from './category';
 // export * from './chatList';
 export * from './comment';
+export * from './file';
 export * from './form';
 export * from './generation';
 export * from './gwangya';
