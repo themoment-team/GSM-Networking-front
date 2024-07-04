@@ -37,7 +37,9 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
   };
 
   const handleButtonClick = () => {
-    locateToMessage(worker.phoneNumber);
+    if (isRegistered) {
+      locateToMessage(worker.phoneNumber);
+    }
   };
 
   return (
@@ -57,8 +59,13 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
           <RandomWorkerImg defaultImgNumber={worker.defaultImgNumber} />
         )}
         {isHovered && (
-          <S.HoverButton onClick={handleButtonClick}>
-            <S.HoverText>채팅하기</S.HoverText>
+          <S.HoverButton
+            isRegistered={isRegistered}
+            onClick={handleButtonClick}
+          >
+            <S.HoverText>
+              {isRegistered ? '채팅하기' : '등록되지 않은 멘토입니다.'}
+            </S.HoverText>
           </S.HoverButton>
         )}
       </S.WorkerImgBox>

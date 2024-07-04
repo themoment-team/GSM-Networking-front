@@ -108,7 +108,7 @@ export const WorkerImgBox = styled.div`
   }
 `;
 
-export const HoverButton = styled.button`
+export const HoverButton = styled.button<{ isRegistered: boolean }>`
   color: ${({ theme }) => theme.color.white};
   background: rgba(0, 0, 0, 0.5);
   border-radius: 0.75rem;
@@ -118,7 +118,7 @@ export const HoverButton = styled.button`
   left: 50%;
   transform: translate(-50%, -50%);
   padding: 0.25rem 0.75rem;
-  cursor: pointer;
+  cursor: ${({ isRegistered }) => (isRegistered ? 'pointer' : 'auto')};
 `;
 
 export const HoverText = styled.span`
