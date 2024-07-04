@@ -5,6 +5,6 @@ export interface AuthType {
   refreshTokenExp: string;
 }
 
-export interface TokenType {
-  accessToken: string;
-}
+// export interface TokenType {
+//   accessToken: string;
+// }

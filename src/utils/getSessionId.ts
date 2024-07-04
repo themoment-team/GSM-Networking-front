@@ -1,11 +1,11 @@
-interface Socket {
-  _transport: { url: string };
-}
+// interface Socket {
+//   _transport: { url: string };
+// }
 
-const getSessionId = (socket: Socket): string => {
-  const splitUrl = socket._transport.url.split('/');
+// const getSessionId = (socket: Socket): string => {
+//   const splitUrl = socket._transport.url.split('/');
 
-  return splitUrl[5];
-};
+//   return splitUrl[5];
+// };
 
-export default getSessionId;
+// export default getSessionId;

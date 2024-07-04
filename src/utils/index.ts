@@ -9,7 +9,7 @@ export { default as formatTelNum } from './formatTelNum';
 // export { default as getAccessToken } from './getAccessToken';
 export { default as getGwangyaToken } from './getGwangyaToken';
 export { default as getMyId } from './getMyId';
-export { default as getSessionId } from './getSessionId';
+// export { default as getSessionId } from './getSessionId';
 export { default as hasErrorInCareerArray } from './hasErrorInCareerArray';
 export { default as isAllowedContent } from './isAllowedContent';
 export { default as isExistCookie } from './isExistCookie';

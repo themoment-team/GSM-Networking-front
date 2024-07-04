@@ -1,6 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: false,
   images: {
     remotePatterns: [
       {
@@ -21,10 +20,6 @@ const nextConfig = {
     {
       source: '/api/v1/:path*',
       destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/:path*`,
-    },
-    {
-      source: '/api/socket/:path*',
-      destination: `${process.env.NEXT_PUBLIC_API_BASE_URL}/:path*`,
     },
   ],
 };
