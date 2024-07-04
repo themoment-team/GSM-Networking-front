@@ -114,11 +114,13 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            <ChattingButton phoneNumber={boardData.author.phoneNumber} />
-            {userInfo?.id === boardData.author.id && (
+
+            {userInfo?.id === boardData.author.id ? (
               <S.UpdateButton onClick={handleUpdateButtonClick}>
                 수정하기
               </S.UpdateButton>
+            ) : (
+              <ChattingButton phoneNumber={boardData.author.phoneNumber} />
             )}
           </S.WriterProfileWrapper>
           <BoardContent
