@@ -30,6 +30,7 @@ export const Primary: Story = {
         generation: 6,
         defaultImgNumber: 1,
         name: '이승제',
+        phoneNumber: '01012341234',
       },
       isPinned: false,
     },
