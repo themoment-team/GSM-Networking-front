@@ -13,4 +13,8 @@ export default meta;
 
 type Story = StoryObj<typeof ChattingButton>;
 
-export const Primary: Story = {};
+export const Primary: Story = {
+  args: {
+    phoneNumber: '010-1234-5678',
+  },
+};

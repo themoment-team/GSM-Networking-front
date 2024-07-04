@@ -18,4 +18,5 @@ export interface WorkerType {
   defaultImgNumber: number;
   registered: boolean;
   profileUrl: string | null;
+  phoneNumber: string;
 }

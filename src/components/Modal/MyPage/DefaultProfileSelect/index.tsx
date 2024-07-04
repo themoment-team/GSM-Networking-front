@@ -8,7 +8,7 @@ import * as S from './style';
 
 import * as I from '@/assets';
 import {
-  useGetMyInfo,
+  useGetMyMentorInfo,
   useGetMyMenteeInfo,
   usePatchProfileNumber,
 } from '@/hooks';
@@ -30,7 +30,7 @@ interface Props {
 const DefaultProfileSelect: React.FC<Props> = ({ closeModal }) => {
   const [selectedProfile, setSelectedProfile] = useState<number | null>(null);
   const { mutate: mutateProfileNumber, isPending } = usePatchProfileNumber();
-  const { refetch: refetchGetMyInfo } = useGetMyInfo();
+  const { refetch: refetchGetMyInfo } = useGetMyMentorInfo();
   const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
   const handleButtonClick = () => {

@@ -4,7 +4,7 @@ export const authUrl = {
   loginLink: () => '/auth/oauth2/authorization/google',
   patchRefresh: () => '/auth/reissue',
   getLogout: () => '/auth/logout',
-} as const;
+};
 
 export const boardUrl = {
   getBoardDetail: (boardId: string) => `/board/${boardId}`,
@@ -49,10 +49,9 @@ export const mentorUrl = {
   getMentorList: () => '/mentor',
   putMentorUpdate: () => '/mentor/my',
   deleteMyMentorData: () => '/mentor/my',
-  getMyInfo: () => '/mentor/my',
-  patchCompanyRegister: () => 'mentor/career/company-address',
+  getMyMentorInfo: () => '/mentor/my',
   getMarker: () => '/mentor/marker',
-} as const;
+};
 
 export const popupUrl = {
   getPopupList: () => '/popup',

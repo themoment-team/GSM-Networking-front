@@ -15,11 +15,12 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
+  ChattingButton,
 } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetBoardDetail,
-  useGetMyInfo,
+  useGetMyMentorInfo,
   useGetMyMenteeInfo,
   usePostComment,
 } from '@/hooks';
@@ -59,7 +60,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     null
   );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
@@ -113,11 +114,13 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            {/* <ChattingButton onClick={() => {}} /> */}
-            {userInfo?.id === boardData.author.id && (
+
+            {userInfo?.id === boardData.author.id ? (
               <S.UpdateButton onClick={handleUpdateButtonClick}>
                 수정하기
               </S.UpdateButton>
+            ) : (
+              <ChattingButton phoneNumber={boardData.author.phoneNumber} />
             )}
           </S.WriterProfileWrapper>
           <BoardContent boardData={boardData} />

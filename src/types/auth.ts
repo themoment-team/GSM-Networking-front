@@ -4,3 +4,7 @@ export interface AuthType {
   accessTokenExp: string;
   refreshTokenExp: string;
 }
+
+// export interface TokenType {
+//   accessToken: string;
+// }

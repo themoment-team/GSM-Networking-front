@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import {
-  useGetMyInfo,
+  useGetMyMentorInfo,
   useGetMyMenteeInfo,
   usePostProfileImgUrl,
   usePostUploadFile,
@@ -38,7 +38,7 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
 
   const { mutate: mutateUploadFile } = usePostUploadFile();
   const { mutate: mutateProfileImgUrl } = usePostProfileImgUrl();
-  const { refetch: refetchGetMyInfo } = useGetMyInfo();
+  const { refetch: refetchGetMyInfo } = useGetMyMentorInfo();
   const { refetch: refetchGetMyMenteeInfo } = useGetMyMenteeInfo();
 
   const onCropComplete = useCallback(
