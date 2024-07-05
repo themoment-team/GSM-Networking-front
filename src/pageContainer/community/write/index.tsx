@@ -22,7 +22,11 @@ import {
   FileUploadModal,
   SelectFile,
 } from '@/components';
-import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
+import {
+  BOARD_PATH,
+  COMMUNITY_CATEGORY_ARRAY,
+  POPUP_EXPIRATION_DATE,
+} from '@/constants';
 import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
 import type { BoardType } from '@/types';
@@ -106,7 +110,8 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
-    if (data.popupExp) body['popupExp'] = Number(data.popupExp);
+    if (data.category === '선생님' && data.popupExp !== '사용 안함')
+      body['popupExp'] = Number(data.popupExp);
 
     formData.append(
       'content',
@@ -152,7 +157,7 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               value={watch('category')}
               options={[...filteredCategories]}
               selectTitle='카테고리'
-              defaultValue={'글 카테고리'}
+              defaultValue='글 카테고리'
               errorMessage={errors.category?.message}
             />
             <InputFormItem
@@ -163,10 +168,11 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               maxLength={50}
             />
             {isTeacher && watch('category') === '선생님' && (
-              <InputFormItem
+              <SelectFormItem
                 {...register('popupExp')}
-                inputTitle='팝업 유지 기간'
-                placeholder='미작성시 팝업이 뜨지 않아요'
+                value={watch('popupExp')}
+                options={[...POPUP_EXPIRATION_DATE]}
+                selectTitle='팝업 유지 기간'
                 errorMessage={errors.popupExp?.message}
               />
             )}
