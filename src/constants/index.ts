@@ -1,4 +1,5 @@
 export * from './paths';
+export * from './popup';
 export { default as CATEGORY_ARRAY } from './category';
 export { default as COMMUNITY_CATEGORY_ARRAY } from './communityCategory';
 export { default as INVISIBLEPOPUPLIST } from './invisiblePopupListKey';
