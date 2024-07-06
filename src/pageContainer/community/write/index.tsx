@@ -111,7 +111,9 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
     };
 
     if (data.category === '선생님' && data.popupExp !== '사용 안함')
-      body['popupExp'] = Number(data.popupExp);
+      body['popupExp'] = Number(
+        data.popupExp?.slice(0, data.popupExp?.length - 1)
+      );
 
     formData.append(
       'content',
