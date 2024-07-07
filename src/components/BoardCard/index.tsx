@@ -7,7 +7,7 @@ import * as S from './style';
 import * as I from '@/assets';
 import { MiniProfile, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
-import { useGetIsTeacher, usePatchBoardPin } from '@/hooks';
+import { useCheckIsTeacher, usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
 import { ReverseCategoryType } from '@/types';
 import { parseDateString } from '@/utils';
@@ -40,9 +40,7 @@ const BoardCard: React.FC<Props> = ({
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
 
-  const { data } = useGetIsTeacher();
-
-  const isTeacher = !!data?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
   const { mutate: patchBoardPin } = usePatchBoardPin(id, {
     onSuccess: () => {

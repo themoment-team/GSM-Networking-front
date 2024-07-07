@@ -1,7 +1,7 @@
 'use client';
 
 import { Header, WriteButton, BoardList } from '@/components';
-import { useGetIsTeacher } from '@/hooks';
+import { useCheckIsTeacher } from '@/hooks';
 import * as S from '@/pageContainer/community/board/style';
 import { CategoryType } from '@/types';
 import type { BoardInfoType } from '@/types';
@@ -11,9 +11,7 @@ interface Props {
 }
 
 const TeacherBoard: React.FC<Props> = ({ initialData }) => {
-  const { data } = useGetIsTeacher();
-
-  const isTeacher = !!data?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
   return (
     <>
