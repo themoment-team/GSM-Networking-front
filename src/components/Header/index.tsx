@@ -13,7 +13,7 @@ import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetMyMenteeInfo,
   useGetMyMentorInfo,
-  useGetIsTeacher,
+  useCheckIsTeacher,
 } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
@@ -26,8 +26,7 @@ const Header: React.FC<Props> = ({
   clearList,
   position = HeaderPosition.ABSOLUTE,
 }) => {
-  const { data: isTeacherData } = useGetIsTeacher();
-  const isTeacher = isTeacherData?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
   const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();

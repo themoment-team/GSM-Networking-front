@@ -23,7 +23,7 @@ import {
   SelectFile,
 } from '@/components';
 import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
-import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
+import { useCheckIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
 import type { BoardResponseType } from '@/types';
 import {
@@ -81,8 +81,7 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
     }
   );
 
-  const { data: isTeacherData } = useGetIsTeacher();
-  const isTeacher = isTeacherData?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
   let filteredCategories = COMMUNITY_CATEGORY_ARRAY;
 
