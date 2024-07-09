@@ -15,11 +15,12 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
+  ChattingButton,
 } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetBoardDetail,
-  useGetMyInfo,
+  useGetMyMentorInfo,
   useGetMyMenteeInfo,
   usePostComment,
 } from '@/hooks';
@@ -28,18 +29,18 @@ import {
   type MenteeType,
   type MentorInfoType,
   HeaderPosition,
-  type BoardType,
+  type BoardResponseType,
 } from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
 import type { Metadata } from 'next';
 
 interface Props {
-  initialData: BoardType | null;
+  initialData: BoardResponseType | null;
   boardId: string;
 }
 
-export const metadata = (boardData: BoardType | null): Metadata => ({
+export const metadata = (boardData: BoardResponseType | null): Metadata => ({
   title: boardData ? boardData.title : '상세 게시판',
   description: boardData ? boardData.content : '상세 게시판 페이지입니다.',
   openGraph: {
@@ -59,7 +60,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     null
   );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
@@ -113,21 +114,16 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            {/* <ChattingButton onClick={() => {}} /> */}
-            {userInfo?.id === boardData.author.id && (
+
+            {userInfo?.id === boardData.author.id ? (
               <S.UpdateButton onClick={handleUpdateButtonClick}>
                 수정하기
               </S.UpdateButton>
+            ) : (
+              <ChattingButton phoneNumber={boardData.author.phoneNumber} />
             )}
           </S.WriterProfileWrapper>
-          <BoardContent
-            title={boardData.title}
-            content={boardData.content}
-            category={boardData.boardCategory}
-            likeCount={boardData.likeCount}
-            isLike={boardData.isLike}
-            boardId={boardId}
-          />
+          <BoardContent boardData={boardData} />
           <S.Line />
           <S.CommentContainer>
             {boardData.comments.map((comment) => (

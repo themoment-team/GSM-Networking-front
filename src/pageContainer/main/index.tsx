@@ -1,11 +1,12 @@
 'use client';
+
 import { useState } from 'react';
 
-import { Container } from './style';
+import * as S from './style';
 
 import { MapButton, PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
-import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
   WorkerType,
   GenerationType,
@@ -31,8 +32,9 @@ const MainPage: React.FC<Props> = ({
     null
   );
   const [keyword, setKeyword] = useState<string>('');
+  // const { push } = useRouter();
 
-  useGetMyInfo({
+  useGetMyMentorInfo({
     initialData: defaultMyInfo,
   });
 
@@ -46,11 +48,13 @@ const MainPage: React.FC<Props> = ({
     setSelectedPosition(null);
   };
 
+  // const handleBtnClick = () => push('/chat/list');
+
   return (
     <>
       <PopupList />
       <Header clearList={clearList} />
-      <Container>
+      <S.Container>
         <MentorList
           initWorkerList={initMentorList}
           keyword={keyword}
@@ -60,8 +64,11 @@ const MainPage: React.FC<Props> = ({
           setSelectedGeneration={setSelectedGeneration}
           setSelectedPosition={setSelectedPosition}
         />
+        {/* <S.ChatListShiftButton onClick={handleBtnClick}>
+          <ChatListShiftIcon />
+        </S.ChatListShiftButton> */}
         <MapButton />
-      </Container>
+      </S.Container>
     </>
   );
 };

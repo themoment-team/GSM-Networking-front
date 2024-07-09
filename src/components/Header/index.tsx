@@ -10,7 +10,11 @@ import * as S from './style';
 import * as I from '@/assets';
 import { RandomMentorImg } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
-import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
+import {
+  useGetMyMenteeInfo,
+  useGetMyMentorInfo,
+  useCheckIsTeacher,
+} from '@/hooks';
 import { HeaderPosition } from '@/types';
 
 interface Props {
@@ -22,10 +26,9 @@ const Header: React.FC<Props> = ({
   clearList,
   position = HeaderPosition.ABSOLUTE,
 }) => {
-  const { data: isTeacherData } = useGetIsTeacher();
-  const isTeacher = isTeacherData?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
   const [profileUrl, setProfileUrl] = useState<string>('');
   const [profileNum, setProfileNum] = useState<number | null>(null);

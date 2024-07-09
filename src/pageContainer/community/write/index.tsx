@@ -27,9 +27,9 @@ import {
   COMMUNITY_CATEGORY_ARRAY,
   POPUP_EXPIRATION_DATE,
 } from '@/constants';
-import { useGetIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
+import { useCheckIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
-import type { BoardType } from '@/types';
+import type { BoardResponseType } from '@/types';
 import {
   CategoryType,
   type BoardContentWriteType,
@@ -38,7 +38,7 @@ import {
 } from '@/types';
 
 interface Props {
-  prevBoard?: BoardType;
+  prevBoard?: BoardResponseType;
 }
 
 const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
@@ -85,8 +85,7 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
     }
   );
 
-  const { data: isTeacherData } = useGetIsTeacher();
-  const isTeacher = isTeacherData?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
   let filteredCategories = COMMUNITY_CATEGORY_ARRAY;
 

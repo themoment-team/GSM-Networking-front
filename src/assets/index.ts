@@ -1,5 +1,6 @@
 export { default as BlueCheckIcon } from './BlueCheckIcon';
 export { default as CancleFileUpload } from './CancleFileUpload';
+export { default as ChatListShiftIcon } from './ChatListShiftIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CheckedIcon } from './CheckedIcon';
 export { default as CloseIcon } from './CloseIcon';
@@ -7,6 +8,7 @@ export { default as CommentIcon } from './CommentIcon';
 export { default as DeleteIcon } from './DeleteIcon';
 export { default as EmailIcon } from './EmailIcon';
 export { default as ExitIcon } from './ExitIcon';
+export { default as FileDownloadIcon } from './FileDownloadIcon';
 export { default as FileRegisterIcon } from './FileRegisterIcon';
 export { default as FileUploadIcon } from './FileUploadIcon';
 export { default as FilterIcon } from './FilterIcon';

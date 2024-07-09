@@ -13,7 +13,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
@@ -28,7 +28,7 @@ const MyPage: React.FC = () => {
     null
   );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
