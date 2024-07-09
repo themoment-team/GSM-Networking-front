@@ -22,11 +22,7 @@ import {
   FileUploadModal,
   SelectFile,
 } from '@/components';
-import {
-  BOARD_PATH,
-  COMMUNITY_CATEGORY_ARRAY,
-  POPUP_EXPIRATION_DATE,
-} from '@/constants';
+import { BOARD_PATH, COMMUNITY_CATEGORY_ARRAY } from '@/constants';
 import { useCheckIsTeacher, usePatchBoard, usePostBoardContent } from '@/hooks';
 import { communityWriteFormSchema } from '@/schemas';
 import type { BoardResponseType } from '@/types';
@@ -172,7 +168,7 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               <SelectFormItem
                 {...register('popupExp')}
                 value={watch('popupExp')}
-                options={[...POPUP_EXPIRATION_DATE]}
+                options={['사용 안함', '1일', '7일', '15일', '30일']}
                 selectTitle='팝업 유지 기간'
                 errorMessage={errors.popupExp?.message}
               />
