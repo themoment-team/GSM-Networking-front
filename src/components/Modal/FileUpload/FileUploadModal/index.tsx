@@ -22,7 +22,7 @@ const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
 
     if (!selectedFiles) return;
 
-    setFiles(Array.from(selectedFiles));
+    setFiles((prev) => [...prev, ...Array.from(selectedFiles)]);
     closeModal();
     toast.success('파일 등록에 성공하였습니다.');
   };
