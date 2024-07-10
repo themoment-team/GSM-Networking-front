@@ -2,12 +2,14 @@
 
 import * as S from './style';
 
+import { locateToMessage } from '@/utils';
+
 interface Props {
-  onClick: () => void;
+  phoneNumber: string;
 }
 
-const ChattingButton: React.FC<Props> = ({ onClick }) => (
-  <S.Button type='button' onClick={onClick}>
+const ChattingButton: React.FC<Props> = ({ phoneNumber }) => (
+  <S.Button type='button' onClick={() => locateToMessage(phoneNumber)}>
     채팅하기
   </S.Button>
 );

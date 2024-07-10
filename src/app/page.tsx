@@ -2,8 +2,8 @@ import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
 import { getIsTeacher, getMyInfo, getMyMenteeInfo } from '@/apis';
-import { MainPage } from '@/components';
 import { mentorUrl } from '@/libs';
+import { MainPage } from '@/pageContainer';
 import type { WorkerType } from '@/types';
 
 import type { Metadata } from 'next';

@@ -23,23 +23,23 @@ const preview: Preview = {
         color: /(background|color)$/i,
         date: /Date$/,
       },
-      backgrounds: {
-        default: 'default',
-        values: [
-          {
-            name: 'default',
-            value: '#F5F6F8',
-          },
-          {
-            name: 'light',
-            value: '#ffffff',
-          },
-          {
-            name: 'dark',
-            value: '#050505',
-          },
-        ],
-      },
+    },
+    backgrounds: {
+      default: 'default',
+      values: [
+        {
+          name: 'default',
+          value: '#F5F6F8',
+        },
+        {
+          name: 'light',
+          value: '#ffffff',
+        },
+        {
+          name: 'dark',
+          value: '#050505',
+        },
+      ],
     },
     nextjs: {
       appDirectory: true,

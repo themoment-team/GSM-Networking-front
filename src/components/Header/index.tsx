@@ -5,12 +5,16 @@ import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
-import { RandomMentorImg } from '..';
-
 import * as S from './style';
 
 import * as I from '@/assets';
-import { useGetMyMenteeInfo, useGetMyInfo, useGetIsTeacher } from '@/hooks';
+import { RandomMentorImg } from '@/components';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
+import {
+  useGetMyMenteeInfo,
+  useGetMyMentorInfo,
+  useCheckIsTeacher,
+} from '@/hooks';
 import { HeaderPosition } from '@/types';
 
 interface Props {
@@ -22,10 +26,9 @@ const Header: React.FC<Props> = ({
   clearList,
   position = HeaderPosition.ABSOLUTE,
 }) => {
-  const { data: isTeacherData } = useGetIsTeacher();
-  const isTeacher = isTeacherData?.isTeacher;
+  const isTeacher = useCheckIsTeacher();
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
   const [profileUrl, setProfileUrl] = useState<string>('');
   const [profileNum, setProfileNum] = useState<number | null>(null);
@@ -37,13 +40,13 @@ const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setProfileUrl('');
-    if (mentorInfo?.profileUrl) setProfileUrl(mentorInfo.profileUrl);
-    if (menteeInfo?.profileUrl) setProfileUrl(menteeInfo.profileUrl);
-    if (mentorInfo?.defaultImgNumber !== undefined)
-      setProfileNum(mentorInfo.defaultImgNumber);
-    if (menteeInfo?.defaultImgNumber !== undefined)
-      setProfileNum(menteeInfo.defaultImgNumber);
+    const userProfileUrl =
+      menteeInfo?.profileUrl || mentorInfo?.profileUrl || '';
+    const userProfileNum =
+      menteeInfo?.defaultImgNumber || mentorInfo?.defaultImgNumber || null;
+
+    setProfileUrl(userProfileUrl);
+    setProfileNum(userProfileNum);
   }, [mentorInfo, menteeInfo]);
 
   return (
@@ -69,7 +72,7 @@ const Header: React.FC<Props> = ({
             {menteeInfo && !isTeacher && (
               <S.RedirectLink href='/register/search'>멘토 등록</S.RedirectLink>
             )}
-            <S.CommunityLink href='/community/board/teacher'>
+            <S.CommunityLink href={TEACHER_NOTICE_PAGE_PATH}>
               <I.NoticeIcon />
             </S.CommunityLink>
           </S.RedirectBox>

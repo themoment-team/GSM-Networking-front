@@ -13,7 +13,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
@@ -24,11 +24,11 @@ const MyPage: React.FC = () => {
 
   const { push } = useRouter();
 
-  const [userInfo, setUserInfo] = useState<
-    MenteeType | MentorInfoType | null
-  >();
+  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
+    null
+  );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
