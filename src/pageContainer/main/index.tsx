@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import * as S from './style';
 
-import { MapButton, PopupList } from '@/components';
+import { /*MapButton,*/ PopupList } from '@/components';
 import { Header, MentorList } from '@/components';
 import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type {
@@ -67,7 +67,7 @@ const MainPage: React.FC<Props> = ({
         {/* <S.ChatListShiftButton onClick={handleBtnClick}>
           <ChatListShiftIcon />
         </S.ChatListShiftButton> */}
-        <MapButton />
+        {/* <MapButton /> */}
       </S.Container>
     </>
   );
