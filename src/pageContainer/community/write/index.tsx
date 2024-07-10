@@ -105,6 +105,11 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
 
+    if (data.category === '선생님' && data.popupExp !== '사용 안함')
+      body['popupExp'] = Number(
+        data.popupExp?.slice(0, data.popupExp?.length - 1)
+      );
+
     formData.append(
       'content',
       new Blob([JSON.stringify(body)], {
@@ -149,7 +154,7 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               value={watch('category')}
               options={[...filteredCategories]}
               selectTitle='카테고리'
-              defaultValue={'글 카테고리'}
+              defaultValue='글 카테고리'
               errorMessage={errors.category?.message}
             />
             <InputFormItem
@@ -159,6 +164,15 @@ const CommunityWrite: React.FC<Props> = ({ prevBoard }) => {
               errorMessage={errors.title?.message}
               maxLength={50}
             />
+            {isTeacher && watch('category') === '선생님' && (
+              <SelectFormItem
+                {...register('popupExp')}
+                value={watch('popupExp')}
+                options={['사용 안함', '1일', '7일', '15일', '30일']}
+                selectTitle='팝업 유지 기간'
+                errorMessage={errors.popupExp?.message}
+              />
+            )}
             <S.FileContainer>
               <FormItemWrapper
                 title='내용'

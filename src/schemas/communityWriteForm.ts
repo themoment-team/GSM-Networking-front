@@ -22,4 +22,5 @@ export const communityWriteFormSchema = z.object({
     .string({ required_error: '내용을 입력해주세요.' })
     .min(1, { message: '내용을 입력해주세요.' })
     .max(1000, { message: '내용은 1000자 이하로 입력해주세요.' }),
+  popupExp: z.string().optional(),
 });
