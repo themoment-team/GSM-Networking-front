@@ -32,8 +32,8 @@ const MyPage: React.FC = () => {
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
-    if (mentorInfo) setUserInfo(mentorInfo);
-    if (menteeInfo) setUserInfo(menteeInfo);
+    if (mentorInfo?.id) setUserInfo(mentorInfo);
+    if (menteeInfo?.id) setUserInfo(menteeInfo);
   }, [menteeInfo, mentorInfo]);
 
   const onUpdateButtonClick = () => push('/register/mentor');
