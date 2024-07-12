@@ -31,7 +31,7 @@ const Header: React.FC<Props> = ({
   const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
   const [profileUrl, setProfileUrl] = useState<string>('');
-  const [profileNum, setProfileNum] = useState<number | null>(null);
+  const [profileNum, setProfileNum] = useState<number>();
 
   const { push } = useRouter();
 
@@ -43,7 +43,11 @@ const Header: React.FC<Props> = ({
     const userProfileUrl =
       menteeInfo?.profileUrl || mentorInfo?.profileUrl || '';
     const userProfileNum =
-      menteeInfo?.defaultImgNumber || mentorInfo?.defaultImgNumber || null;
+      menteeInfo?.defaultImgNumber !== undefined
+        ? menteeInfo.defaultImgNumber
+        : mentorInfo?.defaultImgNumber !== undefined
+        ? mentorInfo.defaultImgNumber
+        : undefined;
 
     setProfileUrl(userProfileUrl);
     setProfileNum(userProfileNum);
