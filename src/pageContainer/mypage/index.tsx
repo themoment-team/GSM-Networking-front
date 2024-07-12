@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 'use client';
 
 import { useEffect, useState } from 'react';
@@ -32,6 +33,8 @@ const MyPage: React.FC = () => {
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
+    console.log(menteeInfo);
+    console.log(mentorInfo);
     if (mentorInfo) setUserInfo(mentorInfo);
     if (menteeInfo) setUserInfo(menteeInfo);
   }, [menteeInfo, mentorInfo]);
@@ -39,7 +42,6 @@ const MyPage: React.FC = () => {
   const onUpdateButtonClick = () => push('/register/mentor');
 
   useEffect(() => {
-    // eslint-disable-next-line no-console
     console.log('hello world');
   }, []);
 
