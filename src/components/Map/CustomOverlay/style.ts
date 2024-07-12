@@ -37,7 +37,7 @@ export const Topbox = styled.div`
 export const LocationBtn = styled.div``;
 export const Name = styled.div``;
 export const Company = styled.div``;
-export const Positon = styled.div``;
+export const Position = styled.div``;
 export const Icons = styled.div``;
 export const Location = styled.div``;
 

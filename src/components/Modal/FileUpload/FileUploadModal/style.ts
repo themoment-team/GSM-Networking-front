@@ -25,7 +25,7 @@ export const SmallTitle = styled.p`
   color: ${({ theme }) => theme.color.grey[400]};
 `;
 
-export const CancleUploadContainer = styled.div`
+export const CancelUploadContainer = styled.div`
   cursor: pointer;
 `;
 
