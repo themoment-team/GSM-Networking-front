@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 
 const MyPage = async () => {
   const isTeacher = await getIsTeacher('/');
-  if (isTeacher) redirect(`/`);
+  if (isTeacher) {
+    redirect(`/`);
+  }
+
   return <MyInfoPage />;
 };
 
