@@ -38,6 +38,11 @@ const MyPage: React.FC = () => {
 
   const onUpdateButtonClick = () => push('/register/mentor');
 
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('hello world');
+  }, []);
+
   return (
     <>
       {openModalCase === 'profileImgRegister' && (
@@ -60,12 +65,14 @@ const MyPage: React.FC = () => {
               <S.InfoWrapper>
                 <S.InfoText>개인정보</S.InfoText>
                 <S.InfoBox>
-                  <PrivacyCard
-                    privacy={{
-                      privacyKey: '전화번호',
-                      privacyValue: formatTelNum(userInfo.phoneNumber),
-                    }}
-                  />
+                  {userInfo.phoneNumber && (
+                    <PrivacyCard
+                      privacy={{
+                        privacyKey: '전화번호',
+                        privacyValue: formatTelNum(userInfo.phoneNumber),
+                      }}
+                    />
+                  )}
                   {'SNS' in userInfo && userInfo.SNS && (
                     <PrivacyCard
                       privacy={{
