@@ -1,6 +1,6 @@
 // import styled from '@emotion/styled';
 
-// export const Conatiner = styled.div`
+// export const Container = styled.div`
 //   padding-top: 4.375rem;
 //   height: 100vh;
 // `;

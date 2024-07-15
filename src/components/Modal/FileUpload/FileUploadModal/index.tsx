@@ -8,7 +8,7 @@ import { toast } from 'react-toastify';
 
 import * as S from './style';
 
-import { FileRegisterIcon, CancleFileUpload } from '@/assets';
+import { FileRegisterIcon, CancelFileUpload } from '@/assets';
 import { FileUploadModalWrapper } from '@/components';
 
 interface Props {
@@ -38,9 +38,9 @@ const FileUpload: React.FC<Props> = ({ closeModal, setFiles }) => {
       <S.FileUploadInfo>
         <S.TitleContainer>
           <S.Title>파일 추가</S.Title>
-          <S.CancleUploadContainer onClick={closeModal}>
-            <CancleFileUpload />
-          </S.CancleUploadContainer>
+          <S.CancelUploadContainer onClick={closeModal}>
+            <CancelFileUpload />
+          </S.CancelUploadContainer>
         </S.TitleContainer>
         <S.SmallTitle>20MB 이하의 파일</S.SmallTitle>
       </S.FileUploadInfo>

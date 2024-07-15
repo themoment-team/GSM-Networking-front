@@ -54,11 +54,11 @@
 //   return (
 //     <>
 //       <Header />
-//       <S.Conatiner>
+//       <S.Container>
 //         <S.Text>채팅 목록</S.Text>
 //         {chatList?.map((i) => <ChattingListCard key={i.opponentUserId}  />)}
 //         <button onClick={() => sendMessage('test')}>테스트</button>
-//       </S.Conatiner>
+//       </S.Container>
 //     </>
 //   );
 // };
