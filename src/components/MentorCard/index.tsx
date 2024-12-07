@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState } from 'react';
@@ -36,7 +37,7 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
     }
   };
 
-  const handleButtonClick = () => {
+  const handleChattingButtonClick = () => {
     if (isRegistered) {
       locateToMessage(worker.phoneNumber);
     }
@@ -58,16 +59,16 @@ const MentorCard: React.FC<Props> = ({ worker }) => {
         ) : (
           <RandomWorkerImg defaultImgNumber={worker.defaultImgNumber} />
         )}
-        {isHovered && (
+        {/* {isHovered && (
           <S.HoverButton
             isRegistered={isRegistered}
-            onClick={handleButtonClick}
+            onClick={handleChattingButtonClick}
           >
             <S.HoverText>
               {isRegistered ? '채팅하기' : '등록되지 않은 멘토입니다.'}
             </S.HoverText>
           </S.HoverButton>
-        )}
+        )} */}
       </S.WorkerImgBox>
       <S.WorkerInfoHead>
         <S.WorkerNameBox>

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable unused-imports/no-unused-imports-ts */
 'use client';
 
 import { useState, type Dispatch, type SetStateAction, useEffect } from 'react';
@@ -120,7 +122,8 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
                 수정하기
               </S.UpdateButton>
             ) : (
-              <ChattingButton phoneNumber={boardData.author.phoneNumber} />
+              // <ChattingButton phoneNumber={boardData.author.phoneNumber} />
+              <></>
             )}
           </S.WriterProfileWrapper>
           <BoardContent boardData={boardData} />
