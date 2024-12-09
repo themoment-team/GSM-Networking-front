@@ -1,4 +1,4 @@
-import { getBoardList } from '@/apis';
+// import { getBoardList } from '@/apis';
 import { GwangjangBoard } from '@/pageContainer';
 
 import type { Metadata } from 'next';
@@ -12,10 +12,9 @@ export const metadata: Metadata = {
   },
 };
 
-const GwangjangPage = async () => {
-  const boardList = await getBoardList();
+const GwangjangPage = async () => (
+  // const boardList = await getBoardList();
 
-  return <GwangjangBoard initialData={[...boardList]} />;
-};
-
+  <GwangjangBoard initialData={[]} />
+);
 export default GwangjangPage;
