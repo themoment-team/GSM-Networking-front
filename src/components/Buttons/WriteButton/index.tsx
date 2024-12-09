@@ -4,11 +4,8 @@ import * as S from './style';
 
 import { WriteIcon } from '@/assets';
 
-const WRITE_PATH = '/community/write' as const;
-
-
-const WriteButton: React.FC = () => (
-  <S.Button href={WRITE_PATH}>
+const WriteButton: React.FC<{ path: string }> = ({ path }) => (
+  <S.Button href={path}>
     <WriteIcon />
   </S.Button>
 );

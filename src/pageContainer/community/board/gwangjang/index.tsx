@@ -21,7 +21,7 @@ const GwangjangBoard: React.FC<Props> = ({ initialData }) => (
         selectedCategory={CategoryType.광장}
       />
       <S.ButtonWrapper>
-        <WriteButton />
+        <WriteButton path='/community/write/gwangjang' />
       </S.ButtonWrapper>
     </S.Container>
   </>
