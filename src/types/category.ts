@@ -11,6 +11,7 @@ export enum CategoryType {
   숙박 = 'HOSTEL',
   모임 = 'MEET',
   스포츠 = 'SPORT',
+  광장 = 'GWANGJANG',
 }
 
 export enum ReverseCategoryType {
@@ -24,4 +25,5 @@ export enum ReverseCategoryType {
   HOSTEL = '숙박',
   MEET = '모임',
   SPORT = '스포츠',
+  GWANGJANG = '광장',
 }

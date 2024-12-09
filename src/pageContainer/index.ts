@@ -4,6 +4,7 @@ export { default as BoardDetail } from './community/board/detail';
 // export { default as ChatList } from './chat/list';
 // export { default as ChatRoom } from './chat/room';
 export { default as CommunityWrite } from './community/write';
+export { default as GwangjangBoard } from './community/board/gwangjang';
 export { default as Gwangya } from './community/gwangya';
 export { default as MainPage } from './main';
 export { default as Map } from './map';
