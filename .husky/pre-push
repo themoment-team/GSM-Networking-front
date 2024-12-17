@@ -1,1 +1,2 @@
+pnpm install
 npx tsc --noEmit
