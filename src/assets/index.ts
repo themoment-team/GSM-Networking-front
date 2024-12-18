@@ -1,5 +1,5 @@
 export { default as BlueCheckIcon } from './BlueCheckIcon';
-export { default as CancleFileUpload } from './CancleFileUpload';
+export { default as CancelFileUpload } from './CancelFileUpload';
 export { default as ChatListShiftIcon } from './ChatListShiftIcon';
 export { default as CheckBoxIcon } from './CheckBoxIcon';
 export { default as CheckedIcon } from './CheckedIcon';

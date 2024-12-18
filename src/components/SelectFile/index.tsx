@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from 'react';
 
 import * as S from './style';
 
-import { CancleFileUpload, FileUploadIcon } from '@/assets';
+import { CancelFileUpload, FileUploadIcon } from '@/assets';
 
 interface Props {
   file: File;
@@ -18,11 +18,11 @@ const SelectFile: React.FC<Props> = ({ file, setFiles, index }) => (
       <FileUploadIcon />
       <S.Text>{file.name}</S.Text>
     </S.FileNameContainer>
-    <S.CancleUploadContainer
+    <S.CancelUploadContainer
       onClick={() => setFiles((prev) => prev.filter((_, i) => i !== index))}
     >
-      <CancleFileUpload />
-    </S.CancleUploadContainer>
+      <CancelFileUpload />
+    </S.CancelUploadContainer>
   </S.Container>
 );
 

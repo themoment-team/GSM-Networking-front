@@ -118,9 +118,9 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
   };
 
   const dataURLtoFile = (dataUrl: string, filename: string) => {
-    const splitedUrl = dataUrl.split(',');
-    const mime = splitedUrl?.[0].match(/:(.*?);/)?.[1];
-    const byteString = atob(splitedUrl[1]);
+    const splittedUrl = dataUrl.split(',');
+    const mime = splittedUrl?.[0].match(/:(.*?);/)?.[1];
+    const byteString = atob(splittedUrl[1]);
     let n = byteString.length;
     const uint8Array = new Uint8Array(n);
     while (n--) {

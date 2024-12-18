@@ -29,7 +29,7 @@ const CustomOverlay: React.FC<CustomOverlayProps> = ({
       </div>
     </S.Topbox>
     <S.Middlebox>
-      <S.Positon>{position}</S.Positon>
+      <S.Position>{position}</S.Position>
       <S.Company>{company}</S.Company>
     </S.Middlebox>
     <S.Bottombox>
