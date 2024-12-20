@@ -5,7 +5,7 @@ import { mentorUrl } from '@/libs';
 import type { MarkerType } from '@/types';
 
 export const getMarkerList = async (): Promise<MarkerType[]> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken) return redirect(`/auth/refresh`);
 

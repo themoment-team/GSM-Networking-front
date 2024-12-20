@@ -1,9 +1,15 @@
+import { Suspense } from 'react';
+
 import { SignIn } from '@/pageContainer';
 
 import type { Metadata } from 'next';
 
 export default function SignInPage() {
-  return <SignIn />;
+  return (
+    <Suspense>
+      <SignIn />
+    </Suspense>
+  );
 }
 
 export const metadata: Metadata = {

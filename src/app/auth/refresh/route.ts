@@ -8,8 +8,8 @@ import { extractSubstring } from '@/utils';
 const cookieDomain =
   process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
 
-const setCookie = (name: string, value: string, maxAge: number) => {
-  cookies().set(name, value, {
+const setCookie = async (name: string, value: string, maxAge: number) => {
+  (await cookies()).set(name, value, {
     maxAge,
     httpOnly: true,
     secure: true,
@@ -22,9 +22,9 @@ export async function GET(request: NextRequest) {
 
   const redirectPath = searchParams.get('redirect') || '/';
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
-  cookies().set('redirect', redirectPath);
+  (await cookies()).set('redirect', redirectPath);
 
   const refreshToken = cookieStore.get('refreshToken')?.value;
 

@@ -14,7 +14,7 @@ export const getMyInfo = async (
   isTeacher: boolean | null
 ): Promise<MentorInfoType | null> => {
   if (!isTeacher) {
-    const accessToken = cookies().get('accessToken')?.value;
+    const accessToken = (await cookies()).get('accessToken')?.value;
 
     if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
 

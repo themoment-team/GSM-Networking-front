@@ -4,10 +4,11 @@ import { CommunityWrite } from '@/pageContainer';
 import { isMyBoard } from '@/utils';
 
 interface Params {
-  searchParams?: { [key: string]: string | undefined };
+  searchParams?: Promise<{ [key: string]: string | undefined }>;
 }
 
-const CommunityWritePage: React.FC<Params> = async ({ searchParams }) => {
+const CommunityWritePage: React.FC<Params> = async (props) => {
+  const searchParams = await props.searchParams;
   const boardId = searchParams?.boardid;
 
   if (boardId) {

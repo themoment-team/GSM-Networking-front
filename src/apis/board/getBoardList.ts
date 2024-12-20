@@ -7,7 +7,7 @@ import type { BoardInfoType, CategoryType } from '@/types';
 export const getBoardList = async (
   category?: CategoryType
 ): Promise<BoardInfoType[]> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken) return redirect('/auth/refresh');
 

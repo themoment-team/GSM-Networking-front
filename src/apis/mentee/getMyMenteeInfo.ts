@@ -19,7 +19,7 @@ export const getMyMenteeInfo = async (
   redirectUrl: string,
   blockUrl?: string
 ): Promise<MenteeType | null> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
 
@@ -47,7 +47,6 @@ export const getMyMenteeInfo = async (
   if (isUnauthorized) {
     return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
   }
-
 
   // 403의 경우 멘토일 수 있습니다.
   if (!response.ok && !isForbidden) {

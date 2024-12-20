@@ -19,7 +19,7 @@ const GwangyaPage = async () => {
 };
 
 const getGwangyaPostList = async (): Promise<GwangyaPostType[]> => {
-  const gwangyaToken = cookies().get('gwangyaToken')?.value;
+  const gwangyaToken = (await cookies()).get('gwangyaToken')?.value;
 
   if (!gwangyaToken)
     return redirect('/auth/refresh/gwangya?redirect=/community/gwangya');

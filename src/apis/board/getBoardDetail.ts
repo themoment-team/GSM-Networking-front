@@ -15,7 +15,7 @@ export const getBoardDetail = async (
   redirectUrl: string,
   boardId: string
 ): Promise<BoardResponseType | null> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken)
     return redirect(`/auth/refresh?redirect=${redirectUrl}/${boardId}`);

@@ -6,7 +6,7 @@ import { userUrl } from '@/libs';
 export const getIsTeacher = async (
   redirectUrl: string
 ): Promise<boolean | null> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken) return redirect(`/auth/refresh?redirect=${redirectUrl}`);
 

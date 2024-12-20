@@ -8,8 +8,8 @@ import type { GetGwangyaTokenType } from '@/types';
 const cookieDomain =
   process.env.NODE_ENV === 'development' ? 'localhost' : '.gsm-networking.com';
 
-const setCookie = (name: string, value: string, expires: Date) => {
-  cookies().set(name, value, {
+const setCookie = async (name: string, value: string, expires: Date) => {
+  (await cookies()).set(name, value, {
     expires,
     domain: cookieDomain,
   });
@@ -20,7 +20,7 @@ export async function GET(request: NextRequest) {
 
   const redirectPath = searchParams.get('redirect') || '/community/gwangya';
 
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
 
   const accessToken = cookieStore.get('accessToken')?.value;
 

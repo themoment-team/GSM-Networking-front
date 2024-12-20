@@ -37,10 +37,10 @@ export const metadata: Metadata = {
 };
 
 const getMentorList = async (): Promise<WorkerType[]> => {
-  const accessToken = cookies().get('accessToken')?.value;
-  const gwangyaToken = cookies().get('gwangyaToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
+  const gwangyaToken = (await cookies()).get('gwangyaToken')?.value;
 
-  const redirectPath = cookies().get('redirect')?.value;
+  const redirectPath = (await cookies()).get('redirect')?.value;
 
   if (!accessToken) return redirect('/auth/refresh');
 

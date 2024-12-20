@@ -13,10 +13,11 @@ export const metadata: Metadata = {
 };
 
 interface Props {
-  searchParams?: { id: number };
+  searchParams?: Promise<{ id: number }>;
 }
 
-const MentorRegisterPage: NextPage<Props> = async ({ searchParams }) => {
+const MentorRegisterPage: NextPage<Props> = async (props) => {
+  const searchParams = await props.searchParams;
   const id = Number(searchParams?.id) || null;
 
   const mentorInfo = await getTempMentorInfo(id);
@@ -27,7 +28,7 @@ const MentorRegisterPage: NextPage<Props> = async ({ searchParams }) => {
 const getTempMentorInfo = async (
   id: number | null
 ): Promise<TempMentorType | null> => {
-  const accessToken = cookies().get('accessToken')?.value;
+  const accessToken = (await cookies()).get('accessToken')?.value;
 
   if (!accessToken) {
     return redirect('/auth/refresh?redirect=/register/mentor');
