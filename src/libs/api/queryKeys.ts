@@ -3,6 +3,8 @@ export const boardQueryKeys = {
   postBoardContent: () => ['board', 'content'],
   getBoardList: () => ['board', 'post', 'list'],
   getBoard: () => ['board', 'detail'],
+  patchBoardPin: (boardId: number) => ['board', 'pin', boardId],
+  patchBoard: (boardId: string) => ['board', 'patch', boardId],
 } as const;
 
 export const commentQueryKeys = {

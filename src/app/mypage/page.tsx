@@ -15,6 +15,7 @@ const MyPage = async () => {
   const myMenteeInfo = await getMyMenteeInfo('/');
 
   if (isTeacher || (!myMenteeInfo?.name && !myMentorInfo?.name)) redirect(`/`);
+
   return <MyInfoPage />;
 };
 

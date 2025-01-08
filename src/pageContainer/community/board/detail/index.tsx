@@ -1,6 +1,10 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable unused-imports/no-unused-imports-ts */
 'use client';
 
-import { type Dispatch, type SetStateAction } from 'react';
+import { useState, type Dispatch, type SetStateAction, useEffect } from 'react';
+
+import { useRouter } from 'next/navigation';
 
 import { toast } from 'react-toastify';
 
@@ -13,20 +17,32 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
+  ChattingButton,
 } from '@/components';
-import { useGetBoardDetail, usePostComment } from '@/hooks';
-import { CategoryType } from '@/types';
-import { HeaderPosition, type BoardType } from '@/types';
+import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
+import {
+  useGetBoardDetail,
+  useGetMyMentorInfo,
+  useGetMyMenteeInfo,
+  usePostComment,
+} from '@/hooks';
+import {
+  CategoryType,
+  type MenteeType,
+  type MentorInfoType,
+  HeaderPosition,
+  type BoardResponseType,
+} from '@/types';
 import { isAllowedContent, scrollToBottom } from '@/utils';
 
 import type { Metadata } from 'next';
 
 interface Props {
-  initialData: BoardType | null;
+  initialData: BoardResponseType | null;
   boardId: string;
 }
 
-export const metadata = (boardData: BoardType | null): Metadata => ({
+export const metadata = (boardData: BoardResponseType | null): Metadata => ({
   title: boardData ? boardData.title : '상세 게시판',
   description: boardData ? boardData.content : '상세 게시판 페이지입니다.',
   openGraph: {
@@ -36,12 +52,22 @@ export const metadata = (boardData: BoardType | null): Metadata => ({
 });
 
 const PREV_PATH = '/community/board/' as const;
-const TEACHER_PATH = '/community/board/teacher' as const;
 
 const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
+  const { push } = useRouter();
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
+  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
+    null
+  );
+
+  const { data: mentorInfo } = useGetMyMentorInfo();
+  const { data: menteeInfo } = useGetMyMenteeInfo();
+
+  useEffect(() => {
+    setUserInfo(mentorInfo || menteeInfo || null);
+  }, [menteeInfo, mentorInfo]);
 
   const handleUploadSuccess = () => {
     refetch();
@@ -72,6 +98,9 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
 
   metadata(boardData ?? null);
 
+  const handleUpdateButtonClick = () =>
+    push(`/community/write?boardid=${boardId}`);
+
   return (
     <S.Container>
       <Header position={HeaderPosition.STICKY} />
@@ -80,23 +109,24 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
           <SubFunctionHeader
             prevPath={
               boardData?.boardCategory === CategoryType.선생님
-                ? TEACHER_PATH
+                ? TEACHER_NOTICE_PAGE_PATH
                 : PREV_PATH
             }
             title='글'
           />
           <S.WriterProfileWrapper>
             <MiniProfile profile={boardData.author} />
-            {/* <ChattingButton onClick={() => {}} /> */}
+
+            {userInfo?.id === boardData.author.id ? (
+              <S.UpdateButton onClick={handleUpdateButtonClick}>
+                수정하기
+              </S.UpdateButton>
+            ) : (
+              // <ChattingButton phoneNumber={boardData.author.phoneNumber} />
+              <></>
+            )}
           </S.WriterProfileWrapper>
-          <BoardContent
-            title={boardData.title}
-            content={boardData.content}
-            category={boardData.boardCategory}
-            likeCount={boardData.likeCount}
-            isLike={boardData.isLike}
-            boardId={boardId}
-          />
+          <BoardContent boardData={boardData} />
           <S.Line />
           <S.CommentContainer>
             {boardData.comments.map((comment) => (

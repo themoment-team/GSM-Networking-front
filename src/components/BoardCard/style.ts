@@ -20,35 +20,36 @@ export const ContentBox = styled.div`
 
 export const Comment = styled.div`
   position: relative;
-  right: 1.25rem;
-  svg {
-    position: relative;
-    top: 0.1875rem;
-  }
+  display: flex;
+  gap: 0.25rem;
+  align-items: center;
 `;
 
 export const BottomBox = styled.div`
   display: flex;
   position: relative;
-  bottom: 3.5rem;
-  left: 29rem;
-  width: 6.625rem;
-  height: 1.5rem;
   justify-content: space-between;
-  ${({ theme }) => theme.typo.body1}
+
+  width: 100%;
+  height: 1.5rem;
+  padding: 0 1.5rem;
+  bottom: 3.5rem;
+
+  ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.grey['300']};
+`;
+
+export const LikeCommentWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
 `;
 
 export const LikeCount = styled.span`
   position: relative;
-  right: 0.9375rem;
   top: 0.0625rem;
 `;
-export const CommentCount = styled.span`
-  position: relative;
-  top: 0.0625rem;
-  left: 0.4375rem;
-`;
+
+export const CommentCount = styled.span``;
 
 export const ContentHeader = styled.div`
   display: flex;
@@ -90,7 +91,7 @@ export const Tag = styled.div`
 `;
 
 export const Content = styled.div`
-  ${({ theme }) => theme.typo.body1}
+  ${({ theme }) => theme.typo.body1};
   color: ${({ theme }) => theme.color.black};
   max-width: 34.5rem;
   width: 100%;

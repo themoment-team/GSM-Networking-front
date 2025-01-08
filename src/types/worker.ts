@@ -3,6 +3,8 @@ import type { GenerationType, PositionType } from '.';
 export interface CompanyType {
   URL?: string;
   name: string;
+  lat?: number;
+  lon?: number;
 }
 
 export interface WorkerType {
@@ -16,4 +18,5 @@ export interface WorkerType {
   defaultImgNumber: number;
   registered: boolean;
   profileUrl: string | null;
+  phoneNumber: string;
 }

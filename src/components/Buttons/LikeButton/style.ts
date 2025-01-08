@@ -19,15 +19,17 @@ const blink = keyframes`
 `;
 
 export const Button = styled.button<{ isActive: boolean; border: boolean }>`
-  ${({ theme }) => theme.typo.body1}
-  border: 0.0625rem solid ${({ theme, isActive, border }) =>
-    border
-      ? isActive
-        ? theme.color.skyBlue[400]
-        : theme.color.grey[150]
-      : 'none'};
+  ${({ theme }) => theme.typo.body1};
   color: ${({ theme, isActive }) =>
     isActive ? theme.color.skyBlue[400] : theme.color.grey[150]};
+  border: 0.0625rem solid
+    ${({ theme, isActive, border }) =>
+      border
+        ? isActive
+          ? theme.color.skyBlue[400]
+          : theme.color.grey[150]
+        : 'none'};
+
   border-radius: 0.3125rem;
   display: flex;
   align-items: flex-start;
@@ -35,9 +37,7 @@ export const Button = styled.button<{ isActive: boolean; border: boolean }>`
 `;
 
 export const Count = styled.span`
-  ${({ theme }) => theme.typo.body1}
-  position: relative;
-  top: 0.0625rem;
+  ${({ theme }) => theme.typo.body1};
 `;
 
 export const Like = styled.button<{ isClicked?: boolean; isDetail: boolean }>`

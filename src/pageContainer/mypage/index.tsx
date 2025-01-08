@@ -13,7 +13,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
@@ -24,16 +24,16 @@ const MyPage: React.FC = () => {
 
   const { push } = useRouter();
 
-  const [userInfo, setUserInfo] = useState<
-    MenteeType | MentorInfoType | null
-  >();
+  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
+    null
+  );
 
-  const { data: mentorInfo } = useGetMyInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo();
   const { data: menteeInfo } = useGetMyMenteeInfo();
 
   useEffect(() => {
-    if (mentorInfo) setUserInfo(mentorInfo);
-    if (menteeInfo) setUserInfo(menteeInfo);
+    if (mentorInfo?.id) setUserInfo(mentorInfo);
+    if (menteeInfo?.id) setUserInfo(menteeInfo);
   }, [menteeInfo, mentorInfo]);
 
   const onUpdateButtonClick = () => push('/register/mentor');
@@ -60,12 +60,14 @@ const MyPage: React.FC = () => {
               <S.InfoWrapper>
                 <S.InfoText>개인정보</S.InfoText>
                 <S.InfoBox>
-                  <PrivacyCard
-                    privacy={{
-                      privacyKey: '전화번호',
-                      privacyValue: formatTelNum(userInfo.phoneNumber),
-                    }}
-                  />
+                  {userInfo.phoneNumber && (
+                    <PrivacyCard
+                      privacy={{
+                        privacyKey: '전화번호',
+                        privacyValue: formatTelNum(userInfo.phoneNumber),
+                      }}
+                    />
+                  )}
                   {'SNS' in userInfo && userInfo.SNS && (
                     <PrivacyCard
                       privacy={{
