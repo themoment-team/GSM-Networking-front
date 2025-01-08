@@ -56,7 +56,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { data: myInfoData, isError } = useGetMyInfo();
+  const { data: myInfoData, isError, refetch } = useGetMyInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -75,6 +75,7 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
+      refetch();
       return mutateDeleteTempMentor(tempMentorId);
     }
     return push('/');
