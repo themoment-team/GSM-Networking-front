@@ -15,7 +15,6 @@ type Story = StoryObj<typeof WriteButton>;
 
 export const Primary: Story = {
   args: {
-    onClick: () => {},
     path: '',
   },
 };

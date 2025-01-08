@@ -1,5 +1,6 @@
-// import { getBoardList } from '@/apis';
+import { getBoardList } from '@/apis';
 import { GwangjangBoard } from '@/pageContainer';
+import { CategoryType } from '@/types';
 
 import type { Metadata } from 'next';
 
@@ -12,9 +13,9 @@ export const metadata: Metadata = {
   },
 };
 
-const GwangjangPage = async () => (
-  // const boardList = await getBoardList();
+const GwangjangPage = async () => {
+  const boardList = await getBoardList(CategoryType.광장);
 
-  <GwangjangBoard initialData={[]} />
-);
+  return <GwangjangBoard initialData={boardList} />;
+};
 export default GwangjangPage;

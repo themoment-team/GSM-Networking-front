@@ -73,17 +73,25 @@ const GwangjangWrite: React.FC<Props> = ({ prevBoard }) => {
   };
 
   const onSubmit: SubmitHandler<GwangjangWriteFormType> = (data) => {
+    const formData = new FormData();
+
     const body: BoardContentWriteType = {
       title: data.title,
       content: data.content,
       boardCategory: CategoryType[data.category as keyof typeof CategoryType],
     };
+
+    formData.append(
+      'content',
+      new Blob([JSON.stringify(body)], {
+        type: 'application/json',
+      })
+    );
     if (prevBoard) {
-      mutatePatchBoard(body);
+      mutatePatchBoard(formData);
       return;
     }
-
-    mutatePostBoardContent(body);
+    mutatePostBoardContent(formData);
   };
 
   const onError: SubmitErrorHandler<GwangjangWriteFormType> = () => {
