@@ -53,7 +53,11 @@ const ProfileImgRegisterModal: React.FC<Props> = ({ closeModal }) => {
         {
           // 이미지 파일 선택시 보게될 모달
           step === Step.PROFILE_IMG_CHANGE && (
-            <ProfileImgChange imgUrl={imgUrl} closeModal={closeModal} />
+            <ProfileImgChange
+              setStep={setStep}
+              imgUrl={imgUrl}
+              closeModal={closeModal}
+            />
           )
         }
       </S.Container>
