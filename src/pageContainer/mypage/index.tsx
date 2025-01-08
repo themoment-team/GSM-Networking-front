@@ -17,7 +17,15 @@ import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
-const MyPage: React.FC = () => {
+interface MyPageProps {
+  initialMentorInfo: MentorInfoType | null;
+  initialMenteeInfo: MenteeType | null;
+}
+
+const MyPage: React.FC<MyPageProps> = ({
+  initialMentorInfo,
+  initialMenteeInfo,
+}) => {
   const [openModalCase, setOpenModalCase] = useState<
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
   >('close');
@@ -28,11 +36,18 @@ const MyPage: React.FC = () => {
     null
   );
 
-  const { data: mentorInfo } = useGetMyMentorInfo();
-  const { data: menteeInfo } = useGetMyMenteeInfo();
+  const { data: mentorInfo } = useGetMyMentorInfo({
+    initialData: initialMentorInfo,
+  });
+  const { data: menteeInfo } = useGetMyMenteeInfo({
+    initialData: initialMenteeInfo,
+  });
 
   useEffect(() => {
-    if (mentorInfo?.id) setUserInfo(mentorInfo);
+    if (mentorInfo?.id) {
+      setUserInfo(mentorInfo);
+      return;
+    }
     if (menteeInfo?.id) setUserInfo(menteeInfo);
   }, [menteeInfo, mentorInfo]);
 

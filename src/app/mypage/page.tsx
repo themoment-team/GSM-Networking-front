@@ -16,7 +16,12 @@ const MyPage = async () => {
 
   if (isTeacher || (!myMenteeInfo?.name && !myMentorInfo?.name)) redirect(`/`);
 
-  return <MyInfoPage />;
+  return (
+    <MyInfoPage
+      initialMentorInfo={myMentorInfo}
+      initialMenteeInfo={myMenteeInfo}
+    />
+  );
 };
 
 export default MyPage;

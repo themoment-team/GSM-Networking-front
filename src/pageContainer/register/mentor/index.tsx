@@ -25,6 +25,7 @@ import {
   usePostMentorRegister,
   usePutMentorUpdate,
   useGetMyMentorInfo,
+  useGetMyMenteeInfo,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -62,7 +63,12 @@ const MentorRegister: React.FC<Props> = ({
 
   const { push } = useRouter();
 
-  const { data: myInfoData, isError, refetch } = useGetMyMentorInfo();
+  const {
+    data: myInfoData,
+    isError,
+    refetch: refetchMentorInfo,
+  } = useGetMyMentorInfo();
+  const { refetch: refetchMenteeInfo } = useGetMyMenteeInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -81,7 +87,8 @@ const MentorRegister: React.FC<Props> = ({
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
-      refetch();
+      refetchMenteeInfo();
+      refetchMentorInfo();
       return mutateDeleteTempMentor(tempMentorId);
     }
     return push('/');
