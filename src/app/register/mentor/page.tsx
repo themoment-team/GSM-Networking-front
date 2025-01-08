@@ -1,6 +1,7 @@
 import { cookies } from 'next/headers';
 import { redirect } from 'next/navigation';
 
+import { getMyMenteeInfo } from '@/apis';
 import { tempMentorUrl } from '@/libs';
 import { MentorRegister } from '@/pageContainer';
 import type { TempMentorType } from '@/types';
@@ -20,8 +21,9 @@ const MentorRegisterPage: NextPage<Props> = async ({ searchParams }) => {
   const id = Number(searchParams?.id) || null;
 
   const mentorInfo = await getTempMentorInfo(id);
+  const menteeInfo = await getMyMenteeInfo('/register/mentor');
 
-  return <MentorRegister tempMentorId={id} mentorInfo={mentorInfo} />;
+  return <MentorRegister menteeInfo={menteeInfo} tempMentorId={id} mentorInfo={mentorInfo} />;
 };
 
 const getTempMentorInfo = async (

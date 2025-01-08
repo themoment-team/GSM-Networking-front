@@ -33,6 +33,7 @@ import type {
   MentorRequestType,
   TempMentorType,
   RequestCareerType,
+  MenteeType,
 } from '@/types';
 import {
   careerValidation,
@@ -44,9 +45,14 @@ import {
 interface Props {
   tempMentorId: number | null;
   mentorInfo: TempMentorType | null;
+  menteeInfo: MenteeType | null;
 }
 
-const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
+const MentorRegister: React.FC<Props> = ({
+  tempMentorId,
+  menteeInfo,
+  mentorInfo,
+}) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
@@ -98,10 +104,13 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
-      name: mentorInfo?.name ?? '',
-      phoneNumber: '',
-      email: mentorInfo?.email ?? '',
-      generation: mentorInfo?.generation.toString() ?? '기수를 선택해주세요.',
+      name: (mentorInfo?.name || menteeInfo?.name) ?? '',
+      phoneNumber: menteeInfo?.phoneNumber ?? '',
+      email: (mentorInfo?.email || menteeInfo?.email) ?? '',
+      generation:
+        (mentorInfo?.generation.toString() ||
+          menteeInfo?.generation.toString()) ??
+        '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });

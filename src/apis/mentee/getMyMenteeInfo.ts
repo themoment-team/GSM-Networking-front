@@ -48,7 +48,6 @@ export const getMyMenteeInfo = async (
     return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
   }
 
-
   // 403의 경우 멘토일 수 있습니다.
   if (!response.ok && !isForbidden) {
     return redirect(Path.SIGN_PATH);
