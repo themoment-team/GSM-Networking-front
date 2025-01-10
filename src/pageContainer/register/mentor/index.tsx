@@ -68,7 +68,9 @@ const MentorRegister: React.FC<Props> = ({
     isError,
     refetch: refetchMentorInfo,
   } = useGetMyMentorInfo();
-  const { refetch: refetchMenteeInfo } = useGetMyMenteeInfo();
+  const { refetch: refetchMenteeInfo } = useGetMyMenteeInfo({
+    initialData: menteeInfo,
+  });
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -102,6 +104,12 @@ const MentorRegister: React.FC<Props> = ({
     return push('/mypage');
   };
 
+  const myInfo = menteeInfo?.name
+    ? menteeInfo
+    : menteeInfo?.name
+    ? menteeInfo
+    : null;
+
   const {
     register,
     handleSubmit,
@@ -111,13 +119,10 @@ const MentorRegister: React.FC<Props> = ({
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
-      name: (mentorInfo?.name || menteeInfo?.name) ?? '',
-      phoneNumber: menteeInfo?.phoneNumber ?? '',
-      email: (mentorInfo?.email || menteeInfo?.email) ?? '',
-      generation:
-        (mentorInfo?.generation.toString() ||
-          menteeInfo?.generation.toString()) ??
-        '기수를 선택해주세요.',
+      name: myInfo?.name ?? '',
+      phoneNumber: myInfo?.phoneNumber ?? '',
+      email: myInfo?.email ?? '',
+      generation: myInfo?.generation.toString() ?? '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });

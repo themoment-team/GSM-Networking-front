@@ -39,6 +39,8 @@ export const getMyMenteeInfo = async (
   const isForbidden = response.status === 403;
   const isNotFound = response.status === 404;
 
+  if (isForbidden) return null;
+
   if (isNotFound) {
     if (isMenteeRegisterPath) return redirect(Path.MENTEE_REGISTER_PATH);
     else return menteeInfo;
