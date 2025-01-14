@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -13,7 +13,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
+import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
@@ -32,24 +32,7 @@ const MyPage: React.FC<MyPageProps> = ({
 
   const { push } = useRouter();
 
-  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
-    null
-  );
-
-  const { data: mentorInfo } = useGetMyMentorInfo({
-    initialData: initialMentorInfo,
-  });
-  const { data: menteeInfo } = useGetMyMenteeInfo({
-    initialData: initialMenteeInfo,
-  });
-
-  useEffect(() => {
-    if (mentorInfo?.id) {
-      setUserInfo(mentorInfo);
-      return;
-    }
-    if (menteeInfo?.id) setUserInfo(menteeInfo);
-  }, [menteeInfo, mentorInfo]);
+  const userInfo = useGetValidatedInfo(initialMentorInfo, initialMenteeInfo);
 
   const onUpdateButtonClick = () => push('/register/mentor');
 

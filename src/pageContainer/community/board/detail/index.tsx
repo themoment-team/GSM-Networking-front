@@ -26,6 +26,7 @@ import {
   useGetMyMenteeInfo,
   usePostComment,
 } from '@/hooks';
+import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
 import {
   CategoryType,
   type MenteeType,
@@ -33,7 +34,7 @@ import {
   HeaderPosition,
   type BoardResponseType,
 } from '@/types';
-import { isAllowedContent, scrollToBottom } from '@/utils';
+import { isAllowedContent, scrollToBottom, validateInfo } from '@/utils';
 
 import type { Metadata } from 'next';
 
@@ -58,16 +59,8 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
-  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
-    null
-  );
 
-  const { data: mentorInfo } = useGetMyMentorInfo();
-  const { data: menteeInfo } = useGetMyMenteeInfo();
-
-  useEffect(() => {
-    setUserInfo(mentorInfo || menteeInfo || null);
-  }, [menteeInfo, mentorInfo]);
+  const userInfo = useGetValidatedInfo();
 
   const handleUploadSuccess = () => {
     refetch();

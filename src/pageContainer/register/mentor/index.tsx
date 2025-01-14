@@ -27,6 +27,7 @@ import {
   useGetMyMentorInfo,
   useGetMyMenteeInfo,
 } from '@/hooks';
+import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
   CareerFormType,
@@ -72,6 +73,8 @@ const MentorRegister: React.FC<Props> = ({
     initialData: menteeInfo,
   });
 
+  const userInfo = useGetValidatedInfo();
+
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
   });
@@ -104,11 +107,6 @@ const MentorRegister: React.FC<Props> = ({
     return push('/mypage');
   };
 
-  const validatedMenteeInfo = menteeInfo?.name ? menteeInfo : null;
-  const validatedMentorInfo = mentorInfo?.name ? mentorInfo : null;
-
-  const myInfo = validatedMentorInfo || validatedMenteeInfo;
-
   const {
     register,
     handleSubmit,
@@ -118,10 +116,10 @@ const MentorRegister: React.FC<Props> = ({
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
-      name: myInfo?.name ?? '',
-      phoneNumber: myInfo?.phoneNumber ?? '',
-      email: myInfo?.email ?? '',
-      generation: myInfo?.generation.toString() ?? '기수를 선택해주세요.',
+      name: userInfo?.name ?? '',
+      phoneNumber: userInfo?.phoneNumber ?? '',
+      email: userInfo?.email ?? '',
+      generation: userInfo?.generation.toString() ?? '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
