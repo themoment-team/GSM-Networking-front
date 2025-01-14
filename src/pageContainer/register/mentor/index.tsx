@@ -104,11 +104,10 @@ const MentorRegister: React.FC<Props> = ({
     return push('/mypage');
   };
 
-  const myInfo = mentorInfo?.name
-    ? mentorInfo
-    : menteeInfo?.name
-    ? menteeInfo
-    : null;
+  const validatedMenteeInfo = menteeInfo?.name ? menteeInfo : null;
+  const validatedMentorInfo = mentorInfo?.name ? mentorInfo : null;
+
+  const myInfo = validatedMentorInfo || validatedMenteeInfo;
 
   const {
     register,
