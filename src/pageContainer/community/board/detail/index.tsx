@@ -17,16 +17,13 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
-  ChattingButton,
 } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetBoardDetail,
-  useGetMyMentorInfo,
-  useGetMyMenteeInfo,
   usePostComment,
+  useGetValidatedInfo,
 } from '@/hooks';
-import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
 import {
   CategoryType,
   type MenteeType,
@@ -34,7 +31,7 @@ import {
   HeaderPosition,
   type BoardResponseType,
 } from '@/types';
-import { isAllowedContent, scrollToBottom, validateInfo } from '@/utils';
+import { isAllowedContent, scrollToBottom } from '@/utils';
 
 import type { Metadata } from 'next';
 
@@ -60,7 +57,7 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
     initialData,
   });
 
-  const userInfo = useGetValidatedInfo();
+  const { userInfo } = useGetValidatedInfo();
 
   const handleUploadSuccess = () => {
     refetch();

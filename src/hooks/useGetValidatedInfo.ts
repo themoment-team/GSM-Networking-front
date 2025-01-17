@@ -6,7 +6,7 @@ import { validateInfo } from '@/utils';
 
 import { useGetMyMentorInfo, useGetMyMenteeInfo } from '.';
 
-const useGetValidatedInfo = (
+export const useGetValidatedInfo = (
   initialMentorInfo?: MentorInfoType | null,
   initialMenteeInfo?: MenteeType | null
 ) => {
@@ -27,7 +27,5 @@ const useGetValidatedInfo = (
     setUserInfo(validatedMentorInfo || validatedMenteeInfo);
   }, [menteeInfo, mentorInfo]);
 
-  return userInfo;
+  return { userInfo };
 };
-
-export default useGetValidatedInfo;

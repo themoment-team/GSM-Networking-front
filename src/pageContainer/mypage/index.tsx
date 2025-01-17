@@ -13,7 +13,7 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
+import { useGetValidatedInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
@@ -32,7 +32,10 @@ const MyPage: React.FC<MyPageProps> = ({
 
   const { push } = useRouter();
 
-  const userInfo = useGetValidatedInfo(initialMentorInfo, initialMenteeInfo);
+  const { userInfo } = useGetValidatedInfo(
+    initialMentorInfo,
+    initialMenteeInfo
+  );
 
   const onUpdateButtonClick = () => push('/register/mentor');
 

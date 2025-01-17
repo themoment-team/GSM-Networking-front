@@ -26,8 +26,8 @@ import {
   usePutMentorUpdate,
   useGetMyMentorInfo,
   useGetMyMenteeInfo,
+  useGetValidatedInfo,
 } from '@/hooks';
-import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
   CareerFormType,
@@ -73,7 +73,7 @@ const MentorRegister: React.FC<Props> = ({
     initialData: menteeInfo,
   });
 
-  const userInfo = useGetValidatedInfo();
+  const { userInfo } = useGetValidatedInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),

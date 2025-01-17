@@ -10,8 +10,7 @@ import * as S from './style';
 import * as I from '@/assets';
 import { RandomMentorImg } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
-import { useCheckIsTeacher } from '@/hooks';
-import useGetValidatedInfo from '@/hooks/useGetValidatedInfo';
+import { useCheckIsTeacher, useGetValidatedInfo } from '@/hooks';
 import { HeaderPosition } from '@/types';
 
 interface Props {
@@ -31,7 +30,7 @@ const Header: React.FC<Props> = ({
     push('/mypage');
   };
 
-  const userInfo = useGetValidatedInfo();
+  const { userInfo } = useGetValidatedInfo();
 
   return (
     <S.Header position={position}>
