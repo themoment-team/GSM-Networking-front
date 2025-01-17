@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -13,28 +13,29 @@ import {
   ProfileImgRegisterModal,
   PrivacyCard,
 } from '@/components';
-import { useGetMyMentorInfo, useGetMyMenteeInfo } from '@/hooks';
+import { useGetValidatedInfo } from '@/hooks';
 import type { MenteeType, MentorInfoType } from '@/types';
 import { formatTelNum } from '@/utils';
 
-const MyPage: React.FC = () => {
+interface MyPageProps {
+  initialMentorInfo: MentorInfoType | null;
+  initialMenteeInfo: MenteeType | null;
+}
+
+const MyPage: React.FC<MyPageProps> = ({
+  initialMentorInfo,
+  initialMenteeInfo,
+}) => {
   const [openModalCase, setOpenModalCase] = useState<
     'close' | 'profileImgRegister' | 'signOut' | 'withdraw'
   >('close');
 
   const { push } = useRouter();
 
-  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
-    null
+  const { userInfo } = useGetValidatedInfo(
+    initialMentorInfo,
+    initialMenteeInfo
   );
-
-  const { data: mentorInfo } = useGetMyMentorInfo();
-  const { data: menteeInfo } = useGetMyMenteeInfo();
-
-  useEffect(() => {
-    if (mentorInfo?.id) setUserInfo(mentorInfo);
-    if (menteeInfo?.id) setUserInfo(menteeInfo);
-  }, [menteeInfo, mentorInfo]);
 
   const onUpdateButtonClick = () => push('/register/mentor');
 

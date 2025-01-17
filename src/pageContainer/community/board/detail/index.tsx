@@ -17,14 +17,12 @@ import {
   CommentCard,
   MiniProfile,
   TextArea,
-  ChattingButton,
 } from '@/components';
 import { TEACHER_NOTICE_PAGE_PATH } from '@/constants';
 import {
   useGetBoardDetail,
-  useGetMyMentorInfo,
-  useGetMyMenteeInfo,
   usePostComment,
+  useGetValidatedInfo,
 } from '@/hooks';
 import {
   CategoryType,
@@ -58,16 +56,8 @@ const BoardDetail: React.FC<Props> = ({ boardId, initialData }) => {
   const { data: boardData, refetch } = useGetBoardDetail(boardId, {
     initialData,
   });
-  const [userInfo, setUserInfo] = useState<MenteeType | MentorInfoType | null>(
-    null
-  );
 
-  const { data: mentorInfo } = useGetMyMentorInfo();
-  const { data: menteeInfo } = useGetMyMenteeInfo();
-
-  useEffect(() => {
-    setUserInfo(mentorInfo || menteeInfo || null);
-  }, [menteeInfo, mentorInfo]);
+  const { userInfo } = useGetValidatedInfo();
 
   const handleUploadSuccess = () => {
     refetch();

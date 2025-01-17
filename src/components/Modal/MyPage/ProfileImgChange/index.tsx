@@ -1,5 +1,6 @@
 'use client';
 
+import type { Dispatch, SetStateAction } from 'react';
 import { useCallback, useState } from 'react';
 
 import Cropper from 'react-easy-crop';
@@ -13,11 +14,13 @@ import {
   usePostProfileImgUrl,
   usePostUploadFile,
 } from '@/hooks';
+import { Step } from '@/types';
 import type { PostProfileImgType } from '@/types';
 
 interface Props {
   imgUrl: string;
   closeModal: () => void;
+  setStep: Dispatch<SetStateAction<Step>>;
 }
 
 interface CropType {
@@ -30,7 +33,7 @@ interface CroppedAreaType extends CropType {
   height: number;
 }
 
-const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
+const ProfileImgChange = ({ imgUrl, closeModal, setStep }: Props) => {
   const [crop, setCrop] = useState<CropType>({ x: 0, y: 0 });
   const [zoom, setZoom] = useState<number>(1);
   const [croppedAreaPixels, setCroppedAreaPixels] =
@@ -73,7 +76,14 @@ const ProfileImgChange = ({ imgUrl, closeModal }: Props) => {
           onError: onError,
         });
       },
-      onError: onError,
+      onError: (error) => {
+        if (error?.response?.status === 413) {
+          toast.error('이미지의 용량이 너무 큽니다.');
+          setStep(Step.DEFAULT);
+          return;
+        }
+        onError();
+      },
     });
   };
 

@@ -39,6 +39,8 @@ export const getMyMenteeInfo = async (
   const isForbidden = response.status === 403;
   const isNotFound = response.status === 404;
 
+  if (isForbidden) return null;
+
   if (isNotFound) {
     if (isMenteeRegisterPath) return redirect(Path.MENTEE_REGISTER_PATH);
     else return menteeInfo;
@@ -47,7 +49,6 @@ export const getMyMenteeInfo = async (
   if (isUnauthorized) {
     return redirect(`${Path.AUTH_REFRESH_PATH}?redirect=${redirectUrl}`);
   }
-
 
   // 403의 경우 멘토일 수 있습니다.
   if (!response.ok && !isForbidden) {

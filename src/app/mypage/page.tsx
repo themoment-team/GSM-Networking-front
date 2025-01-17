@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation';
 
-import { getIsTeacher } from '@/apis';
+import { getIsTeacher, getMyInfo, getMyMenteeInfo } from '@/apis';
 import { MyInfoPage } from '@/pageContainer';
 
 import type { Metadata } from 'next';
@@ -11,11 +11,17 @@ export const metadata: Metadata = {
 
 const MyPage = async () => {
   const isTeacher = await getIsTeacher('/');
-  if (isTeacher) {
-    redirect(`/`);
-  }
+  const myMentorInfo = await getMyInfo('/', isTeacher);
+  const myMenteeInfo = await getMyMenteeInfo('/');
 
-  return <MyInfoPage />;
+  if (isTeacher || (!myMenteeInfo?.name && !myMentorInfo?.name)) redirect(`/`);
+
+  return (
+    <MyInfoPage
+      initialMentorInfo={myMentorInfo}
+      initialMenteeInfo={myMenteeInfo}
+    />
+  );
 };
 
 export default MyPage;

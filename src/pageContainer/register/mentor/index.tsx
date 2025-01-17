@@ -25,6 +25,8 @@ import {
   usePostMentorRegister,
   usePutMentorUpdate,
   useGetMyMentorInfo,
+  useGetMyMenteeInfo,
+  useGetValidatedInfo,
 } from '@/hooks';
 import { mentorInfoFormSchema } from '@/schemas';
 import type {
@@ -33,6 +35,7 @@ import type {
   MentorRequestType,
   TempMentorType,
   RequestCareerType,
+  MenteeType,
 } from '@/types';
 import {
   careerValidation,
@@ -44,9 +47,14 @@ import {
 interface Props {
   tempMentorId: number | null;
   mentorInfo: TempMentorType | null;
+  menteeInfo: MenteeType | null;
 }
 
-const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
+const MentorRegister: React.FC<Props> = ({
+  tempMentorId,
+  menteeInfo,
+  mentorInfo,
+}) => {
   const [careerArray, setCareerArray] = useState<CareerFormType[]>([
     extractCareer(mentorInfo?.company ?? null),
   ]);
@@ -56,7 +64,16 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
 
   const { push } = useRouter();
 
-  const { data: myInfoData, isError } = useGetMyMentorInfo();
+  const {
+    data: myInfoData,
+    isError,
+    refetch: refetchMentorInfo,
+  } = useGetMyMentorInfo();
+  const { refetch: refetchMenteeInfo } = useGetMyMenteeInfo({
+    initialData: menteeInfo,
+  });
+
+  const { userInfo } = useGetValidatedInfo();
 
   const { mutate: mutateDeleteTempMentor } = useDeleteTempMentor({
     onSettled: () => push('/'),
@@ -75,6 +92,8 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   const handleMentorRegisterSuccess = () => {
     toast.success('멘토 등록에 성공하였습니다.');
     if (tempMentorId) {
+      refetchMenteeInfo();
+      refetchMentorInfo();
       return mutateDeleteTempMentor(tempMentorId);
     }
     return push('/');
@@ -97,10 +116,10 @@ const MentorRegister: React.FC<Props> = ({ tempMentorId, mentorInfo }) => {
   } = useForm<MentorInfoFormType>({
     resolver: zodResolver(mentorInfoFormSchema),
     defaultValues: {
-      name: mentorInfo?.name ?? '',
-      phoneNumber: '',
-      email: mentorInfo?.email ?? '',
-      generation: mentorInfo?.generation.toString() ?? '기수를 선택해주세요.',
+      name: userInfo?.name ?? '',
+      phoneNumber: userInfo?.phoneNumber ?? '',
+      email: userInfo?.email ?? '',
+      generation: userInfo?.generation.toString() ?? '기수를 선택해주세요.',
       snsUrl: mentorInfo?.SNS ?? '',
     },
   });
