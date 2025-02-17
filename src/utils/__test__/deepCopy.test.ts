@@ -10,7 +10,7 @@ const object = {
 
 describe('deepCopy', () => {
   test('깊은 복사 시, 값은 같아야 하지만 참조는 달라야 합니다.', () => {
-    const copiedObject = deepCopy(object);
+    const copiedObject = deepCopy<typeof object>(object);
 
     expect(copiedObject).toEqual(object);
     expect(copiedObject).not.toBe(object);
