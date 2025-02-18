@@ -55,7 +55,7 @@ const Board: React.FC<Props> = ({ initialData }) => {
           }
         />
         <S.ButtonWrapper>
-          <WriteButton />
+          <WriteButton path='/community/board' />
         </S.ButtonWrapper>
       </S.Container>
     </>
