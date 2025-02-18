@@ -6,10 +6,8 @@ import * as S from './style';
 
 import { CloseIcon, RemovePositionIcon } from '@/assets';
 import { SearchBar } from '@/components';
-import { POSITION_ARRAY } from '@/constants';
+import { POSITION_ARRAY, MENTOR_GENERATION_ARRAY } from '@/constants';
 import type { GenerationType, PositionType } from '@/types';
-
-const GENERATION_LIST = [1, 2, 3, 4, 5] as const;
 
 interface Props {
   filteredWorkerLength: number;
@@ -85,7 +83,7 @@ const FilterModal: React.FC<Props> = ({
       <S.SectionWrapper>
         <S.SectionTitle>기수</S.SectionTitle>
         <S.GenerationWrapper>
-          {GENERATION_LIST.map((generation) => (
+          {MENTOR_GENERATION_ARRAY.map((generation) => (
             <S.GenerationButton
               key={generation}
               isSelected={selectedGeneration === generation}
