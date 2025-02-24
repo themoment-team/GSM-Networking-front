@@ -138,13 +138,13 @@ const MentorRegister: React.FC<Props> = ({
           companyUrl: { value: career.companyUrl ?? '', errorMessage: null },
           position: { value: career.position, errorMessage: null },
           startYear: { value: startDate.getFullYear(), errorMessage: null },
-          startMonth: { value: startDate.getMonth(), errorMessage: null },
+          startMonth: { value: startDate.getMonth() + 1, errorMessage: null },
           endYear: {
             value: endDate ? endDate.getFullYear() : '년',
             errorMessage: null,
           },
           endMonth: {
-            value: endDate ? endDate.getMonth() : '월',
+            value: endDate ? endDate.getMonth() + 1 : '월',
             errorMessage: null,
           },
           isWorking: { value: career.isWorking, errorMessage: null },
