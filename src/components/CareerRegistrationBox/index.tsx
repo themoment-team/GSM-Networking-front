@@ -147,14 +147,22 @@ const CareerRegistrationBox: React.FC<Props> = ({
   };
 
   // 시작 연도보다 과거의 연도를 선택할 수 없도록 리턴합니다.
-  const getYearArray = (selectedYear: string) => {
+  const getYearArray = (selectedStartYear: string, selectedEndYear: string) => {
     const date = new Date();
     const currentYear = date.getFullYear();
 
-    return YEAR_ARRAY.filter(
+    const availableYearArray = YEAR_ARRAY.filter(
       (year) =>
-        Number(year) >= Number(selectedYear) && Number(year) <= currentYear
+        Number(year) >= Number(selectedStartYear) && Number(year) <= currentYear
     );
+
+    if (
+      availableYearArray.length === 1 ||
+      availableYearArray[0] > Number(selectedEndYear)
+    ) {
+      endYear.value = availableYearArray[0];
+    }
+    return availableYearArray;
   };
 
   return (
@@ -228,7 +236,10 @@ const CareerRegistrationBox: React.FC<Props> = ({
               <Select
                 ref={endYearRef}
                 value={endYear.value}
-                options={getYearArray(String(startYear.value))}
+                options={getYearArray(
+                  String(startYear.value),
+                  String(endYear.value)
+                )}
                 disabled={isWorking.value}
                 defaultValue='년'
                 onChange={(e) => handlePeriodChange(e, 'endYear')}
