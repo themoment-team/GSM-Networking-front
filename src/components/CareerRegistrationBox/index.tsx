@@ -152,8 +152,7 @@ const CareerRegistrationBox: React.FC<Props> = ({
     const currentYear = date.getFullYear();
 
     const availableYearArray = YEAR_ARRAY.filter(
-      (year) =>
-        Number(year) >= Number(selectedStartYear) && Number(year) <= currentYear
+      (year) => year >= Number(selectedStartYear) && year <= currentYear
     );
 
     if (
