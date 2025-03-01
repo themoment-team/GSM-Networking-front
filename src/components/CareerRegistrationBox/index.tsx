@@ -134,16 +134,28 @@ const CareerRegistrationBox: React.FC<Props> = ({
     );
 
   // 현재 연도와 월을 비교해서 선택 가능한 월 배열을 리턴합니다.
-  const getMonthArray = (selectedYear: string): MonthArray => {
+  const getMonthArray = (
+    selectedEndYear: string,
+    selectedStartYear?: string
+  ): MonthArray => {
     const date = new Date();
     const currentYear = date.getFullYear();
+    const currentMonth = date.getMonth() + 1;
 
-    if (selectedYear === String(currentYear)) {
-      const currentMonth = date.getMonth() + 1;
-      return MONTH_ARRAY.slice(0, currentMonth);
+    const newMonthArray = [...MONTH_ARRAY];
+
+    if (selectedEndYear === String(currentYear)) {
+      newMonthArray.splice(
+        newMonthArray.findIndex((month) => month === currentMonth) + 1,
+        newMonthArray.length
+      );
     }
 
-    return [...MONTH_ARRAY];
+    if (selectedEndYear === selectedStartYear) {
+      newMonthArray.splice(0, Number(startMonth.value) - 1);
+    }
+
+    return newMonthArray;
   };
 
   // 시작 연도보다 과거의 연도를 선택할 수 없도록 리턴합니다.
@@ -247,7 +259,10 @@ const CareerRegistrationBox: React.FC<Props> = ({
               <Select
                 ref={endMonthRef}
                 value={endMonth.value}
-                options={getMonthArray(String(endYear.value))}
+                options={getMonthArray(
+                  String(endYear.value),
+                  String(startYear.value)
+                )}
                 disabled={isWorking.value || String(endYear.value).length < 2}
                 defaultValue='월'
                 onChange={(e) => handlePeriodChange(e, 'endMonth')}
