@@ -3,6 +3,7 @@ export { default as CommunityButton } from './CommunityButton';
 export { default as FileDownloadButton } from './FileDownloadButton';
 export { default as FileUploadButton } from './FileUploadButton';
 export { default as FilterButton } from './Filter';
+export { default as JoinButton } from './JoinButton';
 export { default as LikeButton } from './LikeButton';
 export { default as MapButton } from './MapButton';
 export { default as ProfileUpdateButton } from './ProfileUpdate';

@@ -5,7 +5,7 @@ import { toast } from 'react-toastify';
 import * as S from './style';
 
 import * as I from '@/assets';
-import { MiniProfile, LikeButton, Pin } from '@/components';
+import { MiniProfile, JoinButton, LikeButton, Pin } from '@/components';
 import { BOARD_PATH } from '@/constants';
 import { useCheckIsTeacher, usePatchBoardPin } from '@/hooks';
 import type { BoardInfoType } from '@/types';
@@ -24,6 +24,7 @@ interface Props extends BoardInfoType {
   ) => Promise<
     QueryObserverResult<InfiniteData<BoardInfoType[], unknown>, Error>
   >;
+  memberCount?: number;
 }
 
 const BoardCard: React.FC<Props> = ({
@@ -37,6 +38,7 @@ const BoardCard: React.FC<Props> = ({
   commentCount,
   isPinned,
   listRefetch,
+  memberCount,
 }) => {
   const { monthDay, time } = parseDateString(createdAt);
 
@@ -86,7 +88,11 @@ const BoardCard: React.FC<Props> = ({
           <div />
         )}
         <S.LikeCommentWrapper>
-          <LikeButton likeCount={likeCount} isDetail={false} />
+          {boardCategory === 'GWANGJANG' ? (
+            <JoinButton memberCount={memberCount ?? 0} isDetail={false} />
+          ) : (
+            <LikeButton likeCount={likeCount} isDetail={false} />
+          )}
           <S.Comment>
             <I.CommentIcon />
             <S.CommentCount>{commentCount}</S.CommentCount>

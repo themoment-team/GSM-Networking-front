@@ -26,7 +26,7 @@ const TeacherBoard: React.FC<Props> = ({ initialData }) => {
         />
         {isTeacher && (
           <S.ButtonWrapper>
-            <WriteButton />
+            <WriteButton path='/community/board' />
           </S.ButtonWrapper>
         )}
       </S.Container>
