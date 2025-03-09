@@ -156,6 +156,17 @@ const CareerRegistrationBox: React.FC<Props> = ({
       newMonthArray.splice(0, Number(startMonth.value) - 1);
     }
 
+    if (
+      newMonthArray.length === 1 ||
+      Number(endMonth.value) < newMonthArray[0]
+    ) {
+      endMonth.value = newMonthArray[0];
+    }
+
+    if (selectedStartYear === currentYear) {
+      startMonth.value = 1;
+    }
+
     return newMonthArray;
   };
 
